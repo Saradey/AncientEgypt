@@ -20,6 +20,9 @@ dependencyResolutionManagement {
         create("uiLibs") {
             from(files("gradle/ui-libs.versions.toml"))
         }
+        create("utilsLibs") {
+            from(files("gradle/utils-libs.versions.toml"))
+        }
     }
 }
 rootProject.name = "AncientEgypt"
