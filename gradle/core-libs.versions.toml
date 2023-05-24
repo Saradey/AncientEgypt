@@ -1,7 +1,12 @@
 [versions]
 #https://dagger.dev/hilt/gradle-setup
 daggerHiltVersion = "2.46.1"
+#https://developer.android.com/jetpack/androidx/releases/navigation
+navigationVersion = "2.5.3"
 
 [libraries]
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerHiltVersion" }
+
+navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationVersion" }
+navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
