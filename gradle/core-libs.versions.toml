@@ -1,0 +1,7 @@
+[versions]
+#https://dagger.dev/hilt/gradle-setup
+daggerHiltVersion = "2.46.1"
+
+[libraries]
+dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerHiltVersion" }

@@ -13,6 +13,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        create("coreLibs") {
+            from(files("gradle/core-libs.versions.toml"))
+        }
+    }
 }
 rootProject.name = "AncientEgypt"
 include(":app")
