@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AncientEgypt"
 include(":app")
+include(":ui-kit")
+include(":ui-sandbox")
