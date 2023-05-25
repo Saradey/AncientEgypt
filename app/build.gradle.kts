@@ -47,6 +47,7 @@ dependencies {
     implementation(uiLibs.constraint.layout)
     implementation(uiLibs.recycler.view)
     implementation(uiLibs.recycler.view.adapter)
+    implementation(uiLibs.recycler.view.adapter.viewbinding)
     implementation(uiLibs.viewBindingPropertyDelegate)
     implementation(uiLibs.exoplayer)
 
@@ -57,8 +58,17 @@ dependencies {
     implementation(coreProjectLibs.navigation.ui.ktx)
     implementation(coreProjectLibs.room)
     implementation(coreProjectLibs.room.ktx)
+    implementation(coreProjectLibs.room.paging3)
     kapt(coreProjectLibs.room.compiler)
     implementation(coreProjectLibs.core.ktx)
+
+    //network
+    implementation(networkLibs.retrofit)
+    implementation(networkLibs.okHttpClient)
+
+    //utils
+    implementation(utilsLibs.glide)
+    implementation(utilsLibs.paging3)
 
     implementation(project(":ui-kit"))
 }
