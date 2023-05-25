@@ -9,7 +9,6 @@ plugins {
 android {
     namespace = "com.evgenii.goncharov.ancient.egypt"
     compileSdk = rootProject.ext["compileSdkVersionApp"] as Int
-
     defaultConfig {
         applicationId = "com.evgenii.goncharov.ancient.egypt"
         minSdk = rootProject.ext["minSdkVersionApp"] as Int
@@ -18,7 +17,6 @@ android {
         versionName = getVersionName()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false

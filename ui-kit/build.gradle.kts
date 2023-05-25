@@ -5,9 +5,9 @@ plugins {
 
 android {
     namespace = "com.evgenii.goncharov.ancient.egypt.ui_kit"
-    compileSdk = 33
+    compileSdk = rootProject.ext["compileSdkVersionApp"] as Int
     defaultConfig {
-        minSdk = 23
+        minSdk = rootProject.ext["minSdkVersionApp"] as Int
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
