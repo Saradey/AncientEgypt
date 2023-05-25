@@ -8,8 +8,8 @@ pluginManagement {
 }
 dependencyResolutionManagement {
     versionCatalogs {
-        create("coreLibs") {
-            from(files("gradle/core-libs.versions.toml"))
+        create("coreProjectLibs") {
+            from(files("gradle/core-project-libs.versions.toml"))
         }
         create("uiLibs") {
             from(files("gradle/ui-libs.versions.toml"))

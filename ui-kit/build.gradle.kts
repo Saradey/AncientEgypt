@@ -6,7 +6,6 @@ plugins {
 android {
     namespace = "com.evgenii.goncharov.ancient.egypt.ui_kit"
     compileSdk = 33
-
     defaultConfig {
         minSdk = 23
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -21,8 +20,8 @@ android {
 }
 
 dependencies {
+    implementation(coreProjectLibs.core.ktx)
 
-    implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     testImplementation("junit:junit:4.13.2")

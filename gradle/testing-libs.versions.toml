@@ -2,5 +2,14 @@
 #https://github.com/KasperskyLab/Kaspresso
 kaspressoVersion = "1.5.2"
 
+junitVersion = "4.13.2"
+
+junitAndroidxVersion = "1.1.5"
+
+espressoVersion = "3.5.1"
+
 [libraries]
 kaspresso = { module = "com.kaspersky.android-components:kaspresso", version.ref = "kaspressoVersion" }
+junit = { module = "junit:junit", version.ref = "junitVersion" }
+junit-androidx = { module = "androidx.test.ext:junit", version.ref = "junitAndroidxVersion" }
+espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoVersion" }

@@ -5,6 +5,8 @@ daggerHiltVersion = "2.46.1"
 navigationVersion = "2.5.3"
 #https://developer.android.com/jetpack/androidx/releases/room
 roomVersion = "2.5.1"
+#https://developer.android.com/jetpack/androidx/releases/core
+coreKtxVersion = "1.10.1"
 
 [libraries]
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
@@ -17,3 +19,5 @@ room = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 room-paging3 = { module = "androidx.room:room-paging", version.ref = "roomVersion" }
+
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
