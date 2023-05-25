@@ -1,0 +1,8 @@
+[versions]
+#https://square.github.io/leakcanary/getting_started/
+leakCanaryVersion = "2.11"
+chuckerVersion = "3.5.2"
+
+[libraries]
+leak-canary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanaryVersion" }
+chucker = { module = "com.github.chuckerteam.chucker:library", version.ref = "chuckerVersion" }

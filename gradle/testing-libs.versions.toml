@@ -1,0 +1,6 @@
+[versions]
+#https://github.com/KasperskyLab/Kaspresso
+kaspressoVersion = "1.5.2"
+
+[libraries]
+kaspresso = { module = "com.kaspersky.android-components:kaspresso", version.ref = "kaspressoVersion" }

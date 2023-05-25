@@ -26,6 +26,12 @@ dependencyResolutionManagement {
         create("networkLibs") {
             from(files("gradle/network-libs.versions.toml"))
         }
+        create("testingLibs") {
+            from(files("gradle/testing-libs.versions.toml"))
+        }
+        create("qualityLibs") {
+            from(files("gradle/quality-libs.versions.toml"))
+        }
     }
 }
 rootProject.name = "AncientEgypt"
