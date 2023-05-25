@@ -70,6 +70,16 @@ dependencies {
     implementation(utilsLibs.glide)
     implementation(utilsLibs.paging3)
 
+    //quality
+    debugImplementation(qualityLibs.leak.canary)
+    debugImplementation(qualityLibs.chucker)
+
+    //testings
+    testImplementation(testingLibs.junit)
+    androidTestImplementation(testingLibs.junit.androidx)
+    androidTestImplementation(testingLibs.espresso)
+    androidTestImplementation(testingLibs.kaspresso)
+
     implementation(project(":ui-kit"))
 }
 
