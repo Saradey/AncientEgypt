@@ -1,11 +1,9 @@
-//TODO написать к релизу
-fun getVersionName(): String = "1.0"
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -43,12 +41,27 @@ android {
 }
 
 dependencies {
+    //ui
+    implementation(uiLibs.app.compat)
+    implementation(uiLibs.material)
+    implementation(uiLibs.constraint.layout)
+    implementation(uiLibs.recycler.view)
+    implementation(uiLibs.recycler.view.adapter)
+    implementation(uiLibs.viewBindingPropertyDelegate)
+    implementation(uiLibs.exoplayer)
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    //core
+    implementation(coreProjectLibs.dagger.hilt)
+    kapt(coreProjectLibs.dagger.hilt.compiler)
+    implementation(coreProjectLibs.navigation.fragment.ktx)
+    implementation(coreProjectLibs.navigation.ui.ktx)
+    implementation(coreProjectLibs.room)
+    implementation(coreProjectLibs.room.ktx)
+    kapt(coreProjectLibs.room.compiler)
+    implementation(coreProjectLibs.core.ktx)
+
+    implementation(project(":ui-kit"))
 }
+
+//TODO написать к релизу
+fun getVersionName(): String = "1.0"
