@@ -1,4 +1,5 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs
+
 plugins {
     id("com.android.application") version "8.0.1" apply false
     id("com.android.library") version "8.0.1" apply false
@@ -21,5 +22,11 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+    }
+    //https://stackoverflow.com/questions/76030538/android-agp-8-gradle-8-kotlin-1-8-causes-error-in-kapt
+    tasks.withType(KaptGenerateStubs::class.java).configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 }
