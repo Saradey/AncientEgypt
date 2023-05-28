@@ -2,5 +2,5 @@ package com.evgenii.goncharov.ancient.egypt.features.map
 
 import androidx.fragment.app.Fragment
 
-class SelectedArticleMapFragment : Fragment() {
+class SelectedArticleMapBottomSheetFragment : Fragment() {
 }

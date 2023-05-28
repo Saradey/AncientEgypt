@@ -8,5 +8,10 @@
 
     <fragment
         android:id="@+id/onbaording"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.splash.OnboardingFragment" />
+        android:name="com.evgenii.goncharov.ancient.egypt.features.splash.OnboardingFragment">
+
+        <action
+            android:id="@+id/action_onbaording_to_main"
+            app:destination="@id/main_graph" />
+    </fragment>
 </navigation>
