@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_start"
+    app:startDestination="@id/splash">
+
+    <include app:graph="@navigation/main_graph" />
+
+    <fragment
+        android:id="@+id/splash"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.splash.SplashFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/onbaording"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.splash.OnboardingFragment">
+
+    </fragment>
+</navigation>

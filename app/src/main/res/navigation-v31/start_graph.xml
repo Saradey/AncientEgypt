@@ -4,6 +4,8 @@
     android:id="@+id/nav_start"
     app:startDestination="@id/onbaording">
 
+    <include app:graph="@navigation/main_graph" />
+
     <fragment
         android:id="@+id/onbaording"
         android:name="com.evgenii.goncharov.ancient.egypt.features.splash.OnboardingFragment" />
