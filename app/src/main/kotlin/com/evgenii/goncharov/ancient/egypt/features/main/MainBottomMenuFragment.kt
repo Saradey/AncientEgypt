@@ -10,19 +10,8 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBottomMenuBin
 class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     private val vb: FragmentMainBottomMenuBinding by viewBinding(FragmentMainBottomMenuBinding::bind)
-    private var selectedTab: Int = -1
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vb.bnvMenu.setOnItemSelectedListener { menu ->
-            if (selectedTab != menu.itemId) {
-                selectedTab = menu.itemId
-                navigationToTab(selectedTab)
-            }
-            true
-        }
-    }
-
-    private fun navigationToTab(itemId: Int) {
 
     }
 }

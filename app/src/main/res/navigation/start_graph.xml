@@ -4,7 +4,7 @@
     android:id="@+id/start_graph"
     app:startDestination="@id/splash">
 
-    <include app:graph="@navigation/main_graph" />
+    <include app:graph="@navigation/main_activity_graph" />
 
     <fragment
         android:id="@+id/splash"

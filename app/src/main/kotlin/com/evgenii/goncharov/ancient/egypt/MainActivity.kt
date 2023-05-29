@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val navController =
             supportFragmentManager.findFragmentById(R.id.fcv_root_container)?.findNavController()
         if (false && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            navController?.setGraph(R.navigation.main_graph)
+            navController?.setGraph(R.navigation.main_activity_graph)
         }
     }
 }
