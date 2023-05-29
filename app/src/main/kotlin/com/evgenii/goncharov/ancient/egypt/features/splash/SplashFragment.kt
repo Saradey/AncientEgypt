@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSplashBinding
 
+/** №1.1 */
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     private val vb: FragmentSplashBinding by viewBinding(FragmentSplashBinding::bind)

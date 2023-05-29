@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentOnboardingBinding
 
+/** №1.2 */
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private val vb: FragmentOnboardingBinding by viewBinding(FragmentOnboardingBinding::bind)
