@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/main"
+        android:id="@+id/main_graph"
         android:icon="@drawable/ic_stub_24"
         android:title="Главная"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/all"
+        android:id="@+id/all_graph"
         android:icon="@drawable/ic_stub_24"
         android:title="Все"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/favourite"
+        android:id="@+id/favourite_graph"
         android:icon="@drawable/ic_stub_24"
         android:title="Избранное"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/settings"
+        android:id="@+id/settings_graph"
         android:icon="@drawable/ic_stub_24"
         android:title="Настройки"
         app:showAsAction="always" />
