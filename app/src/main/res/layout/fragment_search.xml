@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/search"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="This is Search Screen"
@@ -15,4 +15,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_next1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go To The Selected Category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <Button
+        android:id="@+id/btn_next2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go To The Selected Article"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_next1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
