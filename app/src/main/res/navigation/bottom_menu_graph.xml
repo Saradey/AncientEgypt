@@ -8,5 +8,16 @@
         android:id="@+id/main"
         android:name="com.evgenii.goncharov.ancient.egypt.features.main.MainFragment" />
 
+    <fragment
+        android:id="@+id/all"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.AllArticlesFragment" />
+
+    <fragment
+        android:id="@+id/favourite"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteArticlesFragment" />
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.settings.SettingsFragment" />
 
 </navigation>
