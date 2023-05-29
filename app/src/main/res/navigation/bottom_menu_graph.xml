@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/bottom_menu_graph">
+    android:id="@+id/bottom_menu_graph"
+    app:startDestination="@id/main">
 
     <fragment
         android:id="@+id/main"
@@ -13,7 +14,7 @@
 
     <fragment
         android:id="@+id/favorite"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteContainerFragment" />
+        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteArticlesContainerFragment" />
 
     <fragment
         android:id="@+id/settings"

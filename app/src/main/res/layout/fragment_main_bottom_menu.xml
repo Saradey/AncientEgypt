@@ -15,7 +15,7 @@
         app:title="Go to The Search" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fcv_bottom_menu"
+        android:id="@+id/fcv_nested_bottom_menu"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
