@@ -2,22 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottom_menu_graph"
-    app:startDestination="@id/main">
+    app:startDestination="@id/main_graph">
 
-    <fragment
-        android:id="@+id/main"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.main.MainFragment" />
-
-    <fragment
-        android:id="@+id/all"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.AllArticlesFragment" />
-
-    <fragment
-        android:id="@+id/favourite"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteArticlesFragment" />
-
-    <fragment
-        android:id="@+id/settings"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.settings.SettingsFragment" />
-
+    <include app:graph="@navigation/main_graph" />
+    <include app:graph="@navigation/all_graph" />
+    <include app:graph="@navigation/favourite_graph" />
+    <include app:graph="@navigation/settings_graph" />
 </navigation>
