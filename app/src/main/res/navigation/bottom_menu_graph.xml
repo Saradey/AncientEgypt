@@ -3,4 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottom_menu_graph">
 
+    <fragment
+        android:id="@+id/main"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.main.MainContainerFragment" />
+
+    <fragment
+        android:id="@+id/all"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.AllArticlesContainerFragment" />
+
+    <fragment
+        android:id="@+id/favorite"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteContainerFragment" />
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.settings.SettingsContainerFragment" />
+
+    <fragment
+        android:id="@+id/search"
+        android:name="com.evgenii.goncharov.ancient.egypt.features.search.SearchContainerFragment" />
+
 </navigation>
