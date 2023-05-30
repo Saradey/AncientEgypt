@@ -5,11 +5,18 @@
     app:startDestination="@id/main">
 
     <action
+        android:id="@+id/global_action_to_main"
+        app:destination="@id/main"
+        app:popUpTo="@+id/main"
+        app:popUpToSaveState="true"
+        app:restoreState="true" />
+
+    <action
         android:id="@+id/global_action_to_all"
         app:destination="@id/all"
         app:popUpTo="@+id/main"
         app:popUpToSaveState="true"
-        app:restoreState="true"/>
+        app:restoreState="true" />
 
     <fragment
         android:id="@+id/main"

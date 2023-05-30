@@ -27,17 +27,14 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
         val navController = vb.fcvNestedBottomMenu.getFragment<NavHostFragment>().navController
         when (item.itemId) {
             R.id.main_graph -> {
-
+                navController.navigate(BottomMenuGraphDirections.globalActionToMain())
             }
-
             R.id.all_graph -> {
                 navController.navigate(BottomMenuGraphDirections.globalActionToAll())
             }
-
             R.id.favourite_graph -> {
 
             }
-
             R.id.settings_graph -> {
 
             }
