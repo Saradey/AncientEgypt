@@ -21,6 +21,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     private fun FragmentMainBottomMenuBinding.initUi() {
         bnvMenu.setOnItemSelectedListener(::clickItemBottomMenu)
+        toolbar.setNavigationOnClickListener(::navigationClickListener)
     }
 
     private fun clickItemBottomMenu(item: MenuItem): Boolean {
@@ -40,5 +41,10 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
             }
         }
         return true
+    }
+
+    private fun navigationClickListener(view: View) {
+        val navController = vb.fcvNestedBottomMenu.getFragment<NavHostFragment>().navController
+        navController.navigate(BottomMenuGraphDirections.globalActionToSearch())
     }
 }
