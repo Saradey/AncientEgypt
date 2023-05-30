@@ -6,22 +6,27 @@
 
     <fragment
         android:id="@+id/main"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.main.MainContainerFragment" />
+        android:name="com.evgenii.goncharov.ancient.egypt.features.main.MainContainerFragment"
+        android:label="MainContainerFragment" />
 
     <fragment
         android:id="@+id/all"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.AllArticlesContainerFragment" />
+        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.AllArticlesContainerFragment"
+        android:label="AllArticlesContainerFragment" />
 
     <fragment
         android:id="@+id/favorite"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteArticlesContainerFragment" />
+        android:name="com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteArticlesContainerFragment"
+        android:label="FavoriteArticlesContainerFragment" />
 
     <fragment
         android:id="@+id/settings"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.settings.SettingsContainerFragment" />
+        android:name="com.evgenii.goncharov.ancient.egypt.features.settings.SettingsContainerFragment"
+        android:label="SettingsContainerFragment" />
 
     <fragment
         android:id="@+id/search"
-        android:name="com.evgenii.goncharov.ancient.egypt.features.search.SearchContainerFragment" />
+        android:name="com.evgenii.goncharov.ancient.egypt.features.search.SearchContainerFragment"
+        android:label="SearchContainerFragment" />
 
 </navigation>
