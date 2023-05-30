@@ -20,7 +20,7 @@
 
     <action
         android:id="@+id/global_action_to_favourite"
-        app:destination="@id/favourite"
+        app:destination="@id/favorite"
         app:popUpTo="@+id/main"
         app:popUpToSaveState="true"
         app:restoreState="true" />
