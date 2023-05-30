@@ -4,6 +4,13 @@
     android:id="@+id/bottom_menu_graph"
     app:startDestination="@id/main">
 
+    <action
+        android:id="@+id/global_action_to_all"
+        app:destination="@id/all"
+        app:popUpTo="@+id/main"
+        app:popUpToSaveState="true"
+        app:restoreState="true"/>
+
     <fragment
         android:id="@+id/main"
         android:name="com.evgenii.goncharov.ancient.egypt.features.main.MainContainerFragment"

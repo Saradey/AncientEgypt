@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.evgenii.goncharov.ancient.egypt.BottomMenuGraphDirections
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBottomMenuBinding
 
@@ -22,13 +24,14 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     }
 
     private fun clickItemBottomMenu(item: MenuItem): Boolean {
+        val navController = vb.fcvNestedBottomMenu.getFragment<NavHostFragment>().navController
         when (item.itemId) {
             R.id.main_graph -> {
 
             }
 
             R.id.all_graph -> {
-
+                navController.navigate(BottomMenuGraphDirections.globalActionToAll())
             }
 
             R.id.favourite_graph -> {
