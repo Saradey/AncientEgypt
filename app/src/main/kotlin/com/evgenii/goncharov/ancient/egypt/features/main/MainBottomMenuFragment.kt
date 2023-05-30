@@ -1,6 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.main
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -13,6 +14,31 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     private val vb: FragmentMainBottomMenuBinding by viewBinding(FragmentMainBottomMenuBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        vb.initUi()
+    }
 
+    private fun FragmentMainBottomMenuBinding.initUi() {
+        bnvMenu.setOnItemSelectedListener(::clickItemBottomMenu)
+    }
+
+    private fun clickItemBottomMenu(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.main_graph -> {
+
+            }
+
+            R.id.all_graph -> {
+
+            }
+
+            R.id.favourite_graph -> {
+
+            }
+
+            R.id.settings_graph -> {
+
+            }
+        }
+        return true
     }
 }
