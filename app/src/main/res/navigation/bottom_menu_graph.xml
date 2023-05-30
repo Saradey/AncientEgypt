@@ -18,6 +18,13 @@
         app:popUpToSaveState="true"
         app:restoreState="true" />
 
+    <action
+        android:id="@+id/global_action_to_favourite"
+        app:destination="@id/favourite"
+        app:popUpTo="@+id/main"
+        app:popUpToSaveState="true"
+        app:restoreState="true" />
+
     <fragment
         android:id="@+id/main"
         android:name="com.evgenii.goncharov.ancient.egypt.features.main.MainContainerFragment"

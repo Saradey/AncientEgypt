@@ -33,7 +33,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
                 navController.navigate(BottomMenuGraphDirections.globalActionToAll())
             }
             R.id.favourite_graph -> {
-
+                navController.navigate(BottomMenuGraphDirections.globalActionToFavourite())
             }
             R.id.settings_graph -> {
 
