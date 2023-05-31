@@ -15,15 +15,13 @@
         app:title="Go to The Search" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fcv_nested_bottom_menu"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:id="@+id/fcv_nested_container_bottom_menu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bnv_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:navGraph="@navigation/bottom_menu_graph" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_menu"
