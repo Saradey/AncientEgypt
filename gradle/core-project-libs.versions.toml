@@ -1,8 +1,6 @@
 [versions]
 #https://dagger.dev/hilt/gradle-setup
 daggerHiltVersion = "2.46.1"
-#https://developer.android.com/jetpack/androidx/releases/navigation
-navigationVersion = "2.5.3"
 #https://developer.android.com/jetpack/androidx/releases/room
 roomVersion = "2.5.1"
 #https://developer.android.com/jetpack/androidx/releases/core
@@ -11,9 +9,6 @@ coreKtxVersion = "1.10.1"
 [libraries]
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerHiltVersion" }
-
-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationVersion" }
-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
 
 room = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }

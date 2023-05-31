@@ -7,6 +7,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
+import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.BottomMenuGraphDirections
 import com.evgenii.goncharov.ancient.egypt.R
@@ -24,6 +25,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     private fun FragmentMainBottomMenuBinding.initUi() {
         bnvMenu.setOnItemSelectedListener(::clickItemBottomMenu)
+        bnvMenu.setupWithNavController()
         toolbar.setNavigationOnClickListener(::navigationClickListener)
     }
 
