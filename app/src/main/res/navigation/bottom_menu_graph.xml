@@ -6,38 +6,23 @@
 
     <action
         android:id="@+id/global_action_to_main"
-        app:destination="@id/main"
-        app:popUpTo="@+id/main"
-        app:popUpToSaveState="true"
-        app:restoreState="true" />
+        app:destination="@id/main" />
 
     <action
         android:id="@+id/global_action_to_all"
-        app:destination="@id/all"
-        app:popUpTo="@+id/main"
-        app:popUpToSaveState="true"
-        app:restoreState="true" />
+        app:destination="@id/all" />
 
     <action
         android:id="@+id/global_action_to_favourite"
-        app:destination="@id/favorite"
-        app:popUpTo="@+id/main"
-        app:popUpToSaveState="true"
-        app:restoreState="true" />
+        app:destination="@id/favorite" />
 
     <action
         android:id="@+id/global_action_to_settings"
-        app:destination="@id/settings"
-        app:popUpTo="@+id/main"
-        app:popUpToSaveState="true"
-        app:restoreState="true" />
+        app:destination="@id/settings" />
 
     <action
         android:id="@+id/global_action_to_search"
-        app:destination="@id/search"
-        app:popUpTo="@+id/main"
-        app:popUpToSaveState="true"
-        app:restoreState="true" />
+        app:destination="@id/search" />
 
     <fragment
         android:id="@+id/main"
