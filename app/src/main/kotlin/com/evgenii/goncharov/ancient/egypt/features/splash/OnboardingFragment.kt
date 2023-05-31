@@ -10,7 +10,7 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentOnboardingBinding
 /** №1.2 */
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
-    private val vb: FragmentOnboardingBinding by viewBinding(FragmentOnboardingBinding::bind)
+    private val binding: FragmentOnboardingBinding by viewBinding(FragmentOnboardingBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
