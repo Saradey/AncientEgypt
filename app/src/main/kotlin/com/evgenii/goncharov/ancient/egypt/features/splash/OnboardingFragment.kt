@@ -14,9 +14,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     private val vb: FragmentOnboardingBinding by viewBinding(FragmentOnboardingBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vb.btnNext.setOnClickListener {
-            val navController = findNavController()
-            navController.navigate(OnboardingFragmentDirections.actionOnbaordingToMain())
-        }
+
     }
 }
