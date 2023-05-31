@@ -30,9 +30,8 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     private fun clickItemBottomMenu(item: MenuItem): Boolean {
         val navController = vb.fcvNestedBottomMenu.getFragment<NavHostFragment>().navController
         val navOptions = navOptions {
-            launchSingleTop = true
             restoreState = true
-            navController.currentDestination?.id?.let { id ->
+            navController.graph.startDestinationId.let { id ->
                 popUpTo(id) {
                     saveState = true
                 }
@@ -75,5 +74,4 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
             }
         )
     }
-
 }
