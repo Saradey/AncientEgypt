@@ -45,7 +45,6 @@ dependencies {
     implementation(uiLibs.recycler.view.adapter)
     implementation(uiLibs.recycler.view.adapter.viewbinding)
     implementation(uiLibs.viewBindingPropertyDelegate)
-//    implementation(uiLibs.exoplayer)
 
     //core
     implementation(coreProjectLibs.dagger.hilt)
