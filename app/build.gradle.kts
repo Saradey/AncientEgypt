@@ -54,6 +54,7 @@ dependencies {
     implementation(coreProjectLibs.room.paging3)
     kapt(coreProjectLibs.room.compiler)
     implementation(coreProjectLibs.core.ktx)
+    implementation(coreProjectLibs.cicerone)
 
     //network
     implementation(networkLibs.retrofit)

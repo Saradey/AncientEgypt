@@ -5,6 +5,8 @@ daggerHiltVersion = "2.46.1"
 roomVersion = "2.5.1"
 #https://developer.android.com/jetpack/androidx/releases/core
 coreKtxVersion = "1.10.1"
+#https://github.com/terrakok/Cicerone
+ciceroneVersion = "7.1"
 
 [libraries]
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
@@ -16,3 +18,5 @@ room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 room-paging3 = { module = "androidx.room:room-paging", version.ref = "roomVersion" }
 
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
+
+cicerone = { module = "com.github.terrakok:cicerone", version.ref = "ciceroneVersion" }
