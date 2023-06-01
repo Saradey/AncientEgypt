@@ -15,4 +15,8 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
     }
+
+    companion object {
+        fun newInstance() = OnboardingFragment()
+    }
 }
