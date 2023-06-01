@@ -10,8 +10,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-//    @Inject
-//    lateinit var navigatorHolder: NavigatorHolder
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
     private val navigator = MainActivityNavigator(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
