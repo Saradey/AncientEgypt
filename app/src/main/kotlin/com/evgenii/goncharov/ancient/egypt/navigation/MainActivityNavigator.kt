@@ -1,10 +1,19 @@
 package com.evgenii.goncharov.ancient.egypt.navigation
 
-import androidx.fragment.app.FragmentFactory
-import androidx.fragment.app.FragmentManager
+import com.evgenii.goncharov.ancient.egypt.MainActivity
+import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
+import com.github.terrakok.cicerone.Command
 
 class MainActivityNavigator(
+    mainActivity: MainActivity
+) : BaseNavigator(
+    mainActivity.supportFragmentManager,
+    mainActivity.supportFragmentManager.fragmentFactory,
+    R.id.fcv_root_container
+) {
 
-) : BaseNavigator() {
+    override fun applyCommand(command: Command) {
+
+    }
 }
