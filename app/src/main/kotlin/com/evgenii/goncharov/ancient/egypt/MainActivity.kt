@@ -3,6 +3,7 @@ package com.evgenii.goncharov.ancient.egypt
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScreens
 import com.evgenii.goncharov.ancient.egypt.navigation.MainActivityNavigator
 import com.github.terrakok.cicerone.NavigatorHolder
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if(false) {
-                router.navigateTo()
+                router.navigateTo(MainScreens.startMainBottomMenu())
             } else {
                 router.navigateTo(SplashScreens.startOnboarding())
             }

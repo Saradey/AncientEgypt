@@ -15,4 +15,8 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
     }
+
+    companion object {
+        fun newInstance() = MainBottomMenuFragment()
+    }
 }
