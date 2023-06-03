@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBottomMenuBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator
+import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -18,6 +19,7 @@ import javax.inject.Named
 class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     @Inject @Named("BottomMenu") lateinit var router: Router
+    @Inject @Named("BottomMenu") lateinit var navigatorHolder: NavigatorHolder
     private val binding: FragmentMainBottomMenuBinding by viewBinding(FragmentMainBottomMenuBinding::bind)
     private val navigator: MainBottomNavigator by lazy {
         MainBottomNavigator(this)
@@ -25,6 +27,16 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        navigatorHolder.removeNavigator()
+        super.onPause()
     }
 
     private fun FragmentMainBottomMenuBinding.initUi() {
