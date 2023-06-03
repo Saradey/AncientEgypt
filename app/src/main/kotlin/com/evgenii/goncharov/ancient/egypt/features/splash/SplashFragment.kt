@@ -11,12 +11,13 @@ import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScre
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import javax.inject.Named
 
 /** №1.1 */
 @AndroidEntryPoint
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
-    @Inject lateinit var activityRouter: Router
+    @Inject @Named("ActivityNavigation") lateinit var activityRouter: Router
 
     private val binding: FragmentSplashBinding by viewBinding(FragmentSplashBinding::bind)
 

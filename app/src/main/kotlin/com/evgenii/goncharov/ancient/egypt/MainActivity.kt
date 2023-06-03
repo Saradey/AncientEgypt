@@ -12,12 +12,13 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import javax.inject.Named
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var navigatorHolder: NavigatorHolder
-    @Inject lateinit var router: Router
+    @Inject @Named("ActivityNavigation") lateinit var navigatorHolder: NavigatorHolder
+    @Inject @Named("ActivityNavigation") lateinit var router: Router
     @Inject lateinit var onBackPressed: OnBackPressedActivityManager
     private val navigator = MainActivityNavigator(this)
 

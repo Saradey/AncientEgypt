@@ -10,12 +10,13 @@ import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import javax.inject.Named
 
 /** №1.2 */
 @AndroidEntryPoint
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
-    @Inject lateinit var mainActivityRouter: Router
+    @Inject @Named("ActivityNavigation") lateinit var mainActivityRouter: Router
     private val binding: FragmentOnboardingBinding by viewBinding(FragmentOnboardingBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

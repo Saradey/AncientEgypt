@@ -22,11 +22,11 @@ object MainNavigationModule {
     @Provides
     @FragmentScoped
     @Named("BottomMenu")
-    fun provideRouter(cicerone: Cicerone<Router>): Router = cicerone.router
+    fun provideRouter(@Named("BottomMenu") cicerone: Cicerone<Router>): Router = cicerone.router
 
     @Provides
     @FragmentScoped
     @Named("BottomMenu")
-    fun provideNavigatorHolder(cicerone: Cicerone<Router>): NavigatorHolder =
+    fun provideNavigatorHolder(@Named("BottomMenu") cicerone: Cicerone<Router>): NavigatorHolder =
         cicerone.getNavigatorHolder()
 }
