@@ -23,9 +23,9 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btnNext.setOnClickListener {
             if (false) {
-                activityRouter.navigateTo(MainScreens.startMainBottomMenu())
+                activityRouter.replaceScreen(MainScreens.startMainBottomMenu())
             } else {
-                activityRouter.navigateTo(SplashScreens.startOnboarding())
+                activityRouter.replaceScreen(SplashScreens.startOnboarding())
             }
         }
     }

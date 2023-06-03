@@ -20,7 +20,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btnNext.setOnClickListener {
-            mainActivityRouter.navigateTo(MainScreens.startMainBottomMenu())
+            mainActivityRouter.replaceScreen(MainScreens.startMainBottomMenu())
         }
     }
 
