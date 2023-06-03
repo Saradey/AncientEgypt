@@ -7,6 +7,7 @@ import androidx.activity.OnBackPressedCallback
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScreens
 import com.evgenii.goncharov.ancient.egypt.navigation.MainActivityNavigator
+import com.evgenii.goncharov.ancient.egypt.navigation.OnBackPressedActivityManager
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,12 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     @Inject lateinit var navigatorHolder: NavigatorHolder
     @Inject lateinit var router: Router
+    @Inject lateinit var onBackPressed: OnBackPressedActivityManager
     private val navigator = MainActivityNavigator(this)
-    private val onBackPressed = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            router.exit()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

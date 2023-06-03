@@ -1,5 +1,6 @@
 package com.evgenii.goncharov.ancient.egypt.di
 
+import com.evgenii.goncharov.ancient.egypt.navigation.OnBackPressedActivityManager
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -25,4 +26,9 @@ object NavigationModule {
     @ActivityScoped
     fun provideNavigatorHolder(cicerone: Cicerone<Router>): NavigatorHolder =
         cicerone.getNavigatorHolder()
+
+    @Provides
+    @ActivityScoped
+    fun provideOnBackPressedActivityManager(mainActivityRouter: Router): OnBackPressedActivityManager =
+        OnBackPressedActivityManager(mainActivityRouter)
 }
