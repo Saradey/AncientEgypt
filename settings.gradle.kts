@@ -26,6 +26,9 @@ dependencyResolutionManagement {
         create("qualityLibs") {
             from(files("gradle/quality-libs.versions.toml"))
         }
+        create("androidLibs") {
+            from(files("gradle/android-libs.versions.toml"))
+        }
     }
 }
 rootProject.name = "AncientEgypt"

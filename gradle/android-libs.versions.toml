@@ -1,0 +1,11 @@
+[versions]
+#https://developer.android.com/jetpack/androidx/releases/activity
+activityVersion = "1.7.2"
+#https://developer.android.com/jetpack/androidx/releases/fragment
+fragmentVersion = "1.5.7"
+
+[libraries]
+activity = { module = "androidx.activity:activity", version.ref = "activityVersion" }
+activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityVersion" }
+fragment = { module = "androidx.fragment:fragment", version.ref = "fragmentVersion" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentVersion" }
