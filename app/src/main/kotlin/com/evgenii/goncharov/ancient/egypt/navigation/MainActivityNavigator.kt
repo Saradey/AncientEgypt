@@ -4,6 +4,7 @@ import com.evgenii.goncharov.ancient.egypt.MainActivity
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
 import com.github.terrakok.cicerone.Command
+import com.github.terrakok.cicerone.Forward
 
 class MainActivityNavigator(
     mainActivity: MainActivity
@@ -14,6 +15,12 @@ class MainActivityNavigator(
 ) {
 
     override fun applyCommand(command: Command) {
+        when (command) {
+            is Forward -> forward()
+        }
+    }
+
+    private fun forward() {
 
     }
 }
