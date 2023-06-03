@@ -14,6 +14,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNa
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_MAIN
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_SETTINGS
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.OnBackPressedBottomMenuManager
 import com.evgenii.goncharov.ancient.egypt.features.settings.navigation.SettingsScreens
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -27,6 +28,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     @Inject @Named("BottomMenu") lateinit var router: Router
     @Inject @Named("BottomMenu") lateinit var navigatorHolder: NavigatorHolder
+    @Inject @Named("BottomMenu") lateinit var onBackPressed: OnBackPressedBottomMenuManager
     private val binding: FragmentMainBottomMenuBinding by viewBinding(FragmentMainBottomMenuBinding::bind)
     private val navigator: MainBottomNavigator by lazy {
         MainBottomNavigator(this)
@@ -34,6 +36,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressed)
         savedInstanceState ?: router.navigateTo(MainScreens.startMain())
     }
 
