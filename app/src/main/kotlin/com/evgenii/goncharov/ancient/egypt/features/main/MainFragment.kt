@@ -15,4 +15,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.title.text = "${binding.title.text} ${toString()}"
     }
+
+    companion object {
+        fun newInstance() = MainFragment()
+    }
 }
