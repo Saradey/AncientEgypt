@@ -49,10 +49,10 @@ class MainBottomNavigator(
             fm.saveBackStack(selectedBackstackMenu)
         }
         if (!localBackStack.contains(backStackName)) {
-            val featureContainerFragment = fragmentScreen.createFragment(ff)
+            val fragment = fragmentScreen.createFragment(ff)
             fm.commit {
                 setReorderingAllowed(true)
-                replace(containerId, featureContainerFragment, fragmentScreen.screenKey)
+                replace(containerId, fragment, fragmentScreen.screenKey)
                 addToBackStack(backStackName)
             }
         } else {
