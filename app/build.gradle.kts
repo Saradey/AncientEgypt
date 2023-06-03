@@ -56,6 +56,12 @@ dependencies {
     implementation(coreProjectLibs.core.ktx)
     implementation(coreProjectLibs.cicerone)
 
+    //android
+    implementation(androidLibs.activity)
+    implementation(androidLibs.activity.ktx)
+    implementation(androidLibs.fragment)
+    implementation(androidLibs.fragment.ktx)
+
     //network
     implementation(networkLibs.retrofit)
     implementation(networkLibs.okHttpClient)
