@@ -3,13 +3,14 @@ package com.evgenii.goncharov.ancient.egypt.navigation
 import com.evgenii.goncharov.ancient.egypt.MainActivity
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
+import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward
 import com.github.terrakok.cicerone.Replace
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 class MainActivityNavigator(
-    mainActivity: MainActivity
+    private val mainActivity: MainActivity
 ) : BaseNavigator(
     mainActivity.supportFragmentManager,
     mainActivity.supportFragmentManager.fragmentFactory,
@@ -20,6 +21,7 @@ class MainActivityNavigator(
         when (command) {
             is Forward -> forward(command)
             is Replace -> replace(command)
+            is Back -> back()
         }
     }
 
@@ -42,5 +44,13 @@ class MainActivityNavigator(
             fragmentScreen,
             fragmentScreen.screenKey
         )
+    }
+
+    private fun back() {
+        if(fm.backStackEntryCount > 1) {
+            fm.popBackStack()
+        } else {
+            mainActivity.finish()
+        }
     }
 }
