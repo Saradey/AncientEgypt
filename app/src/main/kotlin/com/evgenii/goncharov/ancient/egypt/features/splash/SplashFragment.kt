@@ -16,8 +16,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
-    @Inject
-    lateinit var activityRouter: Router
+    @Inject lateinit var activityRouter: Router
 
     private val binding: FragmentSplashBinding by viewBinding(FragmentSplashBinding::bind)
 
