@@ -30,6 +30,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()
+        savedInstanceState ?: router.navigateTo(MainScreens.startMain())
     }
 
     override fun onResume() {
