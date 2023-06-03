@@ -8,10 +8,12 @@ import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
 /** №2.2 */
+@AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     @Inject @Named("BottomMenu") lateinit var router: Router
