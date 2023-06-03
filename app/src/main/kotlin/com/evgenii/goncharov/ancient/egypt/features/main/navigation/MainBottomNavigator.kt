@@ -31,16 +31,25 @@ class MainBottomNavigator(
     private fun forward(command: Forward) {
         val fragmentScreen = command.screen as FragmentScreen
         val backStackName = fragmentScreen.screenKey
-        if (selectedBackstackMenu != backStackName) {
-            commit(
-                fragmentScreen = fragmentScreen,
-                backStackName = backStackName
-            )
-            selectedBackstackMenu = backStackName
-            if (localBackStack.contains(selectedBackstackMenu)) {
-                localBackStack.remove(selectedBackstackMenu)
+        when {
+            backStackName == BACKSTACK_NAME_EVERYWHERE -> {
+                commit(
+                    fragmentScreen = fragmentScreen,
+                    backStackName = selectedBackstackMenu
+                )
             }
-            localBackStack.push(selectedBackstackMenu)
+
+            selectedBackstackMenu != backStackName -> {
+                commit(
+                    fragmentScreen = fragmentScreen,
+                    backStackName = backStackName
+                )
+                selectedBackstackMenu = backStackName
+                if (localBackStack.contains(selectedBackstackMenu)) {
+                    localBackStack.remove(selectedBackstackMenu)
+                }
+                localBackStack.push(selectedBackstackMenu)
+            }
         }
     }
 
@@ -77,6 +86,7 @@ class MainBottomNavigator(
         const val BACKSTACK_NAME_FAVORITE = "favorite"
         const val BACKSTACK_NAME_ALL = "all"
         const val BACKSTACK_NAME_SETTINGS = "settings"
+        const val BACKSTACK_NAME_EVERYWHERE = "everywhere"
         private const val FIRST_INDEX_FRAGMENT_TO_BACKSTACK = 1
     }
 }
