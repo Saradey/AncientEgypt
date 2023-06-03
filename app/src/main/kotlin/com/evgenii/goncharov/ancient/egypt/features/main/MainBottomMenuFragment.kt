@@ -9,6 +9,10 @@ import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBottomMenuBinding
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_ALL
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_FAVORITE
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_MAIN
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_SETTINGS
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.settings.navigation.SettingsScreens
 import com.github.terrakok.cicerone.NavigatorHolder
@@ -44,11 +48,16 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     }
 
     fun selectTabBottomMenu(selectedBackstackMenu: String) {
-        binding.bnvMenu.setOnItemSelectedListener(null)
-        when (selectedBackstackMenu) {
-
+        with(binding) {
+            bnvMenu.setOnItemSelectedListener(null)
+            when (selectedBackstackMenu) {
+                BACKSTACK_NAME_MAIN -> bnvMenu.selectedItemId = R.id.main
+                BACKSTACK_NAME_ALL -> bnvMenu.selectedItemId = R.id.all
+                BACKSTACK_NAME_FAVORITE -> bnvMenu.selectedItemId = R.id.favourite
+                BACKSTACK_NAME_SETTINGS -> bnvMenu.selectedItemId = R.id.settings
+            }
+            bnvMenu.setOnItemSelectedListener(::itemBottomMenuClickListener)
         }
-        binding.bnvMenu.setOnItemSelectedListener(::itemBottomMenuClickListener)
     }
 
     private fun FragmentMainBottomMenuBinding.initUi() {
