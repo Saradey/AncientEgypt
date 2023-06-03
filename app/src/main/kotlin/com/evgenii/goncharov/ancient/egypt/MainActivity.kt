@@ -3,6 +3,7 @@ package com.evgenii.goncharov.ancient.egypt
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScreens
 import com.evgenii.goncharov.ancient.egypt.navigation.MainActivityNavigator
@@ -17,12 +18,18 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var navigatorHolder: NavigatorHolder
     @Inject lateinit var router: Router
     private val navigator = MainActivityNavigator(this)
+    private val onBackPressed = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            router.exit()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        onBackPressedDispatcher.addCallback(this, onBackPressed)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if(false) {
+            if (false) {
                 router.navigateTo(MainScreens.startMainBottomMenu())
             } else {
                 router.navigateTo(SplashScreens.startOnboarding())
