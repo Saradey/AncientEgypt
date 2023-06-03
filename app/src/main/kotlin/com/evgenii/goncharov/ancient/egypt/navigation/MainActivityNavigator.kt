@@ -5,6 +5,7 @@ import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward
+import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 class MainActivityNavigator(
     mainActivity: MainActivity
@@ -16,11 +17,17 @@ class MainActivityNavigator(
 
     override fun applyCommand(command: Command) {
         when (command) {
-            is Forward -> forward()
+            is Forward -> forward(command)
         }
     }
 
-    private fun forward() {
-
+    private fun forward(command: Forward) {
+        val fragmentScreen = command.screen as FragmentScreen
+        val fragment = fragmentScreen.createFragment(ff)
+        commitFragmentTransaction(
+            fragment,
+            fragmentScreen,
+            fragmentScreen.screenKey.ifEmpty { null }
+        )
     }
 }
