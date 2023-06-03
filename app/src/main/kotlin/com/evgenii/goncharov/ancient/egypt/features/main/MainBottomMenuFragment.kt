@@ -69,11 +69,13 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     }
 
     private fun itemBottomMenuClickListener(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.main -> router.navigateTo(MainScreens.startMain())
-            R.id.all -> router.navigateTo(ArticlesScreens.startAllArticles())
-            R.id.favourite -> router.navigateTo(ArticlesScreens.startFavoriteArticles())
-            R.id.settings -> router.navigateTo(SettingsScreens.startSettings())
+        if(item.itemId != binding.bnvMenu.selectedItemId) {
+            when (item.itemId) {
+                R.id.main -> router.navigateTo(MainScreens.startMain())
+                R.id.all -> router.navigateTo(ArticlesScreens.startAllArticles())
+                R.id.favourite -> router.navigateTo(ArticlesScreens.startFavoriteArticles())
+                R.id.settings -> router.navigateTo(SettingsScreens.startSettings())
+            }
         }
         return true
     }
