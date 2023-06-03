@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.evgenii.goncharov.ancient.egypt.features.articles.AllArticlesFragment
 import com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteArticlesFragment
+import com.evgenii.goncharov.ancient.egypt.features.articles.SelectedCategoryFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_ALL
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_FAVORITE
 import com.github.terrakok.cicerone.androidx.FragmentScreen
@@ -21,6 +22,13 @@ object ArticlesScreens {
         override val screenKey: String = BACKSTACK_NAME_ALL
         override fun createFragment(factory: FragmentFactory): Fragment {
             return AllArticlesFragment.newInstance()
+        }
+    }
+
+    fun startSelectedCategory() = object : FragmentScreen {
+        override val screenKey: String = ""
+        override fun createFragment(factory: FragmentFactory): Fragment {
+            return SelectedCategoryFragment.newInstance()
         }
     }
 }
