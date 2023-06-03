@@ -15,4 +15,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.title.text = "${binding.title.text} ${toString()}"
     }
+
+    companion object {
+        fun newInstance() = SettingsFragment()
+    }
 }
