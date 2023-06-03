@@ -43,6 +43,14 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
         super.onPause()
     }
 
+    fun selectTabBottomMenu(selectedBackstackMenu: String) {
+        binding.bnvMenu.setOnItemSelectedListener(null)
+        when (selectedBackstackMenu) {
+
+        }
+        binding.bnvMenu.setOnItemSelectedListener(::itemBottomMenuClickListener)
+    }
+
     private fun FragmentMainBottomMenuBinding.initUi() {
         binding.bnvMenu.setOnItemSelectedListener(::itemBottomMenuClickListener)
         binding.toolbar.setNavigationOnClickListener(::toolbarNavigationOnClickListener)

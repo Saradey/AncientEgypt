@@ -60,12 +60,23 @@ class MainBottomNavigator(
         }
     }
 
-    private fun back() {}
+    private fun back() {
+        if (localBackStack.size > FIRST_INDEX_FRAGMENT_TO_BACKSTACK) {
+            val popBackStackName = localBackStack.pop()
+            fm.popBackStack(popBackStackName, 0)
+            selectedBackstackMenu = localBackStack.peek()
+            mainBottomMenuFragment.selectTabBottomMenu(selectedBackstackMenu)
+            fm.restoreBackStack(selectedBackstackMenu)
+        } else {
+            mainBottomMenuFragment.requireActivity().finish()
+        }
+    }
 
     companion object {
         const val BACKSTACK_NAME_MAIN = "main"
         const val BACKSTACK_NAME_FAVORITE = "favorite"
         const val BACKSTACK_NAME_ALL = "all"
         const val BACKSTACK_NAME_SETTINGS = "settings"
+        private const val FIRST_INDEX_FRAGMENT_TO_BACKSTACK = 1
     }
 }
