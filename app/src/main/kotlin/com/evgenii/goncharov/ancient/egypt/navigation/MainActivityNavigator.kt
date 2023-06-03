@@ -29,7 +29,8 @@ class MainActivityNavigator(
         commitFragmentTransaction(
             fragment,
             fragmentScreen,
-            fragmentScreen.screenKey.ifEmpty { null })
+            fragmentScreen.screenKey
+        )
     }
 
     private fun replace(command: Replace) {
@@ -39,6 +40,7 @@ class MainActivityNavigator(
         commitFragmentTransaction(
             fragment,
             fragmentScreen,
-            fragmentScreen.screenKey.ifEmpty { null })
+            fragmentScreen.screenKey
+        )
     }
 }

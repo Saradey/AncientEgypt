@@ -30,14 +30,12 @@ abstract class BaseNavigator(
     protected fun commitFragmentTransaction(
         fragment: Fragment,
         fragmentScreen: FragmentScreen,
-        backStackName: String?
+        backStackName: String
     ) {
         fm.commit {
             setReorderingAllowed(true)
             replace(containerId, fragment, fragmentScreen.screenKey)
-            if(backStackName.isNullOrEmpty().not()) {
-                addToBackStack(backStackName)
-            }
+            addToBackStack(backStackName)
         }
     }
 
