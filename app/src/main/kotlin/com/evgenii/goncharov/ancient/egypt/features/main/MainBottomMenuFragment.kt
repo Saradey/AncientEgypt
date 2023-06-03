@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBottomMenuBinding
+import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
+import com.evgenii.goncharov.ancient.egypt.features.settings.navigation.SettingsScreens
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,11 +48,11 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     }
 
     private fun itemBottomMenuClickListener(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.main -> {}
-            R.id.all -> {}
-            R.id.favourite -> {}
-            R.id.settings -> {}
+        when (item.itemId) {
+            R.id.main -> router.navigateTo(MainScreens.startMain())
+            R.id.all -> router.navigateTo(ArticlesScreens.startAllArticles())
+            R.id.favourite -> router.navigateTo(ArticlesScreens.startFavoriteArticles())
+            R.id.settings -> router.navigateTo(SettingsScreens.startSettings())
         }
         return true
     }
