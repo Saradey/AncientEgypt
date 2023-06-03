@@ -1,5 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.navigation
 
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.MainActivity
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
@@ -46,8 +48,20 @@ class MainActivityNavigator(
         )
     }
 
+    private fun commitFragmentTransaction(
+        fragment: Fragment,
+        fragmentScreen: FragmentScreen,
+        backStackName: String
+    ) {
+        fm.commit {
+            setReorderingAllowed(true)
+            replace(containerId, fragment, fragmentScreen.screenKey)
+            addToBackStack(backStackName)
+        }
+    }
+
     private fun back() {
-        if(fm.backStackEntryCount > 1) {
+        if (fm.backStackEntryCount > 1) {
             fm.popBackStack()
         } else {
             mainActivity.finish()

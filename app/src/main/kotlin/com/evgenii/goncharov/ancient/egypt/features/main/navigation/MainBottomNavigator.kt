@@ -26,7 +26,9 @@ class MainBottomNavigator(
         }
     }
 
-    private fun forward(command: Forward) {}
+    private fun forward(command: Forward) {
+
+    }
 
     private fun back() {}
 }
