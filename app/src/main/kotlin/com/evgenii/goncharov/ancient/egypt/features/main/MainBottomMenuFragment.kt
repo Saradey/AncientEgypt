@@ -29,14 +29,20 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
 
     private fun FragmentMainBottomMenuBinding.initUi() {
         binding.bnvMenu.setOnItemSelectedListener(::itemBottomMenuClickListener)
+        binding.toolbar.setNavigationOnClickListener(::toolbarNavigationOnClickListener)
     }
 
     private fun itemBottomMenuClickListener(item: MenuItem): Boolean {
         when(item.itemId) {
-
+            R.id.main -> {}
+            R.id.all -> {}
+            R.id.favourite -> {}
+            R.id.settings -> {}
         }
         return true
     }
+
+    private fun toolbarNavigationOnClickListener(view: View) {}
 
     companion object {
         fun newInstance() = MainBottomMenuFragment()
