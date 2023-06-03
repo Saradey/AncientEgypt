@@ -15,4 +15,8 @@ class AllArticlesFragment : Fragment(R.layout.fragment_all_articles) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.title.text = "${binding.title.text} ${toString()}"
     }
+
+    companion object {
+        fun newInstance() = AllArticlesFragment()
+    }
 }
