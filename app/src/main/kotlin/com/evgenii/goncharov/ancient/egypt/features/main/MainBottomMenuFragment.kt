@@ -1,6 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.main
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -23,7 +24,18 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.initUi()
+    }
 
+    private fun FragmentMainBottomMenuBinding.initUi() {
+        binding.bnvMenu.setOnItemSelectedListener(::itemBottomMenuClickListener)
+    }
+
+    private fun itemBottomMenuClickListener(item: MenuItem): Boolean {
+        when(item.itemId) {
+
+        }
+        return true
     }
 
     companion object {
