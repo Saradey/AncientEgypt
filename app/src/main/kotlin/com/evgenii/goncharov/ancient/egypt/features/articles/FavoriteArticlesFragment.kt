@@ -17,4 +17,8 @@ class FavoriteArticlesFragment : Fragment(R.layout.fragment_favorite_articles) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.title.text = "${binding.title.text}  ${toString()}"
     }
+
+    companion object {
+        fun newInstance() = FavoriteArticlesFragment()
+    }
 }
