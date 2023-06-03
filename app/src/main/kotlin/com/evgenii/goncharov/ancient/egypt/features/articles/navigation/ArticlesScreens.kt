@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.evgenii.goncharov.ancient.egypt.features.articles.AllArticlesFragment
 import com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteArticlesFragment
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_ALL
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_FAVORITE
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object ArticlesScreens {
@@ -21,7 +23,4 @@ object ArticlesScreens {
             return AllArticlesFragment.newInstance()
         }
     }
-
-    private const val BACKSTACK_NAME_FAVORITE = "favorite"
-    private const val BACKSTACK_NAME_ALL = "all"
 }

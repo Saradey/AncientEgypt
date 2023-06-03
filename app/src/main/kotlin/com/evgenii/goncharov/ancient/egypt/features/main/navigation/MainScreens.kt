@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.evgenii.goncharov.ancient.egypt.features.main.MainBottomMenuFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.MainFragment
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_MAIN
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object MainScreens {
@@ -23,5 +24,4 @@ object MainScreens {
     }
 
     private const val BACKSTACK_NAME_BOTTOM_MENU = "bottomMenu"
-    private const val BACKSTACK_NAME_MAIN = "main"
 }

@@ -27,8 +27,17 @@ class MainBottomNavigator(
     }
 
     private fun forward(command: Forward) {
+        val fragmentScreen = command.screen
+        val backStackName = fragmentScreen.screenKey
 
     }
 
     private fun back() {}
+
+    companion object {
+        const val BACKSTACK_NAME_MAIN = "main"
+        const val BACKSTACK_NAME_FAVORITE = "favorite"
+        const val BACKSTACK_NAME_ALL = "all"
+        const val BACKSTACK_NAME_SETTINGS = "settings"
+    }
 }
