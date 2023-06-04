@@ -9,13 +9,15 @@ import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBott
 import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward
+import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import java.util.Stack
 
 class MainBottomNavigator(
     fragmentManager: FragmentManager,
     fragmentFactory: FragmentFactory,
-    private val listener: SelectTabBottomMenuListener
+    private val listener: SelectTabBottomMenuListener,
+    private val mainActivityRouter: Router
 ) : BaseNavigator(
     fm = fragmentManager,
     ff = fragmentFactory,
@@ -81,7 +83,7 @@ class MainBottomNavigator(
             listener.selectTabBottomMenu(selectedBackstackMenu)
             fm.restoreBackStack(selectedBackstackMenu)
         } else {
-            listener.requireActivity().finish()
+            mainActivityRouter.exit()
         }
     }
 
