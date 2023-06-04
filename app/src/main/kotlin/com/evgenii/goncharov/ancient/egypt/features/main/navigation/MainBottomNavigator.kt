@@ -89,23 +89,23 @@ class MainBottomNavigator(
 
     private fun back() {
         when {
-            selectedBackStack.countBackStack > FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> {
-                fm.popBackStack()
-                selectedBackStack.countBackStack--
-            }
-
-            localBackStack.size <= FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> {
-                mainActivityRouter.exit()
-            }
-
-            else -> {
-                val popBackStack = localBackStack.pop()
-                fm.popBackStack(popBackStack.backStackName, 0)
-                selectedBackStack = localBackStack.peek()
-                listener.selectTabBottomMenu(selectedBackStack.backStackName)
-                fm.restoreBackStack(selectedBackStack.backStackName)
-            }
+            selectedBackStack.countBackStack > FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> popFragmentToCurrentBackStack()
+            localBackStack.size <= FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> mainActivityRouter.exit()
+            else -> popCurrentBackStack()
         }
+    }
+
+    private fun popFragmentToCurrentBackStack() {
+        fm.popBackStack()
+        selectedBackStack.countBackStack--
+    }
+
+    private fun popCurrentBackStack() {
+        val popBackStack = localBackStack.pop()
+        fm.popBackStack(popBackStack.backStackName, 0)
+        selectedBackStack = localBackStack.peek()
+        listener.selectTabBottomMenu(selectedBackStack.backStackName)
+        fm.restoreBackStack(selectedBackStack.backStackName)
     }
 
     companion object {
