@@ -90,7 +90,9 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
         return true
     }
 
-    private fun toolbarNavigationOnClickListener(view: View) {}
+    private fun toolbarNavigationOnClickListener(view: View) {
+        router.navigateTo()
+    }
 
     companion object {
         fun newInstance() = MainBottomMenuFragment()
