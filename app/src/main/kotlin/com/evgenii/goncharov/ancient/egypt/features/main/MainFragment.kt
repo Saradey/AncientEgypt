@@ -29,6 +29,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         btnNext2.setOnClickListener {
             router.navigateTo(ArticlesScreens.startSelectedCategory())
         }
+        router
     }
 
     companion object {
