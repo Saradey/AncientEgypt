@@ -15,7 +15,6 @@ object MainNavigationModule {
 
     @Provides
     @FragmentScoped
-    @Named("BottomMenuNavigation")
     fun provideOnBackPressedBottomMenuManager(@Named("BottomMenu") router: Router): OnBackPressedBottomMenuManager =
         OnBackPressedBottomMenuManager(router)
 }

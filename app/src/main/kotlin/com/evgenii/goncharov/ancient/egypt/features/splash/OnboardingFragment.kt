@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentOnboardingBinding
+import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +17,7 @@ import javax.inject.Named
 @AndroidEntryPoint
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
-    @Inject @Named("ActivityNavigation") lateinit var mainActivityRouter: Router
+    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
     private val binding: FragmentOnboardingBinding by viewBinding(FragmentOnboardingBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

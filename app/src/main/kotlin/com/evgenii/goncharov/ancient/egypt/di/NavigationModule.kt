@@ -17,24 +17,24 @@ object NavigationModule {
 
     @Provides
     @ActivityScoped
-    @Named("ActivityNavigation")
+    @Named(QUALIFIER_ACTIVITY_NAVIGATION)
     fun provideCicerone(): Cicerone<Router> = Cicerone.create()
 
     @Provides
     @ActivityScoped
-    @Named("ActivityNavigation")
-    fun provideRouter(@Named("ActivityNavigation") cicerone: Cicerone<Router>): Router =
+    @Named(QUALIFIER_ACTIVITY_NAVIGATION)
+    fun provideRouter(@Named(QUALIFIER_ACTIVITY_NAVIGATION) cicerone: Cicerone<Router>): Router =
         cicerone.router
 
     @Provides
     @ActivityScoped
-    @Named("ActivityNavigation")
-    fun provideNavigatorHolder(@Named("ActivityNavigation") cicerone: Cicerone<Router>): NavigatorHolder =
+    @Named(QUALIFIER_ACTIVITY_NAVIGATION)
+    fun provideNavigatorHolder(@Named(QUALIFIER_ACTIVITY_NAVIGATION) cicerone: Cicerone<Router>): NavigatorHolder =
         cicerone.getNavigatorHolder()
 
     @Provides
     @ActivityScoped
-    fun provideOnBackPressedActivityManager(@Named("ActivityNavigation") mainActivityRouter: Router): OnBackPressedActivityManager =
+    fun provideOnBackPressedActivityManager(@Named(QUALIFIER_ACTIVITY_NAVIGATION) mainActivityRouter: Router): OnBackPressedActivityManager =
         OnBackPressedActivityManager(mainActivityRouter)
 
     @Provides
@@ -53,4 +53,6 @@ object NavigationModule {
     @Named("BottomMenu")
     fun provideBottomMenuNavigatorHolder(@Named("BottomMenu") cicerone: Cicerone<Router>): NavigatorHolder =
         cicerone.getNavigatorHolder()
+
+    const val QUALIFIER_ACTIVITY_NAVIGATION = "ActivityNavigation"
 }

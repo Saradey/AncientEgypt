@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSplashBinding
+import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScreens
 import com.github.terrakok.cicerone.Router
@@ -17,7 +18,7 @@ import javax.inject.Named
 @AndroidEntryPoint
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
-    @Inject @Named("ActivityNavigation") lateinit var activityRouter: Router
+    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var activityRouter: Router
 
     private val binding: FragmentSplashBinding by viewBinding(FragmentSplashBinding::bind)
 

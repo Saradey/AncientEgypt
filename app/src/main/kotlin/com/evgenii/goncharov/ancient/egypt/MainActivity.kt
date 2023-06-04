@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
+import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScreens
 import com.evgenii.goncharov.ancient.egypt.navigation.MainActivityNavigator
@@ -17,8 +18,8 @@ import javax.inject.Named
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject @Named("ActivityNavigation") lateinit var navigatorHolder: NavigatorHolder
-    @Inject @Named("ActivityNavigation") lateinit var router: Router
+    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var navigatorHolder: NavigatorHolder
+    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var router: Router
     @Inject lateinit var onBackPressed: OnBackPressedActivityManager
     private val navigator = MainActivityNavigator(this)
 
