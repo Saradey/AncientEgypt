@@ -36,4 +36,21 @@ object NavigationModule {
     @ActivityScoped
     fun provideOnBackPressedActivityManager(@Named("ActivityNavigation") mainActivityRouter: Router): OnBackPressedActivityManager =
         OnBackPressedActivityManager(mainActivityRouter)
+
+    @Provides
+    @ActivityScoped
+    @Named("BottomMenu")
+    fun provideBottomMenuCicerone(): Cicerone<Router> = Cicerone.create()
+
+    @Provides
+    @ActivityScoped
+    @Named("BottomMenu")
+    fun provideBottomMenuRouter(@Named("BottomMenu") cicerone: Cicerone<Router>): Router =
+        cicerone.router
+
+    @Provides
+    @ActivityScoped
+    @Named("BottomMenu")
+    fun provideBottomMenuNavigatorHolder(@Named("BottomMenu") cicerone: Cicerone<Router>): NavigatorHolder =
+        cicerone.getNavigatorHolder()
 }
