@@ -18,6 +18,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNa
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_SETTINGS
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.OnBackPressedBottomMenuManager
+import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
 import com.evgenii.goncharov.ancient.egypt.features.settings.navigation.SettingsScreens
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -91,7 +92,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
     }
 
     private fun toolbarNavigationOnClickListener(view: View) {
-        router.navigateTo()
+        router.navigateTo(SearchScreens.startSearch())
     }
 
     companion object {
