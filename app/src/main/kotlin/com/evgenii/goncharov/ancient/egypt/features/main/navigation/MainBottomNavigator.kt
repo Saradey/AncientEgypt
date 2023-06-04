@@ -39,14 +39,14 @@ class MainBottomNavigator(
         val backStackName = fragmentScreen.screenKey
         when {
             backStackName == BACKSTACK_NAME_EVERYWHERE -> {
-                commit(
+                commitFragmentToCurrentStack(
                     fragmentScreen = fragmentScreen,
                     backStackName = selectedBackstackMenu
                 )
             }
 
             selectedBackstackMenu != backStackName -> {
-                commit(
+                commitNewStack(
                     fragmentScreen = fragmentScreen,
                     backStackName = backStackName
                 )
@@ -59,7 +59,16 @@ class MainBottomNavigator(
         }
     }
 
-    private fun commit(fragmentScreen: FragmentScreen, backStackName: String) {
+    private fun commitFragmentToCurrentStack(fragmentScreen: FragmentScreen, backStackName: String) {
+        val fragment = fragmentScreen.createFragment(ff)
+        fm.commit {
+            setReorderingAllowed(true)
+            replace(containerId, fragment, fragmentScreen.screenKey)
+            addToBackStack(backStackName)
+        }
+    }
+
+    private fun commitNewStack(fragmentScreen: FragmentScreen, backStackName: String) {
         if (selectedBackstackMenu.isNotEmpty()) {
             fm.saveBackStack(selectedBackstackMenu)
         }
