@@ -36,31 +36,38 @@ class MainBottomNavigator(
         val fragmentScreen = command.screen as FragmentScreen
         val backStackName = fragmentScreen.screenKey
         when {
-            backStackName == BACKSTACK_NAME_EVERYWHERE -> {
-                commitFragmentToCurrentStack(
-                    fragmentScreen = fragmentScreen
-                )
-            }
+            backStackName == BACKSTACK_NAME_EVERYWHERE -> commitFragmentToCurrentStack(
+                fragmentScreen = fragmentScreen
+            )
 
-            localBackStack.any { info -> info.backStackName == backStackName } -> {
-                fm.saveBackStack(selectedBackStack.backStackName)
-                val info = localBackStack.find { info -> info.backStackName == backStackName }
-                info?.let { _info -> selectedBackStack = _info }
-                fm.restoreBackStack(info?.backStackName ?: throw IllegalArgumentException())
-                localBackStack.remove(info)
-                localBackStack.push(info)
-            }
+            localBackStack.any { info -> info.backStackName == backStackName } -> restoreBackStack(
+                backStackName
+            )
 
-            selectedBackStack.backStackName != backStackName -> {
-                commitNewStack(
-                    fragmentScreen = fragmentScreen, backStackName = backStackName
-                )
-                selectedBackStack = BackStackInfo(
-                    backStackName, FIRST_INDEX_FRAGMENT_TO_BACKSTACK
-                )
-                localBackStack.push(selectedBackStack)
-            }
+            selectedBackStack.backStackName != backStackName -> addedNewBackStack(
+                fragmentScreen,
+                backStackName
+            )
         }
+    }
+
+    private fun addedNewBackStack(fragmentScreen: FragmentScreen, backStackName: String) {
+        commitNewStack(
+            fragmentScreen = fragmentScreen, backStackName = backStackName
+        )
+        selectedBackStack = BackStackInfo(
+            backStackName, FIRST_INDEX_FRAGMENT_TO_BACKSTACK
+        )
+        localBackStack.push(selectedBackStack)
+    }
+
+    private fun restoreBackStack(backStackName: String) {
+        fm.saveBackStack(selectedBackStack.backStackName)
+        val info = localBackStack.find { info -> info.backStackName == backStackName }
+        info?.let { _info -> selectedBackStack = _info }
+        fm.restoreBackStack(info?.backStackName ?: throw IllegalArgumentException())
+        localBackStack.remove(info)
+        localBackStack.push(info)
     }
 
     private fun commitFragmentToCurrentStack(
@@ -90,7 +97,9 @@ class MainBottomNavigator(
     private fun back() {
         when {
             selectedBackStack.countBackStack > FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> popFragmentToCurrentBackStack()
+
             localBackStack.size <= FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> mainActivityRouter.exit()
+
             else -> popCurrentBackStack()
         }
     }
