@@ -1,9 +1,11 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.navigation
 
+import androidx.fragment.app.FragmentFactory
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
-import com.evgenii.goncharov.ancient.egypt.features.main.MainBottomMenuFragment
+import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
 import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward
@@ -11,10 +13,12 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 import java.util.Stack
 
 class MainBottomNavigator(
-    private val mainBottomMenuFragment: MainBottomMenuFragment
+    fragmentManager: FragmentManager,
+    fragmentFactory: FragmentFactory,
+    private val listener: SelectTabBottomMenuListener
 ) : BaseNavigator(
-    fm = mainBottomMenuFragment.childFragmentManager,
-    ff = mainBottomMenuFragment.childFragmentManager.fragmentFactory,
+    fm = fragmentManager,
+    ff = fragmentFactory,
     containerId = R.id.fcv_nested_container_bottom_menu
 ) {
 
@@ -74,10 +78,10 @@ class MainBottomNavigator(
             val popBackStackName = localBackStack.pop()
             fm.popBackStack(popBackStackName, 0)
             selectedBackstackMenu = localBackStack.peek()
-            mainBottomMenuFragment.selectTabBottomMenu(selectedBackstackMenu)
+            listener.selectTabBottomMenu(selectedBackstackMenu)
             fm.restoreBackStack(selectedBackstackMenu)
         } else {
-            mainBottomMenuFragment.requireActivity().finish()
+            listener.requireActivity().finish()
         }
     }
 

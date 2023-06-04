@@ -9,6 +9,7 @@ import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBottomMenuBinding
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
+import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_ALL
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_FAVORITE
@@ -25,14 +26,19 @@ import javax.inject.Named
 
 /** №2.1 */
 @AndroidEntryPoint
-class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
+class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
+    SelectTabBottomMenuListener {
 
     @Inject @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) lateinit var router: Router
     @Inject @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) lateinit var navigatorHolder: NavigatorHolder
     @Inject lateinit var onBackPressed: OnBackPressedBottomMenuManager
     private val binding: FragmentMainBottomMenuBinding by viewBinding(FragmentMainBottomMenuBinding::bind)
     private val navigator: MainBottomNavigator by lazy {
-        MainBottomNavigator(this)
+        MainBottomNavigator(
+            childFragmentManager,
+            childFragmentManager.fragmentFactory,
+            this
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,7 +57,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
         super.onPause()
     }
 
-    fun selectTabBottomMenu(selectedBackstackMenu: String) {
+    override fun selectTabBottomMenu(selectedBackstackMenu: String) {
         with(binding) {
             bnvMenu.setOnItemSelectedListener(null)
             when (selectedBackstackMenu) {
@@ -70,7 +76,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu) {
     }
 
     private fun itemBottomMenuClickListener(item: MenuItem): Boolean {
-        if(item.itemId != binding.bnvMenu.selectedItemId) {
+        if (item.itemId != binding.bnvMenu.selectedItemId) {
             when (item.itemId) {
                 R.id.main -> router.navigateTo(MainScreens.startMain())
                 R.id.all -> router.navigateTo(ArticlesScreens.startAllArticles())
