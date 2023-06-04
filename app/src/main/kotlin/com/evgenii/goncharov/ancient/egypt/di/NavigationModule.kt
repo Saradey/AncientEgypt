@@ -39,20 +39,21 @@ object NavigationModule {
 
     @Provides
     @ActivityScoped
-    @Named("BottomMenu")
+    @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION)
     fun provideBottomMenuCicerone(): Cicerone<Router> = Cicerone.create()
 
     @Provides
     @ActivityScoped
-    @Named("BottomMenu")
-    fun provideBottomMenuRouter(@Named("BottomMenu") cicerone: Cicerone<Router>): Router =
+    @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION)
+    fun provideBottomMenuRouter(@Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) cicerone: Cicerone<Router>): Router =
         cicerone.router
 
     @Provides
     @ActivityScoped
-    @Named("BottomMenu")
-    fun provideBottomMenuNavigatorHolder(@Named("BottomMenu") cicerone: Cicerone<Router>): NavigatorHolder =
+    @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION)
+    fun provideBottomMenuNavigatorHolder(@Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) cicerone: Cicerone<Router>): NavigatorHolder =
         cicerone.getNavigatorHolder()
 
     const val QUALIFIER_ACTIVITY_NAVIGATION = "ActivityNavigation"
+    const val QUALIFIER_BOTTOM_MENU_NAVIGATION = "BottomMenuNavigation"
 }
