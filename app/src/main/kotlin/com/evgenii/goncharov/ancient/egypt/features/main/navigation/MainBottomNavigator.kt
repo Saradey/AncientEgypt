@@ -52,9 +52,15 @@ class MainBottomNavigator(
     }
 
     private fun addedNewBackStack(fragmentScreen: FragmentScreen, backStackName: String) {
-        commitNewStack(
-            fragmentScreen = fragmentScreen, backStackName = backStackName
-        )
+        if (selectedBackStack.backStackName.isNotEmpty()) {
+            fm.saveBackStack(selectedBackStack.backStackName)
+        }
+        val fragment = fragmentScreen.createFragment(ff)
+        fm.commit {
+            setReorderingAllowed(true)
+            replace(containerId, fragment, fragmentScreen.screenKey)
+            addToBackStack(backStackName)
+        }
         selectedBackStack = BackStackInfo(
             backStackName, FIRST_INDEX_FRAGMENT_TO_BACKSTACK
         )
@@ -79,18 +85,6 @@ class MainBottomNavigator(
             replace(containerId, fragment, fragmentScreen.screenKey)
             addToBackStack(selectedBackStack.backStackName)
             selectedBackStack.countBackStack++
-        }
-    }
-
-    private fun commitNewStack(fragmentScreen: FragmentScreen, backStackName: String) {
-        if (selectedBackStack.backStackName.isNotEmpty()) {
-            fm.saveBackStack(selectedBackStack.backStackName)
-        }
-        val fragment = fragmentScreen.createFragment(ff)
-        fm.commit {
-            setReorderingAllowed(true)
-            replace(containerId, fragment, fragmentScreen.screenKey)
-            addToBackStack(backStackName)
         }
     }
 
