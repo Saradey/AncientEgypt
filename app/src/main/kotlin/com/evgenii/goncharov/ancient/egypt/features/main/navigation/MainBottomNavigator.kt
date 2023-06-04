@@ -19,13 +19,11 @@ class MainBottomNavigator(
     private val listener: SelectTabBottomMenuListener,
     private val mainActivityRouter: Router
 ) : BaseNavigator(
-    fm = fragmentManager,
-    ff = fragmentFactory,
-    containerId = R.id.fcv_nested_container_bottom_menu
+    fm = fragmentManager, ff = fragmentFactory, containerId = R.id.fcv_nested_container_bottom_menu
 ) {
 
-    private val localBackStack: Stack<String> = Stack()
-    private var selectedBackstackMenu = ""
+    private val localBackStack: Stack<BackStackInfo> = Stack()
+    private var selectedBackStack: BackStackInfo = BackStackInfo("", 0)
 
     override fun applyCommand(command: Command) {
         when (command) {
@@ -40,26 +38,47 @@ class MainBottomNavigator(
         when {
             backStackName == BACKSTACK_NAME_EVERYWHERE -> {
                 commitFragmentToCurrentStack(
-                    fragmentScreen = fragmentScreen,
-                    backStackName = selectedBackstackMenu
+                    fragmentScreen = fragmentScreen
                 )
             }
 
-            selectedBackstackMenu != backStackName -> {
+            localBackStack.any { info -> info.backStackName == backStackName } -> {
+                fm.saveBackStack(selectedBackStack.backStackName)
+                val info = localBackStack.find { info -> info.backStackName == backStackName }
+                info?.let { _info -> selectedBackStack = _info }
+                fm.restoreBackStack(info?.backStackName ?: throw IllegalArgumentException())
+                localBackStack.remove(info)
+                localBackStack.push(info)
+            }
+
+            selectedBackStack.backStackName != backStackName -> {
                 commitNewStack(
-                    fragmentScreen = fragmentScreen,
-                    backStackName = backStackName
+                    fragmentScreen = fragmentScreen, backStackName = backStackName
                 )
-                selectedBackstackMenu = backStackName
-                if (localBackStack.contains(selectedBackstackMenu)) {
-                    localBackStack.remove(selectedBackstackMenu)
-                }
-                localBackStack.push(selectedBackstackMenu)
+                selectedBackStack = BackStackInfo(
+                    backStackName, FIRST_INDEX_FRAGMENT_TO_BACKSTACK
+                )
+                localBackStack.push(selectedBackStack)
             }
         }
     }
 
-    private fun commitFragmentToCurrentStack(fragmentScreen: FragmentScreen, backStackName: String) {
+    private fun commitFragmentToCurrentStack(
+        fragmentScreen: FragmentScreen,
+    ) {
+        val fragment = fragmentScreen.createFragment(ff)
+        fm.commit {
+            setReorderingAllowed(true)
+            replace(containerId, fragment, fragmentScreen.screenKey)
+            addToBackStack(selectedBackStack.backStackName)
+            selectedBackStack.countBackStack++
+        }
+    }
+
+    private fun commitNewStack(fragmentScreen: FragmentScreen, backStackName: String) {
+        if (selectedBackStack.backStackName.isNotEmpty()) {
+            fm.saveBackStack(selectedBackStack.backStackName)
+        }
         val fragment = fragmentScreen.createFragment(ff)
         fm.commit {
             setReorderingAllowed(true)
@@ -68,31 +87,24 @@ class MainBottomNavigator(
         }
     }
 
-    private fun commitNewStack(fragmentScreen: FragmentScreen, backStackName: String) {
-        if (selectedBackstackMenu.isNotEmpty()) {
-            fm.saveBackStack(selectedBackstackMenu)
-        }
-        if (!localBackStack.contains(backStackName)) {
-            val fragment = fragmentScreen.createFragment(ff)
-            fm.commit {
-                setReorderingAllowed(true)
-                replace(containerId, fragment, fragmentScreen.screenKey)
-                addToBackStack(backStackName)
-            }
-        } else {
-            fm.restoreBackStack(backStackName)
-        }
-    }
-
     private fun back() {
-        if (localBackStack.size > FIRST_INDEX_FRAGMENT_TO_BACKSTACK) {
-            val popBackStackName = localBackStack.pop()
-            fm.popBackStack(popBackStackName, 0)
-            selectedBackstackMenu = localBackStack.peek()
-            listener.selectTabBottomMenu(selectedBackstackMenu)
-            fm.restoreBackStack(selectedBackstackMenu)
-        } else {
-            mainActivityRouter.exit()
+        when {
+            selectedBackStack.countBackStack > FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> {
+                fm.popBackStack()
+                selectedBackStack.countBackStack--
+            }
+
+            localBackStack.size <= FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> {
+                mainActivityRouter.exit()
+            }
+
+            else -> {
+                val popBackStack = localBackStack.pop()
+                fm.popBackStack(popBackStack.backStackName, 0)
+                selectedBackStack = localBackStack.peek()
+                listener.selectTabBottomMenu(selectedBackStack.backStackName)
+                fm.restoreBackStack(selectedBackStack.backStackName)
+            }
         }
     }
 
@@ -105,3 +117,7 @@ class MainBottomNavigator(
         private const val FIRST_INDEX_FRAGMENT_TO_BACKSTACK = 1
     }
 }
+
+data class BackStackInfo(
+    val backStackName: String, var countBackStack: Int
+)
