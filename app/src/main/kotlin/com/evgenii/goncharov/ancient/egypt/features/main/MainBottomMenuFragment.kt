@@ -3,6 +3,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
@@ -11,6 +12,7 @@ import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVIT
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
+import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SetVisibilityToBottomMenuToolbarListener
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_ALL
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_FAVORITE
@@ -29,7 +31,8 @@ import javax.inject.Named
 /** №2.1 */
 @AndroidEntryPoint
 class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
-    SelectTabBottomMenuListener {
+    SelectTabBottomMenuListener,
+    SetVisibilityToBottomMenuToolbarListener {
 
     @Inject @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) lateinit var router: Router
     @Inject @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) lateinit var navigatorHolder: NavigatorHolder
@@ -72,6 +75,10 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
             }
             bnvMenu.setOnItemSelectedListener(::itemBottomMenuClickListener)
         }
+    }
+
+    override fun setVisibilityToolbar(isVisible: Boolean) {
+        binding.toolbar.isVisible = isVisible
     }
 
     private fun FragmentMainBottomMenuBinding.initUi() {
