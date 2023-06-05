@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         onBackPressedDispatcher.addCallback(this, onBackPressed)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        savedInstanceState ?: if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if (false) {
                 router.navigateTo(MainScreens.startMainBottomMenu())
             } else {
