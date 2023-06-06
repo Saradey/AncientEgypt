@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.evgenii.goncharov.ancient.egypt.features.main.MainBottomMenuFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.MainFragment
+import com.evgenii.goncharov.ancient.egypt.features.main.StoriesFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_MAIN
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
@@ -20,6 +21,12 @@ object MainScreens {
         override val screenKey: String = BACKSTACK_NAME_MAIN
         override fun createFragment(factory: FragmentFactory): Fragment {
             return MainFragment.newInstance()
+        }
+    }
+
+    fun startStories() = object : FragmentScreen {
+        override fun createFragment(factory: FragmentFactory): Fragment {
+            return StoriesFragment.newInstance()
         }
     }
 
