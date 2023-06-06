@@ -40,7 +40,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
         }
         btnNext4.setOnClickListener {
-            mainActivityRouter.navigateTo()
+            if(true) {
+                mainActivityRouter.navigateTo()
+            } else {
+                mainActivityRouter.navigateTo()
+            }
         }
     }
 

@@ -7,6 +7,12 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object MapScreens {
 
+    fun startAncientEgyptMapAllObjects() = object : FragmentScreen {
+        override fun createFragment(factory: FragmentFactory): Fragment {
+            return AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = false)
+        }
+    }
+
     fun startAncientEgyptMapAndArticle() = object : FragmentScreen {
         override fun createFragment(factory: FragmentFactory): Fragment {
             return AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = true)
