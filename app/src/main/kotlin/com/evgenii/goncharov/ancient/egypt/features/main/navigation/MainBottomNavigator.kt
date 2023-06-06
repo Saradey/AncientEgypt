@@ -116,7 +116,7 @@ class MainBottomNavigator(
         selectedBackStack = localBackStack.peek()
         listener.selectTabBottomMenu(selectedBackStack.backStackName)
         fm.restoreBackStack(selectedBackStack.backStackName)
-        toolbarVisibilityManager.visibilityToolbarChange(popBackStack.backStackName)
+        toolbarVisibilityManager.visibilityToolbarChange(selectedBackStack.backStackName)
     }
 
     companion object {
