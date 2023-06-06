@@ -7,6 +7,8 @@ import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
+import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SetVisibilityToBottomMenuToolbarListener
+import com.evgenii.goncharov.ancient.egypt.features.main.utils.ToolbarVisibilityManager
 import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward
@@ -19,12 +21,14 @@ class MainBottomNavigator(
     fragmentFactory: FragmentFactory,
     private val listener: SelectTabBottomMenuListener,
     private val mainActivityRouter: Router,
+    setVisibilityToolbarListener: SetVisibilityToBottomMenuToolbarListener
 ) : BaseNavigator(
     fm = fragmentManager, ff = fragmentFactory, containerId = R.id.fcv_nested_container_bottom_menu
 ) {
 
     private val localBackStack: Stack<BackStackInfo> = Stack()
     private var selectedBackStack: BackStackInfo = BackStackInfo("", 0)
+    private val toolbarVisibilityManager = ToolbarVisibilityManager(setVisibilityToolbarListener)
 
     override fun applyCommand(command: Command) {
         when (command) {
