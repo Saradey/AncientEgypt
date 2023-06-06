@@ -70,6 +70,7 @@ class MainBottomNavigator(
             backStackName, FIRST_INDEX_FRAGMENT_TO_BACKSTACK
         )
         localBackStack.push(selectedBackStack)
+        toolbarVisibilityManager.visibilityToolbarChange(backStackName)
     }
 
     private fun restoreBackStack(backStackName: String) {
@@ -79,6 +80,7 @@ class MainBottomNavigator(
         fm.restoreBackStack(info?.backStackName ?: throw IllegalArgumentException())
         localBackStack.remove(info)
         localBackStack.push(info)
+        toolbarVisibilityManager.visibilityToolbarChange(backStackName)
     }
 
     private fun commitFragmentToCurrentStack(
@@ -114,6 +116,7 @@ class MainBottomNavigator(
         selectedBackStack = localBackStack.peek()
         listener.selectTabBottomMenu(selectedBackStack.backStackName)
         fm.restoreBackStack(selectedBackStack.backStackName)
+        toolbarVisibilityManager.visibilityToolbarChange(popBackStack.backStackName)
     }
 
     companion object {
