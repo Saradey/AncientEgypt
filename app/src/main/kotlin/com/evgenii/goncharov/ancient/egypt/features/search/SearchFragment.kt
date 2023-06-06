@@ -24,7 +24,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private val binding: FragmentSearchBinding by viewBinding(FragmentSearchBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        (parentFragment as? SetVisibilityToBottomMenuToolbarListener)?.setVisibilityToolbar(false)
         binding.initUi()
     }
 
@@ -35,11 +34,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         btnNext2.setOnClickListener {
             mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        (parentFragment as? SetVisibilityToBottomMenuToolbarListener)?.setVisibilityToolbar(true)
     }
 
     companion object {

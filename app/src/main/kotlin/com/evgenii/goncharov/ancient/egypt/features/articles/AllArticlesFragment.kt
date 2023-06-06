@@ -9,6 +9,7 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentAllArticlesBindin
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
+import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SetVisibilityToBottomMenuToolbarListener
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -23,6 +24,7 @@ class AllArticlesFragment : Fragment(R.layout.fragment_all_articles) {
     private val binding: FragmentAllArticlesBinding by viewBinding(FragmentAllArticlesBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        (parentFragment as? SetVisibilityToBottomMenuToolbarListener)?.setVisibilityToolbar(true)
         binding.title.text = "${binding.title.text} ${toString()}"
         binding.initUi()
     }
@@ -34,6 +36,11 @@ class AllArticlesFragment : Fragment(R.layout.fragment_all_articles) {
         btnNext2.setOnClickListener {
             mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (parentFragment as? SetVisibilityToBottomMenuToolbarListener)?.setVisibilityToolbar(false)
     }
 
     companion object {
