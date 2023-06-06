@@ -30,9 +30,11 @@ class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
     private fun BottomSheetSelectedArticleBinding.initUi() {
         btnNext1.setOnClickListener {
             mainActivityRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+            dismiss()
         }
         btnNext2.setOnClickListener {
             mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
+            dismiss()
         }
     }
 
