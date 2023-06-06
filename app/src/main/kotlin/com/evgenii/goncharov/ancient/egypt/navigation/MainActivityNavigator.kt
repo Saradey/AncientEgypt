@@ -5,11 +5,13 @@ import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.MainActivity
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
+import com.evgenii.goncharov.ancient.egypt.features.map.SelectedArticleMapBottomSheetFragment
 import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward
 import com.github.terrakok.cicerone.Replace
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MainActivityNavigator(
     private val mainActivity: MainActivity
@@ -30,11 +32,16 @@ class MainActivityNavigator(
     private fun forward(command: Forward) {
         val fragmentScreen = command.screen as FragmentScreen
         val fragment = fragmentScreen.createFragment(ff)
-        commitFragmentTransaction(
-            fragment,
-            fragmentScreen,
-            fragmentScreen.screenKey
-        )
+        val screenKey = fragmentScreen.screenKey
+        if (screenKey == SCREEN_KEY_SELECTED_BOTTOM_SHEET_ARTICLE) {
+            showBottomSheet(fragment as SelectedArticleMapBottomSheetFragment, screenKey)
+        } else {
+            commitFragmentTransaction(fragment, fragmentScreen, fragmentScreen.screenKey)
+        }
+    }
+
+    private fun showBottomSheet(bottomSheet: BottomSheetDialogFragment, tag: String?) {
+        bottomSheet.show(mainActivity.supportFragmentManager, tag)
     }
 
     private fun replace(command: Replace) {
@@ -66,5 +73,9 @@ class MainActivityNavigator(
         } else {
             mainActivity.finish()
         }
+    }
+
+    companion object {
+        const val SCREEN_KEY_SELECTED_BOTTOM_SHEET_ARTICLE = "selectedBottomSheetArticle"
     }
 }

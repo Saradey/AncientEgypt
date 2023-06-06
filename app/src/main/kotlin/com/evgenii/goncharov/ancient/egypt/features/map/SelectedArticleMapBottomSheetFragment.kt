@@ -21,4 +21,8 @@ class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
     private fun BottomSheetSelectedArticleBinding.initUi() {
 
     }
+
+    companion object {
+        fun newInstance() = SelectedArticleMapBottomSheetFragment()
+    }
 }
