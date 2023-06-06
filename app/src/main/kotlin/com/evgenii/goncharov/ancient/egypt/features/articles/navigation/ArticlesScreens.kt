@@ -19,19 +19,17 @@ object ArticlesScreens {
         }
     }
 
-    fun startAllArticles() = AllArticlesScreen()
+    fun startAllArticles() = object : FragmentScreen {
+        override val screenKey: String = BACKSTACK_NAME_ALL
+        override fun createFragment(factory: FragmentFactory): Fragment {
+            return AllArticlesFragment.newInstance()
+        }
+    }
 
     fun startSelectedCategory() = object : FragmentScreen {
         override val screenKey: String = BACKSTACK_NAME_EVERYWHERE
         override fun createFragment(factory: FragmentFactory): Fragment {
             return SelectedCategoryFragment.newInstance()
         }
-    }
-}
-
-class AllArticlesScreen : FragmentScreen {
-    override val screenKey: String = BACKSTACK_NAME_ALL
-    override fun createFragment(factory: FragmentFactory): Fragment {
-        return AllArticlesFragment.newInstance()
     }
 }
