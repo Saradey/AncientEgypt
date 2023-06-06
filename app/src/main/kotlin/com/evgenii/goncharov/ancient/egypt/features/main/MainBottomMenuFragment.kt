@@ -48,10 +48,14 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
         )
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        savedInstanceState ?: router.navigateTo(MainScreens.startMain())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressed)
-        savedInstanceState ?: router.navigateTo(MainScreens.startMain())
     }
 
     override fun onResume() {
