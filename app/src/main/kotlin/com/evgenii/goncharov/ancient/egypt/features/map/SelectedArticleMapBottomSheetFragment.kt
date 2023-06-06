@@ -6,8 +6,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.BottomSheetSelectedArticleBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 /** №7.2 */
+@AndroidEntryPoint
 class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
     R.layout.bottom_sheet_selected_article
 ) {

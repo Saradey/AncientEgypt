@@ -9,10 +9,12 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentAncientEgyptMapBi
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
 /** №7.1 */
+@AndroidEntryPoint
 class AncientEgyptMapFragment : Fragment(R.layout.fragment_ancient_egypt_map) {
 
     @Inject @Named(NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
