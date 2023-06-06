@@ -32,5 +32,5 @@ object MainScreens {
     }
 
     private const val BACKSTACK_NAME_BOTTOM_MENU = "bottomMenu"
-    const val SCREEN_KEY_MAIN_MENU = "main_menu"
+    const val SCREEN_KEY_MAIN_MENU = "main_menu_screen"
 }
