@@ -5,8 +5,14 @@ import android.view.View
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.BottomSheetSelectedArticleBinding
+import com.evgenii.goncharov.ancient.egypt.di.NavigationModule
+import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
+import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
+import com.github.terrakok.cicerone.Router
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import javax.inject.Named
 
 /** №7.2 */
 @AndroidEntryPoint
@@ -14,6 +20,7 @@ class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
     R.layout.bottom_sheet_selected_article
 ) {
 
+    @Inject @Named(NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
     private val binding: BottomSheetSelectedArticleBinding by viewBinding(BottomSheetSelectedArticleBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -21,7 +28,12 @@ class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
     }
 
     private fun BottomSheetSelectedArticleBinding.initUi() {
-
+        btnNext1.setOnClickListener {
+            mainActivityRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+        }
+        btnNext2.setOnClickListener {
+            mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
+        }
     }
 
     companion object {
