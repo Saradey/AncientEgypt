@@ -11,6 +11,7 @@ import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
+import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -40,10 +41,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
         }
         btnNext4.setOnClickListener {
-            if(true) {
-                mainActivityRouter.navigateTo()
+            if (true) {
+                mainActivityRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
             } else {
-                mainActivityRouter.navigateTo()
+                mainActivityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
             }
         }
     }
