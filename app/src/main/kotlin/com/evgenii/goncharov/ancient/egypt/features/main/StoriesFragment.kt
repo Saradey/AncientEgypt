@@ -11,10 +11,12 @@ import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.Articles
 import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
 /** №2.3 */
+@AndroidEntryPoint
 class StoriesFragment : Fragment(R.layout.fragment_stories) {
 
     @Inject @Named(NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
