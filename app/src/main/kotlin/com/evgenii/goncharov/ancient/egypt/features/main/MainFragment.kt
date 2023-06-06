@@ -37,7 +37,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             router.navigateTo(ArticlesScreens.startSelectedCategory())
         }
         btnNext3.setOnClickListener {
-            router.navigateTo(ContentScreens.startSelectedArticle())
+            mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
         }
     }
 
