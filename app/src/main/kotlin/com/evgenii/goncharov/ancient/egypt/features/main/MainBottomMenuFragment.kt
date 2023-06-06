@@ -3,6 +3,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -105,6 +106,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
 
     private fun toolbarNavigationOnClickListener(view: View) {
         router.navigateTo(SearchScreens.startSearch())
+        binding.toolbar.isGone = true
     }
 
     companion object {

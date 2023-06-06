@@ -108,6 +108,7 @@ class MainBottomNavigator(
     private fun popFragmentToCurrentBackStack() {
         fm.popBackStack()
         selectedBackStack.countBackStack--
+        toolbarVisibilityManager.visibilityToolbarChange(selectedBackStack.backStackName)
     }
 
     private fun popCurrentBackStack() {
