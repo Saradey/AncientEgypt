@@ -9,7 +9,6 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSearchBinding
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
-import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SetVisibilityToBottomMenuToolbarListener
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

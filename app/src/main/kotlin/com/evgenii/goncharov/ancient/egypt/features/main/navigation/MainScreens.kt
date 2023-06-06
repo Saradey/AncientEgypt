@@ -17,12 +17,7 @@ object MainScreens {
         }
     }
 
-    fun startMain() = object : FragmentScreen {
-        override val screenKey: String = BACKSTACK_NAME_MAIN
-        override fun createFragment(factory: FragmentFactory): Fragment {
-            return MainFragment.newInstance()
-        }
-    }
+    fun startMain() = StartMainScreen()
 
     fun startStories() = object : FragmentScreen {
         override fun createFragment(factory: FragmentFactory): Fragment {
@@ -31,4 +26,12 @@ object MainScreens {
     }
 
     private const val BACKSTACK_NAME_BOTTOM_MENU = "bottomMenu"
+}
+
+class StartMainScreen : FragmentScreen {
+    override val screenKey: String = BACKSTACK_NAME_MAIN
+
+    override fun createFragment(factory: FragmentFactory): Fragment {
+        return MainFragment.newInstance()
+    }
 }
