@@ -13,10 +13,20 @@ class AncientEgyptMapFragment : Fragment(R.layout.fragment_ancient_egypt_map) {
     private val binding: FragmentAncientEgyptMapBinding by viewBinding(FragmentAncientEgyptMapBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.initUi()
+        initUi()
     }
 
-    private fun FragmentAncientEgyptMapBinding.initUi() {
+    private fun initUi() {
+        val openArticleToBottomSheet =
+            arguments?.getBoolean(OPEN_ARTICLE_BOTTOM_SHEET_KEY, false) ?: false
+        if(openArticleToBottomSheet) {
+            startArticleBottomSheet()
+        } else {
+            //TODO logic all objects to map
+        }
+    }
+
+    private fun startArticleBottomSheet() {
 
     }
 
