@@ -9,6 +9,7 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
+import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +35,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
         btnNext2.setOnClickListener {
             router.navigateTo(ArticlesScreens.startSelectedCategory())
+        }
+        btnNext3.setOnClickListener {
+            router.navigateTo(ContentScreens.startSelectedArticle())
         }
     }
 
