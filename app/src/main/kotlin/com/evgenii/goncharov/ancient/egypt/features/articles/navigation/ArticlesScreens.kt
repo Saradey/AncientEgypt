@@ -20,11 +20,11 @@ object ArticlesScreens {
         FavoriteArticlesFragment.newInstance()
     }
 
-    fun startAllArticles() = object : FragmentScreen {
-        override val screenKey: String = BACKSTACK_NAME_ALL
-        override fun createFragment(factory: FragmentFactory): Fragment {
-            return AllArticlesFragment.newInstance()
-        }
+    fun startAllArticles() = BaseFragmentScreen(
+        screenKey = SCREEN_KEY_ALL_ARTICLES,
+        baskStackName = BACKSTACK_NAME_ALL
+    ) {
+        AllArticlesFragment.newInstance()
     }
 
     fun startSelectedCategory() = object : FragmentScreen {
