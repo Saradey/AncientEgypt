@@ -2,6 +2,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.navigation
 
 import androidx.fragment.app.FragmentFactory
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
@@ -105,7 +106,7 @@ class MainBottomNavigator(
 
     private fun popCurrentBackStack() {
         val popBackStack = localBackStack.pop()
-        fm.popBackStack(popBackStack.backStackName, 0)
+        fm.popBackStack(popBackStack.backStackName, POP_BACK_STACK_INCLUSIVE)
         selectedBackStack = localBackStack.peek()
         listener.selectTabBottomMenu(selectedBackStack.backStackName)
         fm.restoreBackStack(selectedBackStack.backStackName)
