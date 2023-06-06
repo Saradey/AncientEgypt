@@ -44,8 +44,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
             childFragmentManager,
             childFragmentManager.fragmentFactory,
             this,
-            mainActivityRouter,
-            this
+            mainActivityRouter
         )
     }
 
