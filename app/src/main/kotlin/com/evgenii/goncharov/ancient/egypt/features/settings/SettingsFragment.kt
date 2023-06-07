@@ -9,7 +9,7 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSettingsBinding
 
 /**
  * №5
- *
+ * Doc: https://docs.google.com/document/d/1XxF4-QgJwNdQS0qmGbExqcWTNj8nNXbvZ2buaRaHsFg/edit
  * */
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
