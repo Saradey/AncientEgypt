@@ -14,7 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №1.1 */
+/**
+ * №1.1
+ * Doc: https://docs.google.com/document/d/1F1Zrl4_34N6EHaRokRRkvdzFWI5mwvYdAG7agRLmyyk/edit
+ * */
 @AndroidEntryPoint
 class SplashFragment : Fragment(R.layout.fragment_splash) {
 
