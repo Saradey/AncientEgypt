@@ -21,9 +21,7 @@ import javax.inject.Named
 class SelectedCategoryFragment : Fragment(R.layout.fragment_selected_category) {
 
     @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
-    private val binding: FragmentSelectedCategoryBinding by viewBinding(
-        FragmentSelectedCategoryBinding::bind
-    )
+    private val binding: FragmentSelectedCategoryBinding by viewBinding(FragmentSelectedCategoryBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.title.text = "${binding.title.text} ${toString()}"
