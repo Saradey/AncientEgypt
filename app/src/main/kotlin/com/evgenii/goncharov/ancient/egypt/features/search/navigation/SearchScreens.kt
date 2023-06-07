@@ -2,7 +2,7 @@ package com.evgenii.goncharov.ancient.egypt.features.search.navigation
 
 import com.evgenii.goncharov.ancient.egypt.base.BaseFragmentScreen
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_EVERYWHERE
-import com.evgenii.goncharov.ancient.egypt.features.search.SearchFragment
+import com.evgenii.goncharov.ancient.egypt.features.search.ui.SearchFragment
 
 object SearchScreens {
 
