@@ -90,8 +90,9 @@ class MainBottomNavigator(
             setReorderingAllowed(true)
             replace(containerId, fragment, fragmentScreen.screenKey)
             addToBackStack(selectedBackStack.backStackName)
-            selectedBackStack.screensKey.push(fragmentScreen.screenKey)
         }
+        selectedBackStack.screensKey.push(fragmentScreen.screenKey)
+        toolbarVisibilityManager.visibilityToolbarChange(selectedBackStack.screensKey.peek())
     }
 
     private fun back() {
