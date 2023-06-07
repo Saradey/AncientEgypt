@@ -106,8 +106,8 @@ class MainBottomNavigator(
 
     private fun popFragmentToCurrentBackStack() {
         fm.popBackStack()
-        val pushedScreenKey = selectedBackStack.screensKey.pop()
-        toolbarVisibilityManager.visibilityToolbarChange(pushedScreenKey)
+        selectedBackStack.screensKey.pop()
+        toolbarVisibilityManager.visibilityToolbarChange(selectedBackStack.screensKey.peek())
     }
 
     private fun popCurrentBackStack() {
