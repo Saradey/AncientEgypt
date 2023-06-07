@@ -31,7 +31,7 @@ object ArticlesScreens {
         SelectedCategoryFragment.newInstance()
     }
 
-    const val SCREEN_KEY_FAVORITE = "favorite_screen"
+    private const val SCREEN_KEY_FAVORITE = "favorite_screen"
     const val SCREEN_KEY_ALL_ARTICLES = "all_screen"
-    const val SCREEN_KEY_SELECTED_CATEGORY = "selected_category_screen"
+    private const val SCREEN_KEY_SELECTED_CATEGORY = "selected_category_screen"
 }
