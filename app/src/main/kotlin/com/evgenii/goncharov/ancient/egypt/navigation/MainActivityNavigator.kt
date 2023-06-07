@@ -68,7 +68,7 @@ class MainActivityNavigator(
     }
 
     private fun back() {
-        if (fm.backStackEntryCount > 1) {
+        if (fm.backStackEntryCount > FIRST_INDEX_FRAGMENT_TO_BACKSTACK) {
             fm.popBackStack()
         } else {
             mainActivity.finish()
@@ -77,5 +77,6 @@ class MainActivityNavigator(
 
     companion object {
         const val SCREEN_KEY_SELECTED_BOTTOM_SHEET_ARTICLE = "selectedBottomSheetArticle"
+        private const val FIRST_INDEX_FRAGMENT_TO_BACKSTACK = 1
     }
 }
