@@ -13,7 +13,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №4.3 */
+/**
+ * №4.3
+ * Doc: https://docs.google.com/document/d/1j0E35ji6mdQOkjrloBDTpHrtasDbyBWcXV7EJQ9a3rE/edit
+ * */
 @AndroidEntryPoint
 class SelectedCategoryFragment : Fragment(R.layout.fragment_selected_category) {
 

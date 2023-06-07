@@ -15,7 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №4.2 */
+/**
+ * №4.2
+ * Doc: https://docs.google.com/document/d/1WPIP7WjD0zpfLLz-d8ZXiHINRX5n5SYOkpx7U3vp3M0/edit
+ * */
 @AndroidEntryPoint
 class FavoriteArticlesFragment : Fragment(R.layout.fragment_favorite_articles) {
 

@@ -15,7 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №4.1 */
+/**
+ * №4.1
+ * Doc: https://docs.google.com/document/d/1Unhsl5LGMDSO3OI14Kn6QGI5V-Hj2_fW-Mpgu__WVK8/edit
+ * */
 @AndroidEntryPoint
 class AllArticlesFragment : Fragment(R.layout.fragment_all_articles) {
 
