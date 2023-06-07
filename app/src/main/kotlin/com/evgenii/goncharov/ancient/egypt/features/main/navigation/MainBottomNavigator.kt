@@ -117,7 +117,7 @@ class MainBottomNavigator(
         selectedBackStack = localBackStack.peek()
         listener.selectTabBottomMenu(selectedBackStack.backStackName)
         fm.restoreBackStack(selectedBackStack.backStackName)
-        val pushedScreenKey = selectedBackStack.screensKey.pop()
+        val pushedScreenKey = selectedBackStack.screensKey.peek()
         toolbarVisibilityManager.visibilityToolbarChange(pushedScreenKey)
     }
 
