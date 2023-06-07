@@ -1,7 +1,5 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.navigation
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentFactory
 import com.evgenii.goncharov.ancient.egypt.base.BaseFragmentScreen
 import com.evgenii.goncharov.ancient.egypt.features.main.MainBottomMenuFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.MainFragment
@@ -11,11 +9,10 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object MainScreens {
 
-    fun startMainBottomMenu() = object : FragmentScreen {
-        override val screenKey: String = SCREEN_KEY_BOTTOM_MENU
-        override fun createFragment(factory: FragmentFactory): Fragment {
-            return MainBottomMenuFragment.newInstance()
-        }
+    fun startMainBottomMenu() = FragmentScreen(
+        key = SCREEN_KEY_BOTTOM_MENU
+    ) {
+        MainBottomMenuFragment.newInstance()
     }
 
     fun startMain() = BaseFragmentScreen(
@@ -25,10 +22,8 @@ object MainScreens {
         MainFragment.newInstance()
     }
 
-    fun startStories() = object : FragmentScreen {
-        override fun createFragment(factory: FragmentFactory): Fragment {
-            return StoriesFragment.newInstance()
-        }
+    fun startStories() = FragmentScreen{
+        StoriesFragment.newInstance()
     }
 
     private const val SCREEN_KEY_BOTTOM_MENU = "bottomMenu"

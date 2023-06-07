@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentStoriesBinding
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule
+import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
@@ -19,7 +19,7 @@ import javax.inject.Named
 @AndroidEntryPoint
 class StoriesFragment : Fragment(R.layout.fragment_stories) {
 
-    @Inject @Named(NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
+    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
     private val binding: FragmentStoriesBinding by viewBinding(FragmentStoriesBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
