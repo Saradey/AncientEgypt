@@ -13,5 +13,5 @@ object SettingsScreens {
         SettingsFragment.newInstance()
     }
 
-    const val SCREEN_KEY_SETTINGS = "settings_screen"
+    private const val SCREEN_KEY_SETTINGS = "settings_screen"
 }

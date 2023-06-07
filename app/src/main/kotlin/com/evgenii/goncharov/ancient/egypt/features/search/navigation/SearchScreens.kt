@@ -13,5 +13,5 @@ object SearchScreens {
         SearchFragment.newInstance()
     }
 
-    const val SCREEN_KEY_SEARCH = "search_screen"
+    private const val SCREEN_KEY_SEARCH = "search_screen"
 }
