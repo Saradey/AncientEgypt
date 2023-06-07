@@ -13,7 +13,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №7.1 */
+/**
+ * №7.1
+ * Doc: https://docs.google.com/document/d/1qxYmxOILt4kwwRenP4wSIjXQNup3CLXB9ir7XM3Hjr4/edit
+ * */
 @AndroidEntryPoint
 class AncientEgyptMapFragment : Fragment(R.layout.fragment_ancient_egypt_map) {
 

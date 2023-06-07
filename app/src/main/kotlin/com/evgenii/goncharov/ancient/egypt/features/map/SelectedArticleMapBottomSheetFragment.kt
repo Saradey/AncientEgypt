@@ -14,7 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №7.2 */
+/**
+ * №7.2
+ * Doc: https://docs.google.com/document/d/143lUGWeHghCzlz8Gzj9FeyFrKHh9z_rbn7I8LBia330/edit
+ * */
 @AndroidEntryPoint
 class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
     R.layout.bottom_sheet_selected_article
