@@ -1,11 +1,13 @@
-package com.evgenii.goncharov.ancient.egypt.features.settings
+package com.evgenii.goncharov.ancient.egypt.features.settings.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSettingsBinding
+import com.evgenii.goncharov.ancient.egypt.features.settings.view.models.SettingsViewModel
 
 /**
  * №5
@@ -13,6 +15,7 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSettingsBinding
  * */
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
+    private val viewModel: SettingsViewModel by viewModels()
     private val binding: FragmentSettingsBinding by viewBinding(FragmentSettingsBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
