@@ -34,6 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
