@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentAncientEgyptMapBinding
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule
+import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +17,7 @@ import javax.inject.Named
 @AndroidEntryPoint
 class AncientEgyptMapFragment : Fragment(R.layout.fragment_ancient_egypt_map) {
 
-    @Inject @Named(NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
+    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
     private val binding: FragmentAncientEgyptMapBinding by viewBinding(FragmentAncientEgyptMapBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

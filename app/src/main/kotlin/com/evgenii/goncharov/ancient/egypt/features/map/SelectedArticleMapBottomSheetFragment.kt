@@ -5,7 +5,7 @@ import android.view.View
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.BottomSheetSelectedArticleBinding
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule
+import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
 import com.github.terrakok.cicerone.Router
@@ -20,7 +20,7 @@ class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
     R.layout.bottom_sheet_selected_article
 ) {
 
-    @Inject @Named(NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
+    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
     private val binding: BottomSheetSelectedArticleBinding by viewBinding(BottomSheetSelectedArticleBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
