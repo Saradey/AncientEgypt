@@ -15,7 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №2.3 */
+/**
+ * №2.3
+ * Doc: https://docs.google.com/document/d/1ovoKNU7U52e7Xph28jqAQGzrN6XWRoWQxJZ7PLut1pE/edit
+ * */
 @AndroidEntryPoint
 class StoriesFragment : Fragment(R.layout.fragment_stories) {
 

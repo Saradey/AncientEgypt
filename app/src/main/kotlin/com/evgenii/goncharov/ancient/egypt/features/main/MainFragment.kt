@@ -17,7 +17,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №2.2 */
+/**
+ * №2.2
+ * Doc: https://docs.google.com/document/d/1R1-U1C_VLGf1kwnR2W7SJf_i0znYaJqmfNhZv0G8T5E/edit
+ * */
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 

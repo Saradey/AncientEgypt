@@ -29,7 +29,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №2.1 */
+/**
+ * №2.1
+ * Doc: https://docs.google.com/document/d/1OHlfzwDKKe0fmORtHqtLLVOBbz0xfnIC49F3zmDr2_c/edit
+ * */
 @AndroidEntryPoint
 class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
     SelectTabBottomMenuListener,

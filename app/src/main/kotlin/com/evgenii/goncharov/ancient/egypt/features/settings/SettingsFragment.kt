@@ -7,7 +7,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSettingsBinding
 
-/** №5 */
+/**
+ * №5
+ *
+ * */
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private val binding: FragmentSettingsBinding by viewBinding(FragmentSettingsBinding::bind)
