@@ -10,7 +10,7 @@ import javax.inject.Named
 
 @HiltViewModel
 class OnboardingViewModel @Inject constructor(
-    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private var activityRouter: Router
+    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router
 ) : ViewModel() {
 
     fun goToTheMainBottomMenu() {

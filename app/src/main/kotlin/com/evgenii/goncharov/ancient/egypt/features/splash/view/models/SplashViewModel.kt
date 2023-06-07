@@ -11,7 +11,7 @@ import javax.inject.Named
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private var activityRouter: Router
+    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router
 ) : ViewModel() {
 
     fun navigationToNext() {
