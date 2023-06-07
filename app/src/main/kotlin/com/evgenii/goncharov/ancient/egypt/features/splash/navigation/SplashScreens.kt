@@ -1,7 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.splash.navigation
 
-import com.evgenii.goncharov.ancient.egypt.features.splash.OnboardingFragment
-import com.evgenii.goncharov.ancient.egypt.features.splash.SplashFragment
+import com.evgenii.goncharov.ancient.egypt.features.splash.ui.OnboardingFragment
+import com.evgenii.goncharov.ancient.egypt.features.splash.ui.SplashFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object SplashScreens {
