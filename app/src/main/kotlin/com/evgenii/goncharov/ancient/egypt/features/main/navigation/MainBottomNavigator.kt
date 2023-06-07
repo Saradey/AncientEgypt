@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.R
+import com.evgenii.goncharov.ancient.egypt.base.BaseFragmentScreen
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SetVisibilityToBottomMenuToolbarListener
@@ -13,7 +14,6 @@ import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward
 import com.github.terrakok.cicerone.Router
-import com.github.terrakok.cicerone.androidx.FragmentScreen
 import java.util.Stack
 
 class MainBottomNavigator(
@@ -27,7 +27,7 @@ class MainBottomNavigator(
 ) {
 
     private val localBackStack: Stack<BackStackInfo> = Stack()
-    private var selectedBackStack: BackStackInfo = BackStackInfo("", 0)
+    private var selectedBackStack: BackStackInfo = BackStackInfo("", Stack())
     private val toolbarVisibilityManager = ToolbarVisibilityManager(setVisibilityToolbarListener)
 
     override fun applyCommand(command: Command) {
@@ -38,8 +38,8 @@ class MainBottomNavigator(
     }
 
     private fun forward(command: Forward) {
-        val fragmentScreen = command.screen as FragmentScreen
-        val backStackName = fragmentScreen.screenKey
+        val fragmentScreen = command.screen as BaseFragmentScreen
+        val backStackName = fragmentScreen.baskStackName
         when {
             backStackName == BACKSTACK_NAME_EVERYWHERE -> commitFragmentToCurrentStack(
                 fragmentScreen = fragmentScreen
@@ -50,13 +50,12 @@ class MainBottomNavigator(
             )
 
             selectedBackStack.backStackName != backStackName -> addedNewBackStack(
-                fragmentScreen,
-                backStackName
+                fragmentScreen, backStackName
             )
         }
     }
 
-    private fun addedNewBackStack(fragmentScreen: FragmentScreen, backStackName: String) {
+    private fun addedNewBackStack(fragmentScreen: BaseFragmentScreen, backStackName: String) {
         if (selectedBackStack.backStackName.isNotEmpty()) {
             fm.saveBackStack(selectedBackStack.backStackName)
         }
@@ -66,11 +65,11 @@ class MainBottomNavigator(
             replace(containerId, fragment, fragmentScreen.screenKey)
             addToBackStack(backStackName)
         }
-        selectedBackStack = BackStackInfo(
-            backStackName, FIRST_INDEX_FRAGMENT_TO_BACKSTACK
-        )
+        val backStackScreens = Stack<String>()
+        backStackScreens.add(fragmentScreen.screenKey)
+        selectedBackStack = BackStackInfo(backStackName, backStackScreens)
         localBackStack.push(selectedBackStack)
-        toolbarVisibilityManager.visibilityToolbarChange(backStackName)
+        toolbarVisibilityManager.visibilityToolbarChange(fragmentScreen.screenKey)
     }
 
     private fun restoreBackStack(backStackName: String) {
@@ -80,24 +79,24 @@ class MainBottomNavigator(
         fm.restoreBackStack(info?.backStackName ?: throw IllegalArgumentException())
         localBackStack.remove(info)
         localBackStack.push(info)
-        toolbarVisibilityManager.visibilityToolbarChange(backStackName)
+        toolbarVisibilityManager.visibilityToolbarChange(selectedBackStack.screensKey.peek())
     }
 
     private fun commitFragmentToCurrentStack(
-        fragmentScreen: FragmentScreen,
+        fragmentScreen: BaseFragmentScreen,
     ) {
         val fragment = fragmentScreen.createFragment(ff)
         fm.commit {
             setReorderingAllowed(true)
             replace(containerId, fragment, fragmentScreen.screenKey)
             addToBackStack(selectedBackStack.backStackName)
-            selectedBackStack.countBackStack++
+            selectedBackStack.screensKey.push(fragmentScreen.screenKey)
         }
     }
 
     private fun back() {
         when {
-            selectedBackStack.countBackStack > FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> popFragmentToCurrentBackStack()
+            selectedBackStack.screensKey.size > FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> popFragmentToCurrentBackStack()
 
             localBackStack.size <= FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> mainActivityRouter.exit()
 
@@ -107,8 +106,8 @@ class MainBottomNavigator(
 
     private fun popFragmentToCurrentBackStack() {
         fm.popBackStack()
-        selectedBackStack.countBackStack--
-        toolbarVisibilityManager.visibilityToolbarChange(selectedBackStack.backStackName)
+        val pushedScreenKey = selectedBackStack.screensKey.pop()
+        toolbarVisibilityManager.visibilityToolbarChange(pushedScreenKey)
     }
 
     private fun popCurrentBackStack() {
@@ -117,7 +116,8 @@ class MainBottomNavigator(
         selectedBackStack = localBackStack.peek()
         listener.selectTabBottomMenu(selectedBackStack.backStackName)
         fm.restoreBackStack(selectedBackStack.backStackName)
-        toolbarVisibilityManager.visibilityToolbarChange(selectedBackStack.backStackName)
+        val pushedScreenKey = selectedBackStack.screensKey.pop()
+        toolbarVisibilityManager.visibilityToolbarChange(pushedScreenKey)
     }
 
     companion object {
@@ -131,5 +131,5 @@ class MainBottomNavigator(
 }
 
 data class BackStackInfo(
-    val backStackName: String, var countBackStack: Int
+    val backStackName: String, val screensKey: Stack<String>
 )

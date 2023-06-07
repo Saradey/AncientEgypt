@@ -1,17 +1,17 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.utils
 
+import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens.SCREEN_KEY_ALL_ARTICLES
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SetVisibilityToBottomMenuToolbarListener
-import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_ALL
-import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_MAIN
+import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens.SCREEN_KEY_MAIN_MENU
 
 class ToolbarVisibilityManager(
     private val setVisibilityToolbarListener: SetVisibilityToBottomMenuToolbarListener
 ) {
 
-    fun visibilityToolbarChange(backStackName: String) {
-        when(backStackName) {
-            BACKSTACK_NAME_MAIN,
-            BACKSTACK_NAME_ALL -> setVisibilityToolbarListener.setVisibilityToolbar(true)
+    fun visibilityToolbarChange(screenKey: String) {
+        when(screenKey) {
+            SCREEN_KEY_MAIN_MENU,
+            SCREEN_KEY_ALL_ARTICLES -> setVisibilityToolbarListener.setVisibilityToolbar(true)
             else -> setVisibilityToolbarListener.setVisibilityToolbar(false)
         }
     }

@@ -12,7 +12,7 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 object MainScreens {
 
     fun startMainBottomMenu() = object : FragmentScreen {
-        override val screenKey: String = BACKSTACK_NAME_BOTTOM_MENU
+        override val screenKey: String = SCREEN_KEY_BOTTOM_MENU
         override fun createFragment(factory: FragmentFactory): Fragment {
             return MainBottomMenuFragment.newInstance()
         }
@@ -31,6 +31,6 @@ object MainScreens {
         }
     }
 
-    private const val BACKSTACK_NAME_BOTTOM_MENU = "bottomMenu"
+    private const val SCREEN_KEY_BOTTOM_MENU = "bottomMenu"
     const val SCREEN_KEY_MAIN_MENU = "main_menu_screen"
 }
