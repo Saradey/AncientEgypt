@@ -1,6 +1,7 @@
 [versions]
 #https://square.github.io/leakcanary/getting_started/
 leakCanaryVersion = "2.11"
+#https://github.com/ChuckerTeam/chucker
 chuckerVersion = "3.5.2"
 
 [libraries]
