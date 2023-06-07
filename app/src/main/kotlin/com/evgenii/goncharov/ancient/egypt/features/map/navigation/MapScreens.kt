@@ -7,17 +7,17 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object MapScreens {
 
-    fun startAncientEgyptMapAllObjects() = FragmentScreen {
+    fun startAncientEgyptMapAllObjects() = FragmentScreen { _ ->
         AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = false)
     }
 
-    fun startAncientEgyptMapAndArticle() = FragmentScreen {
+    fun startAncientEgyptMapAndArticle() = FragmentScreen { _ ->
         AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = true)
     }
 
     fun startSelectedBottomSheetArticle() = FragmentScreen(
         key = SCREEN_KEY_SELECTED_BOTTOM_SHEET_ARTICLE
-    ) {
+    ) { _ ->
         SelectedArticleMapBottomSheetFragment.newInstance()
     }
 }

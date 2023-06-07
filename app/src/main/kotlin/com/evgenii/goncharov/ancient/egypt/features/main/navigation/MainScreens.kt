@@ -11,7 +11,7 @@ object MainScreens {
 
     fun startMainBottomMenu() = FragmentScreen(
         key = SCREEN_KEY_BOTTOM_MENU
-    ) {
+    ) { _ ->
         MainBottomMenuFragment.newInstance()
     }
 
@@ -22,7 +22,7 @@ object MainScreens {
         MainFragment.newInstance()
     }
 
-    fun startStories() = FragmentScreen{
+    fun startStories() = FragmentScreen{ _ ->
         StoriesFragment.newInstance()
     }
 
