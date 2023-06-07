@@ -41,13 +41,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
     @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
     private val binding: FragmentMainBottomMenuBinding by viewBinding(FragmentMainBottomMenuBinding::bind)
     private val navigator: MainBottomNavigator by lazy {
-        MainBottomNavigator(
-            childFragmentManager,
-            childFragmentManager.fragmentFactory,
-            this,
-            mainActivityRouter,
-            this
-        )
+        MainBottomNavigator(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

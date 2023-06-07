@@ -1,14 +1,12 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.navigation
 
-import androidx.fragment.app.FragmentFactory
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseFragmentScreen
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
+import com.evgenii.goncharov.ancient.egypt.features.main.MainBottomMenuFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
-import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SetVisibilityToBottomMenuToolbarListener
 import com.evgenii.goncharov.ancient.egypt.features.main.utils.ToolbarVisibilityManager
 import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
@@ -17,18 +15,18 @@ import com.github.terrakok.cicerone.Router
 import java.util.Stack
 
 class MainBottomNavigator(
-    fragmentManager: FragmentManager,
-    fragmentFactory: FragmentFactory,
-    private val listener: SelectTabBottomMenuListener,
-    private val mainActivityRouter: Router,
-    setVisibilityToolbarListener: SetVisibilityToBottomMenuToolbarListener
+    mainBottomMenuFragment: MainBottomMenuFragment,
 ) : BaseNavigator(
-    fm = fragmentManager, ff = fragmentFactory, containerId = R.id.fcv_nested_container_bottom_menu
+    fm = mainBottomMenuFragment.childFragmentManager,
+    ff = mainBottomMenuFragment.childFragmentManager.fragmentFactory,
+    containerId = R.id.fcv_nested_container_bottom_menu
 ) {
 
     private val localBackStack: Stack<BackStackInfo> = Stack()
     private var selectedBackStack: BackStackInfo = BackStackInfo("", Stack())
-    private val toolbarVisibilityManager = ToolbarVisibilityManager(setVisibilityToolbarListener)
+    private val toolbarVisibilityManager = ToolbarVisibilityManager(mainBottomMenuFragment)
+    private val listener: SelectTabBottomMenuListener = mainBottomMenuFragment
+    private val mainActivityRouter: Router = mainBottomMenuFragment.mainActivityRouter
 
     override fun applyCommand(command: Command) {
         when (command) {
