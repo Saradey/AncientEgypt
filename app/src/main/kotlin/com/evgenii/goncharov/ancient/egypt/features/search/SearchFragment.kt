@@ -15,7 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
 
-/** №3 */
+/**
+ * №3
+ * Doc: https://docs.google.com/document/d/1ts5R-XO3gCcr-_6CGfXUvGNQX6AKPv_WBIPwvN2U4YU/edit
+ * */
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
