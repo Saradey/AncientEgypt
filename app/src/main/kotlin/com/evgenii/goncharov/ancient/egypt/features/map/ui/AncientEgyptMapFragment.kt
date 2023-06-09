@@ -42,6 +42,10 @@ class AncientEgyptMapFragment : Fragment(R.layout.fragment_ancient_egypt_map) {
         btnNext1.setOnClickListener {
             viewModel.goToTheSelectedArticle()
         }
+        val isOpenArticle = arguments?.getBoolean(OPEN_ARTICLE_BOTTOM_SHEET_KEY, false) ?: false
+        if(isOpenArticle) {
+            title.text = "${title.text} Single object"
+        }
     }
 
     companion object {
