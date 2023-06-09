@@ -10,7 +10,7 @@ import dagger.assisted.AssistedInject
 import javax.inject.Named
 
 class AncientEgyptMapViewModel @AssistedInject constructor(
-    @Assisted private val openArticle: Boolean,
+    @Assisted("openArticle") private val openArticle: Boolean,
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router
 ) : ViewModel() {
 
@@ -30,7 +30,7 @@ class AncientEgyptMapViewModel @AssistedInject constructor(
     interface Factory {
 
         fun create(
-            @Assisted openArticle: Boolean
+            @Assisted("openArticle") openArticle: Boolean
         ): AncientEgyptMapViewModel
     }
 }
