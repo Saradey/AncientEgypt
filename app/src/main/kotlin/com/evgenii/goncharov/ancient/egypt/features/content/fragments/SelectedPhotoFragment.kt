@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.content.ui
+package com.evgenii.goncharov.ancient.egypt.features.content.fragments
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels

@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.splash.ui
+package com.evgenii.goncharov.ancient.egypt.features.splash.fragments
 
 import android.os.Bundle
 import android.view.View

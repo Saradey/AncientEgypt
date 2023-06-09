@@ -5,7 +5,7 @@ import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.MainActivity
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
-import com.evgenii.goncharov.ancient.egypt.features.map.ui.SelectedArticleMapBottomSheetFragment
+import com.evgenii.goncharov.ancient.egypt.features.map.fragments.SelectedArticleMapBottomSheetFragment
 import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward

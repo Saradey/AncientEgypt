@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.search.ui
+package com.evgenii.goncharov.ancient.egypt.features.search
 
 import android.os.Bundle
 import android.view.View

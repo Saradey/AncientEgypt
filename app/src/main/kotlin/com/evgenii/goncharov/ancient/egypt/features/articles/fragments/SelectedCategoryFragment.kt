@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.articles.ui
+package com.evgenii.goncharov.ancient.egypt.features.articles.fragments
 
 import android.os.Bundle
 import android.view.View

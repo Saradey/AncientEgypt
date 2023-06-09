@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.map.ui
+package com.evgenii.goncharov.ancient.egypt.features.map.fragments
 
 import android.os.Bundle
 import android.view.View
