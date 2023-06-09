@@ -46,9 +46,18 @@
         android:id="@+id/btn_next4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go To The Map"
+        android:text="Go To The Map All Objects"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_next3" />
+
+    <Button
+        android:id="@+id/btn_next5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go To The Map Selected Article"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_next4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

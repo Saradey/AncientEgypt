@@ -36,7 +36,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             viewModel.goToTheSelectedArticle()
         }
         btnNext4.setOnClickListener {
-            viewModel.goToTheMap()
+            viewModel.goToTheMapAllObjects()
         }
     }
 

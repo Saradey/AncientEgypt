@@ -30,11 +30,12 @@ class MainViewModel @Inject constructor(
         activityRouter.navigateTo(ContentScreens.startSelectedArticle())
     }
 
-    fun goToTheMap() {
-        if (true) {
-            activityRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
-        } else {
-            activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
-        }
+    fun goToTheMapAllObjects() {
+        activityRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
+//        if (true) {
+//            activityRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
+//        } else {
+//            activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
+//        }
     }
 }
