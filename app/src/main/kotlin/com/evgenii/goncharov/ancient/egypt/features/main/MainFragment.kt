@@ -38,6 +38,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         btnNext4.setOnClickListener {
             viewModel.goToTheMapAllObjects()
         }
+        btnNext5.setOnClickListener {
+            viewModel.goToTheMapSelectedArticle()
+        }
     }
 
     companion object {

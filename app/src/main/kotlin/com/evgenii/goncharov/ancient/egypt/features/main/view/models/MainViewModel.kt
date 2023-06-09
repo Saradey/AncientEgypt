@@ -32,10 +32,9 @@ class MainViewModel @Inject constructor(
 
     fun goToTheMapAllObjects() {
         activityRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
-//        if (true) {
-//            activityRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
-//        } else {
-//            activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
-//        }
+    }
+
+    fun goToTheMapSelectedArticle() {
+        activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
     }
 }
