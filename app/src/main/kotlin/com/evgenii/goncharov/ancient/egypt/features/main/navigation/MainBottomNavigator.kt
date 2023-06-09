@@ -5,6 +5,7 @@ import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseFragmentScreen
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
+import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.main.MainBottomMenuFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
 import com.evgenii.goncharov.ancient.egypt.features.main.utils.ToolbarVisibilityManager
@@ -12,10 +13,15 @@ import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward
 import com.github.terrakok.cicerone.Router
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import java.util.Stack
+import javax.inject.Named
 
-class MainBottomNavigator(
-    mainBottomMenuFragment: MainBottomMenuFragment,
+class MainBottomNavigator @AssistedInject constructor(
+    @Assisted("mainBottomMenuFragment") mainBottomMenuFragment: MainBottomMenuFragment,
+    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
 ) : BaseNavigator(
     fm = mainBottomMenuFragment.childFragmentManager,
     ff = mainBottomMenuFragment.childFragmentManager.fragmentFactory,
@@ -26,7 +32,6 @@ class MainBottomNavigator(
     private var selectedBackStack: BackStackInfo = BackStackInfo("", Stack())
     private val toolbarVisibilityManager = ToolbarVisibilityManager(mainBottomMenuFragment)
     private val listener: SelectTabBottomMenuListener = mainBottomMenuFragment
-    private val mainActivityRouter: Router = mainBottomMenuFragment.mainActivityRouter
 
     override fun applyCommand(command: Command) {
         when (command) {
@@ -97,7 +102,7 @@ class MainBottomNavigator(
         when {
             selectedBackStack.screensKey.size > FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> popFragmentToCurrentBackStack()
 
-            localBackStack.size <= FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> mainActivityRouter.exit()
+            localBackStack.size <= FIRST_INDEX_FRAGMENT_TO_BACKSTACK -> activityRouter.exit()
 
             else -> popCurrentBackStack()
         }
@@ -117,6 +122,14 @@ class MainBottomNavigator(
         fm.restoreBackStack(selectedBackStack.backStackName)
         val pushedScreenKey = selectedBackStack.screensKey.peek()
         toolbarVisibilityManager.visibilityToolbarChange(pushedScreenKey)
+    }
+
+    @AssistedFactory
+    interface Factory {
+
+        fun create(
+            @Assisted("mainBottomMenuFragment") mainBottomMenuFragment: MainBottomMenuFragment
+        ): MainBottomNavigator
     }
 
     companion object {

@@ -6,12 +6,11 @@ import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBottomMenuBinding
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SetVisibilityToBottomMenuToolbarListener
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator
@@ -19,12 +18,9 @@ import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNa
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_FAVORITE
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_MAIN
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_SETTINGS
-import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.OnBackPressedBottomMenuManager
-import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
-import com.evgenii.goncharov.ancient.egypt.features.settings.navigation.SettingsScreens
+import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainBottomMenuViewModel
 import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
@@ -38,18 +34,18 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
     SelectTabBottomMenuListener,
     SetVisibilityToBottomMenuToolbarListener {
 
-    @Inject @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) lateinit var router: Router
+    private val viewModel: MainBottomMenuViewModel by viewModels()
     @Inject @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) lateinit var navigatorHolder: NavigatorHolder
     @Inject lateinit var onBackPressed: OnBackPressedBottomMenuManager
-    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
+    @Inject lateinit var factoryBottomNavigator: MainBottomNavigator.Factory
     private val binding: FragmentMainBottomMenuBinding by viewBinding(FragmentMainBottomMenuBinding::bind)
     private val navigator: MainBottomNavigator by lazy {
-        MainBottomNavigator(this)
+        factoryBottomNavigator.create(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        savedInstanceState ?: router.navigateTo(MainScreens.startMain())
+        savedInstanceState ?: viewModel.goToTheMain()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,17 +88,17 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
     private fun itemBottomMenuClickListener(item: MenuItem): Boolean {
         if (item.itemId != binding.bnvMenu.selectedItemId) {
             when (item.itemId) {
-                R.id.main -> router.navigateTo(MainScreens.startMain())
-                R.id.all -> router.navigateTo(ArticlesScreens.startAllArticles())
-                R.id.favourite -> router.navigateTo(ArticlesScreens.startFavoriteArticles())
-                R.id.settings -> router.navigateTo(SettingsScreens.startSettings())
+                R.id.main -> viewModel.goToTheMain()
+                R.id.all -> viewModel.goToTheAllArticles()
+                R.id.favourite -> viewModel.goToTheFavoriteArticles()
+                R.id.settings -> viewModel.goToTheSettings()
             }
         }
         return true
     }
 
     private fun toolbarNavigationOnClickListener(view: View) {
-        router.navigateTo(SearchScreens.startSearch())
+        viewModel.goToTheSearch()
         binding.toolbar.isGone = true
     }
 
