@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSearchBinding
-import com.evgenii.goncharov.ancient.egypt.features.search.view.models.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

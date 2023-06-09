@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.settings.view.models
+package com.evgenii.goncharov.ancient.egypt.features.settings
 
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject

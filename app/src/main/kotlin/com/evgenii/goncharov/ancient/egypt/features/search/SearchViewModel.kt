@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.search.view.models
+package com.evgenii.goncharov.ancient.egypt.features.search
 
 import androidx.lifecycle.ViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
