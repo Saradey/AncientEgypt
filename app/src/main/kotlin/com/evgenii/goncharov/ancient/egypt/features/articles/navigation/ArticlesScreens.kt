@@ -1,9 +1,9 @@
 package com.evgenii.goncharov.ancient.egypt.features.articles.navigation
 
 import com.evgenii.goncharov.ancient.egypt.base.BaseFragmentScreen
-import com.evgenii.goncharov.ancient.egypt.features.articles.AllArticlesFragment
-import com.evgenii.goncharov.ancient.egypt.features.articles.FavoriteArticlesFragment
-import com.evgenii.goncharov.ancient.egypt.features.articles.SelectedCategoryFragment
+import com.evgenii.goncharov.ancient.egypt.features.articles.ui.AllArticlesFragment
+import com.evgenii.goncharov.ancient.egypt.features.articles.ui.FavoriteArticlesFragment
+import com.evgenii.goncharov.ancient.egypt.features.articles.ui.SelectedCategoryFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_ALL
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_EVERYWHERE
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_FAVORITE
