@@ -1,0 +1,18 @@
+package com.evgenii.goncharov.ancient.egypt.di
+
+import com.evgenii.goncharov.ancient.egypt.repositories.OnboardingRepository
+import com.evgenii.goncharov.ancient.egypt.repositories.impl.OnboardingRepositoryImpl
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+interface RepositoriesBindsModule {
+
+    @Binds
+    @Singleton
+    fun OnboardingRepositoryImpl.bindOnboardingRepository(): OnboardingRepository
+}
