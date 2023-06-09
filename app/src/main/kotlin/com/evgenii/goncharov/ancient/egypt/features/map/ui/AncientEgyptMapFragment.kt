@@ -1,17 +1,16 @@
-package com.evgenii.goncharov.ancient.egypt.features.map
+package com.evgenii.goncharov.ancient.egypt.features.map.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
+import com.evgenii.goncharov.ancient.egypt.common.MultiViewModelFactory
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentAncientEgyptMapBinding
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
-import com.github.terrakok.cicerone.Router
+import com.evgenii.goncharov.ancient.egypt.features.map.view.models.AncientEgyptMapViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * №7.1
@@ -20,8 +19,15 @@ import javax.inject.Named
 @AndroidEntryPoint
 class AncientEgyptMapFragment : Fragment(R.layout.fragment_ancient_egypt_map) {
 
-    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
+    @Inject lateinit var factory: AncientEgyptMapViewModel.Factory
     private val binding: FragmentAncientEgyptMapBinding by viewBinding(FragmentAncientEgyptMapBinding::bind)
+    private val viewModel: AncientEgyptMapViewModel by viewModels {
+        MultiViewModelFactory {
+            factory.create(
+                arguments?.getBoolean(OPEN_ARTICLE_BOTTOM_SHEET_KEY, false) ?: false
+            )
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initStateMap()
@@ -29,23 +35,13 @@ class AncientEgyptMapFragment : Fragment(R.layout.fragment_ancient_egypt_map) {
     }
 
     private fun initStateMap() {
-        val openArticleToBottomSheet =
-            arguments?.getBoolean(OPEN_ARTICLE_BOTTOM_SHEET_KEY, false) ?: false
-        if(openArticleToBottomSheet) {
-            startArticleBottomSheet()
-        } else {
-            //TODO logic all objects to map
-        }
+        viewModel.initStateMap()
     }
 
     private fun FragmentAncientEgyptMapBinding.initUi() {
         btnNext1.setOnClickListener {
-            mainActivityRouter.navigateTo(MapScreens.startSelectedBottomSheetArticle())
+            viewModel.goToTheSelectedArticle()
         }
-    }
-
-    private fun startArticleBottomSheet() {
-        mainActivityRouter.navigateTo(MapScreens.startSelectedBottomSheetArticle())
     }
 
     companion object {

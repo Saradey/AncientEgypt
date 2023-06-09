@@ -1,7 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.map.navigation
 
-import com.evgenii.goncharov.ancient.egypt.features.map.AncientEgyptMapFragment
-import com.evgenii.goncharov.ancient.egypt.features.map.SelectedArticleMapBottomSheetFragment
+import com.evgenii.goncharov.ancient.egypt.features.map.ui.AncientEgyptMapFragment
+import com.evgenii.goncharov.ancient.egypt.features.map.ui.SelectedArticleMapBottomSheetFragment
 import com.evgenii.goncharov.ancient.egypt.navigation.MainActivityNavigator.Companion.SCREEN_KEY_SELECTED_BOTTOM_SHEET_ARTICLE
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
