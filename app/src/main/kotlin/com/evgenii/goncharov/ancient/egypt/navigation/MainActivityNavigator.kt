@@ -2,7 +2,7 @@ package com.evgenii.goncharov.ancient.egypt.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import com.evgenii.goncharov.ancient.egypt.MainActivity
+import com.evgenii.goncharov.ancient.egypt.core.MainActivity
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
 import com.evgenii.goncharov.ancient.egypt.features.map.ui.SelectedArticleMapBottomSheetFragment
