@@ -3,17 +3,12 @@ package com.evgenii.goncharov.ancient.egypt.features.content.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSelectedArticleBinding
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
-import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
-import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
-import com.github.terrakok.cicerone.Router
+import com.evgenii.goncharov.ancient.egypt.features.content.view.models.SelectedArticleViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * №6.1
@@ -22,7 +17,7 @@ import javax.inject.Named
 @AndroidEntryPoint
 class SelectedArticleFragment : Fragment(R.layout.fragment_selected_article) {
 
-    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
+    private val viewModel: SelectedArticleViewModel by viewModels()
     private val binding: FragmentSelectedArticleBinding by viewBinding(FragmentSelectedArticleBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,16 +27,16 @@ class SelectedArticleFragment : Fragment(R.layout.fragment_selected_article) {
 
     private fun FragmentSelectedArticleBinding.initUi() {
         btnNext1.setOnClickListener {
-            mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
+            viewModel.goToTheSelectedArticle()
         }
         btnNext2.setOnClickListener {
-            mainActivityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
+            viewModel.goToTheAncientEgyptMapAndArticle()
         }
         btnNext3.setOnClickListener {
-            mainActivityRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+            viewModel.goToTheSelectedCategory()
         }
         btnNext4.setOnClickListener {
-            mainActivityRouter.navigateTo(ContentScreens.startSelectedPhoto())
+            viewModel.goToTheSelectedPhoto()
         }
     }
 
