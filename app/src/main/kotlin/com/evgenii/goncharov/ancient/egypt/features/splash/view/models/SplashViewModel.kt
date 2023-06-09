@@ -5,6 +5,8 @@ import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVIT
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScreens
 import com.evgenii.goncharov.ancient.egypt.repositories.OnboardingRepository
+import com.evgenii.goncharov.ancient.egypt.repositories.utils.isStartBottomMenu
+import com.evgenii.goncharov.ancient.egypt.repositories.utils.isStartOnboarding
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -17,18 +19,9 @@ class SplashViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun navigationToNext() {
-        if (false) {
-            goToTheMainBottomMenu()
-        } else {
-            goToTheOnboarding()
+        when {
+            onboardingRepository.isStartOnboarding() -> activityRouter.replaceScreen(SplashScreens.startOnboarding())
+            onboardingRepository.isStartBottomMenu() -> activityRouter.replaceScreen(MainScreens.startMainBottomMenu())
         }
-    }
-
-    private fun goToTheMainBottomMenu() {
-        activityRouter.replaceScreen(MainScreens.startMainBottomMenu())
-    }
-
-    private fun goToTheOnboarding() {
-        activityRouter.replaceScreen(SplashScreens.startOnboarding())
     }
 }
