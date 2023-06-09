@@ -15,6 +15,13 @@ class OnboardingRepositoryImpl @Inject constructor(
         return pref.getBoolean(KEY_IS_FIRST_START_ONBOARDING, true)
     }
 
+    override fun onboardingFinish() {
+        val pref = appContext.getSharedPreferences(PREF_ONBOARDING_INFO, MODE_PRIVATE)
+        val edit = pref.edit()
+        edit.putBoolean(KEY_IS_FIRST_START_ONBOARDING, false)
+        edit.apply()
+    }
+
     companion object {
         private const val PREF_ONBOARDING_INFO = "PREF_ONBOARDING_INFO"
         private const val KEY_IS_FIRST_START_ONBOARDING = "KEY_IS_FIRST_START_ONBOARDING"
