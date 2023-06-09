@@ -3,19 +3,12 @@ package com.evgenii.goncharov.ancient.egypt.features.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
-import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
-import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
-import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
-import com.github.terrakok.cicerone.Router
+import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * №2.2
@@ -24,8 +17,7 @@ import javax.inject.Named
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    @Inject @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) lateinit var router: Router
-    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
+    private val viewModel: MainViewModel by viewModels()
     private val binding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,20 +27,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun FragmentMainBinding.initUi() {
         title.text = "${binding.title.text} ${toString()}"
         btnNext1.setOnClickListener {
-            mainActivityRouter.navigateTo(MainScreens.startStories())
+            viewModel.goToTheStories()
         }
         btnNext2.setOnClickListener {
-            router.navigateTo(ArticlesScreens.startSelectedCategory())
+            viewModel.goToTheSelectedCategory()
         }
         btnNext3.setOnClickListener {
-            mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
+            viewModel.goToTheSelectedArticle()
         }
         btnNext4.setOnClickListener {
-            if (true) {
-                mainActivityRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
-            } else {
-                mainActivityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
-            }
+            viewModel.goToTheMap()
         }
     }
 
