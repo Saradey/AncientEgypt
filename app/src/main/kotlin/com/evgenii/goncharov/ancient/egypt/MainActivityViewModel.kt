@@ -1,12 +1,11 @@
 package com.evgenii.goncharov.ancient.egypt
 
+import android.os.Build
 import androidx.lifecycle.ViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScreens
 import com.evgenii.goncharov.ancient.egypt.repositories.OnboardingRepository
-import com.evgenii.goncharov.ancient.egypt.repositories.utils.isStartBottomMenu
-import com.evgenii.goncharov.ancient.egypt.repositories.utils.isStartOnboarding
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -20,9 +19,17 @@ class MainActivityViewModel @Inject constructor(
 
     fun startFirstScreen() {
         when {
-            onboardingRepository.isStartOnboarding() -> activityRouter.navigateTo(SplashScreens.startOnboarding())
-            onboardingRepository.isStartBottomMenu() -> activityRouter.navigateTo(MainScreens.startMainBottomMenu())
+            isStartOnboarding() -> activityRouter.navigateTo(SplashScreens.startOnboarding())
+            isStartBottomMenu() -> activityRouter.navigateTo(MainScreens.startMainBottomMenu())
             else -> activityRouter.navigateTo(SplashScreens.startSplash())
         }
+    }
+
+    private fun isStartOnboarding(): Boolean {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && onboardingRepository.isFirstStartOnboarding()
+    }
+
+    private fun isStartBottomMenu(): Boolean {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !onboardingRepository.isFirstStartOnboarding()
     }
 }
