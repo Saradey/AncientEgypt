@@ -1,7 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.contents.navigation
 
-import com.evgenii.goncharov.ancient.egypt.features.contents.SelectedArticleFragment
-import com.evgenii.goncharov.ancient.egypt.features.contents.SelectedPhotoFragment
+import com.evgenii.goncharov.ancient.egypt.features.contents.ui.SelectedArticleFragment
+import com.evgenii.goncharov.ancient.egypt.features.contents.ui.SelectedPhotoFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object ContentScreens {
