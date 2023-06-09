@@ -1,16 +1,13 @@
-package com.evgenii.goncharov.ancient.egypt.core
+package com.evgenii.goncharov.ancient.egypt
 
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.evgenii.goncharov.ancient.egypt.R
+import androidx.activity.viewModels
+import com.evgenii.goncharov.ancient.egypt.core.MainActivityViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
-import com.evgenii.goncharov.ancient.egypt.features.splash.navigation.SplashScreens
 import com.evgenii.goncharov.ancient.egypt.navigation.MainActivityNavigator
 import com.evgenii.goncharov.ancient.egypt.navigation.OnBackPressedActivityManager
 import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import javax.inject.Named
@@ -18,8 +15,8 @@ import javax.inject.Named
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel: MainActivityViewModel by viewModels()
     @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var navigatorHolder: NavigatorHolder
-    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var router: Router
     @Inject lateinit var onBackPressed: OnBackPressedActivityManager
     private val navigator = MainActivityNavigator(this)
 
@@ -27,15 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         onBackPressedDispatcher.addCallback(this, onBackPressed)
-        savedInstanceState ?: if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (false) {
-                router.navigateTo(MainScreens.startMainBottomMenu())
-            } else {
-                router.navigateTo(SplashScreens.startOnboarding())
-            }
-        } else {
-            router.navigateTo(SplashScreens.startSplash())
-        }
+        savedInstanceState ?: viewModel.startFirstScreen()
     }
 
     override fun onResumeFragments() {
