@@ -1,7 +1,9 @@
 package com.evgenii.goncharov.ancient.egypt.features.content.ui
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.evgenii.goncharov.ancient.egypt.R
+import com.evgenii.goncharov.ancient.egypt.features.content.view.models.SelectedPhotoViewModel
 
 /**
  * №6.2
@@ -9,6 +11,7 @@ import com.evgenii.goncharov.ancient.egypt.R
  * */
 class SelectedPhotoFragment : Fragment(R.layout.fragment_selected_photo) {
 
+    private val viewModel: SelectedPhotoViewModel by viewModels()
 
     companion object {
 
