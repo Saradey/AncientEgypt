@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.core
+package com.evgenii.goncharov.ancient.egypt
 
 import android.os.Build
 import androidx.lifecycle.ViewModel

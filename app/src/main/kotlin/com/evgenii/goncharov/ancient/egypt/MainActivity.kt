@@ -3,7 +3,6 @@ package com.evgenii.goncharov.ancient.egypt
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.evgenii.goncharov.ancient.egypt.core.MainActivityViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.navigation.MainActivityNavigator
 import com.evgenii.goncharov.ancient.egypt.navigation.OnBackPressedActivityManager
