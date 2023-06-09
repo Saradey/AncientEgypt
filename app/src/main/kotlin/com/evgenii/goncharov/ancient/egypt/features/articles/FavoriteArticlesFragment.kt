@@ -9,7 +9,7 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentFavoriteArticlesB
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
-import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
+import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

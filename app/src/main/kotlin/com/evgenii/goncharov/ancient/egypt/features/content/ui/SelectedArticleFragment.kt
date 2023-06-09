@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.contents.ui
+package com.evgenii.goncharov.ancient.egypt.features.content.ui
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,7 @@ import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSelectedArticleBinding
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
-import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
+import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
