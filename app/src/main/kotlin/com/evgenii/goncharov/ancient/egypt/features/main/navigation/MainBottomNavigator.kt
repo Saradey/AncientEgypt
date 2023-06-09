@@ -6,7 +6,7 @@ import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.BaseFragmentScreen
 import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.features.main.MainBottomMenuFragment
+import com.evgenii.goncharov.ancient.egypt.features.main.fragments.MainBottomMenuFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
 import com.evgenii.goncharov.ancient.egypt.features.main.utils.ToolbarVisibilityManager
 import com.github.terrakok.cicerone.Back

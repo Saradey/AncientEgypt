@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.main
+package com.evgenii.goncharov.ancient.egypt.features.main.fragments
 
 import android.os.Bundle
 import android.view.MenuItem
