@@ -3,17 +3,12 @@ package com.evgenii.goncharov.ancient.egypt.features.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentStoriesBinding
-import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
-import com.evgenii.goncharov.ancient.egypt.features.contents.navigation.ContentScreens
-import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
-import com.github.terrakok.cicerone.Router
+import com.evgenii.goncharov.ancient.egypt.features.main.view.models.StoriesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * №2.3
@@ -22,7 +17,7 @@ import javax.inject.Named
 @AndroidEntryPoint
 class StoriesFragment : Fragment(R.layout.fragment_stories) {
 
-    @Inject @Named(QUALIFIER_ACTIVITY_NAVIGATION) lateinit var mainActivityRouter: Router
+    private val viewModel: StoriesViewModel by viewModels()
     private val binding: FragmentStoriesBinding by viewBinding(FragmentStoriesBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,13 +26,13 @@ class StoriesFragment : Fragment(R.layout.fragment_stories) {
 
     private fun FragmentStoriesBinding.initUi() {
         btnNext1.setOnClickListener {
-            mainActivityRouter.navigateTo(ContentScreens.startSelectedArticle())
+            viewModel.goToTheeSelectedArticle()
         }
         btnNext2.setOnClickListener {
-            mainActivityRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+            viewModel.goToTheSelectedCategory()
         }
         btnNext3.setOnClickListener {
-            mainActivityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
+            viewModel.goToTheMapAndArticle()
         }
     }
 
