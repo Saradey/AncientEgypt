@@ -5,6 +5,10 @@ import javax.inject.Inject
 
 class OnboardingRepositoryImpl @Inject constructor() : OnboardingRepository {
 
+    override fun isFirstStartOnboarding(): Boolean {
+        return false
+    }
+
     companion object {
 
     }

@@ -18,6 +18,10 @@ class MainActivityViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun startFirstScreen() {
+        when {
+            isStartOnboarding() -> activityRouter.navigateTo(SplashScreens.startOnboarding())
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if (onboardingRepository.isFirstStartOnboarding()) {
                 activityRouter.navigateTo(MainScreens.startMainBottomMenu())
@@ -27,5 +31,9 @@ class MainActivityViewModel @Inject constructor(
         } else {
             activityRouter.navigateTo(SplashScreens.startSplash())
         }
+    }
+
+    private fun isStartOnboarding(): Boolean {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && onboardingRepository.isFirstStartOnboarding()
     }
 }
