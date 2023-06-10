@@ -27,6 +27,7 @@ class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
     }
 
     private fun BottomSheetSelectedArticleBinding.initUi() {
+        title.text = "${binding.title.text} ${toString()}"
         btnNext1.setOnClickListener {
             viewModel.goToTheSelectedCategory()
             dismiss()
