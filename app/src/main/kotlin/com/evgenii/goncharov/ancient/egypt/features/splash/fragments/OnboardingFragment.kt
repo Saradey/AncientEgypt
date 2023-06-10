@@ -21,7 +21,12 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     private val binding: FragmentOnboardingBinding by viewBinding(FragmentOnboardingBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.btnNext.setOnClickListener {
+        binding.initUi()
+    }
+
+    private fun FragmentOnboardingBinding.initUi() {
+        title.text = "${binding.title.text} ${toString()}"
+        btnNext.setOnClickListener {
             viewModel.goToTheMainBottomMenu()
         }
     }
