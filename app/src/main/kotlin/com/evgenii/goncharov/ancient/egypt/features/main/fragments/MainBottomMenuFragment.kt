@@ -83,6 +83,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
     private fun FragmentMainBottomMenuBinding.initUi() {
         bnvMenu.setOnItemSelectedListener(::itemBottomMenuClickListener)
         toolbar.setNavigationOnClickListener(::toolbarNavigationOnClickListener)
+        toolbar.title = Integer.toHexString(System.identityHashCode(this@MainBottomMenuFragment.toString()))
     }
 
     private fun itemBottomMenuClickListener(item: MenuItem): Boolean {

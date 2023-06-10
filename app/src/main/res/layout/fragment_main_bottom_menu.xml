@@ -11,8 +11,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_search_24"
-        app:title="Go to The Search" />
+        app:navigationIcon="@drawable/ic_search_24" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_nested_container_bottom_menu"
