@@ -24,6 +24,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun FragmentSearchBinding.initUi() {
+        title.text = "${binding.title.text} ${toString()}"
         btnNext1.setOnClickListener {
             viewModel.goToTheSelectedCategory()
         }
