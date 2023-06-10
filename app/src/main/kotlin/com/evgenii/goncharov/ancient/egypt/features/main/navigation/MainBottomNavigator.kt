@@ -124,6 +124,13 @@ class MainBottomNavigator @AssistedInject constructor(
         toolbarVisibilityManager.visibilityToolbarChange(pushedScreenKey)
     }
 
+    fun checkToolbarStatus() {
+        if(selectedBackStack.screensKey.isNotEmpty()) {
+            val currentScreen = selectedBackStack.screensKey.peek()
+            toolbarVisibilityManager.visibilityToolbarChange(currentScreen)
+        }
+    }
+
     @AssistedFactory
     interface Factory {
 

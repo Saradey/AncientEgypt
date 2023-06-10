@@ -56,6 +56,7 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
     override fun onResume() {
         super.onResume()
         navigatorHolder.setNavigator(navigator)
+        navigator.checkToolbarStatus()
     }
 
     override fun onPause() {
