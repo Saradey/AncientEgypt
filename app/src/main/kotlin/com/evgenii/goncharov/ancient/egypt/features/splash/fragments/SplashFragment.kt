@@ -25,6 +25,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     }
 
     private fun FragmentSplashBinding.initUi() {
+        title.text = "${binding.title.text} ${toString()}"
         btnNext.setOnClickListener {
             viewModel.navigationToNext()
         }
