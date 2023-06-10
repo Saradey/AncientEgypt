@@ -21,11 +21,11 @@ class AllArticlesFragment : Fragment(R.layout.fragment_all_articles) {
     private val binding: FragmentAllArticlesBinding by viewBinding(FragmentAllArticlesBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.title.text = "${binding.title.text} ${toString()}"
         binding.initUi()
     }
 
     private fun FragmentAllArticlesBinding.initUi() {
+        title.text = "${binding.title.text} ${toString()}"
         btnNext1.setOnClickListener {
             viewModel.goToTheSelectedCategory()
         }

@@ -22,10 +22,10 @@ class FavoriteArticlesFragment : Fragment(R.layout.fragment_favorite_articles) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()
-        binding.title.text = "${binding.title.text}  ${toString()}"
     }
 
     private fun FragmentFavoriteArticlesBinding.initUi() {
+        title.text = "${binding.title.text}  ${toString()}"
         btnNext1.setOnClickListener {
             viewModel.goToTheSelectedCategory()
         }
