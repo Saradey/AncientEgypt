@@ -16,14 +16,14 @@ class StoriesViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun goToTheeSelectedArticle() {
-        activityRouter.navigateTo(ContentScreens.startSelectedArticle())
+        activityRouter.replaceScreen(ContentScreens.startSelectedArticle())
     }
 
     fun goToTheSelectedCategory() {
-        activityRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+        activityRouter.replaceScreen(ArticlesScreens.startSelectedCategory())
     }
 
     fun goToTheMapAndArticle() {
-        activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
+        activityRouter.replaceScreen(MapScreens.startAncientEgyptMapAndArticle())
     }
 }
