@@ -1,6 +1,5 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.fragments
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
@@ -47,12 +46,9 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
         factoryBottomNavigator.create(this)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressed)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //This case doesn't work after recreated a state and navigation is broke
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressed)
         restoreStateIfNeed(savedInstanceState)
         binding.initUi()
         savedInstanceState ?: viewModel.goToTheMain()
