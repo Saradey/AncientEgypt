@@ -46,12 +46,16 @@ class MainBottomMenuFragment : Fragment(R.layout.fragment_main_bottom_menu),
         factoryBottomNavigator.create(this)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        savedInstanceState ?: viewModel.goToTheMain()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //This case doesn't work after recreated a state and navigation is broke
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressed)
         restoreStateIfNeed(savedInstanceState)
         binding.initUi()
-        savedInstanceState ?: viewModel.goToTheMain()
     }
 
     override fun onResume() {
