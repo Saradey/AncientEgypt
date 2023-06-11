@@ -23,7 +23,7 @@ import javax.inject.Named
 
 class MainBottomNavigator @AssistedInject constructor(
     @Assisted("mainBottomMenuFragment") mainBottomMenuFragment: MainBottomMenuFragment,
-    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
+    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router
 ) : BaseNavigator(
     fm = mainBottomMenuFragment.childFragmentManager,
     ff = mainBottomMenuFragment.childFragmentManager.fragmentFactory,
