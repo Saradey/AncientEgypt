@@ -1,5 +1,6 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.navigation
 
+import android.os.Parcelable
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
 import com.evgenii.goncharov.ancient.egypt.R
@@ -16,6 +17,7 @@ import com.github.terrakok.cicerone.Router
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import kotlinx.parcelize.Parcelize
 import java.util.Stack
 import javax.inject.Named
 
@@ -28,8 +30,8 @@ class MainBottomNavigator @AssistedInject constructor(
     containerId = R.id.fcv_nested_container_bottom_menu
 ) {
 
-    private val localBackStack: Stack<BackStackInfo> = Stack()
-    private var selectedBackStack: BackStackInfo = BackStackInfo("", Stack())
+    var localBackStack: Stack<BackStackInfo> = Stack()
+    var selectedBackStack: BackStackInfo = BackStackInfo("", Stack())
     private val toolbarVisibilityManager = ToolbarVisibilityManager(mainBottomMenuFragment)
     private val listener: SelectTabBottomMenuListener = mainBottomMenuFragment
 
@@ -149,6 +151,7 @@ class MainBottomNavigator @AssistedInject constructor(
     }
 }
 
+@Parcelize
 data class BackStackInfo(
     val backStackName: String, val screensKey: Stack<String>
-)
+) : Parcelable

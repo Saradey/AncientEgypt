@@ -5,6 +5,7 @@ plugins {
     id("com.android.library") version "8.0.2" apply false
     id("org.jetbrains.kotlin.android") version "1.8.20" apply false
     id("com.google.dagger.hilt.android") version "2.46.1" apply false
+    id("org.jetbrains.kotlin.plugin.parcelize") version "1.9.0-Beta" apply false
 }
 buildscript {
     extra.apply {
@@ -15,6 +16,7 @@ buildscript {
     }
     dependencies {
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.46.1")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0-Beta")
     }
 }
 allprojects {
