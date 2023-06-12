@@ -31,10 +31,10 @@ class MainViewModel @Inject constructor(
     }
 
     fun goToTheMapAllObjects() {
-        activityRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
+        bottomMenuRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
     }
 
     fun goToTheMapSelectedArticle() {
-        activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
+        bottomMenuRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
     }
 }
