@@ -24,6 +24,6 @@ class StoriesViewModel @Inject constructor(
     }
 
     fun goToTheMapAndArticle() {
-        activityRouter.replaceScreen(MapScreens.startAncientEgyptMapAndArticle())
+        activityRouter.replaceScreen(MapScreens.startAncientEgyptMapAndArticleActivityContainer())
     }
 }

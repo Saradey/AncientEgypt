@@ -20,7 +20,7 @@ class SelectedArticleViewModel @Inject constructor(
     }
 
     fun goToTheAncientEgyptMapAndArticle() {
-        activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
+        activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticleActivityContainer())
     }
 
     fun goToTheSelectedCategory() {

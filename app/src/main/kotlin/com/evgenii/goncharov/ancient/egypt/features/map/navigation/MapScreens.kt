@@ -35,5 +35,9 @@ object MapScreens {
         SelectedArticleMapBottomSheetFragment.newInstance()
     }
 
+    fun startAncientEgyptMapAndArticleActivityContainer() = FragmentScreen {
+        AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = true)
+    }
+
     private const val SCREEN_KEY_MAP = "map_screen"
 }
