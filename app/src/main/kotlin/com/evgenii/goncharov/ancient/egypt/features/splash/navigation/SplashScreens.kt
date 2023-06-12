@@ -11,13 +11,13 @@ object SplashScreens {
      */
     fun startSplash() = FragmentScreen(
         key = SCREEN_KEY_SPLASH
-    ) {
+    ) { _ ->
         SplashFragment.newInstance()
     }
 
     fun startOnboarding() = FragmentScreen(
         key = SCREEN_KEY_ONBOARDING
-    ) {
+    ) { _ ->
         OnboardingFragment.newInstance()
     }
 

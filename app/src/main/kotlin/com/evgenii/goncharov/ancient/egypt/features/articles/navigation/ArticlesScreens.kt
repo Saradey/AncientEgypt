@@ -38,7 +38,7 @@ object ArticlesScreens {
     /**
      * Navigation activity container
      */
-    fun startSelectedCategoryActivityContainer() = FragmentScreen {
+    fun startSelectedCategoryActivityContainer() = FragmentScreen { _ ->
         SelectedCategoryFragment.newInstance()
     }
 

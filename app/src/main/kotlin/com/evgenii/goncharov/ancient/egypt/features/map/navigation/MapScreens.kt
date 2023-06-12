@@ -35,7 +35,7 @@ object MapScreens {
         SelectedArticleMapBottomSheetFragment.newInstance()
     }
 
-    fun startAncientEgyptMapAndArticleActivityContainer() = FragmentScreen {
+    fun startAncientEgyptMapAndArticleActivityContainer() = FragmentScreen { _ ->
         AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = true)
     }
 
