@@ -9,12 +9,9 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object MainScreens {
 
-    fun startMainBottomMenu() = FragmentScreen(
-        key = SCREEN_KEY_BOTTOM_MENU
-    ) { _ ->
-        MainBottomMenuFragment.newInstance()
-    }
-
+    /**
+     * Navigation bottom menu container
+     */
     fun startMain() = BaseFragmentScreen(
         screenKey = SCREEN_KEY_MAIN_MENU,
         baskStackName = BACKSTACK_NAME_MAIN
@@ -24,6 +21,15 @@ object MainScreens {
 
     fun startStories() = FragmentScreen{ _ ->
         StoriesFragment.newInstance()
+    }
+
+    /**
+     * Navigation activity container
+     */
+    fun startMainBottomMenu() = FragmentScreen(
+        key = SCREEN_KEY_BOTTOM_MENU
+    ) { _ ->
+        MainBottomMenuFragment.newInstance()
     }
 
     private const val SCREEN_KEY_BOTTOM_MENU = "bottomMenu"

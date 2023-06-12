@@ -6,6 +6,9 @@ import com.evgenii.goncharov.ancient.egypt.features.search.SearchFragment
 
 object SearchScreens {
 
+    /**
+     * Navigation bottom menu container
+     */
     fun startSearch() = BaseFragmentScreen(
         screenKey = SCREEN_KEY_SEARCH,
         baskStackName = BACKSTACK_NAME_EVERYWHERE
