@@ -26,16 +26,14 @@ object MapScreens {
         AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = true)
     }
 
+    /**
+     * Navigation with activity container
+     */
     fun startSelectedBottomSheetArticle() = FragmentScreen(
         key = SCREEN_KEY_SELECTED_BOTTOM_SHEET_ARTICLE
     ) { _ ->
         SelectedArticleMapBottomSheetFragment.newInstance()
     }
-
-    /**
-     * Navigation with activity container
-     */
-
 
     private const val SCREEN_KEY_MAP = "map_screen"
 }
