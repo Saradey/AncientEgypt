@@ -10,7 +10,7 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 object MapScreens {
 
     /**
-     * Navigation into bottom menu container
+     * Navigation bottom menu container
      */
     fun startAncientEgyptMapAllObjects() = BaseFragmentScreen(
         screenKey = SCREEN_KEY_MAP,
@@ -27,7 +27,7 @@ object MapScreens {
     }
 
     /**
-     * Navigation into activity container
+     * Navigation activity container
      */
     fun startSelectedBottomSheetArticle() = FragmentScreen(
         key = SCREEN_KEY_SELECTED_BOTTOM_SHEET_ARTICLE

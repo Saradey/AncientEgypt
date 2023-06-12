@@ -6,6 +6,9 @@ import com.evgenii.goncharov.ancient.egypt.features.settings.SettingsFragment
 
 object SettingsScreens {
 
+    /**
+     * Navigation bottom menu container
+     */
     fun startSettings() = BaseFragmentScreen(
         screenKey = SCREEN_KEY_SETTINGS,
         baskStackName = BACKSTACK_NAME_SETTINGS

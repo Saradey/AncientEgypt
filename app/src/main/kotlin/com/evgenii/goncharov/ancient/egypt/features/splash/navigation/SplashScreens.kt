@@ -6,6 +6,9 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object SplashScreens {
 
+    /**
+     * Navigation activity container
+     */
     fun startSplash() = FragmentScreen(
         key = BACKSTACK_NAME_SPLASH
     ) {
