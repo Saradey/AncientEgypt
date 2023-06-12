@@ -9,6 +9,9 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object MapScreens {
 
+    /**
+     * Navigation with bottom menu container
+     */
     fun startAncientEgyptMapAllObjects() = BaseFragmentScreen(
         screenKey = SCREEN_KEY_MAP,
         baskStackName = BACKSTACK_NAME_MAIN
@@ -28,6 +31,11 @@ object MapScreens {
     ) { _ ->
         SelectedArticleMapBottomSheetFragment.newInstance()
     }
+
+    /**
+     * Navigation with activity container
+     */
+
 
     private const val SCREEN_KEY_MAP = "map_screen"
 }
