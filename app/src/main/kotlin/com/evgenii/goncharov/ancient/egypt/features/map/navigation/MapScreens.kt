@@ -9,14 +9,17 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object MapScreens {
 
-    fun startAncientEgyptMapAllObjects() =  BaseFragmentScreen(
+    fun startAncientEgyptMapAllObjects() = BaseFragmentScreen(
         screenKey = SCREEN_KEY_MAP,
         baskStackName = BACKSTACK_NAME_MAIN
     ) {
         AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = false)
     }
 
-    fun startAncientEgyptMapAndArticle() = FragmentScreen { _ ->
+    fun startAncientEgyptMapAndArticle() = BaseFragmentScreen(
+        screenKey = SCREEN_KEY_MAP,
+        baskStackName = BACKSTACK_NAME_MAIN
+    ) {
         AncientEgyptMapFragment.newInstance(openArticleToBottomSheet = true)
     }
 
