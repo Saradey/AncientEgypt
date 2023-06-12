@@ -10,17 +10,17 @@ object SplashScreens {
      * Navigation activity container
      */
     fun startSplash() = FragmentScreen(
-        key = BACKSTACK_NAME_SPLASH
+        key = SCREEN_KEY_SPLASH
     ) {
         SplashFragment.newInstance()
     }
 
     fun startOnboarding() = FragmentScreen(
-        key = BACKSTACK_NAME_ONBOARDING
+        key = SCREEN_KEY_ONBOARDING
     ) {
         OnboardingFragment.newInstance()
     }
 
-    private const val BACKSTACK_NAME_ONBOARDING = "onboarding"
-    private const val BACKSTACK_NAME_SPLASH = "splash"
+    private const val SCREEN_KEY_ONBOARDING = "onboarding_screen"
+    private const val SCREEN_KEY_SPLASH = "splash_screen"
 }
