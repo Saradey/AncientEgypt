@@ -6,6 +6,9 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object ContentScreens {
 
+    /**
+     * Navigation activity container
+     */
     fun startSelectedArticle() = FragmentScreen { _ ->
         SelectedArticleFragment.newInstance()
     }

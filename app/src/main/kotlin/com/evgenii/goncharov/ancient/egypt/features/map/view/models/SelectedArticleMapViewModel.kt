@@ -15,7 +15,7 @@ class SelectedArticleMapViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun goToTheSelectedCategory() {
-        activityRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+        activityRouter.navigateTo(ArticlesScreens.startSelectedCategoryActivityContainer())
     }
 
     fun gotoTheSelectedArticle() {

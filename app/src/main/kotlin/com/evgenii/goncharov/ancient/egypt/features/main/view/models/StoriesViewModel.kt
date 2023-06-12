@@ -20,7 +20,7 @@ class StoriesViewModel @Inject constructor(
     }
 
     fun goToTheSelectedCategory() {
-        activityRouter.replaceScreen(ArticlesScreens.startSelectedCategory())
+        activityRouter.replaceScreen(ArticlesScreens.startSelectedCategoryActivityContainer())
     }
 
     fun goToTheMapAndArticle() {

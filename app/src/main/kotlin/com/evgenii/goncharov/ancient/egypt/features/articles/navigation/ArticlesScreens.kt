@@ -7,9 +7,13 @@ import com.evgenii.goncharov.ancient.egypt.features.articles.fragments.SelectedC
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_ALL
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_EVERYWHERE
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_FAVORITE
+import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object ArticlesScreens {
 
+    /**
+     * Navigation bottom menu container
+     */
     fun startFavoriteArticles() = BaseFragmentScreen(
         screenKey = SCREEN_KEY_FAVORITE,
         baskStackName = BACKSTACK_NAME_FAVORITE
@@ -28,6 +32,13 @@ object ArticlesScreens {
         screenKey = SCREEN_KEY_SELECTED_CATEGORY,
         baskStackName = BACKSTACK_NAME_EVERYWHERE
     ) {
+        SelectedCategoryFragment.newInstance()
+    }
+
+    /**
+     * Navigation activity container
+     */
+    fun startSelectedCategoryActivityContainer() = FragmentScreen {
         SelectedCategoryFragment.newInstance()
     }
 

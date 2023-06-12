@@ -24,7 +24,7 @@ class SelectedArticleViewModel @Inject constructor(
     }
 
     fun goToTheSelectedCategory() {
-        activityRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+        activityRouter.navigateTo(ArticlesScreens.startSelectedCategoryActivityContainer())
     }
 
     fun goToTheSelectedPhoto() {
