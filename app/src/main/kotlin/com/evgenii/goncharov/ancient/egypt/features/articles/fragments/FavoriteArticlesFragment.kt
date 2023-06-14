@@ -32,6 +32,9 @@ class FavoriteArticlesFragment : Fragment(R.layout.fragment_favorite_articles) {
         btnNext2.setOnClickListener {
             viewModel.goToTheSelectedArticle()
         }
+        btnNext3.setOnClickListener {
+            viewModel.goToTheSelectedArtifact()
+        }
     }
 
     companion object {
