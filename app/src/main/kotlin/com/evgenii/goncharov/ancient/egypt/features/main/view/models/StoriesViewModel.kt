@@ -3,6 +3,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.view.models
 import androidx.lifecycle.ViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
+import com.evgenii.goncharov.ancient.egypt.features.artifact.navigation.ArtifactScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
@@ -25,5 +26,9 @@ class StoriesViewModel @Inject constructor(
 
     fun goToTheMapAndArticle() {
         activityRouter.replaceScreen(MapScreens.startAncientEgyptMapAndArticleActivityContainer())
+    }
+
+    fun goToTheSelectedArtifact() {
+        activityRouter.replaceScreen(ArtifactScreens.startSelectedArtifact())
     }
 }

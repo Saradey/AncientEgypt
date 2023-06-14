@@ -35,6 +35,9 @@ class StoriesFragment : Fragment(R.layout.fragment_stories) {
         btnNext3.setOnClickListener {
             viewModel.goToTheMapAndArticle()
         }
+        btnNext4.setOnClickListener {
+            viewModel.goToTheSelectedArtifact()
+        }
     }
 
     companion object {
