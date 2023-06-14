@@ -25,8 +25,18 @@ class SelectedArtifactFragment : Fragment(R.layout.fragment_selected_artifact) {
     }
 
     private fun FragmentSelectedArtifactBinding.initUi() {
+        binding.title.text = "${binding.title.text} ${toString()}"
         btnNext1.setOnClickListener {
             viewModel.goToTheSelectedArticle()
+        }
+        btnNext2.setOnClickListener {
+            viewModel.goToTheSelectedPhoto()
+        }
+        btnNext3.setOnClickListener {
+            viewModel.goToTheSelectedCategory()
+        }
+        btnNext4.setOnClickListener {
+            viewModel.goToTheMapSelectedArtifact()
         }
     }
 

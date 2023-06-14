@@ -2,7 +2,9 @@ package com.evgenii.goncharov.ancient.egypt.features.content.view.models
 
 import androidx.lifecycle.ViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
+import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
+import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,5 +17,17 @@ class SelectedArtifactViewModel @Inject constructor(
 
     fun goToTheSelectedArticle() {
         activityRouter.navigateTo(ContentScreens.startSelectedArticle())
+    }
+
+    fun goToTheSelectedPhoto() {
+        activityRouter.navigateTo(ContentScreens.startSelectedPhoto())
+    }
+
+    fun goToTheSelectedCategory() {
+        activityRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+    }
+
+    fun goToTheMapSelectedArtifact() {
+        activityRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticleActivityContainer())
     }
 }
