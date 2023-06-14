@@ -25,4 +25,8 @@ class SelectedArticleMapViewModel @Inject constructor(
     fun goToTheSelectedArtifact() {
         activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
     }
+
+    fun goToTheSelectedPhoto() {
+        activityRouter.navigateTo(ContentScreens.startSelectedPhoto())
+    }
 }
