@@ -30,4 +30,8 @@ class SelectedArticleViewModel @Inject constructor(
     fun goToTheSelectedPhoto() {
         activityRouter.navigateTo(ContentScreens.startSelectedPhoto())
     }
+
+    fun goToTheSelectedArtifact() {
+        activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
+    }
 }

@@ -38,6 +38,9 @@ class SelectedArticleFragment : Fragment(R.layout.fragment_selected_article) {
         btnNext4.setOnClickListener {
             viewModel.goToTheSelectedPhoto()
         }
+        btnNext5.setOnClickListener {
+            viewModel.goToTheSelectedArtifact()
+        }
     }
 
     companion object {
