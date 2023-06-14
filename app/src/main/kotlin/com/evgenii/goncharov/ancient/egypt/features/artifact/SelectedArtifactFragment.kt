@@ -17,4 +17,8 @@ class SelectedArtifactFragment : Fragment(R.layout.fragment_selected_artifact) {
 
     private fun FragmentSelectedArtifactBinding.initUi() {
     }
+
+    companion object {
+        fun newInstance() = SelectedArtifactFragment()
+    }
 }
