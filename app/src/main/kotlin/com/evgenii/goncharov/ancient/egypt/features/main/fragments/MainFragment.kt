@@ -41,6 +41,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         btnNext5.setOnClickListener {
             viewModel.goToTheMapSelectedArticle()
         }
+        btnNext6.setOnClickListener {
+            viewModel.goToTheSelectedArtifact()
+        }
     }
 
     companion object {
