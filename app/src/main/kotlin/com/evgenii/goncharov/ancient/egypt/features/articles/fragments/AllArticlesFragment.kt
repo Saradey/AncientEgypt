@@ -32,6 +32,9 @@ class AllArticlesFragment : Fragment(R.layout.fragment_all_articles) {
         btnNext2.setOnClickListener {
             viewModel.goToTheSelectedArticle()
         }
+        btnNext3.setOnClickListener {
+            viewModel.goToTheSelectedArtifact()
+        }
     }
 
     companion object {
