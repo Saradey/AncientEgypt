@@ -36,6 +36,10 @@ class SelectedArticleMapBottomSheetFragment : BottomSheetDialogFragment(
             viewModel.gotoTheSelectedArticle()
             dismiss()
         }
+        btnNext3.setOnClickListener {
+            viewModel.goToTheSelectedArtifact()
+            dismiss()
+        }
     }
 
     companion object {
