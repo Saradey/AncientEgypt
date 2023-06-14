@@ -31,6 +31,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         btnNext2.setOnClickListener {
             viewModel.goToTheSelectedArticle()
         }
+        btnNext3.setOnClickListener {
+            viewModel.goToTheSelectedArtifact()
+        }
     }
 
     companion object {
