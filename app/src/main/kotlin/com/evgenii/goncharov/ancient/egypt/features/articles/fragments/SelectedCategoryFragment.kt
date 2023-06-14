@@ -29,6 +29,9 @@ class SelectedCategoryFragment : Fragment(R.layout.fragment_selected_category) {
         btnNext1.setOnClickListener {
             viewModel.goToTheSelectedArticle()
         }
+        btnNext2.setOnClickListener {
+            viewModel.goToTheSelectedArtifact()
+        }
     }
 
     companion object {
