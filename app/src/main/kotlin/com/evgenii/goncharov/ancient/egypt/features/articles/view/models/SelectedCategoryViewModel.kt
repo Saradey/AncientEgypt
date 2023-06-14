@@ -2,7 +2,6 @@ package com.evgenii.goncharov.ancient.egypt.features.articles.view.models
 
 import androidx.lifecycle.ViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
-import com.evgenii.goncharov.ancient.egypt.features.artifact.navigation.ArtifactScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,6 +18,6 @@ class SelectedCategoryViewModel @Inject constructor(
     }
 
     fun goToTheSelectedArtifact() {
-        activityRouter.navigateTo(ArtifactScreens.startSelectedArtifact())
+        activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
     }
 }

@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.artifact
+package com.evgenii.goncharov.ancient.egypt.features.content.view.models
 
 import androidx.lifecycle.ViewModel
 

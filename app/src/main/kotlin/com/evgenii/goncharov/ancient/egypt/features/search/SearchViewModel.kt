@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
-import com.evgenii.goncharov.ancient.egypt.features.artifact.navigation.ArtifactScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,6 +25,6 @@ class SearchViewModel @Inject constructor(
     }
 
     fun goToTheSelectedArtifact() {
-        activityRouter.navigateTo(ArtifactScreens.startSelectedArtifact())
+        activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
     }
 }

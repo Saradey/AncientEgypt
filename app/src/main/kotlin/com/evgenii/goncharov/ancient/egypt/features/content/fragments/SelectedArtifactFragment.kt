@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.artifact
+package com.evgenii.goncharov.ancient.egypt.features.content.fragments
 
 import android.os.Bundle
 import android.view.View
