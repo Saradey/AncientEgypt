@@ -1,6 +1,6 @@
 [versions]
 #https://dagger.dev/hilt/gradle-setup
-daggerHiltVersion = "2.46.1"
+daggerHiltVersion = "2.47"
 #https://developer.android.com/jetpack/androidx/releases/room
 roomVersion = "2.5.1"
 #https://developer.android.com/jetpack/androidx/releases/core
