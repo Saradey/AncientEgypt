@@ -2,7 +2,7 @@
 #https://github.com/bumptech/glide
 glide = "4.15.1"
 #https://developer.android.com/topic/libraries/architecture/paging/v3-overview
-paging3 = "3.1.1"
+paging3 = "3.2.0"
 
 [libraries]
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide"}
