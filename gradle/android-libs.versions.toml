@@ -2,7 +2,7 @@
 #https://developer.android.com/jetpack/androidx/releases/activity
 activityVersion = "1.7.2"
 #https://developer.android.com/jetpack/androidx/releases/fragment
-fragmentVersion = "1.5.7"
+fragmentVersion = "1.6.1"
 
 [libraries]
 activity = { module = "androidx.activity:activity", version.ref = "activityVersion" }
