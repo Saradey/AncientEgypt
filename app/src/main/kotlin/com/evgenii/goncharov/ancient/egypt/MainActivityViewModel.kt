@@ -14,7 +14,8 @@ import javax.inject.Named
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
-    private val onboardingRepository: OnboardingRepository
+    private val onboardingRepository: OnboardingRepository,
+    private val buildVersion: Int
 ) : ViewModel() {
 
     fun startFirstScreen() {
@@ -26,10 +27,10 @@ class MainActivityViewModel @Inject constructor(
     }
 
     private fun isStartOnboarding(): Boolean {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && onboardingRepository.isFirstStartOnboarding()
+        return buildVersion >= Build.VERSION_CODES.S && onboardingRepository.isFirstStartOnboarding()
     }
 
     private fun isStartBottomMenu(): Boolean {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !onboardingRepository.isFirstStartOnboarding()
+        return buildVersion >= Build.VERSION_CODES.S && !onboardingRepository.isFirstStartOnboarding()
     }
 }
