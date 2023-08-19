@@ -5,7 +5,8 @@
         android:name=".App"
         android:icon="@mipmap/ic_launcher_ancient_egypt"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_ancient_egypt_round">
+        android:roundIcon="@mipmap/ic_launcher_ancient_egypt_round"
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".MainActivity"
