@@ -4,5 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="AlwaysShowAction">
 
+    <item
+        android:id="@+id/main"
+        android:icon="@drawable/animated_selector_item_main_menu"
+        android:title="@string/bottom_nav_title_main"
+        app:showAsAction="always" />
 
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/animated_selector_item_profile"
+        android:title="@string/bottom_nav_title_profile"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/animated_selector_item_settings"
+        android:title="@string/bottom_nav_title_settings"
+        app:showAsAction="always" />
 </menu>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_main_menu_dark">
+    <target
+        android:name="group_1"
+        android:animation="@animator/rotate_500_l" />
+    <target
+        android:name="group_2"
+        android:animation="@animator/rotate_300_l" />
+    <target
+        android:name="group_3"
+        android:animation="@animator/rotate_500_l" />
+    <target
+        android:name="group_4"
+        android:animation="@animator/rotate_300_l" />
+</animated-vector>

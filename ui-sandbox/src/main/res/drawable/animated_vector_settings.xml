@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_ancient_scroll">
+    <target
+        android:name="g_1"
+        android:animation="@animator/scale_x_300" />
+    <target
+        android:name="g_2"
+        android:animation="@animator/scale_x_400" />
+    <target
+        android:name="g_3"
+        android:animation="@animator/scale_x_300" />
+    <target
+        android:name="g_4"
+        android:animation="@animator/scale_x_500" />
+    <target
+        android:name="g_5"
+        android:animation="@animator/scale_x_400" />
+</animated-vector>
