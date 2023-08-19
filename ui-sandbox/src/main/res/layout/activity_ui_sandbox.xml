@@ -1,4 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:background="?main_background_color"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_12"
+        tools:context=".MainUiSandboxActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text Styles Design System"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.MainTextColor"
+            android:textAppearance="@style/Text.MainTextColor"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.AccentTextColor"
+            android:textAppearance="@style/Text.AccentTextColor"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.MainTextColor.CormorantSemibold"
+            android:textAppearance="@style/Text.MainTextColor.CormorantSemibold"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.AccentTextColor.CormorantSemibold"
+            android:textAppearance="@style/Text.AccentTextColor.CormorantSemibold"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.MainTextColor.RalewayMedium"
+            android:textAppearance="@style/Text.MainTextColor.RalewayMedium"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.MainTextColor.CormorantSemibold.18"
+            android:textAppearance="@style/Text.MainTextColor.CormorantSemibold.18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.MainTextColor.RalewayMedium.16"
+            android:textAppearance="@style/Text.MainTextColor.RalewayMedium.16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.MainTextColor.RalewayMedium.16.OnboardingDescriptionText"
+            android:textAppearance="@style/Text.MainTextColor.RalewayMedium.16.OnboardingDescriptionText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Text.AccentTextColor.CormorantSemibold.26"
+            android:textAppearance="@style/Text.AccentTextColor.CormorantSemibold.26" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="?accent_background_color"
+            android:padding="@dimen/dp_4"
+            android:text="Text.ActiveTextColorAccentBackground"
+            android:textAppearance="@style/Text.ActiveTextColorAccentBackground"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="?accent_background_color"
+            android:padding="@dimen/dp_4"
+            android:text="Text.ActiveTextColorAccentBackground.RalewayMedium"
+            android:textAppearance="@style/Text.ActiveTextColorAccentBackground.RalewayMedium"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="?accent_background_color"
+            android:padding="@dimen/dp_4"
+            android:text="Text.ActiveTextColorAccentBackground.RalewayMedium.16"
+            android:textAppearance="@style/Text.ActiveTextColorAccentBackground.RalewayMedium.16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Colors Design System"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:drawablePadding="@dimen/dp_4"
+            android:text="main_background_color:#0B152E"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/color_circle_main_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:drawablePadding="@dimen/dp_4"
+            android:text="accent_background_color:#DC7A2E"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/color_accent_background_circle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:drawablePadding="@dimen/dp_4"
+            android:text="main_text_color:#FFFFFFFF"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/color_main_text_circle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:drawablePadding="@dimen/dp_4"
+            android:text="accent_text_color:#E49B52"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/color_text_accent_circle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:drawablePadding="@dimen/dp_4"
+            android:text="active_text_color:#C806132E"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/color_circle_active_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Styles View Design System"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/white" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            style="@style/BottomNavigationAncientEgypt"
+            android:layout_marginTop="@dimen/dp_12"
+            app:menu="@menu/bottom_nav_menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Costume View Design System"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="DotIndicatorView:"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.evgenii.goncharov.ancient.egypt.ui_kit.view.DotIndicatorView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_12" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="TextButtonAccentView:"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.evgenii.goncharov.ancient.egypt.ui_kit.view.TextButtonAccentView
+            android:id="@+id/txv_sample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:text="Далее" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="TextButtonView:"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.evgenii.goncharov.ancient.egypt.ui_kit.view.TextButtonView
+            android:id="@+id/txv_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Пропустить" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

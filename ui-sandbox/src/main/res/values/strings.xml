@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ui_sandbox_app_name">Ui-Sandbox</string>
+    <string name="app_name">UiSandbox</string>
+    <string name="bottom_nav_title_main">Главная</string>
+    <string name="bottom_nav_title_profile">Профиль</string>
+    <string name="bottom_nav_title_settings">Настройки</string>
 </resources>
