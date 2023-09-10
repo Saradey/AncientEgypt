@@ -4,24 +4,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/title"
+    <com.saradey.studio.ancient.egypt.ui_kit.view.TextButtonView
+        android:id="@+id/txv_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is Onboarding Screen"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/skip"
+        app:layout_constraintEnd_toEndOf="@id/g_end"
+        app:layout_constraintTop_toTopOf="@id/g_top" />
 
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go To The main bottom menu screen"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/txv_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        app:layout_constraintTop_toBottomOf="@id/txv_skip"
+        tools:listitem="@layout/item_onboarding" />
+
+    <com.saradey.studio.ancient.egypt.ui_kit.view.TextButtonAccentView
+        android:id="@+id/txv_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_22"
+        android:text="@string/next"
+        app:layout_constraintBottom_toTopOf="@id/dti_indicator"
+        app:layout_constraintEnd_toStartOf="@id/g_end"
+        app:layout_constraintStart_toEndOf="@id/g_start" />
+
+    <com.saradey.studio.ancient.egypt.ui_kit.view.DotIndicatorView
+        android:id="@+id/dti_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/g_bottom"
+        app:layout_constraintEnd_toStartOf="@id/g_end"
+        app:layout_constraintStart_toEndOf="@id/g_start" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/g_start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dp_22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/g_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/dp_22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/g_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/dp_22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/g_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/dp_22" />
+
+    <include layout="@layout/layout_main_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
