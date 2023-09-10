@@ -2,4 +2,7 @@
     <string name="app_name">AncientEgypt</string>
     <string name="skip">Пропустить</string>
     <string name="next">Далее</string>
+    <string name="onboarding_text_first">Вас приветствует Древний Египет со своими тайнами и мифами. Познайте историю одной из первых цивилизаций человечества.</string>
+    <string name="onboarding_text_second">Изучите мифологию, правителей, быт и жизнь древних египтян! Старые археологические раскопки позволили донести информацию до наших дней.</string>
+    <string name="onboarding_text_third">Данный музей предоставляет фото, видео, статьи для ознакомления, весь загруженный контент сохраняется на вашем устройстве, используйте оффлайн.</string>
 </resources>

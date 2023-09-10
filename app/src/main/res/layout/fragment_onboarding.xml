@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.saradey.studio.ancient.egypt.ui_kit.view.TextButtonView
+    <com.evgenii.goncharov.ancient.egypt.ui_kit.view.TextButtonView
         android:id="@+id/txv_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@id/txv_skip"
         tools:listitem="@layout/item_onboarding" />
 
-    <com.saradey.studio.ancient.egypt.ui_kit.view.TextButtonAccentView
+    <com.evgenii.goncharov.ancient.egypt.ui_kit.view.TextButtonAccentView
         android:id="@+id/txv_next"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -32,7 +33,7 @@
         app:layout_constraintEnd_toStartOf="@id/g_end"
         app:layout_constraintStart_toEndOf="@id/g_start" />
 
-    <com.saradey.studio.ancient.egypt.ui_kit.view.DotIndicatorView
+    <com.evgenii.goncharov.ancient.egypt.ui_kit.view.DotIndicatorView
         android:id="@+id/dti_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
