@@ -11,6 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSplashBinding
 import com.evgenii.goncharov.ancient.egypt.features.splash.view.models.SplashViewModel
+import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -22,6 +23,11 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     private val viewModel: SplashViewModel by viewModels()
     private val binding: FragmentSplashBinding by viewBinding(FragmentSplashBinding::bind)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        StatusBarUtils.hideStatusBar(requireActivity().window)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()

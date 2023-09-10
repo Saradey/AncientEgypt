@@ -29,11 +29,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         StatusBarUtils.hideStatusBar(requireActivity().window)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        StatusBarUtils.showStatusBar(requireActivity().window)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()
     }
