@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
@@ -12,6 +13,8 @@ import com.evgenii.goncharov.ancient.egypt.features.splash.ui.OnboardingAdapter
 import com.evgenii.goncharov.ancient.egypt.features.splash.view.models.OnboardingViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 /**
  * №1.2
@@ -32,12 +35,19 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()
+        initModels()
     }
 
     private fun FragmentOnboardingBinding.initUi() {
         initViewPager()
         initButtons()
         startAnimationScreen()
+    }
+
+    private fun initModels() {
+        lifecycleScope.launch {
+            viewModel.onboardingInfo.collectLatest { models -> adapter.items = models }
+        }
     }
 
     private fun FragmentOnboardingBinding.initViewPager() {

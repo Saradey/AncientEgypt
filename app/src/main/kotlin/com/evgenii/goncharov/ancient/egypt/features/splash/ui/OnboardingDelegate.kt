@@ -8,6 +8,8 @@ fun onboardingDelegate() =
     adapterDelegateViewBinding<OnboardingModel, OnboardingModel, ItemOnboardingBinding>(
         { layoutInflater, root -> ItemOnboardingBinding.inflate(layoutInflater, root, false) }
     ) {
-        binding.imvOnboarding.setImageResource(item.idImage)
-        binding.txvOnboardingDescription.setText(item.textDescription)
+        bind {
+            binding.imvOnboarding.setImageResource(item.idImage)
+            binding.txvOnboardingDescription.setText(item.textDescription)
+        }
     }
