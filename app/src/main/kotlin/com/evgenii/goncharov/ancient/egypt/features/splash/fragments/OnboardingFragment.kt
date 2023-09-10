@@ -2,12 +2,15 @@ package com.evgenii.goncharov.ancient.egypt.features.splash.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
+import com.evgenii.goncharov.ancient.egypt.base.AnimationListenerDefault
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentOnboardingBinding
 import com.evgenii.goncharov.ancient.egypt.features.splash.ui.OnboardingAdapter
 import com.evgenii.goncharov.ancient.egypt.features.splash.view.models.OnboardingViewModel
@@ -87,7 +90,17 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     }
 
     private fun FragmentOnboardingBinding.startAnimationScreen() {
-
+        val animationBottom = AnimationUtils.loadAnimation(
+            context,
+            R.anim.bottom_onboarding_element_show
+        )
+        txvNext.startAnimation(animationBottom)
+        dtiIndicator.startAnimation(animationBottom)
+        animationBottom.setAnimationListener(object : AnimationListenerDefault() {
+            override fun onAnimationEnd(animation: Animation?) {
+                txvNext.isEnabled = true
+            }
+        })
     }
 
     companion object {
