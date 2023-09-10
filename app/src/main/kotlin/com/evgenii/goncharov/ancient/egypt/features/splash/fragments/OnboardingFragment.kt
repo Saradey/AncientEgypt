@@ -36,6 +36,8 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private fun FragmentOnboardingBinding.initUi() {
         initViewPager()
+        initButtons()
+        startAnimationScreen()
     }
 
     private fun FragmentOnboardingBinding.initViewPager() {
@@ -59,6 +61,23 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
                 }
             }
         )
+    }
+
+    private fun FragmentOnboardingBinding.initButtons() {
+        txvSkip.setOnClickListener {
+            //TODO navigation
+        }
+        txvNext.setOnClickListener {
+            if (vp2Content.currentItem >= 2) {
+                //TODO navigation
+            } else {
+                vp2Content.currentItem++
+            }
+        }
+    }
+
+    private fun FragmentOnboardingBinding.startAnimationScreen() {
+
     }
 
     companion object {
