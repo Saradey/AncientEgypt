@@ -20,8 +20,9 @@ class OnboardingViewModel @Inject constructor(
     private val onboardingModelFactory: OnboardingModelFactory
 ) : ViewModel() {
 
-    val onboardingInfo: StateFlow<List<OnboardingModel>> =
-        MutableStateFlow(onboardingModelFactory.createModels())
+    val onboardingInfo: StateFlow<List<OnboardingModel>> = MutableStateFlow(
+        onboardingModelFactory.createModels()
+    )
 
     fun goToTheMainBottomMenu() {
         activityRouter.replaceScreen(MainScreens.startMainBottomMenu())
