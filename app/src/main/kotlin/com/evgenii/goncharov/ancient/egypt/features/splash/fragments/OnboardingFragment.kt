@@ -39,12 +39,12 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.initUi()
         initModels()
+        startAnimationScreen()
     }
 
     private fun FragmentOnboardingBinding.initUi() {
         initViewPager()
         initButtons()
-        startAnimationScreen()
     }
 
     private fun initModels() {
@@ -89,16 +89,39 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         }
     }
 
-    private fun FragmentOnboardingBinding.startAnimationScreen() {
-        val animationBottom = AnimationUtils.loadAnimation(
+    private fun startAnimationScreen() {
+        binding.startAnimationBottom()
+        binding.startAnimationOther()
+    }
+
+    private fun FragmentOnboardingBinding.startAnimationBottom() {
+        val animationShow = AnimationUtils.loadAnimation(
             context,
             R.anim.bottom_onboarding_element_show
         )
-        txvNext.startAnimation(animationBottom)
-        dtiIndicator.startAnimation(animationBottom)
-        animationBottom.setAnimationListener(object : AnimationListenerDefault() {
+        txvNext.startAnimation(animationShow)
+        dtiIndicator.startAnimation(animationShow)
+        animationShow.setAnimationListener(object : AnimationListenerDefault() {
             override fun onAnimationEnd(animation: Animation?) {
                 txvNext.isEnabled = true
+            }
+        })
+    }
+
+    private fun FragmentOnboardingBinding.startAnimationOther() {
+        val animationCenter = AnimationUtils.loadAnimation(
+            context,
+            R.anim.centre_onboarding_element_show
+        )
+        vp2Content.startAnimation(animationCenter)
+        val animationTop = AnimationUtils.loadAnimation(
+            context,
+            R.anim.bottom_onboarding_element_show
+        )
+        txvSkip.startAnimation(animationTop)
+        animationTop.setAnimationListener(object : AnimationListenerDefault() {
+            override fun onAnimationEnd(animation: Animation?) {
+                txvSkip.isEnabled = true
             }
         })
     }

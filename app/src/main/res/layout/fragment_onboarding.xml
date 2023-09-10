@@ -9,6 +9,7 @@
         android:id="@+id/txv_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/skip"
         app:layout_constraintEnd_toEndOf="@id/g_end"
         app:layout_constraintTop_toTopOf="@id/g_top" />
@@ -27,8 +28,8 @@
         android:id="@+id/txv_next"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:enabled="false"
         android:layout_marginBottom="@dimen/dp_22"
+        android:enabled="false"
         android:text="@string/next"
         app:layout_constraintBottom_toTopOf="@id/dti_indicator"
         app:layout_constraintEnd_toStartOf="@id/g_end"
