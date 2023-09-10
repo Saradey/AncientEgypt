@@ -1,5 +1,8 @@
 package com.evgenii.goncharov.ancient.egypt.features.splash.fragments
 
+import android.graphics.drawable.Animatable2
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -25,10 +28,15 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     }
 
     private fun FragmentSplashBinding.initUi() {
-        title.text = "${binding.title.text} ${toString()}"
-        btnNext.setOnClickListener {
-            viewModel.navigationToNext()
-        }
+        val animated = (binding.imvSplash.drawable as AnimatedVectorDrawable)
+        animated.start()
+        animated.registerAnimationCallback(
+            object : Animatable2.AnimationCallback() {
+                override fun onAnimationEnd(drawable: Drawable?) {
+                    viewModel.navigationToNext()
+                }
+            }
+        )
     }
 
     companion object {
