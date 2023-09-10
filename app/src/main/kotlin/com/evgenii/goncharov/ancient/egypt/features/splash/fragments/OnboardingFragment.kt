@@ -25,10 +25,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     }
 
     private fun FragmentOnboardingBinding.initUi() {
-//        title.text = "${binding.title.text} ${toString()}"
-//        btnNext.setOnClickListener {
-//            viewModel.goToTheMainBottomMenu()
-//        }
     }
 
     companion object {
