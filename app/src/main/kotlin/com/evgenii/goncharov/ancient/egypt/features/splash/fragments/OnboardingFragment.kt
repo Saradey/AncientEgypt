@@ -75,11 +75,11 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private fun FragmentOnboardingBinding.initButtons() {
         txvSkip.setOnClickListener {
-            //TODO navigation
+            viewModel.goToTheMainBottomMenu()
         }
         txvNext.setOnClickListener {
             if (vp2Content.currentItem >= 2) {
-                //TODO navigation
+                viewModel.goToTheMainBottomMenu()
             } else {
                 vp2Content.currentItem++
             }
