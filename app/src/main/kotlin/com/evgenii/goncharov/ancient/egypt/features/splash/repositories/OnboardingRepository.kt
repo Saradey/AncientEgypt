@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.repositories
+package com.evgenii.goncharov.ancient.egypt.features.splash.repositories
 
 interface OnboardingRepository {
 

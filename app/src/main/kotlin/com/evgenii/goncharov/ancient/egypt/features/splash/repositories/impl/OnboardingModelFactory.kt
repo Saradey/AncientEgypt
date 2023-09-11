@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.splash.repositories
+package com.evgenii.goncharov.ancient.egypt.features.splash.repositories.impl
 
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.features.splash.models.OnboardingModel

@@ -1,8 +1,8 @@
-package com.evgenii.goncharov.ancient.egypt.repositories.impl
+package com.evgenii.goncharov.ancient.egypt.features.splash.repositories.impl
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import com.evgenii.goncharov.ancient.egypt.repositories.OnboardingRepository
+import com.evgenii.goncharov.ancient.egypt.features.splash.repositories.OnboardingRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

@@ -1,7 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.di
 
-import com.evgenii.goncharov.ancient.egypt.repositories.OnboardingRepository
-import com.evgenii.goncharov.ancient.egypt.repositories.impl.OnboardingRepositoryImpl
+import com.evgenii.goncharov.ancient.egypt.features.splash.repositories.OnboardingRepository
+import com.evgenii.goncharov.ancient.egypt.features.splash.repositories.impl.OnboardingRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
