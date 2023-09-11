@@ -64,9 +64,9 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
                 ) {
                     if (nextDotsIndicator != position) {
                         nextDotsIndicator = position
-                        dtiIndicator.nextPage = nextDotsIndicator + 1
+                        dtiIndicator.nextPage = nextDotsIndicator + PLUS_INDEX
                     }
-                    if (position >= 2) {
+                    if (position >= LAST_PAGE_INDEX) {
                         txvNext.setText(R.string.get_started)
                     } else {
                         txvNext.setText(R.string.next)
@@ -81,7 +81,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             viewModel.goToTheMainBottomMenu()
         }
         txvNext.setOnClickListener {
-            if (vp2Content.currentItem >= 2) {
+            if (vp2Content.currentItem >= LAST_PAGE_INDEX) {
                 viewModel.goToTheMainBottomMenu()
             } else {
                 vp2Content.currentItem++
@@ -128,5 +128,8 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     companion object {
         fun newInstance() = OnboardingFragment()
+
+        private const val LAST_PAGE_INDEX = 2
+        private const val PLUS_INDEX = 1
     }
 }
