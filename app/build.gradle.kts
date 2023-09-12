@@ -65,6 +65,7 @@ dependencies {
     implementation(androidLibs.activity.ktx)
     implementation(androidLibs.fragment)
     implementation(androidLibs.fragment.ktx)
+    implementation(androidLibs.splashscreen)
 
     //network
     implementation(networkLibs.retrofit)
