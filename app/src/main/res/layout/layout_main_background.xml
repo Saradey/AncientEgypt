@@ -10,10 +10,4 @@
         android:scaleType="centerCrop"
         android:src="@drawable/background_main"
         android:translationZ="-2dp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_gradient_main"
-        android:translationZ="-1dp" />
 </merge>
