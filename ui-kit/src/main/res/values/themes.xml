@@ -9,7 +9,7 @@
         <item name="accent_text_color">@color/lite_orange</item>
         <item name="active_text_color">@color/dark_light_blue_alpha</item>
         <item name="android:windowSplashScreenBackground">@color/dark_blue</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_splash_animated</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/animated_ic_splash</item>
         <item name="android:windowSplashScreenAnimationDuration">1200</item>
     </style>
 

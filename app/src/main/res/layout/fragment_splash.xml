@@ -12,7 +12,7 @@
         android:layout_height="@dimen/dp_200"
         android:layout_gravity="center"
         android:contentDescription="@null"
-        android:src="@drawable/ic_splash_animated"
+        android:src="@drawable/animated_ic_splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.64"
