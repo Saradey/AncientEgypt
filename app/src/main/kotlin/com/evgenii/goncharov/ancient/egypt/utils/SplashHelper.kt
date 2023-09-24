@@ -4,10 +4,9 @@ import android.graphics.drawable.Animatable2
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.view.LayoutInflater
 import android.widget.ImageView
 import android.window.SplashScreenView
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.evgenii.goncharov.ancient.egypt.MainActivity
 import com.evgenii.goncharov.ancient.egypt.R
@@ -18,22 +17,18 @@ object SplashHelper {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val splashScreen = installSplashScreen()
             splashScreen.setOnExitAnimationListener { onExitAnimationListener ->
-                val splashDrawable = AppCompatResources.getDrawable(
-                    applicationContext,
-                    R.drawable.animated_ic_splash
-                )
-                (onExitAnimationListener.iconView as AppCompatImageView).setImageDrawable(
-                    splashDrawable
-                )
                 val splashRootView = (onExitAnimationListener.view as SplashScreenView)
-                val mainBackground = ImageView(applicationContext).apply {
-                    scaleType = ImageView.ScaleType.CENTER_CROP
-                    setImageResource(R.drawable.main_background_and_gradient)
-                    translationZ = MAIN_BACKGROUND_TRANSLATION_Z
-                }
-                splashRootView.addView(mainBackground)
-                (splashDrawable as AnimatedVectorDrawable).start()
-                splashDrawable.registerAnimationCallback(
+                val layoutSplash = LayoutInflater.from(baseContext).inflate(
+                    R.layout.layout_splash_screen,
+                    splashRootView,
+                    false
+                )
+                splashRootView.addView(layoutSplash)
+                val splashLogo = (layoutSplash
+                    .findViewById<ImageView>(R.id.imv_splash)
+                    .drawable as AnimatedVectorDrawable)
+                splashLogo.start()
+                splashLogo.registerAnimationCallback(
                     object : Animatable2.AnimationCallback() {
                         override fun onAnimationEnd(drawable: Drawable?) {
                             onExitAnimationListener.remove()
@@ -43,6 +38,4 @@ object SplashHelper {
             }
         }
     }
-
-    private const val MAIN_BACKGROUND_TRANSLATION_Z = -1f
 }

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
-import com.evgenii.goncharov.ancient.egypt.databinding.FragmentSplashBinding
+import com.evgenii.goncharov.ancient.egypt.databinding.LayoutSplashScreenBinding
 import com.evgenii.goncharov.ancient.egypt.features.splash.view.models.SplashViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,10 +19,10 @@ import dagger.hilt.android.AndroidEntryPoint
  * Doc: https://docs.google.com/document/d/1F1Zrl4_34N6EHaRokRRkvdzFWI5mwvYdAG7agRLmyyk/edit
  * */
 @AndroidEntryPoint
-class SplashFragment : Fragment(R.layout.fragment_splash) {
+class SplashFragment : Fragment(R.layout.layout_splash_screen) {
 
     private val viewModel: SplashViewModel by viewModels()
-    private val binding: FragmentSplashBinding by viewBinding(FragmentSplashBinding::bind)
+    private val binding: LayoutSplashScreenBinding by viewBinding(LayoutSplashScreenBinding::bind)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         binding.initUi()
     }
 
-    private fun FragmentSplashBinding.initUi() {
+    private fun LayoutSplashScreenBinding.initUi() {
         val animated = (binding.imvSplash.drawable as AnimatedVectorDrawable)
         animated.start()
         animated.registerAnimationCallback(
