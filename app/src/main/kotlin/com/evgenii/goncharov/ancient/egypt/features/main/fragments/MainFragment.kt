@@ -21,8 +21,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val viewModel: MainViewModel by viewModels()
     private val binding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        StatusBarUtils.showSystemUi(requireActivity().window)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        StatusBarUtils.showStatusBar(requireActivity().window)
         binding.initUi()
     }
 

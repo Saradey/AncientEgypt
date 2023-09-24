@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
+<resources>
 
-    <style name="AppTheme" parent="Theme.Design.NoActionBar">
+    <style name="BaseAppTheme" parent="Theme.Design.NoActionBar">
         <item name="android:windowBackground">@color/dark_blue</item>
         <item name="main_background_color">@color/dark_blue</item>
         <item name="accent_background_color">@color/dark_orange</item>
         <item name="main_text_color">@color/white</item>
         <item name="accent_text_color">@color/lite_orange</item>
         <item name="active_text_color">@color/dark_light_blue_alpha</item>
-        <item name="android:windowSplashScreenBackground">@color/dark_blue</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/animated_ic_splash</item>
-        <item name="android:windowSplashScreenAnimationDuration">1200</item>
     </style>
+
+    <style name="AppTheme" parent="BaseAppTheme" />
 
 </resources>
