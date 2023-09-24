@@ -69,7 +69,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="@dimen/dp_22" />
+        app:layout_constraintGuide_end="@dimen/dp_44" />
 
     <include layout="@layout/layout_main_background" />
 
