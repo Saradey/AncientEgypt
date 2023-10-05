@@ -63,6 +63,7 @@
             @style/Text.MainTextColor.RalewayMedium.16
         </item>
         <item name="itemIconSize">@dimen/dp_28</item>
+        <item name="labelVisibilityMode">labeled</item>
     </style>
 
 </resources>
