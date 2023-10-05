@@ -6,4 +6,8 @@
     <string name="onboarding_text_second">Изучите мифологию, правителей, быт и жизнь древних египтян! Старые археологические раскопки позволили донести информацию до наших дней.</string>
     <string name="onboarding_text_third">Данный музей предоставляет фото, видео, статьи для ознакомления, весь загруженный контент сохраняется на вашем устройстве, используйте оффлайн.</string>
     <string name="get_started">Приступить</string>
+    <string name="main_bottom_menu_title_main">Главная</string>
+    <string name="main_bottom_menu_title_library">Библиотека</string>
+    <string name="main_bottom_menu_title_favorite">Избранное</string>
+    <string name="main_bottom_menu_title_settings">Настройки</string>
 </resources>

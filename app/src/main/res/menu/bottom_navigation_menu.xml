@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
 
     <item
         android:id="@+id/main"
-        android:icon="@drawable/ic_stub_24"
-        android:title="Главная"
+        android:icon="@drawable/animated_selector_item_main_menu"
+        android:title="@string/main_bottom_menu_title_main"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/all"
-        android:icon="@drawable/ic_stub_24"
-        android:title="Все"
+        android:icon="@drawable/animated_selector_item_settings"
+        android:title="@string/main_bottom_menu_title_library"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/favourite"
-        android:icon="@drawable/ic_stub_24"
-        android:title="Избранное"
+        android:icon="@drawable/ic_star"
+        android:title="@string/main_bottom_menu_title_favorite"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/settings"
-        android:icon="@drawable/ic_stub_24"
-        android:title="Настройки"
+        android:icon="@drawable/ic_pyramid"
+        android:title="@string/main_bottom_menu_title_settings"
         app:showAsAction="always" />
 
 </menu>
