@@ -26,4 +26,5 @@ dependencies {
     implementation(coreProjectLibs.core.ktx)
     implementation(uiLibs.app.compat)
     implementation(uiLibs.material)
+    implementation(uiLibs.viewBindingPropertyDelegate)
 }
