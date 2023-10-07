@@ -8,6 +8,8 @@ import com.evgenii.goncharov.ancient.egypt.features.main.mappers.MainContentMapp
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainContentDto
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.ContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainContentRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MainContentRepositoryImpl @Inject constructor(
@@ -19,11 +21,11 @@ class MainContentRepositoryImpl @Inject constructor(
 
     override suspend fun invoke(): BaseEntity<ContentModel> {
         val response = mainContentApi.getMainContent()
-        response.data?.let(::insertNewContentToDb)
+        response.data?.let { insertNewContentToDb(it) }
         return mainContentMapper(response)
     }
 
-    private fun insertNewContentToDb(dto: MainContentDto) {
+    private suspend fun insertNewContentToDb(dto: MainContentDto) = withContext(Dispatchers.IO) {
         bannerDao.insertBanner(bannerDtoToBannerEntityMapper(dto.content))
     }
 }
