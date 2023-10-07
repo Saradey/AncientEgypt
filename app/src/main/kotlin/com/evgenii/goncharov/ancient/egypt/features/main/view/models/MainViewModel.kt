@@ -1,11 +1,17 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.view.models
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.evgenii.goncharov.ancient.egypt.base.models.entities.BaseEntity
+import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
+import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.ContentEntity
+import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
@@ -21,6 +27,9 @@ class MainViewModel @Inject constructor(
     @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) private val bottomMenuRouter: Router,
     private val mainContentUseCase: MainContentUseCase
 ) : ViewModel() {
+
+    private val _mainContentLiveData = MutableLiveData<MainContentUiState>()
+    val mainContentLiveData: LiveData<MainContentUiState> = _mainContentLiveData
 
     fun goToTheStories() {
         activityRouter.navigateTo(MainScreens.startStories())
@@ -48,7 +57,18 @@ class MainViewModel @Inject constructor(
 
     fun loadContentFromNetwork() {
         viewModelScope.launch {
-            mainContentUseCase.loadContentFromNetwork()
+            _mainContentLiveData.value = MainContentUiState.Loading
+            val result = mainContentUseCase()
+            _mainContentLiveData.value = createContentState(result)
+        }
+    }
+
+    private fun createContentState(model: BaseEntity<ContentEntity>): MainContentUiState {
+        return when {
+            model.data == null -> MainContentUiState.Error()
+            model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(model.data)
+            model.status == ResponseStatus.ERROR -> MainContentUiState.Error(model.message)
+            else -> MainContentUiState.Error()
         }
     }
 }

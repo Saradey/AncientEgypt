@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
+import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +29,22 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initObserveLiveData()
         binding.initUi()
+    }
+
+    private fun initObserveLiveData() {
+        viewModel.mainContentLiveData.observe(viewLifecycleOwner, ::initContentUiState)
+    }
+
+    private fun initContentUiState(contentUiState: MainContentUiState) {
+        when (contentUiState) {
+            MainContentUiState.Loading -> {}
+            MainContentUiState.LoadingUpdate -> {}
+            is MainContentUiState.Content -> {}
+            is MainContentUiState.Error -> {}
+            is MainContentUiState.ErrorUpdate -> {}
+        }
     }
 
     private fun FragmentMainBinding.initUi() {
