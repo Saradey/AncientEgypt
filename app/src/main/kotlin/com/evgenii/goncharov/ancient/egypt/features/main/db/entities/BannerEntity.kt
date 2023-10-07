@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = BANNER_TABLE_NAME)
-data class BannerDb(
+data class BannerEntity(
     @PrimaryKey @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "content_type") val contentType: String,
     @ColumnInfo(name = "title") val title: String,

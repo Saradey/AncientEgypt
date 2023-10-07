@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
-import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.BaseContent
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
@@ -52,7 +52,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
     }
 
-    private fun FragmentMainBinding.setContent(content: List<BaseContent>) {
+    private fun FragmentMainBinding.setContent(content: List<BaseContentModel>) {
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
         adapter.items = content

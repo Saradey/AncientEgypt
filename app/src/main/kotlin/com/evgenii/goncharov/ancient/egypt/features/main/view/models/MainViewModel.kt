@@ -11,9 +11,9 @@ import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVIT
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
-import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.BaseContent
-import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.ContentEntity
-import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.MapButtonEntity
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.ContentModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MapButtonModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentUseCase
@@ -66,7 +66,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun createContentState(model: BaseEntity<ContentEntity>): MainContentUiState {
+    private fun createContentState(model: BaseEntity<ContentModel>): MainContentUiState {
         return when {
             model.data == null -> MainContentUiState.Error()
             model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(createContents(model.data))
@@ -75,10 +75,10 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun createContents(model: ContentEntity): List<BaseContent> {
+    private fun createContents(model: ContentModel): List<BaseContentModel> {
         return model.content.apply {
             if (model.isEnabledMap) {
-                plus(MapButtonEntity(R.string.main_title_map))
+                plus(MapButtonModel(R.string.main_title_map))
             }
         }
     }
