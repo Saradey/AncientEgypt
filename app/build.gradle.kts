@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
-    id("kotlin-parcelize")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -70,6 +70,9 @@ dependencies {
     //network
     implementation(networkLibs.retrofit)
     implementation(networkLibs.okHttpClient)
+
+    //serialization
+    implementation(coreProjectLibs.kotlinx.serialization)
 
     //utils
     implementation(utilsLibs.glide)
