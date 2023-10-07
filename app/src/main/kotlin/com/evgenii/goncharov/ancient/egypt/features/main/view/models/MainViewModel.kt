@@ -76,9 +76,11 @@ class MainViewModel @Inject constructor(
     }
 
     private fun createContents(model: ContentModel): List<BaseContentModel> {
-        return model.content.apply {
-            if (model.isEnabledMap) {
-                plus(MapButtonModel(R.string.main_title_map))
+        return model.content.let { models ->
+            if (model.isEnabledMap && models.isNotEmpty()) {
+                models.plus(MapButtonModel)
+            } else {
+                models
             }
         }
     }

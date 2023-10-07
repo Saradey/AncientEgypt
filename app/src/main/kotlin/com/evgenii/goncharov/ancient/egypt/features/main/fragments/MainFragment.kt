@@ -36,8 +36,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initObserveLiveData()
         binding.initUi()
+        initObserveLiveData()
     }
 
     private fun initObserveLiveData() {

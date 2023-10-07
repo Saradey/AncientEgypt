@@ -6,5 +6,6 @@ import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 class MainContentAdapter(
     mapClickListener: () -> Unit
 ) : ListDelegationAdapter<List<BaseContentModel>>(
-    mapButtonDelegate(mapClickListener)
+    mapButtonDelegate(mapClickListener),
+    bannerDelegate()
 )
