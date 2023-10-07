@@ -6,4 +6,4 @@ data class BannerEntity(
     val title: String,
     val bannerUri: String,
     val description: String
-)
+) : BaseContent

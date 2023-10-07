@@ -1,5 +1,6 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.models.state
 
+import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.BaseContent
 import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.ContentEntity
 
 sealed interface MainContentUiState {
@@ -12,5 +13,5 @@ sealed interface MainContentUiState {
 
     data object ErrorUpdate : MainContentUiState
 
-    data class Content(val content: ContentEntity) : MainContentUiState
+    data class Content(val content: List<BaseContent>) : MainContentUiState
 }
