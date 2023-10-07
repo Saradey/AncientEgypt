@@ -25,6 +25,7 @@ fun bannerDelegate() =
         bind {
             binding.root.title = item.title
             binding.root.description = item.description
+            binding.root.bannerUri = item.bannerUri
             binding.root.initView()
         }
     }
