@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * Doc: https://docs.google.com/document/d/1R1-U1C_VLGf1kwnR2W7SJf_i0znYaJqmfNhZv0G8T5E/edit
  * */
 @AndroidEntryPoint
-class MainFragment : Fragment(R.layout.fragment_main) {
+class MainFragment : Fragment(R.layout.fragment_main_old) {
 
     private val viewModel: MainViewModel by viewModels()
     private val binding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
@@ -48,25 +48,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun FragmentMainBinding.initUi() {
-        title.text = "${binding.title.text} ${toString()}"
-        btnNext1.setOnClickListener {
-            viewModel.goToTheStories()
-        }
-        btnNext2.setOnClickListener {
-            viewModel.goToTheSelectedCategory()
-        }
-        btnNext3.setOnClickListener {
-            viewModel.goToTheSelectedArticle()
-        }
-        btnNext4.setOnClickListener {
-            viewModel.goToTheMapAllObjects()
-        }
-        btnNext5.setOnClickListener {
-            viewModel.goToTheMapSelectedArticle()
-        }
-        btnNext6.setOnClickListener {
-            viewModel.goToTheSelectedArtifact()
-        }
+
     }
 
     companion object {
