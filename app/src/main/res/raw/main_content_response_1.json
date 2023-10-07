@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "message": "ok",
+  "data": {
+    "isEnabledMap": true,
+    "content": [
+      {
+        "id": "egyptology",
+        "content_type": "category",
+        "title": "Египтология",
+        "banner_uri": "https://radikal.host/i/TcS5S1",
+        "description": "Исследование науки о Древнем Египте, включая историю, археологию и изучение древних текстов."
+      },
+      {
+        "id": "mythology",
+        "content_type": "category",
+        "title": "Мифология и Религия",
+        "banner_uri": "https://radikal.host/i/TcS5S1"
+      },
+      {
+        "id": "ramesses_ii",
+        "content_type": "article",
+        "title": "Рамсес II - Великий Фараон",
+        "banner_uri": "https://radikal.host/i/TcS5S1",
+        "description": "Рамсес II был одним из наиболее великих фараонов Древнего Египта, правившим в течение 66 лет."
+      },
+      {
+        "id": "khufu_pyramid",
+        "content_type": "article_map",
+        "title": "Пирамида Хеопса",
+        "banner_uri": "https://radikal.host/i/TcS5S1"
+      }
+    ]
+  }
+}
