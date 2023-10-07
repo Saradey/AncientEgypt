@@ -1,0 +1,8 @@
+{
+  "status": "error",
+  "message": "Something wrong",
+  "data": {
+    "isEnabledMap": true,
+    "content": []
+  }
+}
