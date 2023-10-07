@@ -12,7 +12,7 @@ class MainContentRepositoryImpl @Inject constructor(
     private val mainContentMapper: MainContentMapper
 ) : MainContentRepository {
 
-    override suspend fun getContentScreen(): BaseEntity<ContentEntity> {
+    override suspend fun invoke(): BaseEntity<ContentEntity> {
         return mainContentMapper(mainContentApi.getMainContent())
     }
 }

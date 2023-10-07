@@ -5,5 +5,5 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.Content
 
 interface MainContentRepository {
 
-    suspend fun getContentScreen(): BaseEntity<ContentEntity>
+    suspend operator fun invoke(): BaseEntity<ContentEntity>
 }
