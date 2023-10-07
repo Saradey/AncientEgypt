@@ -46,13 +46,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         when (contentUiState) {
             MainContentUiState.Loading -> binding.loading()
             MainContentUiState.LoadingUpdate -> {}
-            is MainContentUiState.Content -> setContent(contentUiState.content)
+            is MainContentUiState.Content -> binding.setContent(contentUiState.content)
             is MainContentUiState.Error -> {}
             is MainContentUiState.ErrorUpdate -> {}
         }
     }
 
-    private fun setContent(content: List<BaseContent>) {
+    private fun FragmentMainBinding.setContent(content: List<BaseContent>) {
+        loadProgress.root.isGone = true
+        rcvContent.isVisible = true
         adapter.items = content
     }
 
