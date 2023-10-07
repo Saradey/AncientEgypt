@@ -1,6 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.view.models
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
@@ -10,6 +11,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentUs
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -42,5 +44,11 @@ class MainViewModel @Inject constructor(
 
     fun goToTheSelectedArtifact() {
         activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
+    }
+
+    fun loadContentFromNetwork() {
+        viewModelScope.launch {
+            mainContentUseCase.loadContentFromNetwork()
+        }
     }
 }

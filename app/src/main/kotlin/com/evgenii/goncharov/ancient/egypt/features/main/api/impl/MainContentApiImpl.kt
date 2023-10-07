@@ -1,13 +1,21 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.api.impl
 
+import android.content.Context
+import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.models.rest.BaseResponse
 import com.evgenii.goncharov.ancient.egypt.features.main.api.MainContentApi
 import com.evgenii.goncharov.ancient.egypt.features.main.models.rest.MainContentResponse
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
-class MainContentApiImpl @Inject constructor() : MainContentApi {
+class MainContentApiImpl @Inject constructor(
+    @ApplicationContext private val context: Context
+) : MainContentApi {
 
     override suspend fun getMainContent(): BaseResponse<MainContentResponse> {
-        TODO("Not yet implemented")
+        val rawResponse = context.resources.openRawResource(R.raw.main_content_response_1)
+        val stringResponse = rawResponse.bufferedReader().use { it.readText() }
+        return Json.decodeFromString(stringResponse)
     }
 }

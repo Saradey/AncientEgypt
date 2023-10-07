@@ -10,6 +10,7 @@ class MainContentRepositoryImpl @Inject constructor(
 ) : MainContentRepository {
 
     override suspend fun getContentScreen(): List<ContentEntity> {
+        mainContentApi.getMainContent()
         return emptyList()
     }
 }

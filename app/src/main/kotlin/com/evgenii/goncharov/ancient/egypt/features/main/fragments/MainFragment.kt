@@ -24,6 +24,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StatusBarUtils.showSystemUi(requireActivity().window)
+        viewModel.loadContentFromNetwork()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

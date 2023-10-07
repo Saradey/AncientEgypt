@@ -7,4 +7,8 @@ import javax.inject.Inject
 class MainContentUseCaseImpl @Inject constructor(
     private val mainContentRepository: MainContentRepository
 ) : MainContentUseCase {
+
+    override suspend fun loadContentFromNetwork() {
+        mainContentRepository.getContentScreen()
+    }
 }

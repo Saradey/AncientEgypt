@@ -5,10 +5,10 @@ import com.evgenii.goncharov.ancient.egypt.features.main.api.impl.MainContentApi
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-@InstallIn(FragmentComponent::class)
+@InstallIn(ViewModelComponent::class)
 interface MockBindsModule {
 
     @Binds
