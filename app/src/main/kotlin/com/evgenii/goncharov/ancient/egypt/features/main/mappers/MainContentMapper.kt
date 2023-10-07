@@ -5,13 +5,13 @@ import com.evgenii.goncharov.ancient.egypt.base.models.rest.BaseResponse
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.BannerEntity
 import com.evgenii.goncharov.ancient.egypt.features.main.models.entities.ContentEntity
-import com.evgenii.goncharov.ancient.egypt.features.main.models.rest.BannerResponse
-import com.evgenii.goncharov.ancient.egypt.features.main.models.rest.MainContentResponse
+import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.BannerDto
+import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainContentDto
 import javax.inject.Inject
 
 class MainContentMapper @Inject constructor() {
 
-    operator fun invoke(response: BaseResponse<MainContentResponse>): BaseEntity<ContentEntity> {
+    operator fun invoke(response: BaseResponse<MainContentDto>): BaseEntity<ContentEntity> {
         return BaseEntity(
             status = ResponseStatus.valueOf(response.status.uppercase()),
             message = response.message,
@@ -19,7 +19,7 @@ class MainContentMapper @Inject constructor() {
         )
     }
 
-    private fun mapMainContentResponse(response: MainContentResponse?): ContentEntity? {
+    private fun mapMainContentResponse(response: MainContentDto?): ContentEntity? {
         return response?.let { mainContent ->
             ContentEntity(
                 isEnabledMap = mainContent.isEnabledMap,
@@ -28,7 +28,7 @@ class MainContentMapper @Inject constructor() {
         }
     }
 
-    private fun mapBanner(content: List<BannerResponse>): List<BannerEntity> {
+    private fun mapBanner(content: List<BannerDto>): List<BannerEntity> {
         return content.map { model ->
             BannerEntity(
                 id = model.id,

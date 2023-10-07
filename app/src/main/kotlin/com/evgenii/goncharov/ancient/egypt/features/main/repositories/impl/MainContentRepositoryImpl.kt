@@ -13,6 +13,8 @@ class MainContentRepositoryImpl @Inject constructor(
 ) : MainContentRepository {
 
     override suspend fun invoke(): BaseEntity<ContentEntity> {
-        return mainContentMapper(mainContentApi.getMainContent())
+        val response = mainContentApi.getMainContent()
+
+        return mainContentMapper(response)
     }
 }
