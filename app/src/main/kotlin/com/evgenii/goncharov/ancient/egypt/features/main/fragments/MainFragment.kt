@@ -2,6 +2,8 @@ package com.evgenii.goncharov.ancient.egypt.features.main.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -42,7 +44,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun initContentUiState(contentUiState: MainContentUiState) {
         when (contentUiState) {
-            MainContentUiState.Loading -> {}
+            MainContentUiState.Loading -> binding.loading()
             MainContentUiState.LoadingUpdate -> {}
             is MainContentUiState.Content -> setContent(contentUiState.content)
             is MainContentUiState.Error -> {}
@@ -52,6 +54,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun setContent(content: List<BaseContent>) {
         adapter.items = content
+    }
+
+    private fun FragmentMainBinding.loading() {
+        rcvContent.isGone = true
+        loadProgress.root.isVisible = true
     }
 
     private fun FragmentMainBinding.initUi() {
