@@ -55,7 +55,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun FragmentMainBinding.initUi() {
-
+        rcvContent.adapter = adapter
     }
 
     companion object {
