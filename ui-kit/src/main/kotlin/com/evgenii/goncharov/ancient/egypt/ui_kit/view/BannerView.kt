@@ -13,14 +13,22 @@ class BannerView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    val title: String? = null
-    val bannerUri: String? = null
-    val description: String? = null
+    var title: String? = null
+    var bannerUri: String? = null
+    var description: String? = null
     private val binding: BannerViewBinding by viewBinding {
         BannerViewBinding.bind(this)
     }
 
     init {
         inflate(context, R.layout.banner_view, this)
+    }
+
+    fun initView() {
+        with(binding) {
+            title?.let(txvTitle::setText)
+            description?.let(txvDescription::setText)
+        }
+        requestLayout()
     }
 }

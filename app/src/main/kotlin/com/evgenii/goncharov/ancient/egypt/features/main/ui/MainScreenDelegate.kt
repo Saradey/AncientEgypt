@@ -23,6 +23,8 @@ fun bannerDelegate() =
         { layoutInflater, root -> ItemBannerBinding.inflate(layoutInflater, root, false) }
     ) {
         bind {
-            binding.root
+            binding.root.title = item.title
+            binding.root.description = item.description
+            binding.root.initView()
         }
     }
