@@ -55,7 +55,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun FragmentMainBinding.setContent(content: List<BaseContentModel>) {
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
-        adapter.items = content
+//        adapter.items = content
     }
 
     private fun FragmentMainBinding.loading() {

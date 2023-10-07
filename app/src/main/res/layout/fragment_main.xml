@@ -7,7 +7,7 @@
     <View
         android:id="@+id/v_stub_stories"
         android:layout_width="0dp"
-        android:layout_height="140dp"
+        android:layout_height="100dp"
         android:background="#808080"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +25,12 @@
 
     <include
         android:id="@+id/load_progress"
-        layout="@layout/layout_shimmer" />
+        layout="@layout/layout_shimmer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_stub_stories" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
