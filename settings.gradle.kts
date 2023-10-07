@@ -29,6 +29,9 @@ dependencyResolutionManagement {
         create("androidLibs") {
             from(files("gradle/android-libs.versions.toml"))
         }
+        create("libsProjectPlugins") {
+            from(files("gradle/libs-project-plugins.versions.toml"))
+        }
     }
 }
 rootProject.name = "AncientEgypt"

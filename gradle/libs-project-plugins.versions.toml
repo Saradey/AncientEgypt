@@ -1,0 +1,10 @@
+[versions]
+gradleVersion = "8.1.1"
+kotlinVersion = "1.9.10"
+
+[plugins]
+project-android-application = { id = "com.android.application", version.ref = "gradleVersion" }
+project-android-library = { id = "com.android.library", version.ref = "gradleVersion" }
+jetbrains-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+jetbrains-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinVersion" }
+jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }

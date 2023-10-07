@@ -8,6 +8,9 @@ coreKtxVersion = "1.10.1"
 #https://github.com/terrakok/Cicerone
 ciceroneVersion = "7.1"
 
+[plugins]
+dagger-hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "daggerHiltVersion" }
+
 [libraries]
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
 dagger-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "daggerHiltVersion" }
