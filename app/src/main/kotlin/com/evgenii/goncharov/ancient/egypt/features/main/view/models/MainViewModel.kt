@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.models.entities.BaseEntity
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
@@ -78,7 +77,9 @@ class MainViewModel @Inject constructor(
     private fun createContents(model: ContentModel): List<BaseContentModel> {
         return model.content.let { models ->
             if (model.isEnabledMap && models.isNotEmpty()) {
-                models.plus(MapButtonModel)
+                models.toMutableList<BaseContentModel>().apply {
+                    add(0, MapButtonModel)
+                }
             } else {
                 models
             }

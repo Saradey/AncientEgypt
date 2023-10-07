@@ -23,9 +23,9 @@ class MainContentApiImpl @Inject constructor(
 
     private fun getResponse(response: Int): Int {
         return when (response) {
-            0 -> R.raw.main_content_response_1
+            0 -> R.raw.main_content_response_1_success
             1 -> R.raw.main_content_response_2_error
-            else -> R.raw.main_content_response_1
+            else -> R.raw.main_content_response_1_success
         }
     }
 }
