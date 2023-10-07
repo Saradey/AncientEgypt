@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.features.main.rest.models
+package com.evgenii.goncharov.ancient.egypt.features.main.models.rest
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
