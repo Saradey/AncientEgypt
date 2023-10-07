@@ -1,5 +1,17 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.ui
 
+import com.evgenii.goncharov.ancient.egypt.databinding.ItemGoToMapButtonBinding
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MapButtonModel
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
-fun mapButtonDelegate() = adapterDelegateViewBinding<>
+fun mapButtonDelegate(mapClickListener: () -> Unit) =
+    adapterDelegateViewBinding<MapButtonModel, BaseContentModel, ItemGoToMapButtonBinding>(
+        { layoutInflater, root -> ItemGoToMapButtonBinding.inflate(layoutInflater, root, false) }
+    ) {
+        bind {
+            binding.btnGoToMap.setOnClickListener {
+                mapClickListener()
+            }
+        }
+    }

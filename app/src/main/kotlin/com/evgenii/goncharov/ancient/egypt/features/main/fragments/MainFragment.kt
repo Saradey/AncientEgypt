@@ -25,7 +25,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val viewModel: MainViewModel by viewModels()
     private val binding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
-    private val adapter: MainContentAdapter = MainContentAdapter()
+    private val adapter: MainContentAdapter = MainContentAdapter(
+        ::goToAllObjectOnTheMap
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +57,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun FragmentMainBinding.setContent(content: List<BaseContentModel>) {
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
-//        adapter.items = content
+        adapter.items = content
     }
 
     private fun FragmentMainBinding.loading() {
@@ -65,6 +67,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun FragmentMainBinding.initUi() {
         rcvContent.adapter = adapter
+    }
+
+    private fun goToAllObjectOnTheMap() {
+        viewModel.goToTheMapAllObjects()
     }
 
     companion object {
