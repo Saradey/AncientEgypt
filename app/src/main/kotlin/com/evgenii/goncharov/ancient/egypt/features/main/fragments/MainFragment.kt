@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
+import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
@@ -24,10 +25,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val viewModel: MainViewModel by viewModels()
-    private val binding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
-    private val adapter: MainContentAdapter = MainContentAdapter(
-        ::goToAllObjectOnTheMap
-    )
+    private val rootBinding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
+    private val errorStateBinding: LayoutErrorStateBinding by viewBinding(LayoutErrorStateBinding::bind)
+    private val adapter: MainContentAdapter = MainContentAdapter(::goToAllObjectOnTheMap)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.initUi()
+        rootBinding.initUi()
         initObserveLiveData()
     }
 
@@ -46,23 +46,32 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun initContentUiState(contentUiState: MainContentUiState) {
         when (contentUiState) {
-            MainContentUiState.Loading -> binding.loading()
+            MainContentUiState.Loading -> rootBinding.loading()
             MainContentUiState.LoadingUpdate -> {}
-            is MainContentUiState.Content -> binding.setContent(contentUiState.content)
-            is MainContentUiState.Error -> {}
+            is MainContentUiState.Content -> rootBinding.setContent(contentUiState.content)
+            is MainContentUiState.Error -> error(contentUiState.messageError)
             is MainContentUiState.ErrorUpdate -> {}
         }
     }
 
     private fun FragmentMainBinding.setContent(content: List<BaseContentModel>) {
+        errorState.root.isGone = true
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
         adapter.items = content
     }
 
     private fun FragmentMainBinding.loading() {
+        errorState.root.isGone = true
         rcvContent.isGone = true
         loadProgress.root.isVisible = true
+    }
+
+    private fun error(messageError: String?) {
+        rootBinding.rcvContent.isGone = true
+        rootBinding.loadProgress.root.isGone = true
+        rootBinding.errorState.root.isVisible = true
+        messageError?.let(errorStateBinding.txvTitleError::setText)
     }
 
     private fun FragmentMainBinding.initUi() {
