@@ -1,7 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.mappers
 
-import com.evgenii.goncharov.ancient.egypt.base.models.entities.BaseEntity
-import com.evgenii.goncharov.ancient.egypt.base.models.rest.BaseResponse
+import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseModel
+import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseDto
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BannerModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.ContentModel
@@ -11,10 +11,10 @@ import javax.inject.Inject
 
 class MainContentMapper @Inject constructor() {
 
-    operator fun invoke(response: BaseResponse<MainContentDto>): BaseEntity<ContentModel> {
-        return BaseEntity(
+    operator fun invoke(response: BaseDto<MainContentDto>): BaseModel<ContentModel> {
+        return BaseModel(
             status = ResponseStatus.valueOf(response.status.uppercase()),
-            message = response.message,
+            message = response.message.orEmpty(),
             data = mapMainContentResponse(response.data)
         )
     }

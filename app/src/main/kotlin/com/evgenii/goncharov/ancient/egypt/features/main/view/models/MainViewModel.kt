@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evgenii.goncharov.ancient.egypt.base.models.entities.BaseEntity
+import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseModel
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
@@ -65,7 +65,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun createContentState(model: BaseEntity<ContentModel>): MainContentUiState {
+    private fun createContentState(model: BaseModel<ContentModel>): MainContentUiState {
         return when {
             model.data == null -> MainContentUiState.Error()
             model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(createContents(model.data))

@@ -1,6 +1,6 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl
 
-import com.evgenii.goncharov.ancient.egypt.base.models.entities.BaseEntity
+import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseModel
 import com.evgenii.goncharov.ancient.egypt.features.main.api.MainContentApi
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.BannerDao
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.MapInfoDao
@@ -22,7 +22,7 @@ class MainContentRepositoryImpl @Inject constructor(
     private val mapInfoDao: MapInfoDao
 ) : MainContentRepository {
 
-    override suspend fun invoke(): BaseEntity<ContentModel> {
+    override suspend fun invoke(): BaseModel<ContentModel> {
         val response = mainContentApi.getMainContent()
         response.data?.let { insertNewContentToDb(it) }
         return mainContentMapper(response)

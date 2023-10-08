@@ -2,7 +2,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.api.impl
 
 import android.content.Context
 import com.evgenii.goncharov.ancient.egypt.R
-import com.evgenii.goncharov.ancient.egypt.base.models.rest.BaseResponse
+import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseDto
 import com.evgenii.goncharov.ancient.egypt.features.main.api.MainContentApi
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainContentDto
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -14,8 +14,8 @@ class MainContentApiImpl @Inject constructor(
     @ApplicationContext private val context: Context
 ) : MainContentApi {
 
-    override suspend fun getMainContent(): BaseResponse<MainContentDto> {
-        val rawResponse = context.resources.openRawResource(getResponse(1))
+    override suspend fun getMainContent(): BaseDto<MainContentDto> {
+        val rawResponse = context.resources.openRawResource(getResponse(2))
         val stringResponse = rawResponse.bufferedReader().use { it.readText() }
         delay(1000)
         return Json.decodeFromString(stringResponse)
@@ -25,6 +25,7 @@ class MainContentApiImpl @Inject constructor(
         return when (response) {
             0 -> R.raw.main_content_response_1_success
             1 -> R.raw.main_content_response_2_error
+            2 -> R.raw.main_content_response_3_error_2
             else -> R.raw.main_content_response_1_success
         }
     }

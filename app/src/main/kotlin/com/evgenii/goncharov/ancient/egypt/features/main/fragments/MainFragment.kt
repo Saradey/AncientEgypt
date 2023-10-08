@@ -71,7 +71,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         rootBinding.rcvContent.isGone = true
         rootBinding.loadProgress.root.isGone = true
         rootBinding.errorState.root.isVisible = true
-        messageError?.let(errorStateBinding.txvTitleError::setText)
+        if(messageError.isNullOrEmpty().not()) {
+            errorStateBinding.txvTitleError.text = messageError
+        }
     }
 
     private fun FragmentMainBinding.initUi() {
