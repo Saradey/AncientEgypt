@@ -1,6 +1,6 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.mappers
 
-import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseModel
+import com.evgenii.goncharov.ancient.egypt.base.models.model.FromNetworkBaseModel
 import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseDto
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BannerModel
@@ -11,8 +11,8 @@ import javax.inject.Inject
 
 class MainContentMapper @Inject constructor() {
 
-    operator fun invoke(response: BaseDto<MainContentDto>): BaseModel<ContentModel> {
-        return BaseModel(
+    operator fun invoke(response: BaseDto<MainContentDto>): FromNetworkBaseModel<ContentModel> {
+        return FromNetworkBaseModel(
             status = ResponseStatus.valueOf(response.status.uppercase()),
             message = response.message.orEmpty(),
             data = mapMainContentResponse(response.data)

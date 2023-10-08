@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseModel
+import com.evgenii.goncharov.ancient.egypt.base.models.model.FromNetworkBaseModel
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
@@ -61,16 +61,18 @@ class MainViewModel @Inject constructor(
     }
 
     fun loadContent() {
-        viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
+        viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
             _mainContentLiveData.value = MainContentUiState.Error()
         }) {
+            val contentFromDatabase = mainContentFromDbUseCase()
+
             _mainContentLiveData.value = MainContentUiState.Loading
             val result = mainContentFromNetworkUseCase()
             _mainContentLiveData.value = createContentState(result)
         }
     }
 
-    private fun createContentState(model: BaseModel<ContentModel>): MainContentUiState {
+    private fun createContentState(model: FromNetworkBaseModel<ContentModel>): MainContentUiState {
         return when {
             model.data == null -> MainContentUiState.Error()
             model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(createContents(model.data))
