@@ -7,6 +7,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
@@ -17,6 +18,8 @@ import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * №2.2
@@ -59,6 +62,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         titleInfo.root.isVisible = true
         titleInfo.root.setText(R.string.main_title_info_error)
         titleInfo.root.setTextColor(Color.RED)
+        lifecycleScope.launch {
+            delay(HIDE_ERROR_DELAY)
+            titleInfo.root.isGone = true
+        }
     }
 
     private fun FragmentMainBinding.showStatusUpdate(content: List<BaseContentModel>) {
@@ -105,6 +112,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     companion object {
+        private const val HIDE_ERROR_DELAY = 1000L
+
         fun newInstance() = MainFragment()
     }
 }
