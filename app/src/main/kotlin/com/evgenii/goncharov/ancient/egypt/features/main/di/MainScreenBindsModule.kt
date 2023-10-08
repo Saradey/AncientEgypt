@@ -1,9 +1,9 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.di
 
-import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainContentRepository
-import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.MainContentRepositoryImpl
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentUseCase
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.MainContentUseCaseImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainContentFromNetworkRepository
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.MainContentFromNetworkRepositoryImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.MainContentFromNetworkUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,8 +14,8 @@ import dagger.hilt.android.components.ViewModelComponent
 interface MainScreenBindsModule {
 
     @Binds
-    fun MainContentRepositoryImpl.bindMainContentRepository(): MainContentRepository
+    fun MainContentFromNetworkRepositoryImpl.bindMainContentRepository(): MainContentFromNetworkRepository
 
     @Binds
-    fun MainContentUseCaseImpl.bindMainContentUseCase(): MainContentUseCase
+    fun MainContentFromNetworkUseCaseImpl.bindMainContentUseCase(): MainContentFromNetworkUseCase
 }

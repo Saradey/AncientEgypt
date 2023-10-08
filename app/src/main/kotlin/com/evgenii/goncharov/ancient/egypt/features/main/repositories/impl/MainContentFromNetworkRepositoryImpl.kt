@@ -9,18 +9,18 @@ import com.evgenii.goncharov.ancient.egypt.features.main.mappers.BannerDtoToBann
 import com.evgenii.goncharov.ancient.egypt.features.main.mappers.MainContentMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainContentDto
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.ContentModel
-import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainContentRepository
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainContentFromNetworkRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class MainContentRepositoryImpl @Inject constructor(
+class MainContentFromNetworkRepositoryImpl @Inject constructor(
     private val mainContentApi: MainContentApi,
     private val mainContentMapper: MainContentMapper,
     private val bannerDao: BannerDao,
     private val bannerDtoToBannerEntityMapper: BannerDtoToBannerEntityMapper,
     private val mapInfoDao: MapInfoDao
-) : MainContentRepository {
+) : MainContentFromNetworkRepository {
 
     override suspend fun invoke(): BaseModel<ContentModel> {
         val response = mainContentApi.getMainContent()
