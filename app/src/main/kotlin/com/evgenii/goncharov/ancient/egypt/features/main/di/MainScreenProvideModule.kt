@@ -7,17 +7,20 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
 object MainScreenProvideModule {
 
     @Provides
+    @ViewModelScoped
     fun provideBannerDao(db: AppDatabase): BannerDao {
         return db.getBannerDao()
     }
 
     @Provides
+    @ViewModelScoped
     fun provideMapInfoDao(db: AppDatabase): MapInfoDao {
         return db.getMapInfoDao()
     }
