@@ -13,6 +13,7 @@ import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
@@ -114,8 +115,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewModel.goToTheMapAllObjects()
     }
 
-    private fun bannerClick(id: String, contentType: String) {
-        viewModel.bannerClick(id, contentType)
+    private fun bannerClick(model: SelectedBanner) {
+        viewModel.bannerClick(model)
     }
 
     companion object {

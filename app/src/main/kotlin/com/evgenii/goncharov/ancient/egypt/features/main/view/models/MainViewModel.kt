@@ -19,6 +19,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFr
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -90,12 +91,12 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun bannerClick(id: String, contentType: String) {
-        when (ContentType.valueOf(contentType.uppercase())) {
-            ContentType.ARTICLE -> goToTheSelectedArticle(id)
-            ContentType.ARTICLE_MAP -> goToTheMapSelectedArticle(id)
-            ContentType.CATEGORY -> goToTheSelectedCategory(id)
-            ContentType.ARTIFACT -> goToTheSelectedArtifact(id)
+    fun bannerClick(model: SelectedBanner) {
+        when (ContentType.valueOf(model.contentType.uppercase())) {
+            ContentType.ARTICLE -> goToTheSelectedArticle(model.id)
+            ContentType.ARTICLE_MAP -> goToTheMapSelectedArticle(model.id)
+            ContentType.CATEGORY -> goToTheSelectedCategory(model.id)
+            ContentType.ARTIFACT -> goToTheSelectedArtifact(model.id)
         }
     }
 
