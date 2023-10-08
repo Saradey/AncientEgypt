@@ -15,6 +15,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.models.ContentMo
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MapButtonModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromDbUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
@@ -28,7 +29,8 @@ import javax.inject.Named
 class MainViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
     @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) private val bottomMenuRouter: Router,
-    private val mainContentFromNetworkUseCase: MainContentFromNetworkUseCase
+    private val mainContentFromNetworkUseCase: MainContentFromNetworkUseCase,
+    private val mainContentFromDbUseCase: MainContentFromDbUseCase
 ) : ViewModel() {
 
     private val _mainContentLiveData = MutableLiveData<MainContentUiState>()

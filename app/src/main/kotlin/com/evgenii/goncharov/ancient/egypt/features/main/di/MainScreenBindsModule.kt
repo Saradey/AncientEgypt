@@ -1,8 +1,12 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.di
 
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainContentFromDbRepository
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainContentFromNetworkRepository
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.MainContentFromDbRepositoryImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.MainContentFromNetworkRepositoryImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromDbUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.MainContentFromDbUseCaseImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.MainContentFromNetworkUseCaseImpl
 import dagger.Binds
 import dagger.Module
@@ -18,4 +22,10 @@ interface MainScreenBindsModule {
 
     @Binds
     fun MainContentFromNetworkUseCaseImpl.bindMainContentUseCase(): MainContentFromNetworkUseCase
+
+    @Binds
+    fun MainContentFromDbRepositoryImpl.bindMainContentFromDbRepository(): MainContentFromDbRepository
+
+    @Binds
+    fun MainContentFromDbUseCaseImpl.MainContentFromDbUseCase(): MainContentFromDbUseCase
 }
