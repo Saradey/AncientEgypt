@@ -48,4 +48,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/v_stub_stories" />
 
+    <include
+        android:id="@+id/title_info"
+        layout="@layout/layout_title_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_stub_stories" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
