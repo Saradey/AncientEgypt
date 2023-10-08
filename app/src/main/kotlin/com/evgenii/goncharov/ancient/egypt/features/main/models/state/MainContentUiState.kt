@@ -6,7 +6,7 @@ sealed interface MainContentUiState {
 
     data object Loading : MainContentUiState
 
-    data object LoadingUpdate : MainContentUiState
+    data class LoadingUpdateAndContentFromDb(val content: List<BaseContentModel>) : MainContentUiState
 
     data class Error(val messageError: String? = null) : MainContentUiState
 

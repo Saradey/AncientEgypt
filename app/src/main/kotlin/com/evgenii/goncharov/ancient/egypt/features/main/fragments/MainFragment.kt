@@ -47,7 +47,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun initContentUiState(contentUiState: MainContentUiState) {
         when (contentUiState) {
             MainContentUiState.Loading -> rootBinding.loading()
-            MainContentUiState.LoadingUpdate -> {}
+            is MainContentUiState.LoadingUpdateAndContentFromDb -> {}
             is MainContentUiState.Content -> rootBinding.setContent(contentUiState.content)
             is MainContentUiState.Error -> error(contentUiState.messageError)
             is MainContentUiState.ErrorUpdate -> {}

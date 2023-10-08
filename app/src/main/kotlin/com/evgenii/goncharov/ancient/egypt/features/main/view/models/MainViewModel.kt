@@ -64,15 +64,28 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
             _mainContentLiveData.value = MainContentUiState.Error()
         }) {
-            val contentFromDatabase = mainContentFromDbUseCase()
-
-            _mainContentLiveData.value = MainContentUiState.Loading
-            val result = mainContentFromNetworkUseCase()
-            _mainContentLiveData.value = createContentState(result)
+            loadFromDb()
+            loadFromNetwork()
         }
     }
 
-    private fun createContentState(model: FromNetworkBaseModel<ContentModel>): MainContentUiState {
+    private suspend fun loadFromDb() {
+        val contentFromDatabase = mainContentFromDbUseCase()
+        if (contentFromDatabase.data.content.isNotEmpty()) {
+            _mainContentLiveData.value = MainContentUiState.LoadingUpdateAndContentFromDb(
+                createContents(contentFromDatabase.data)
+            )
+        } else {
+            _mainContentLiveData.value = MainContentUiState.Loading
+        }
+    }
+
+    private suspend fun loadFromNetwork() {
+        val result = mainContentFromNetworkUseCase()
+        _mainContentLiveData.value = createContentStateFromNetwork(result)
+    }
+
+    private fun createContentStateFromNetwork(model: FromNetworkBaseModel<ContentModel>): MainContentUiState {
         return when {
             model.data == null -> MainContentUiState.Error()
             model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(createContents(model.data))
