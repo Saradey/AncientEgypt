@@ -18,7 +18,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromDbUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
-import com.evgenii.goncharov.ancient.egypt.utils.ContentType
+import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler

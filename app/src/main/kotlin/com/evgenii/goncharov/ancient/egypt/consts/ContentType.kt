@@ -1,4 +1,4 @@
-package com.evgenii.goncharov.ancient.egypt.utils
+package com.evgenii.goncharov.ancient.egypt.consts
 
 enum class ContentType {
     CATEGORY,
