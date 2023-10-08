@@ -19,6 +19,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFr
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
@@ -27,7 +28,7 @@ import javax.inject.Named
 class MainViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
     @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) private val bottomMenuRouter: Router,
-    private val mainContentUseCase: MainContentFromNetworkUseCase
+    private val mainContentFromNetworkUseCase: MainContentFromNetworkUseCase
 ) : ViewModel() {
 
     private val _mainContentLiveData = MutableLiveData<MainContentUiState>()
@@ -57,10 +58,12 @@ class MainViewModel @Inject constructor(
         activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
     }
 
-    fun loadContentFromNetwork() {
-        viewModelScope.launch {
+    fun loadContent() {
+        viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
+            _mainContentLiveData.value = MainContentUiState.Error()
+        }) {
             _mainContentLiveData.value = MainContentUiState.Loading
-            val result = mainContentUseCase()
+            val result = mainContentFromNetworkUseCase()
             _mainContentLiveData.value = createContentState(result)
         }
     }
