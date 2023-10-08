@@ -82,14 +82,21 @@ class MainViewModel @Inject constructor(
 
     private suspend fun loadFromNetwork() {
         val result = mainContentFromNetworkUseCase()
-        _mainContentLiveData.value = createContentStateFromNetwork(result)
+        val lastState = _mainContentLiveData.value
+        _mainContentLiveData.value = createContentStateFromNetwork(result, lastState)
     }
 
-    private fun createContentStateFromNetwork(model: FromNetworkBaseModel<ContentModel>): MainContentUiState {
+    private fun createContentStateFromNetwork(
+        model: FromNetworkBaseModel<ContentModel>,
+        lastState: MainContentUiState?
+    ): MainContentUiState {
         return when {
+            lastState is MainContentUiState.LoadingUpdateAndContentFromDb && model.status == ResponseStatus.ERROR -> {
+                MainContentUiState.ErrorUpdate
+            }
             model.data == null -> MainContentUiState.Error()
-            model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(createContents(model.data))
             model.status == ResponseStatus.ERROR -> MainContentUiState.Error(model.message)
+            model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(createContents(model.data))
             else -> MainContentUiState.Error()
         }
     }

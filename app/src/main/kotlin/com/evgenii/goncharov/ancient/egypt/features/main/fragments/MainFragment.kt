@@ -11,7 +11,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
-import com.evgenii.goncharov.ancient.egypt.databinding.LayoutTitleInfoBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
@@ -29,7 +28,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val viewModel: MainViewModel by viewModels()
     private val rootBinding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
     private val errorStateBinding: LayoutErrorStateBinding by viewBinding(LayoutErrorStateBinding::bind)
-    private val titleInfo: LayoutTitleInfoBinding by viewBinding(LayoutTitleInfoBinding::bind)
     private val adapter: MainContentAdapter = MainContentAdapter(::goToAllObjectOnTheMap)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +51,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             is MainContentUiState.LoadingUpdateAndContentFromDb -> rootBinding.showStatusUpdate(contentUiState.content)
             is MainContentUiState.Content -> rootBinding.setContent(contentUiState.content)
             is MainContentUiState.Error -> error(contentUiState.messageError)
-            is MainContentUiState.ErrorUpdate -> {}
+            is MainContentUiState.ErrorUpdate -> rootBinding.errorUpdate()
         }
+    }
+
+    private fun FragmentMainBinding.errorUpdate() {
+        titleInfo.root.isVisible = true
+        titleInfo.root.setText(R.string.main_title_info_error)
+        titleInfo.root.setTextColor(Color.RED)
     }
 
     private fun FragmentMainBinding.showStatusUpdate(content: List<BaseContentModel>) {
