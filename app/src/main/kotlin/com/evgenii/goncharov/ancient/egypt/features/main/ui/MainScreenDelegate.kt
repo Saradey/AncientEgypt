@@ -18,7 +18,7 @@ fun mapButtonDelegate(mapClickListener: () -> Unit) =
         }
     }
 
-fun bannerDelegate() =
+fun bannerDelegate(bannerClickListener: (id: String, contentType: String) -> Unit) =
     adapterDelegateViewBinding<BannerModel, BaseContentModel, ItemBannerBinding>(
         { layoutInflater, root -> ItemBannerBinding.inflate(layoutInflater, root, false) }
     ) {
@@ -27,5 +27,8 @@ fun bannerDelegate() =
             binding.root.description = item.description
             binding.root.bannerUri = item.bannerUri
             binding.root.initView()
+            binding.root.setOnClickListener {
+                bannerClickListener(item.id, item.contentType)
+            }
         }
     }

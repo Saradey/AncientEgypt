@@ -31,7 +31,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val viewModel: MainViewModel by viewModels()
     private val rootBinding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
     private val errorStateBinding: LayoutErrorStateBinding by viewBinding(LayoutErrorStateBinding::bind)
-    private val adapter: MainContentAdapter = MainContentAdapter(::goToAllObjectOnTheMap)
+    private val adapter: MainContentAdapter = MainContentAdapter(
+        ::goToAllObjectOnTheMap,
+        ::bannerClick
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,6 +112,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun goToAllObjectOnTheMap() {
         viewModel.goToTheMapAllObjects()
+    }
+
+    private fun bannerClick(id: String, contentType: String) {
+        viewModel.bannerClick(id, contentType)
     }
 
     companion object {

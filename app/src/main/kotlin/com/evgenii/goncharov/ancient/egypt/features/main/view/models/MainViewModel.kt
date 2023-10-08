@@ -18,6 +18,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromDbUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
+import com.evgenii.goncharov.ancient.egypt.utils.ContentType
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -35,30 +36,6 @@ class MainViewModel @Inject constructor(
 
     private val _mainContentLiveData = MutableLiveData<MainContentUiState>()
     val mainContentLiveData: LiveData<MainContentUiState> = _mainContentLiveData
-
-    fun goToTheStories() {
-        activityRouter.navigateTo(MainScreens.startStories())
-    }
-
-    fun goToTheSelectedCategory() {
-        bottomMenuRouter.navigateTo(ArticlesScreens.startSelectedCategory())
-    }
-
-    fun goToTheSelectedArticle() {
-        activityRouter.navigateTo(ContentScreens.startSelectedArticle())
-    }
-
-    fun goToTheMapAllObjects() {
-        bottomMenuRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
-    }
-
-    fun goToTheMapSelectedArticle() {
-        bottomMenuRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
-    }
-
-    fun goToTheSelectedArtifact() {
-        activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
-    }
 
     fun loadContent() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
@@ -111,5 +88,38 @@ class MainViewModel @Inject constructor(
                 models
             }
         }
+    }
+
+    fun bannerClick(id: String, contentType: String) {
+        when (ContentType.valueOf(contentType.uppercase())) {
+            ContentType.ARTICLE -> goToTheSelectedArticle(id)
+            ContentType.ARTICLE_MAP -> goToTheMapSelectedArticle(id)
+            ContentType.CATEGORY -> goToTheSelectedCategory(id)
+            ContentType.ARTIFACT -> goToTheSelectedArtifact(id)
+        }
+    }
+
+    fun goToTheStories() {
+        activityRouter.navigateTo(MainScreens.startStories())
+    }
+
+    fun goToTheSelectedCategory(idSelectedCategory: String) {
+        bottomMenuRouter.navigateTo(ArticlesScreens.startSelectedCategory())
+    }
+
+    fun goToTheSelectedArticle(idSelectedArticle: String) {
+        activityRouter.navigateTo(ContentScreens.startSelectedArticle())
+    }
+
+    fun goToTheMapAllObjects() {
+        bottomMenuRouter.navigateTo(MapScreens.startAncientEgyptMapAllObjects())
+    }
+
+    private fun goToTheMapSelectedArticle(idSelectedArticle: String) {
+        bottomMenuRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
+    }
+
+    fun goToTheSelectedArtifact(idSelectedArtifact: String) {
+        activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
     }
 }

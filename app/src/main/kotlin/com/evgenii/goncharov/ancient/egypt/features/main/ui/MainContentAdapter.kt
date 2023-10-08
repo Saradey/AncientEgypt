@@ -4,8 +4,9 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseConte
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 
 class MainContentAdapter(
-    mapClickListener: () -> Unit
+    mapClickListener: () -> Unit,
+    bannerClickListener: (id: String, contentType: String) -> Unit
 ) : ListDelegationAdapter<List<BaseContentModel>>(
     mapButtonDelegate(mapClickListener),
-    bannerDelegate()
+    bannerDelegate(bannerClickListener)
 )
