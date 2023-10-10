@@ -51,7 +51,9 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
             _mainContentLiveData.value = MainContentUiState.ErrorUpdate
         }) {
-            _mainContentLiveData.value = MainContentUiState.Update
+            _mainContentLiveData.value = MainContentUiState.Update(
+                _mainContentLiveData.value is MainContentUiState.Error
+            )
             loadFromNetwork()
         }
     }
@@ -70,7 +72,7 @@ class MainViewModel @Inject constructor(
     private suspend fun loadFromNetwork() {
         val result = mainContentFromNetworkUseCase()
         val lastState = _mainContentLiveData.value
-        _mainContentLiveData.value = createContentStateFromNetwork(result, lastState)
+        _mainContentLiveData.postValue(createContentStateFromNetwork(result, lastState))
     }
 
     private fun createContentStateFromNetwork(
@@ -78,23 +80,28 @@ class MainViewModel @Inject constructor(
         lastState: MainContentUiState?
     ): MainContentUiState {
         return when {
-            checkErrorUpdateState(model, lastState) -> MainContentUiState.ErrorUpdate
-            model.data == null -> MainContentUiState.Error()
-            model.status == ResponseStatus.ERROR -> MainContentUiState.Error(model.message)
-            model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(createContents(model.data))
+            model.status == ResponseStatus.ERROR || model.data == null -> {
+                createErrorState(model, lastState)
+            }
+            model.status == ResponseStatus.SUCCESS -> {
+                MainContentUiState.Content(createContents(model.data))
+            }
             else -> MainContentUiState.Error()
         }
     }
 
-    private fun checkErrorUpdateState(
+    private fun createErrorState(
         model: FromNetworkBaseModel<ContentModel>,
         lastState: MainContentUiState?
-    ): Boolean {
-        return (lastState is MainContentUiState.LoadingUpdateAndContentFromDb ||
-                lastState is MainContentUiState.Content ||
-                lastState is MainContentUiState.Update) &&
-                (model.status == ResponseStatus.ERROR ||
-                        model.data == null)
+    ): MainContentUiState {
+        return if (lastState is MainContentUiState.LoadingUpdateAndContentFromDb ||
+            lastState is MainContentUiState.Content ||
+            (lastState is MainContentUiState.Update && !lastState.isErrorStateBefore)
+        ) {
+            MainContentUiState.ErrorUpdate
+        } else {
+            MainContentUiState.Error(model.message)
+        }
     }
 
     private fun createContents(model: ContentModel): List<BaseContentModel> {

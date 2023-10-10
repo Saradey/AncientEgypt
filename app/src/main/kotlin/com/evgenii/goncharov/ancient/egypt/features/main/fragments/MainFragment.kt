@@ -31,7 +31,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val viewModel: MainViewModel by viewModels()
     private val rootBinding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
-    private val errorStateBinding: LayoutErrorStateBinding by viewBinding(LayoutErrorStateBinding::bind)
+    private val errorStateBinding: LayoutErrorStateBinding by viewBinding {
+        LayoutErrorStateBinding.bind(rootBinding.errorState.root)
+    }
     private val adapter: MainContentAdapter = MainContentAdapter(
         ::goToAllObjectOnTheMap,
         ::bannerClick
@@ -54,8 +56,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun initContentUiState(contentUiState: MainContentUiState) {
         when (contentUiState) {
-            MainContentUiState.Update -> rootBinding.showStatusUpdate()
             MainContentUiState.Loading -> rootBinding.loading()
+            is MainContentUiState.Update -> rootBinding.showStatusUpdate()
             is MainContentUiState.LoadingUpdateAndContentFromDb -> rootBinding.showStatusUpdate(contentUiState.content)
             is MainContentUiState.Content -> rootBinding.setContent(contentUiState.content)
             is MainContentUiState.Error -> rootBinding.error(contentUiState.messageError)
@@ -99,6 +101,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun FragmentMainBinding.loading() {
+        rflUpdateContent.isRefreshing = false
         rootBinding.titleInfo.root.isGone = true
         errorState.root.isGone = true
         rcvContent.isGone = true
