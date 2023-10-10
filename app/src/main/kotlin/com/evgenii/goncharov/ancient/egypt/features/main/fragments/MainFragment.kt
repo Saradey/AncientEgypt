@@ -75,16 +75,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun FragmentMainBinding.showStatusUpdate(content: List<BaseContentModel>) {
-        statusUpdate()
+        showStatusUpdate()
         adapter.items = content
         rflUpdateContent.isRefreshing = false
     }
 
     private fun FragmentMainBinding.showStatusUpdate() {
-        statusUpdate()
-    }
-
-    private fun FragmentMainBinding.statusUpdate() {
         errorState.root.isGone = true
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
