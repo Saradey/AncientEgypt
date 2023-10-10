@@ -91,7 +91,8 @@ class MainViewModel @Inject constructor(
         lastState: MainContentUiState?
     ): Boolean {
         return (lastState is MainContentUiState.LoadingUpdateAndContentFromDb ||
-                lastState is MainContentUiState.Content) &&
+                lastState is MainContentUiState.Content ||
+                lastState is MainContentUiState.Update) &&
                 (model.status == ResponseStatus.ERROR ||
                         model.data == null)
     }
