@@ -47,6 +47,15 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun refreshToUpdate() {
+        viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
+            _mainContentLiveData.value = MainContentUiState.ErrorUpdate
+        }) {
+            _mainContentLiveData.value = MainContentUiState.Update
+            loadFromNetwork()
+        }
+    }
+
     private suspend fun loadFromDb() {
         val contentFromDatabase = mainContentFromDbUseCase()
         if (contentFromDatabase.data.content.isNotEmpty()) {
@@ -69,14 +78,22 @@ class MainViewModel @Inject constructor(
         lastState: MainContentUiState?
     ): MainContentUiState {
         return when {
-            lastState is MainContentUiState.LoadingUpdateAndContentFromDb && model.status == ResponseStatus.ERROR -> {
-                MainContentUiState.ErrorUpdate
-            }
+            checkErrorUpdateState(model, lastState) -> MainContentUiState.ErrorUpdate
             model.data == null -> MainContentUiState.Error()
             model.status == ResponseStatus.ERROR -> MainContentUiState.Error(model.message)
             model.status == ResponseStatus.SUCCESS -> MainContentUiState.Content(createContents(model.data))
             else -> MainContentUiState.Error()
         }
+    }
+
+    private fun checkErrorUpdateState(
+        model: FromNetworkBaseModel<ContentModel>,
+        lastState: MainContentUiState?
+    ): Boolean {
+        return (lastState is MainContentUiState.LoadingUpdateAndContentFromDb ||
+                lastState is MainContentUiState.Content) &&
+                (model.status == ResponseStatus.ERROR ||
+                        model.data == null)
     }
 
     private fun createContents(model: ContentModel): List<BaseContentModel> {

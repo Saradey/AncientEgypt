@@ -50,6 +50,7 @@ dependencies {
     implementation(uiLibs.recycler.view.adapter)
     implementation(uiLibs.recycler.view.adapter.viewbinding)
     implementation(uiLibs.viewBindingPropertyDelegate)
+    implementation(uiLibs.swipe.refresh.layout)
 
     //core
     implementation(coreProjectLibs.dagger.hilt)

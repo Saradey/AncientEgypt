@@ -13,6 +13,8 @@ viewBindingPropertyDelegateVersion = "1.5.9"
 recyclerViewAdapterVersion = "4.3.2"
 #https://github.com/google/ExoPlayer
 exoplayer = "r2.19.0"
+#https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout
+swiperefreshlayoutVersion = "1.1.0"
 
 [libraries]
 app-compat = { module = "androidx.appcompat:appcompat", version.ref = "appCompatVersion" }
@@ -23,3 +25,4 @@ viewBindingPropertyDelegate = { module = "com.github.kirich1409:viewbindingprope
 recycler-view-adapter = { module = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl", version.ref = "recyclerViewAdapterVersion" }
 recycler-view-adapter-viewbinding = { module = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding", version.ref = "recyclerViewAdapterVersion" }
 exoplayer = { module = "com.google.android.exoplayer:exoplayer", version.ref = "exoplayer" }
+swipe-refresh-layout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayoutVersion" }

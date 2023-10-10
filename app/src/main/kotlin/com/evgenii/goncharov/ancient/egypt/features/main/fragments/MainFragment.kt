@@ -54,15 +54,17 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun initContentUiState(contentUiState: MainContentUiState) {
         when (contentUiState) {
+            MainContentUiState.Update -> rootBinding.showStatusUpdate()
             MainContentUiState.Loading -> rootBinding.loading()
             is MainContentUiState.LoadingUpdateAndContentFromDb -> rootBinding.showStatusUpdate(contentUiState.content)
             is MainContentUiState.Content -> rootBinding.setContent(contentUiState.content)
-            is MainContentUiState.Error -> error(contentUiState.messageError)
+            is MainContentUiState.Error -> rootBinding.error(contentUiState.messageError)
             is MainContentUiState.ErrorUpdate -> rootBinding.errorUpdate()
         }
     }
 
     private fun FragmentMainBinding.errorUpdate() {
+        rflUpdateContent.isRefreshing = false
         titleInfo.root.isVisible = true
         titleInfo.root.setText(R.string.main_title_info_error)
         titleInfo.root.setTextColor(Color.RED)
@@ -73,16 +75,26 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun FragmentMainBinding.showStatusUpdate(content: List<BaseContentModel>) {
+        statusUpdate()
+        adapter.items = content
+        rflUpdateContent.isRefreshing = false
+    }
+
+    private fun FragmentMainBinding.showStatusUpdate() {
+        statusUpdate()
+    }
+
+    private fun FragmentMainBinding.statusUpdate() {
         errorState.root.isGone = true
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
-        adapter.items = content
         titleInfo.root.isVisible = true
         titleInfo.root.setText(R.string.main_title_info)
         titleInfo.root.setTextColor(Color.YELLOW)
     }
 
     private fun FragmentMainBinding.setContent(content: List<BaseContentModel>) {
+        rflUpdateContent.isRefreshing = false
         rootBinding.titleInfo.root.isGone = true
         errorState.root.isGone = true
         loadProgress.root.isGone = true
@@ -97,11 +109,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         loadProgress.root.isVisible = true
     }
 
-    private fun error(messageError: String?) {
-        rootBinding.titleInfo.root.isGone = true
-        rootBinding.rcvContent.isGone = true
-        rootBinding.loadProgress.root.isGone = true
-        rootBinding.errorState.root.isVisible = true
+    private fun FragmentMainBinding.error(messageError: String?) {
+        rflUpdateContent.isRefreshing = false
+        titleInfo.root.isGone = true
+        rcvContent.isGone = true
+        loadProgress.root.isGone = true
+        errorState.root.isVisible = true
         if (messageError.isNullOrEmpty().not()) {
             errorStateBinding.txvTitleError.text = messageError
         }
@@ -109,6 +122,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun FragmentMainBinding.initUi() {
         rcvContent.adapter = adapter
+        rflUpdateContent.setOnRefreshListener(viewModel::refreshToUpdate)
     }
 
     private fun goToAllObjectOnTheMap() {
