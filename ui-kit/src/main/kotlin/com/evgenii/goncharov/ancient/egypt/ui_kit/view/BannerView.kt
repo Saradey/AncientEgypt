@@ -1,7 +1,6 @@
 package com.evgenii.goncharov.ancient.egypt.ui_kit.view
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import by.kirich1409.viewbindingdelegate.viewBinding

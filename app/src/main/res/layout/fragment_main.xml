@@ -7,12 +7,12 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/rpl_stories"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#BEBCBC">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#bbbbbb"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <View
@@ -23,6 +23,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <include
+            android:id="@+id/load_progress"
+            layout="@layout/layout_shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -38,13 +45,6 @@
             android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <include
-        android:id="@+id/load_progress"
-        layout="@layout/layout_shimmer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
 
     <include
         android:id="@+id/error_state"
