@@ -17,7 +17,7 @@ class ContentApiImpl @Inject constructor(
     override suspend fun getMainContent(): BaseResponseDto<ContentDto> {
         val rawResponse = context.resources.openRawResource(getResponse(0))
         val stringResponse = rawResponse.bufferedReader().use { it.readText() }
-        delay(5000)
+        delay(2000)
         return Json.decodeFromString(stringResponse)
     }
 
