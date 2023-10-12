@@ -123,6 +123,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun FragmentMainBinding.initUi() {
         rcvContent.adapter = adapter
         rflUpdateContent.setOnRefreshListener(viewModel::refreshToUpdate)
+        toolbar.setNavigationOnClickListener {
+            viewModel.goToTheSearchScreen()
+        }
     }
 
     private fun goToAllObjectOnTheMap() {

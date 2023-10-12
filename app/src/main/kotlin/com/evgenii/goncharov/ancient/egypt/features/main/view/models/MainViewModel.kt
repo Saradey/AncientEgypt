@@ -20,6 +20,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFr
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -159,5 +160,9 @@ class MainViewModel @Inject constructor(
 
     fun goToTheSelectedArtifact(idSelectedArtifact: String) {
         activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
+    }
+
+    fun goToTheSearchScreen() {
+        bottomMenuRouter.navigateTo(SearchScreens.startSearch())
     }
 }
