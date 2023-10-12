@@ -15,11 +15,11 @@ class ContentMapper @Inject constructor() {
         return BaseStatusModel(
             status = ResponseStatus.valueOf(response.status.uppercase()),
             message = response.message.orEmpty(),
-            data = mapMainContentResponse(response.data)
+            data = mapContentDtoToContentModel(response.data)
         )
     }
 
-    private fun mapMainContentResponse(response: ContentDto?): ContentModel? {
+    private fun mapContentDtoToContentModel(response: ContentDto?): ContentModel? {
         return response?.let { mainContent ->
             ContentModel(
                 isEnabledMap = mainContent.isEnabledMap,
