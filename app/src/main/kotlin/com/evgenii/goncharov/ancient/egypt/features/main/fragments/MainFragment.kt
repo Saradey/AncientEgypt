@@ -98,6 +98,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
         adapter.items = content
+        adapter.notifyDataSetChanged()
     }
 
     private fun FragmentMainBinding.loading() {
