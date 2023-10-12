@@ -1,11 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs
-
 plugins {
-    id("com.android.application") version "8.1.1" apply false
-    id("com.android.library") version "8.1.1" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.0" apply false
-    id("com.google.dagger.hilt.android") version "2.47" apply false
-    id("org.jetbrains.kotlin.plugin.parcelize") version "1.9.0" apply false
+    alias(coreProjectLibs.plugins.dagger.hilt.plugin) apply false
+
+    alias(libsProjectPlugins.plugins.project.android.application) apply false
+    alias(libsProjectPlugins.plugins.project.android.library) apply false
+
+    alias(libsProjectPlugins.plugins.jetbrains.kotlin) apply false
+    alias(libsProjectPlugins.plugins.jetbrains.kotlin.parcelize) apply false
+    alias(libsProjectPlugins.plugins.jetbrains.kotlin.serialization) apply false
 }
 buildscript {
     extra.apply {
@@ -16,7 +18,7 @@ buildscript {
     }
     dependencies {
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.47")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10")
     }
 }
 allprojects {

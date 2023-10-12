@@ -9,7 +9,7 @@ import com.evgenii.goncharov.ancient.egypt.base.BaseNavigator
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.main.fragments.MainBottomMenuFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.contracts.SelectTabBottomMenuListener
-import com.evgenii.goncharov.ancient.egypt.features.main.utils.ToolbarVisibilityManager
+import com.evgenii.goncharov.ancient.egypt.features.main.helpers.ToolbarVisibilityManager
 import com.github.terrakok.cicerone.Back
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Forward

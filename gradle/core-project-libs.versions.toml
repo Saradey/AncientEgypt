@@ -7,6 +7,11 @@ roomVersion = "2.5.2"
 coreKtxVersion = "1.10.1"
 #https://github.com/terrakok/Cicerone
 ciceroneVersion = "7.1"
+#https://github.com/Kotlin/kotlinx.serialization?ysclid=lnfwdwize4106319496
+serializationVersion = "1.6.0"
+
+[plugins]
+dagger-hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "daggerHiltVersion" }
 
 [libraries]
 dagger-hilt = { module = "com.google.dagger:hilt-android", version.ref = "daggerHiltVersion" }
@@ -20,3 +25,5 @@ room-paging3 = { module = "androidx.room:room-paging", version.ref = "roomVersio
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
 
 cicerone = { module = "com.github.terrakok:cicerone", version.ref = "ciceroneVersion" }
+
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationVersion" }

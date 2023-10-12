@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlinx-serialization")
     id("kotlin-parcelize")
 }
 
@@ -49,6 +50,7 @@ dependencies {
     implementation(uiLibs.recycler.view.adapter)
     implementation(uiLibs.recycler.view.adapter.viewbinding)
     implementation(uiLibs.viewBindingPropertyDelegate)
+    implementation(uiLibs.swipe.refresh.layout)
 
     //core
     implementation(coreProjectLibs.dagger.hilt)
@@ -70,6 +72,9 @@ dependencies {
     //network
     implementation(networkLibs.retrofit)
     implementation(networkLibs.okHttpClient)
+
+    //serialization
+    implementation(coreProjectLibs.kotlinx.serialization)
 
     //utils
     implementation(utilsLibs.glide)
