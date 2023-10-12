@@ -12,16 +12,33 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#bbbbbb"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <View
-                android:id="@+id/v_stub_stories"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#999999"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?main_background_color"
+                    app:navigationIcon="@drawable/ic_search_24"
+                    app:title="Поиск" />
+
+                <View
+                    android:id="@+id/v_stub_stories"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:elevation="5dp"
+                    android:translationZ="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         <include
@@ -29,7 +46,8 @@
             layout="@layout/layout_shimmer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:layout_collapseMode="pin" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

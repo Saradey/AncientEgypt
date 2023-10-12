@@ -15,9 +15,9 @@ class MainContentApiImpl @Inject constructor(
 ) : MainContentApi {
 
     override suspend fun getMainContent(): BaseDto<MainContentDto> {
-        val rawResponse = context.resources.openRawResource(getResponse(1))
+        val rawResponse = context.resources.openRawResource(getResponse(0))
         val stringResponse = rawResponse.bufferedReader().use { it.readText() }
-        delay(5000)
+        delay(1000)
         return Json.decodeFromString(stringResponse)
     }
 
