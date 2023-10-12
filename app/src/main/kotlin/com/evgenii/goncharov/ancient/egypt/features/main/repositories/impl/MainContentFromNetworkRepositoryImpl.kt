@@ -1,7 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl
 
 import com.evgenii.goncharov.ancient.egypt.base.models.model.FromNetworkBaseModel
-import com.evgenii.goncharov.ancient.egypt.features.main.api.MainContentApi
+import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainContentApi
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.BannerDao
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.MapInfoDao
 import com.evgenii.goncharov.ancient.egypt.features.main.db.entities.MapInfoEntity

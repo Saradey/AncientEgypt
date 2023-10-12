@@ -1,9 +1,9 @@
-package com.evgenii.goncharov.ancient.egypt.features.main.api.impl
+package com.evgenii.goncharov.ancient.egypt.features.main.network.api.impl
 
 import android.content.Context
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseDto
-import com.evgenii.goncharov.ancient.egypt.features.main.api.MainContentApi
+import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainContentApi
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainContentDto
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay

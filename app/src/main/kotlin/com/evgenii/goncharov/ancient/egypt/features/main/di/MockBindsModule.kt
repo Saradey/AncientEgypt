@@ -1,7 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.di
 
-import com.evgenii.goncharov.ancient.egypt.features.main.api.MainContentApi
-import com.evgenii.goncharov.ancient.egypt.features.main.api.impl.MainContentApiImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainContentApi
+import com.evgenii.goncharov.ancient.egypt.features.main.network.api.impl.MainContentApiImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
