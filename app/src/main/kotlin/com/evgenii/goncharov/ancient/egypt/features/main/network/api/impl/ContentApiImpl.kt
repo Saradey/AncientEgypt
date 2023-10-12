@@ -2,19 +2,19 @@ package com.evgenii.goncharov.ancient.egypt.features.main.network.api.impl
 
 import android.content.Context
 import com.evgenii.goncharov.ancient.egypt.R
-import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseDto
-import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainContentApi
-import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainContentDto
+import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseResponseDto
+import com.evgenii.goncharov.ancient.egypt.features.main.network.api.ContentApi
+import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.ContentDto
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
-class MainContentApiImpl @Inject constructor(
+class ContentApiImpl @Inject constructor(
     @ApplicationContext private val context: Context
-) : MainContentApi {
+) : ContentApi {
 
-    override suspend fun getMainContent(): BaseDto<MainContentDto> {
+    override suspend fun getMainContent(): BaseResponseDto<ContentDto> {
         val rawResponse = context.resources.openRawResource(getResponse(0))
         val stringResponse = rawResponse.bufferedReader().use { it.readText() }
         delay(5000)

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evgenii.goncharov.ancient.egypt.base.models.model.FromNetworkBaseModel
+import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
@@ -13,10 +13,10 @@ import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentSc
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.ContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MapButtonModel
-import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
+import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromDbUseCase
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainContentFromNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
@@ -32,12 +32,12 @@ import javax.inject.Named
 class MainViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
     @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) private val bottomMenuRouter: Router,
-    private val mainContentFromNetworkUseCase: MainContentFromNetworkUseCase,
-    private val mainContentFromDbUseCase: MainContentFromDbUseCase
+    private val mainContentFromNetworkUseCase: ContentFromNetworkUseCase,
+    private val mainContentFromDbUseCase: ContentFromDatabaseUseCase
 ) : ViewModel() {
 
-    private val _mainContentLiveData = MutableLiveData<MainContentUiState>()
-    val mainContentLiveData: LiveData<MainContentUiState> = _mainContentLiveData
+    private val _mainContentLiveData = MutableLiveData<ContentUiState>()
+    val mainContentLiveData: LiveData<ContentUiState> = _mainContentLiveData
 
     fun loadContent() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
@@ -50,82 +50,12 @@ class MainViewModel @Inject constructor(
 
     fun refreshToUpdate() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
-            _mainContentLiveData.value = MainContentUiState.ErrorUpdate
+            _mainContentLiveData.value = ContentUiState.ErrorUpdate
         }) {
-            _mainContentLiveData.value = MainContentUiState.Update(
-                _mainContentLiveData.value is MainContentUiState.Error
+            _mainContentLiveData.value = ContentUiState.Update(
+                _mainContentLiveData.value is ContentUiState.Error
             )
             loadFromNetwork()
-        }
-    }
-
-    private fun getCorrectState(): MainContentUiState {
-        val lastState = _mainContentLiveData.value
-        return if (checkLastState(lastState)) {
-            MainContentUiState.ErrorUpdate
-        } else {
-            MainContentUiState.Error()
-        }
-    }
-
-    private suspend fun loadFromDb() {
-        val contentFromDatabase = mainContentFromDbUseCase()
-        if (contentFromDatabase.data.content.isNotEmpty()) {
-            _mainContentLiveData.value = MainContentUiState.LoadingUpdateAndContentFromDb(
-                createContents(contentFromDatabase.data)
-            )
-        } else {
-            _mainContentLiveData.value = MainContentUiState.Loading
-        }
-    }
-
-    private suspend fun loadFromNetwork() {
-        val result = mainContentFromNetworkUseCase()
-        val lastState = _mainContentLiveData.value
-        _mainContentLiveData.postValue(createContentStateFromNetwork(result, lastState))
-    }
-
-    private fun createContentStateFromNetwork(
-        model: FromNetworkBaseModel<ContentModel>,
-        lastState: MainContentUiState?
-    ): MainContentUiState {
-        return when {
-            model.status == ResponseStatus.ERROR || model.data == null -> {
-                createErrorState(model, lastState)
-            }
-            model.status == ResponseStatus.SUCCESS -> {
-                MainContentUiState.Content(createContents(model.data))
-            }
-            else -> MainContentUiState.Error()
-        }
-    }
-
-    private fun createErrorState(
-        model: FromNetworkBaseModel<ContentModel>,
-        lastState: MainContentUiState?
-    ): MainContentUiState {
-        return if (checkLastState(lastState)) {
-            MainContentUiState.ErrorUpdate
-        } else {
-            MainContentUiState.Error(model.message)
-        }
-    }
-
-    private fun checkLastState(lastState: MainContentUiState?): Boolean {
-        return lastState is MainContentUiState.LoadingUpdateAndContentFromDb ||
-                lastState is MainContentUiState.Content ||
-                (lastState is MainContentUiState.Update && !lastState.isErrorStateBefore)
-    }
-
-    private fun createContents(model: ContentModel): List<BaseContentModel> {
-        return model.content.let { models ->
-            if (model.isEnabledMap && models.isNotEmpty()) {
-                models.toMutableList<BaseContentModel>().apply {
-                    add(0, MapButtonModel)
-                }
-            } else {
-                models
-            }
         }
     }
 
@@ -164,5 +94,75 @@ class MainViewModel @Inject constructor(
 
     fun goToTheSearchScreen() {
         bottomMenuRouter.navigateTo(SearchScreens.startSearch())
+    }
+
+    private fun getCorrectState(): ContentUiState {
+        val lastState = _mainContentLiveData.value
+        return if (checkLastState(lastState)) {
+            ContentUiState.ErrorUpdate
+        } else {
+            ContentUiState.Error()
+        }
+    }
+
+    private suspend fun loadFromDb() {
+        val contentFromDatabase = mainContentFromDbUseCase()
+        if (contentFromDatabase.data.content.isNotEmpty()) {
+            _mainContentLiveData.value = ContentUiState.UpdateAndOldContent(
+                createContents(contentFromDatabase.data)
+            )
+        } else {
+            _mainContentLiveData.value = ContentUiState.Loading
+        }
+    }
+
+    private suspend fun loadFromNetwork() {
+        val result = mainContentFromNetworkUseCase()
+        val lastState = _mainContentLiveData.value
+        _mainContentLiveData.postValue(createContentStateFromNetwork(result, lastState))
+    }
+
+    private fun createContentStateFromNetwork(
+        model: BaseStatusModel<ContentModel>,
+        lastState: ContentUiState?
+    ): ContentUiState {
+        return when {
+            model.status == ResponseStatus.ERROR || model.data == null -> {
+                createErrorState(model, lastState)
+            }
+            model.status == ResponseStatus.SUCCESS -> {
+                ContentUiState.Content(createContents(model.data))
+            }
+            else -> ContentUiState.Error()
+        }
+    }
+
+    private fun createErrorState(
+        model: BaseStatusModel<ContentModel>,
+        lastState: ContentUiState?
+    ): ContentUiState {
+        return if (checkLastState(lastState)) {
+            ContentUiState.ErrorUpdate
+        } else {
+            ContentUiState.Error(model.message)
+        }
+    }
+
+    private fun checkLastState(lastState: ContentUiState?): Boolean {
+        return lastState is ContentUiState.UpdateAndOldContent ||
+                lastState is ContentUiState.Content ||
+                (lastState is ContentUiState.Update && !lastState.isErrorStateBefore)
+    }
+
+    private fun createContents(model: ContentModel): List<BaseContentModel> {
+        return model.content.let { models ->
+            if (model.isEnabledMap && models.isNotEmpty()) {
+                models.toMutableList<BaseContentModel>().apply {
+                    add(0, MapButtonModel)
+                }
+            } else {
+                models
+            }
+        }
     }
 }

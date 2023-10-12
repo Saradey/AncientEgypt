@@ -1,5 +1,5 @@
 package com.evgenii.goncharov.ancient.egypt.base.models.model
 
-data class FromDbBaseModel<out T>(
+data class BaseModel<out T>(
     val data: T
 )

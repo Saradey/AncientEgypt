@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MainContentDto(
+data class ContentDto(
     @SerialName("isEnabledMap") val isEnabledMap: Boolean,
     @SerialName("content") val content: List<BannerDto>
 )

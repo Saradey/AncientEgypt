@@ -14,7 +14,7 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
-import com.evgenii.goncharov.ancient.egypt.features.main.models.state.MainContentUiState
+import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
@@ -54,14 +54,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewModel.mainContentLiveData.observe(viewLifecycleOwner, ::initContentUiState)
     }
 
-    private fun initContentUiState(contentUiState: MainContentUiState) {
+    private fun initContentUiState(contentUiState: ContentUiState) {
         when (contentUiState) {
-            MainContentUiState.Loading -> rootBinding.loading()
-            is MainContentUiState.Update -> rootBinding.showStatusUpdate()
-            is MainContentUiState.LoadingUpdateAndContentFromDb -> rootBinding.showStatusUpdate(contentUiState.content)
-            is MainContentUiState.Content -> rootBinding.setContent(contentUiState.content)
-            is MainContentUiState.Error -> rootBinding.error(contentUiState.messageError)
-            is MainContentUiState.ErrorUpdate -> rootBinding.errorUpdate()
+            ContentUiState.Loading -> rootBinding.loading()
+            is ContentUiState.Update -> rootBinding.showStatusUpdate()
+            is ContentUiState.UpdateAndOldContent -> rootBinding.showStatusUpdate(contentUiState.content)
+            is ContentUiState.Content -> rootBinding.setContent(contentUiState.content)
+            is ContentUiState.Error -> rootBinding.error(contentUiState.messageError)
+            is ContentUiState.ErrorUpdate -> rootBinding.errorUpdate()
         }
     }
 
