@@ -18,14 +18,14 @@ import dagger.hilt.android.components.ViewModelComponent
 interface MainScreenBindsModule {
 
     @Binds
-    fun ContentFromNetworkRepositoryImpl.bindMainContentRepository(): ContentFromNetworkRepository
+    fun ContentFromNetworkRepositoryImpl.bindContentFromNetworkRepository(): ContentFromNetworkRepository
 
     @Binds
-    fun ContentFromNetworkUseCaseImpl.bindMainContentUseCase(): ContentFromNetworkUseCase
+    fun ContentFromNetworkUseCaseImpl.bindContentFromNetworkUseCase(): ContentFromNetworkUseCase
 
     @Binds
-    fun ContentFromDatabaseRepositoryImpl.bindMainContentFromDbRepository(): ContentFromDatabaseRepository
+    fun ContentFromDatabaseRepositoryImpl.bindContentFromDatabaseRepository(): ContentFromDatabaseRepository
 
     @Binds
-    fun ContentFromDatabaseUseCaseImpl.MainContentFromDbUseCase(): ContentFromDatabaseUseCase
+    fun ContentFromDatabaseUseCaseImpl.bindContentFromDatabaseUseCase(): ContentFromDatabaseUseCase
 }
