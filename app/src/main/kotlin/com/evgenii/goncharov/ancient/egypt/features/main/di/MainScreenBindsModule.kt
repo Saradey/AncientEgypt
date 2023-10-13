@@ -2,8 +2,12 @@ package com.evgenii.goncharov.ancient.egypt.features.main.di
 
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.ContentFromDatabaseRepository
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.ContentFromNetworkRepository
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.StoriesFromDatabaseRepository
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.StoriesFromNetworkRepository
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.ContentFromDatabaseRepositoryImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.ContentFromNetworkRepositoryImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.StoriesFromDatabaseRepositoryImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.StoriesFromNetworkRepositoryImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromDatabaseUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.ContentFromDatabaseUseCaseImpl
@@ -28,4 +32,11 @@ interface MainScreenBindsModule {
 
     @Binds
     fun ContentFromDatabaseUseCaseImpl.bindContentFromDatabaseUseCase(): ContentFromDatabaseUseCase
+
+    @Binds
+    fun StoriesFromDatabaseRepositoryImpl.bindStoriesFromDatabaseRepository(): StoriesFromDatabaseRepository
+
+    @Binds
+    fun StoriesFromNetworkRepositoryImpl.bindStoriesFromNetworkRepository(): StoriesFromNetworkRepository
+
 }
