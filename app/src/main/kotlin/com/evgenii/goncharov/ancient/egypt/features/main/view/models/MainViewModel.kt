@@ -20,6 +20,8 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNe
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,7 +35,9 @@ class MainViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
     @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) private val bottomMenuRouter: Router,
     private val mainContentFromNetworkUseCase: ContentFromNetworkUseCase,
-    private val mainContentFromDbUseCase: ContentFromDatabaseUseCase
+    private val mainContentFromDbUseCase: ContentFromDatabaseUseCase,
+    private val storiesFromDatabaseUseCase: StoriesFromDatabaseUseCase,
+    private val storiesFromNetworkUseCase: StoriesFromNetworkUseCase
 ) : ViewModel() {
 
     private val _mainContentLiveData = MutableLiveData<ContentUiState>()

@@ -10,8 +10,12 @@ import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.Stori
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.StoriesFromNetworkRepositoryImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromDatabaseUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.ContentFromDatabaseUseCaseImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.ContentFromNetworkUseCaseImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.StoriesFromDatabaseUseCaseImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.StoriesFromNetworkUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -37,6 +41,11 @@ interface MainScreenBindsModule {
     fun StoriesFromDatabaseRepositoryImpl.bindStoriesFromDatabaseRepository(): StoriesFromDatabaseRepository
 
     @Binds
+    fun StoriesFromDatabaseUseCaseImpl.bindStoriesFromDatabaseUseCase(): StoriesFromDatabaseUseCase
+
+    @Binds
     fun StoriesFromNetworkRepositoryImpl.bindStoriesFromNetworkRepository(): StoriesFromNetworkRepository
 
+    @Binds
+    fun StoriesFromNetworkUseCaseImpl.bindStoriesFromNetworkUseCase(): StoriesFromNetworkUseCase
 }
