@@ -47,8 +47,8 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
             _mainContentLiveData.value = getCorrectState()
         }) {
-            loadFromDb()
-            loadFromNetwork()
+            loadContentFromDb()
+            loadContentFromNetwork()
         }
     }
 
@@ -59,7 +59,7 @@ class MainViewModel @Inject constructor(
             _mainContentLiveData.value = ContentUiState.Update(
                 _mainContentLiveData.value is ContentUiState.Error
             )
-            loadFromNetwork()
+            loadContentFromNetwork()
         }
     }
 
@@ -100,6 +100,14 @@ class MainViewModel @Inject constructor(
         bottomMenuRouter.navigateTo(SearchScreens.startSearch())
     }
 
+    fun loadStories() {
+        viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
+
+        }) {
+
+        }
+    }
+
     private fun getCorrectState(): ContentUiState {
         val lastState = _mainContentLiveData.value
         return if (checkLastState(lastState)) {
@@ -109,7 +117,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private suspend fun loadFromDb() {
+    private suspend fun loadContentFromDb() {
         val contentFromDatabase = mainContentFromDbUseCase()
         if (contentFromDatabase.data.content.isNotEmpty()) {
             _mainContentLiveData.value = ContentUiState.UpdateAndOldContent(
@@ -120,7 +128,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private suspend fun loadFromNetwork() {
+    private suspend fun loadContentFromNetwork() {
         val result = mainContentFromNetworkUseCase()
         val lastState = _mainContentLiveData.value
         _mainContentLiveData.postValue(createContentStateFromNetwork(result, lastState))
