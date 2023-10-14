@@ -4,5 +4,5 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesMo
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 
 class StoriesAdapter : ListDelegationAdapter<List<StoriesModel>>(
-
+    storiesDelegate()
 )
