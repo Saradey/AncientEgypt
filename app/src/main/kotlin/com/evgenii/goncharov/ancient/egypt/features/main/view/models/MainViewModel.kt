@@ -106,10 +106,18 @@ class MainViewModel @Inject constructor(
 
     fun loadStories() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
-
+            _storiesLiveData.value = getCorrectStoriesState()
         }) {
             loadStoriesFromDatabase()
             loadStoriesFromNetwork()
+        }
+    }
+
+    private fun getCorrectStoriesState() : StoriesUiState {
+        return if (checkLastStoriesState()) {
+            StoriesUiState.HideStories
+        } else {
+            StoriesUiState.Error
         }
     }
 
@@ -131,12 +139,16 @@ class MainViewModel @Inject constructor(
     }
 
     private fun setStatusError() {
-        val lastStoriesState = _storiesLiveData.value
-        if (lastStoriesState == StoriesUiState.Error ||
-            lastStoriesState == StoriesUiState.Loading ||
-            lastStoriesState == StoriesUiState.HideStories) {
+        if (checkLastStoriesState()) {
             _storiesLiveData.value = StoriesUiState.HideStories
         }
+    }
+
+    private fun checkLastStoriesState(): Boolean {
+        val lastStoriesState = _storiesLiveData.value
+        return lastStoriesState == StoriesUiState.Error ||
+                lastStoriesState == StoriesUiState.Loading ||
+                lastStoriesState == StoriesUiState.HideStories
     }
 
     private fun setStoriesState(models: List<StoriesModel>?) {
