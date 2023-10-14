@@ -9,9 +9,9 @@ class StoriesEntityToStoriesModelMapper @Inject constructor() {
     operator fun invoke(entities: List<StoriesEntity>): List<StoriesModel> {
         return entities.map { entity ->
             StoriesModel(
-                entity.id,
-                entity.storiesImage,
-                entity.storiesTitle
+                id = entity.id,
+                storiesImage = entity.storiesImage,
+                storiesTitle = entity.storiesTitle
             )
         }
     }

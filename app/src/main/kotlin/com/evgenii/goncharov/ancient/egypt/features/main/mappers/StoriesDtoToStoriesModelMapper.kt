@@ -20,9 +20,9 @@ class StoriesDtoToStoriesModelMapper @Inject constructor() {
     private fun mapStoriesDtoToStoriesModel(response: StoriesDataDto?): List<StoriesModel>? {
         return response?.stories?.map { dto ->
             StoriesModel(
-                dto.id,
-                dto.storiesImage,
-                dto.storiesTitle.orEmpty()
+                id = dto.id,
+                storiesImage = dto.storiesImage,
+                storiesTitle = dto.storiesTitle.orEmpty()
             )
         }
     }

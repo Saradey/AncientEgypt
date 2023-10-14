@@ -80,7 +80,7 @@ class MainViewModel @Inject constructor(
 
     private fun setContentUiStateWhenRefresh() {
         _contentLiveData.value = ContentUiState.Update(
-            _contentLiveData.value is ContentUiState.Error
+            isErrorStateBefore = _contentLiveData.value is ContentUiState.Error
         )
     }
 
@@ -170,7 +170,7 @@ class MainViewModel @Inject constructor(
 
     private fun setStoriesState(models: List<StoriesModel>?) {
         models?.let {
-            _storiesLiveData.value = StoriesUiState.Stories(models)
+            _storiesLiveData.value = StoriesUiState.Stories(models = models)
         } ?: run {
             _storiesLiveData.value = StoriesUiState.HideStories
         }
@@ -189,7 +189,7 @@ class MainViewModel @Inject constructor(
         val contentFromDatabase = mainContentFromDbUseCase()
         if (contentFromDatabase.data.content.isNotEmpty()) {
             _contentLiveData.value = ContentUiState.UpdateAndOldContent(
-                createContents(contentFromDatabase.data)
+                content = createContents(contentFromDatabase.data)
             )
         } else {
             _contentLiveData.value = ContentUiState.Loading
@@ -211,7 +211,7 @@ class MainViewModel @Inject constructor(
                 createErrorState(model, lastState)
             }
             model.status == ResponseStatus.SUCCESS -> {
-                ContentUiState.Content(createContents(model.data))
+                ContentUiState.Content(content = createContents(model.data))
             }
             else -> ContentUiState.Error()
         }
@@ -224,7 +224,7 @@ class MainViewModel @Inject constructor(
         return if (checkLastState(lastState)) {
             ContentUiState.ErrorUpdate
         } else {
-            ContentUiState.Error(model.message)
+            ContentUiState.Error(messageError = model.message)
         }
     }
 
