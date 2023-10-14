@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
+import com.evgenii.goncharov.ancient.egypt.base.models.state.CommonUiState
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
@@ -20,6 +21,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNe
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
@@ -40,12 +42,14 @@ class MainViewModel @Inject constructor(
     private val storiesFromNetworkUseCase: StoriesFromNetworkUseCase
 ) : ViewModel() {
 
-    private val _mainContentLiveData = MutableLiveData<ContentUiState>()
-    val mainContentLiveData: LiveData<ContentUiState> = _mainContentLiveData
+    private val _contentLiveData = MutableLiveData<ContentUiState>()
+    val contentLiveData: LiveData<ContentUiState> = _contentLiveData
+    private val _storiesLiveData = MutableLiveData<CommonUiState<List<StoriesModel>>>()
+    val storiesLiveData: LiveData<CommonUiState<List<StoriesModel>>> = _storiesLiveData
 
     fun loadContent() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
-            _mainContentLiveData.value = getCorrectState()
+            _contentLiveData.value = getCorrectState()
         }) {
             loadContentFromDb()
             loadContentFromNetwork()
@@ -54,10 +58,10 @@ class MainViewModel @Inject constructor(
 
     fun refreshToUpdate() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
-            _mainContentLiveData.value = ContentUiState.ErrorUpdate
+            _contentLiveData.value = ContentUiState.ErrorUpdate
         }) {
-            _mainContentLiveData.value = ContentUiState.Update(
-                _mainContentLiveData.value is ContentUiState.Error
+            _contentLiveData.value = ContentUiState.Update(
+                _contentLiveData.value is ContentUiState.Error
             )
             loadContentFromNetwork()
         }
@@ -104,12 +108,21 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
 
         }) {
-
+            loadStoriesFromDatabase()
+            loadStoriesFromNetwork()
         }
     }
 
+    private suspend fun loadStoriesFromDatabase() {
+
+    }
+
+    private suspend fun loadStoriesFromNetwork() {
+        val result = storiesFromNetworkUseCase()
+    }
+
     private fun getCorrectState(): ContentUiState {
-        val lastState = _mainContentLiveData.value
+        val lastState = _contentLiveData.value
         return if (checkLastState(lastState)) {
             ContentUiState.ErrorUpdate
         } else {
@@ -120,18 +133,18 @@ class MainViewModel @Inject constructor(
     private suspend fun loadContentFromDb() {
         val contentFromDatabase = mainContentFromDbUseCase()
         if (contentFromDatabase.data.content.isNotEmpty()) {
-            _mainContentLiveData.value = ContentUiState.UpdateAndOldContent(
+            _contentLiveData.value = ContentUiState.UpdateAndOldContent(
                 createContents(contentFromDatabase.data)
             )
         } else {
-            _mainContentLiveData.value = ContentUiState.Loading
+            _contentLiveData.value = ContentUiState.Loading
         }
     }
 
     private suspend fun loadContentFromNetwork() {
         val result = mainContentFromNetworkUseCase()
-        val lastState = _mainContentLiveData.value
-        _mainContentLiveData.postValue(createContentStateFromNetwork(result, lastState))
+        val lastState = _contentLiveData.value
+        _contentLiveData.postValue(createContentStateFromNetwork(result, lastState))
     }
 
     private fun createContentStateFromNetwork(

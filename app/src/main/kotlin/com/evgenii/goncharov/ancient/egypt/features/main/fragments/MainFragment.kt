@@ -54,7 +54,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun initObserveLiveData() {
-        viewModel.mainContentLiveData.observe(viewLifecycleOwner, ::initContentUiState)
+        viewModel.contentLiveData.observe(viewLifecycleOwner, ::initContentUiState)
     }
 
     private fun initContentUiState(contentUiState: ContentUiState) {
