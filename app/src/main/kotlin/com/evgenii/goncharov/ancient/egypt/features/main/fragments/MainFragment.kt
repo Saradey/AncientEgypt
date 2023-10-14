@@ -10,13 +10,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
-import com.evgenii.goncharov.ancient.egypt.base.models.state.CommonUiState
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
+import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
@@ -60,11 +60,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewModel.storiesLiveData.observe(viewLifecycleOwner, ::initStoriesUiState)
     }
 
-    private fun initStoriesUiState(storiesUiState: CommonUiState<List<StoriesModel>>) {
+    private fun initStoriesUiState(storiesUiState: StoriesUiState) {
         when(storiesUiState) {
-            CommonUiState.Loading -> loadingStories()
-            is CommonUiState.Success -> bindStoriesModelToUi(storiesUiState.content)
-            CommonUiState.Error -> errorStories()
+            is StoriesUiState.Stories -> bindStoriesModelToUi(storiesUiState.models)
+            StoriesUiState.Loading -> loadingStories()
+            StoriesUiState.HideStories -> hideStories()
+            StoriesUiState.Error -> Unit
         }
     }
 
@@ -72,7 +73,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun loadingStories() = Unit
 
-    private fun errorStories() = Unit
+    private fun hideStories() = Unit
 
     private fun initContentUiState(contentUiState: ContentUiState) {
         when (contentUiState) {

@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
-import com.evgenii.goncharov.ancient.egypt.base.models.state.CommonUiState
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_BOTTOM_MENU_NAVIGATION
@@ -21,7 +20,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNe
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
@@ -44,8 +43,8 @@ class MainViewModel @Inject constructor(
 
     private val _contentLiveData = MutableLiveData<ContentUiState>()
     val contentLiveData: LiveData<ContentUiState> = _contentLiveData
-    private val _storiesLiveData = MutableLiveData<CommonUiState<List<StoriesModel>>>()
-    val storiesLiveData: LiveData<CommonUiState<List<StoriesModel>>> = _storiesLiveData
+    private val _storiesLiveData = MutableLiveData<StoriesUiState>()
+    val storiesLiveData: LiveData<StoriesUiState> = _storiesLiveData
 
     fun loadContent() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
@@ -119,6 +118,7 @@ class MainViewModel @Inject constructor(
 
     private suspend fun loadStoriesFromNetwork() {
         val result = storiesFromNetworkUseCase()
+
     }
 
     private fun getCorrectState(): ContentUiState {
