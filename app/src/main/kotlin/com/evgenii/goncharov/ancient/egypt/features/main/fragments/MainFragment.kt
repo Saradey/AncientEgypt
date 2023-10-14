@@ -12,6 +12,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
+import com.evgenii.goncharov.ancient.egypt.databinding.LayoutStoriesBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
@@ -35,6 +36,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val rootBinding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
     private val errorStateBinding: LayoutErrorStateBinding by viewBinding {
         LayoutErrorStateBinding.bind(rootBinding.errorState.root)
+    }
+    private val storiesBinding: LayoutStoriesBinding by viewBinding {
+        LayoutStoriesBinding.bind(rootBinding.layoutStories.root)
     }
     private val adapter: MainContentAdapter = MainContentAdapter(
         ::goToAllObjectOnTheMap,
@@ -62,23 +66,26 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun initStoriesUiState(storiesUiState: StoriesUiState) {
         when(storiesUiState) {
-            is StoriesUiState.Stories -> rootBinding.bindStoriesModelToUi(storiesUiState.models)
-            StoriesUiState.Loading -> rootBinding.loadingStories()
-            StoriesUiState.HideStories -> rootBinding.hideStories()
+            is StoriesUiState.Stories -> storiesBinding.bindStoriesModelToUi(storiesUiState.models)
+            StoriesUiState.Loading -> storiesBinding.loadingStories()
+            StoriesUiState.HideStories -> storiesBinding.hideStories()
             StoriesUiState.Error -> Unit
         }
     }
 
-    private fun FragmentMainBinding.bindStoriesModelToUi(models: List<StoriesModel>) {
-        vStubStories.isVisible = true
+    private fun LayoutStoriesBinding.bindStoriesModelToUi(models: List<StoriesModel>) {
+        shimmerStories.isGone = true
+        rcvStories.isVisible = true
     }
 
-    private fun FragmentMainBinding.loadingStories() {
-        vStubStories.isGone = true
+    private fun LayoutStoriesBinding.loadingStories() {
+        shimmerStories.isVisible = true
+        rcvStories.isGone = true
     }
 
-    private fun FragmentMainBinding.hideStories() {
-        vStubStories.isGone = true
+    private fun LayoutStoriesBinding.hideStories() {
+        shimmerStories.isGone = true
+        rcvStories.isGone = true
     }
 
     private fun initContentUiState(contentUiState: ContentUiState) {
