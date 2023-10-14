@@ -114,7 +114,12 @@ class MainViewModel @Inject constructor(
     }
 
     private suspend fun loadStoriesFromDatabase() {
-
+        val storiesFromDatabase = storiesFromDatabaseUseCase()
+        if (storiesFromDatabase.data.isNotEmpty()) {
+            setStoriesState(storiesFromDatabase.data)
+        } else {
+            _storiesLiveData.value = StoriesUiState.Loading
+        }
     }
 
     private suspend fun loadStoriesFromNetwork() {
