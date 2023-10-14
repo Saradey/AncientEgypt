@@ -5,15 +5,19 @@ import com.evgenii.goncharov.ancient.egypt.databinding.ItemStoriesBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
-fun storiesDelegate() = adapterDelegateViewBinding<StoriesModel, StoriesModel, ItemStoriesBinding>(
-    { layoutInflater, root -> ItemStoriesBinding.inflate(layoutInflater, root, false) }
-) {
-    bind {
-        Glide.with(context)
-            .load(item.storiesImage)
-            .into(binding.imvImageStories)
-        if (item.storiesTitle.isNotEmpty()) {
-            binding.txvStoriesTitle.text = item.storiesTitle
+fun storiesDelegate(storiesClick: (String) -> Unit) =
+    adapterDelegateViewBinding<StoriesModel, StoriesModel, ItemStoriesBinding>(
+        { layoutInflater, root -> ItemStoriesBinding.inflate(layoutInflater, root, false) }
+    ) {
+        bind {
+            Glide.with(context)
+                .load(item.storiesImage)
+                .into(binding.imvImageStories)
+            if (item.storiesTitle.isNotEmpty()) {
+                binding.txvStoriesTitle.text = item.storiesTitle
+            }
+            binding.root.setOnClickListener {
+                storiesClick(item.id)
+            }
         }
     }
-}

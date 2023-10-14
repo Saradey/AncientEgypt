@@ -93,15 +93,15 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun goToTheStories() {
+    fun goToTheStories(storiesId: String) {
         activityRouter.navigateTo(MainScreens.startStories())
     }
 
-    fun goToTheSelectedCategory(idSelectedCategory: String) {
+    private fun goToTheSelectedCategory(idSelectedCategory: String) {
         bottomMenuRouter.navigateTo(ArticlesScreens.startSelectedCategory())
     }
 
-    fun goToTheSelectedArticle(idSelectedArticle: String) {
+    private fun goToTheSelectedArticle(idSelectedArticle: String) {
         activityRouter.navigateTo(ContentScreens.startSelectedArticle())
     }
 
@@ -113,7 +113,7 @@ class MainViewModel @Inject constructor(
         bottomMenuRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
     }
 
-    fun goToTheSelectedArtifact(idSelectedArtifact: String) {
+    private fun goToTheSelectedArtifact(idSelectedArtifact: String) {
         activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
     }
 

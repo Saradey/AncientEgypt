@@ -45,7 +45,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         ::goToAllObjectOnTheMap,
         ::bannerClick
     )
-    private val storiesAdapter = StoriesAdapter()
+    private val storiesAdapter = StoriesAdapter(::clickStories)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -173,6 +173,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun bannerClick(model: SelectedBanner) {
         viewModel.bannerClick(model)
+    }
+
+    private fun clickStories(storiesId: String) {
+        viewModel.goToTheStories(storiesId)
     }
 
     companion object {
