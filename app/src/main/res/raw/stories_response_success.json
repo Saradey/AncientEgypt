@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "message": "ok",
+  "data": {
+    "stories": [
+      {
+        "id": "mysteries_of_the_sphinx",
+        "stories_image": "https://sun9-63.userapi.com/impg/FeND4nrlZM0ZPRAC1cDCoBQ_NoPmq1ALHsVMwA/rQ7p-L3M1zc.jpg?size=320x320&quality=95&sign=b9a72b325dcd83a0f97032f3de727db6&type=album",
+        "stories_title": "Тайны Сфинкса"
+      },
+      {
+        "id": "magic_of_hieroglyphs",
+        "stories_image": "https://sun9-63.userapi.com/impg/FeND4nrlZM0ZPRAC1cDCoBQ_NoPmq1ALHsVMwA/rQ7p-L3M1zc.jpg?size=320x320&quality=95&sign=b9a72b325dcd83a0f97032f3de727db6&type=album",
+        "stories_title": "Магия иероглифов"
+      },
+      {
+        "id": "grandeur_of_pyramids",
+        "stories_image": "https://sun9-63.userapi.com/impg/FeND4nrlZM0ZPRAC1cDCoBQ_NoPmq1ALHsVMwA/rQ7p-L3M1zc.jpg?size=320x320&quality=95&sign=b9a72b325dcd83a0f97032f3de727db6&type=album",
+        "stories_title": "Величие пирамид"
+      },
+      {
+        "id": "egyptian_astronomy",
+        "stories_image": "https://sun9-63.userapi.com/impg/FeND4nrlZM0ZPRAC1cDCoBQ_NoPmq1ALHsVMwA/rQ7p-L3M1zc.jpg?size=320x320&quality=95&sign=b9a72b325dcd83a0f97032f3de727db6&type=album",
+        "stories_title": "Астрономия"
+      }
+    ]
+  }
+}
