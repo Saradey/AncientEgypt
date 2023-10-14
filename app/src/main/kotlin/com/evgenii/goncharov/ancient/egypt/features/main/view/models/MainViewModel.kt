@@ -28,6 +28,7 @@ import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScre
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
@@ -49,7 +50,7 @@ class MainViewModel @Inject constructor(
 
     fun loadContent() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
-            _contentLiveData.value = getCorrectState()
+            _contentLiveData.value = getCorrectContentState()
         }) {
             loadContentFromDb()
             loadContentFromNetwork()
@@ -59,12 +60,28 @@ class MainViewModel @Inject constructor(
     fun refreshToUpdate() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
             _contentLiveData.value = ContentUiState.ErrorUpdate
-        }) {
-            _contentLiveData.value = ContentUiState.Update(
-                _contentLiveData.value is ContentUiState.Error
-            )
+        } + SupervisorJob()) {
+            setContentUiStateWhenRefresh()
             loadContentFromNetwork()
         }
+        viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
+            _storiesLiveData.value = getCorrectStoriesState()
+        } + SupervisorJob()) {
+            setStoriesUiStateWhenRefresh()
+            loadStoriesFromNetwork()
+        }
+    }
+
+    private fun setStoriesUiStateWhenRefresh() {
+        if (checkLastStoriesState()) {
+            _storiesLiveData.value  = StoriesUiState.Loading
+        }
+    }
+
+    private fun setContentUiStateWhenRefresh() {
+        _contentLiveData.value = ContentUiState.Update(
+            _contentLiveData.value is ContentUiState.Error
+        )
     }
 
     fun bannerClick(model: SelectedBanner) {
@@ -159,7 +176,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun getCorrectState(): ContentUiState {
+    private fun getCorrectContentState(): ContentUiState {
         val lastState = _contentLiveData.value
         return if (checkLastState(lastState)) {
             ContentUiState.ErrorUpdate
