@@ -32,11 +32,7 @@
                     android:id="@+id/v_stub_stories"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:elevation="5dp"
-                    android:translationZ="5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:visibility="gone" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

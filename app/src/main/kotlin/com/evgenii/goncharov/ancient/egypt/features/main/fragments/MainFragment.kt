@@ -62,18 +62,24 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun initStoriesUiState(storiesUiState: StoriesUiState) {
         when(storiesUiState) {
-            is StoriesUiState.Stories -> bindStoriesModelToUi(storiesUiState.models)
-            StoriesUiState.Loading -> loadingStories()
-            StoriesUiState.HideStories -> hideStories()
+            is StoriesUiState.Stories -> rootBinding.bindStoriesModelToUi(storiesUiState.models)
+            StoriesUiState.Loading -> rootBinding.loadingStories()
+            StoriesUiState.HideStories -> rootBinding.hideStories()
             StoriesUiState.Error -> Unit
         }
     }
 
-    private fun bindStoriesModelToUi(models: List<StoriesModel>)  = Unit
+    private fun FragmentMainBinding.bindStoriesModelToUi(models: List<StoriesModel>) {
+        vStubStories.isVisible = true
+    }
 
-    private fun loadingStories() = Unit
+    private fun FragmentMainBinding.loadingStories() {
+        vStubStories.isGone = true
+    }
 
-    private fun hideStories() = Unit
+    private fun FragmentMainBinding.hideStories() {
+        vStubStories.isGone = true
+    }
 
     private fun initContentUiState(contentUiState: ContentUiState) {
         when (contentUiState) {

@@ -24,6 +24,8 @@ class StoriesApiImpl @Inject constructor(
     private fun getResponse(response: Int): Int {
         return when (response) {
             0 -> R.raw.stories_response_success
+            1 -> R.raw.universal_error_response
+            2 -> R.raw.universal_broken_json_response
             else -> R.raw.stories_response_success
         }
     }
