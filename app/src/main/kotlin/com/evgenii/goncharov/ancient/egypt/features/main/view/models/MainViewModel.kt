@@ -113,7 +113,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun getCorrectStoriesState() : StoriesUiState {
+    private fun getCorrectStoriesState(): StoriesUiState {
         return if (checkLastStoriesState()) {
             StoriesUiState.HideStories
         } else {

@@ -19,6 +19,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesMo
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.ContentAdapter
+import com.evgenii.goncharov.ancient.egypt.features.main.ui.StoriesAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,10 +41,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val storiesBinding: LayoutStoriesBinding by viewBinding {
         LayoutStoriesBinding.bind(rootBinding.layoutStories.root)
     }
-    private val adapter: ContentAdapter = ContentAdapter(
+    private val contentAdapter = ContentAdapter(
         ::goToAllObjectOnTheMap,
         ::bannerClick
     )
+    private val storiesAdapter = StoriesAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +67,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun initStoriesUiState(storiesUiState: StoriesUiState) {
-        when(storiesUiState) {
+        when (storiesUiState) {
             is StoriesUiState.Stories -> storiesBinding.bindStoriesModelToUi(storiesUiState.models)
             StoriesUiState.Loading -> storiesBinding.loadingStories()
             StoriesUiState.HideStories -> storiesBinding.hideStories()
@@ -76,6 +78,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun LayoutStoriesBinding.bindStoriesModelToUi(models: List<StoriesModel>) {
         shimmerStories.isGone = true
         rcvStories.isVisible = true
+        storiesAdapter.items = models
+        storiesAdapter.notifyDataSetChanged()
     }
 
     private fun LayoutStoriesBinding.loadingStories() {
@@ -112,7 +116,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun FragmentMainBinding.showStatusUpdate(content: List<BaseContentModel>) {
         showStatusUpdate()
-        adapter.items = content
+        contentAdapter.items = content
         rflUpdateContent.isRefreshing = false
     }
 
@@ -131,8 +135,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         errorState.root.isGone = true
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
-        adapter.items = content
-        adapter.notifyDataSetChanged()
+        contentAdapter.items = content
+        contentAdapter.notifyDataSetChanged()
     }
 
     private fun FragmentMainBinding.loading() {
@@ -155,11 +159,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun FragmentMainBinding.initUi() {
-        rcvContent.adapter = adapter
+        rcvContent.adapter = contentAdapter
         rflUpdateContent.setOnRefreshListener(viewModel::refreshToUpdate)
         toolbar.setNavigationOnClickListener {
             viewModel.goToTheSearchScreen()
         }
+        storiesBinding.rcvStories.adapter = storiesAdapter
     }
 
     private fun goToAllObjectOnTheMap() {
