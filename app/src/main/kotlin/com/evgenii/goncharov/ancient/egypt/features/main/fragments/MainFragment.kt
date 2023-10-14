@@ -18,7 +18,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedB
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
-import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
+import com.evgenii.goncharov.ancient.egypt.features.main.ui.ContentAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +40,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val storiesBinding: LayoutStoriesBinding by viewBinding {
         LayoutStoriesBinding.bind(rootBinding.layoutStories.root)
     }
-    private val adapter: MainContentAdapter = MainContentAdapter(
+    private val adapter: ContentAdapter = ContentAdapter(
         ::goToAllObjectOnTheMap,
         ::bannerClick
     )
