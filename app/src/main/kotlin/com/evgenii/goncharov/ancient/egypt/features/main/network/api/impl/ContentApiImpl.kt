@@ -26,6 +26,9 @@ class ContentApiImpl @Inject constructor(
             0 -> R.raw.main_content_response_1_success
             1 -> R.raw.main_content_response_2_error
             2 -> R.raw.main_content_response_3_error_2
+            3 -> R.raw.universal_error_response
+            4 -> R.raw.universal_broken_json_response
+            5 -> R.raw.universal_empty_json
             else -> R.raw.main_content_response_1_success
         }
     }

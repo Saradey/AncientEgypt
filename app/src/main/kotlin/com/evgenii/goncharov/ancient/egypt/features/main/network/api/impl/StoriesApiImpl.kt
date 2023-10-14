@@ -26,6 +26,7 @@ class StoriesApiImpl @Inject constructor(
             0 -> R.raw.stories_response_success
             1 -> R.raw.universal_error_response
             2 -> R.raw.universal_broken_json_response
+            3 -> R.raw.universal_empty_json
             else -> R.raw.stories_response_success
         }
     }
