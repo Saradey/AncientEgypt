@@ -20,6 +20,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNe
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromNetworkUseCase
@@ -118,7 +119,27 @@ class MainViewModel @Inject constructor(
 
     private suspend fun loadStoriesFromNetwork() {
         val result = storiesFromNetworkUseCase()
+        when (result.status) {
+            ResponseStatus.ERROR -> setStatusError()
+            ResponseStatus.SUCCESS -> setStoriesState(result.data)
+        }
+    }
 
+    private fun setStatusError() {
+        val lastStoriesState = _storiesLiveData.value
+        if (lastStoriesState == StoriesUiState.Error ||
+            lastStoriesState == StoriesUiState.Loading ||
+            lastStoriesState == StoriesUiState.HideStories) {
+            _storiesLiveData.value = StoriesUiState.HideStories
+        }
+    }
+
+    private fun setStoriesState(models: List<StoriesModel>?) {
+        models?.let {
+            _storiesLiveData.value = StoriesUiState.Stories(models)
+        } ?: run {
+            _storiesLiveData.value = StoriesUiState.HideStories
+        }
     }
 
     private fun getCorrectState(): ContentUiState {
