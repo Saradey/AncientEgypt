@@ -10,10 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
+import com.evgenii.goncharov.ancient.egypt.base.models.state.CommonUiState
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
@@ -55,7 +57,22 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun initObserveLiveData() {
         viewModel.contentLiveData.observe(viewLifecycleOwner, ::initContentUiState)
+        viewModel.storiesLiveData.observe(viewLifecycleOwner, ::initStoriesUiState)
     }
+
+    private fun initStoriesUiState(storiesUiState: CommonUiState<List<StoriesModel>>) {
+        when(storiesUiState) {
+            CommonUiState.Loading -> loadingStories()
+            is CommonUiState.Success -> bindStoriesModelToUi(storiesUiState.content)
+            CommonUiState.Error -> errorStories()
+        }
+    }
+
+    private fun bindStoriesModelToUi(models: List<StoriesModel>)  = Unit
+
+    private fun loadingStories() = Unit
+
+    private fun errorStories() = Unit
 
     private fun initContentUiState(contentUiState: ContentUiState) {
         when (contentUiState) {
