@@ -7,17 +7,17 @@ import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToSto
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainStoriesDto
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainScreenStoriesApi
-import com.evgenii.goncharov.ancient.egypt.features.main.repositories.StoriesFromNetworkRepository
+import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainStoriesFromNetworkRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class StoriesFromNetworkRepositoryImpl @Inject constructor(
+class MainStoriesFromNetworkRepositoryImpl @Inject constructor(
     private val storiesApi: MainScreenStoriesApi,
     private val storiesDtoToStoriesModelMapper: StoriesDtoToStoriesModelMapper,
     private val storiesDao: StoriesDao,
     private val storiesDtoTpStoriesEntityMapper: StoriesDtoToStoriesEntityMapper
-) : StoriesFromNetworkRepository {
+) : MainStoriesFromNetworkRepository {
 
     override suspend fun invoke(): BaseStatusModel<List<StoriesModel>> {
         val response = storiesApi.getStories()
