@@ -73,19 +73,19 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun LayoutStoriesBinding.bindStoriesModelToUi(models: List<StoriesModel>) {
-        shimmerStories.isGone = true
+        shimmerStories.root.isGone = true
         rcvStories.isVisible = true
         storiesAdapter.items = models
         storiesAdapter.notifyDataSetChanged()
     }
 
     private fun LayoutStoriesBinding.loadingStories() {
-        shimmerStories.isVisible = true
+        shimmerStories.root.isVisible = true
         rcvStories.isGone = true
     }
 
     private fun LayoutStoriesBinding.hideStories() {
-        shimmerStories.isGone = true
+        shimmerStories.root.isGone = true
         rcvStories.isGone = true
     }
 

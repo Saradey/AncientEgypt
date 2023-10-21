@@ -4,12 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
-    <com.evgenii.goncharov.ancient.egypt.features.main.ui.costume.view.StoriesShimmerView
+    <include
         android:id="@+id/shimmer_stories"
+        layout="@layout/layout_stories_shimmer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="10dp"
-        android:visibility="gone" />
+        android:layout_height="match_parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_stories"
