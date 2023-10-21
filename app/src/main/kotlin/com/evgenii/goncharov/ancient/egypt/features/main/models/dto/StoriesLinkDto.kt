@@ -4,6 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class StoriesDataDto(
-    @SerialName("stories") val stories: List<StoriesDto>
+data class StoriesLinkDto(
+    @SerialName("link_id") val id: String,
+    @SerialName("link_type") val type: String
 )

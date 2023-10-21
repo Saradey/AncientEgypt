@@ -6,6 +6,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class StoriesDto(
     @SerialName("id") val id: String,
-    @SerialName("stories_image") val storiesImage: String,
-    @SerialName("stories_title") val storiesTitle: String? = null
+    @SerialName("type") val type: String,
+    @SerialName("uri_content") val uri: String,
+    @SerialName("title") val title: String? = null,
+    @SerialName("description") val description: String? = null,
+    @SerialName("title_color") val titleColor: Int? = null,
+    @SerialName("description_color") val descriptionColor: Int? = null,
+    @SerialName("link") val ling: StoriesLinkDto
 )

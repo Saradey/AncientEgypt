@@ -4,7 +4,7 @@ import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.StoriesDao
 import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToStoriesModelMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToStoriesEntityMapper
-import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.StoriesDto
+import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainStoriesDto
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainScreenStoriesApi
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.StoriesFromNetworkRepository
@@ -25,7 +25,7 @@ class StoriesFromNetworkRepositoryImpl @Inject constructor(
         return storiesDtoToStoriesModelMapper(response)
     }
 
-    private suspend fun updateStoriesToDatabase(dto: List<StoriesDto>?) =
+    private suspend fun updateStoriesToDatabase(dto: List<MainStoriesDto>?) =
         withContext(Dispatchers.IO) {
             storiesDao.insertStories(storiesDtoTpStoriesEntityMapper(dto ?: emptyList()))
         }

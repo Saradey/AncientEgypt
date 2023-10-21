@@ -3,7 +3,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.network.api.impl
 import android.content.Context
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseResponseDto
-import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.StoriesDataDto
+import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainStoriesDataDto
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainScreenStoriesApi
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
@@ -14,7 +14,7 @@ class MainScreenStoriesApiImpl @Inject constructor(
     @ApplicationContext private val context: Context
 ) : MainScreenStoriesApi {
 
-    override suspend fun getStories(): BaseResponseDto<StoriesDataDto> {
+    override suspend fun getStories(): BaseResponseDto<MainStoriesDataDto> {
         val rawResponse = context.resources.openRawResource(getResponse(0))
         val stringResponse = rawResponse.bufferedReader().use { it.readText() }
         delay(1000)
