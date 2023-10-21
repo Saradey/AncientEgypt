@@ -2,6 +2,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.ui
 
 import com.evgenii.goncharov.ancient.egypt.databinding.ItemBannerBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.ItemGoToMapButtonBinding
+import com.evgenii.goncharov.ancient.egypt.features.main.mappers.BannerModelToSelectedBannerModelMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BannerModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MapButtonModel
@@ -30,9 +31,8 @@ fun bannerDelegate(bannerClickListener: (model: SelectedBannerModel) -> Unit) =
             binding.root.initView()
             binding.root.setOnClickListener {
                 bannerClickListener(
-                    SelectedBannerModel(
-                        id = item.id,
-                        contentType = item.contentType
+                    BannerModelToSelectedBannerModelMapper.mapBannerModelToSelectedBannerModel(
+                        item
                     )
                 )
             }
