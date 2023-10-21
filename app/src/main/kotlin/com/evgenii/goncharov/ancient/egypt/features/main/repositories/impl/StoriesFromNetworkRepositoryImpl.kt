@@ -6,14 +6,14 @@ import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToSto
 import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToStoriesEntityMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.StoriesDto
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
-import com.evgenii.goncharov.ancient.egypt.features.main.network.api.StoriesApi
+import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainScreenStoriesApi
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.StoriesFromNetworkRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class StoriesFromNetworkRepositoryImpl @Inject constructor(
-    private val storiesApi: StoriesApi,
+    private val storiesApi: MainScreenStoriesApi,
     private val storiesDtoToStoriesModelMapper: StoriesDtoToStoriesModelMapper,
     private val storiesDao: StoriesDao,
     private val storiesDtoTpStoriesEntityMapper: StoriesDtoToStoriesEntityMapper

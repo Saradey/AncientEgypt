@@ -1,8 +1,10 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.di
 
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.ContentApi
+import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainScreenStoriesApi
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.StoriesApi
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.impl.ContentApiImpl
+import com.evgenii.goncharov.ancient.egypt.features.main.network.api.impl.MainScreenStoriesApiImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.impl.StoriesApiImpl
 import dagger.Binds
 import dagger.Module
@@ -17,5 +19,8 @@ interface MockBindsModule {
     fun ContentApiImpl.bindContentApi(): ContentApi
 
     @Binds
-    fun StoriesApiImpl.bindStoriesApi(): StoriesApi
+    fun MainScreenStoriesApiImpl.bindStoriesApi(): MainScreenStoriesApi
+
+    @Binds
+    fun StoriesApiImpl.bindMainScreenStoriesApi(): StoriesApi
 }
