@@ -23,8 +23,8 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedB
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesFromDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,8 +40,8 @@ class MainViewModel @Inject constructor(
     @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) private val bottomMenuRouter: Router,
     private val mainContentFromNetworkUseCase: ContentFromNetworkUseCase,
     private val mainContentFromDbUseCase: ContentFromDatabaseUseCase,
-    private val storiesFromDatabaseUseCase: StoriesFromDatabaseUseCase,
-    private val storiesFromNetworkUseCase: StoriesFromNetworkUseCase
+    private val storiesFromDatabaseUseCase: MainStoriesFromDatabaseUseCase,
+    private val storiesFromNetworkUseCase: MainStoriesFromNetworkUseCase
 ) : ViewModel() {
 
     private val _contentLiveData = MutableLiveData<ContentUiState>()
