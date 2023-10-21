@@ -33,7 +33,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private val viewModel: MainViewModel by viewModels()
     private val rootBinding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
     private val errorStateBinding: LayoutErrorStateBinding by viewBinding {
         LayoutErrorStateBinding.bind(rootBinding.errorState.root)
@@ -41,10 +40,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val storiesBinding: LayoutStoriesBinding by viewBinding {
         LayoutStoriesBinding.bind(rootBinding.layoutStories.root)
     }
-    private val contentAdapter = ContentAdapter(
-        ::goToAllObjectOnTheMap,
-        ::bannerClick
-    )
+    private val viewModel: MainViewModel by viewModels()
+    private val contentAdapter = ContentAdapter(::goToAllObjectOnTheMap, ::bannerClick)
     private val storiesAdapter = StoriesAdapter(::clickStories)
 
     override fun onCreate(savedInstanceState: Bundle?) {
