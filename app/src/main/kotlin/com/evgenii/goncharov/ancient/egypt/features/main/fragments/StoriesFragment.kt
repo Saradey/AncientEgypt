@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentStoriesBinding
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.StoriesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,6 +42,12 @@ class StoriesFragment : Fragment(R.layout.fragment_stories) {
     }
 
     companion object {
-        fun newInstance() = StoriesFragment()
+        private const val SELECTED_STORIES_KEY = "SELECTED_STORIES_KEY"
+
+        fun newInstance(model: SelectedStoriesModel) = StoriesFragment().apply {
+            val bundleArg = Bundle()
+            bundleArg.putParcelable(SELECTED_STORIES_KEY, model)
+            arguments = bundleArg
+        }
     }
 }

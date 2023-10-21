@@ -95,7 +95,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun goToTheStories(model: SelectedStoriesModel) {
-        activityRouter.navigateTo(MainScreens.startStories())
+        activityRouter.navigateTo(MainScreens.startStories(model))
     }
 
     private fun goToTheSelectedCategory(idSelectedCategory: String) {

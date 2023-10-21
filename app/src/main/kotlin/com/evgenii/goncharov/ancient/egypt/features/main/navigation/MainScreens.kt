@@ -4,6 +4,7 @@ import com.evgenii.goncharov.ancient.egypt.base.BaseFragmentScreen
 import com.evgenii.goncharov.ancient.egypt.features.main.fragments.MainBottomMenuFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.fragments.MainFragment
 import com.evgenii.goncharov.ancient.egypt.features.main.fragments.StoriesFragment
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainBottomNavigator.Companion.BACKSTACK_NAME_MAIN
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
@@ -19,8 +20,8 @@ object MainScreens {
         MainFragment.newInstance()
     }
 
-    fun startStories() = FragmentScreen{ _ ->
-        StoriesFragment.newInstance()
+    fun startStories(model: SelectedStoriesModel) = FragmentScreen{ _ ->
+        StoriesFragment.newInstance(model)
     }
 
     /**
@@ -33,5 +34,5 @@ object MainScreens {
     }
 
     private const val SCREEN_KEY_BOTTOM_MENU = "bottomMenu"
-    const val SCREEN_KEY_MAIN_MENU = "main_menu_screen"
+    private const val SCREEN_KEY_MAIN_MENU = "main_menu_screen"
 }
