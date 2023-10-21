@@ -20,7 +20,7 @@ class StoriesViewModel @AssistedInject constructor(
     private var currentStories: String = model.selectedStoriesId
     private val allStories: MutableList<String> = model.allStoriesId.toMutableList()
 
-    fun goToTheeSelectedArticle() {
+    fun goToTheSelectedArticle() {
         activityRouter.replaceScreen(ContentScreens.startSelectedArticle())
     }
 
