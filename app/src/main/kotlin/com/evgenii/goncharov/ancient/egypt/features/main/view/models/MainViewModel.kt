@@ -20,10 +20,15 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNe
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
@@ -33,30 +38,50 @@ class MainViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
     @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) private val bottomMenuRouter: Router,
     private val mainContentFromNetworkUseCase: ContentFromNetworkUseCase,
-    private val mainContentFromDbUseCase: ContentFromDatabaseUseCase
+    private val mainContentFromDbUseCase: ContentFromDatabaseUseCase,
+    private val storiesFromDatabaseUseCase: StoriesFromDatabaseUseCase,
+    private val storiesFromNetworkUseCase: StoriesFromNetworkUseCase
 ) : ViewModel() {
 
-    private val _mainContentLiveData = MutableLiveData<ContentUiState>()
-    val mainContentLiveData: LiveData<ContentUiState> = _mainContentLiveData
+    private val _contentLiveData = MutableLiveData<ContentUiState>()
+    val contentLiveData: LiveData<ContentUiState> = _contentLiveData
+    private val _storiesLiveData = MutableLiveData<StoriesUiState>()
+    val storiesLiveData: LiveData<StoriesUiState> = _storiesLiveData
 
     fun loadContent() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
-            _mainContentLiveData.value = getCorrectState()
+            _contentLiveData.value = getCorrectContentState()
         }) {
-            loadFromDb()
-            loadFromNetwork()
+            loadContentFromDb()
+            loadContentFromNetwork()
         }
     }
 
     fun refreshToUpdate() {
         viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
-            _mainContentLiveData.value = ContentUiState.ErrorUpdate
-        }) {
-            _mainContentLiveData.value = ContentUiState.Update(
-                _mainContentLiveData.value is ContentUiState.Error
-            )
-            loadFromNetwork()
+            _contentLiveData.value = ContentUiState.ErrorUpdate
+        } + SupervisorJob()) {
+            setContentUiStateWhenRefresh()
+            loadContentFromNetwork()
         }
+        viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
+            _storiesLiveData.value = getCorrectStoriesState()
+        } + SupervisorJob()) {
+            setStoriesUiStateWhenRefresh()
+            loadStoriesFromNetwork()
+        }
+    }
+
+    private fun setStoriesUiStateWhenRefresh() {
+        if (checkLastStoriesState()) {
+            _storiesLiveData.value = StoriesUiState.Loading
+        }
+    }
+
+    private fun setContentUiStateWhenRefresh() {
+        _contentLiveData.value = ContentUiState.Update(
+            isErrorStateBefore = _contentLiveData.value is ContentUiState.Error
+        )
     }
 
     fun bannerClick(model: SelectedBanner) {
@@ -68,15 +93,15 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun goToTheStories() {
+    fun goToTheStories(storiesId: String) {
         activityRouter.navigateTo(MainScreens.startStories())
     }
 
-    fun goToTheSelectedCategory(idSelectedCategory: String) {
+    private fun goToTheSelectedCategory(idSelectedCategory: String) {
         bottomMenuRouter.navigateTo(ArticlesScreens.startSelectedCategory())
     }
 
-    fun goToTheSelectedArticle(idSelectedArticle: String) {
+    private fun goToTheSelectedArticle(idSelectedArticle: String) {
         activityRouter.navigateTo(ContentScreens.startSelectedArticle())
     }
 
@@ -88,7 +113,7 @@ class MainViewModel @Inject constructor(
         bottomMenuRouter.navigateTo(MapScreens.startAncientEgyptMapAndArticle())
     }
 
-    fun goToTheSelectedArtifact(idSelectedArtifact: String) {
+    private fun goToTheSelectedArtifact(idSelectedArtifact: String) {
         activityRouter.navigateTo(ContentScreens.startSelectedArtifact())
     }
 
@@ -96,8 +121,63 @@ class MainViewModel @Inject constructor(
         bottomMenuRouter.navigateTo(SearchScreens.startSearch())
     }
 
-    private fun getCorrectState(): ContentUiState {
-        val lastState = _mainContentLiveData.value
+    fun loadStories() {
+        viewModelScope.launch(CoroutineExceptionHandler { _, _ ->
+            _storiesLiveData.value = getCorrectStoriesState()
+        }) {
+            loadStoriesFromDatabase()
+            loadStoriesFromNetwork()
+        }
+    }
+
+    private fun getCorrectStoriesState(): StoriesUiState {
+        return if (checkLastStoriesState()) {
+            StoriesUiState.HideStories
+        } else {
+            StoriesUiState.Error
+        }
+    }
+
+    private suspend fun loadStoriesFromDatabase() {
+        val storiesFromDatabase = storiesFromDatabaseUseCase()
+        if (storiesFromDatabase.data.isNotEmpty()) {
+            setStoriesState(storiesFromDatabase.data)
+        } else {
+            _storiesLiveData.value = StoriesUiState.Loading
+        }
+    }
+
+    private suspend fun loadStoriesFromNetwork() {
+        val result = storiesFromNetworkUseCase()
+        when (result.status) {
+            ResponseStatus.ERROR -> setStatusError()
+            ResponseStatus.SUCCESS -> setStoriesState(result.data)
+        }
+    }
+
+    private fun setStatusError() {
+        if (checkLastStoriesState()) {
+            _storiesLiveData.value = StoriesUiState.HideStories
+        }
+    }
+
+    private fun checkLastStoriesState(): Boolean {
+        val lastStoriesState = _storiesLiveData.value
+        return lastStoriesState == StoriesUiState.Error ||
+                lastStoriesState == StoriesUiState.Loading ||
+                lastStoriesState == StoriesUiState.HideStories
+    }
+
+    private fun setStoriesState(models: List<StoriesModel>?) {
+        models?.let {
+            _storiesLiveData.value = StoriesUiState.Stories(models = models)
+        } ?: run {
+            _storiesLiveData.value = StoriesUiState.HideStories
+        }
+    }
+
+    private fun getCorrectContentState(): ContentUiState {
+        val lastState = _contentLiveData.value
         return if (checkLastState(lastState)) {
             ContentUiState.ErrorUpdate
         } else {
@@ -105,34 +185,30 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private suspend fun loadFromDb() {
+    private suspend fun loadContentFromDb() {
         val contentFromDatabase = mainContentFromDbUseCase()
         if (contentFromDatabase.data.content.isNotEmpty()) {
-            _mainContentLiveData.value = ContentUiState.UpdateAndOldContent(
-                createContents(contentFromDatabase.data)
+            _contentLiveData.value = ContentUiState.UpdateAndOldContent(
+                content = createContents(contentFromDatabase.data)
             )
         } else {
-            _mainContentLiveData.value = ContentUiState.Loading
+            _contentLiveData.value = ContentUiState.Loading
         }
     }
 
-    private suspend fun loadFromNetwork() {
+    private suspend fun loadContentFromNetwork() {
         val result = mainContentFromNetworkUseCase()
-        val lastState = _mainContentLiveData.value
-        _mainContentLiveData.postValue(createContentStateFromNetwork(result, lastState))
+        val lastState = _contentLiveData.value
+        _contentLiveData.postValue(createContentStateFromNetwork(result, lastState))
     }
 
     private fun createContentStateFromNetwork(
         model: BaseStatusModel<ContentModel>,
         lastState: ContentUiState?
     ): ContentUiState {
-        return when {
-            model.status == ResponseStatus.ERROR || model.data == null -> {
-                createErrorState(model, lastState)
-            }
-            model.status == ResponseStatus.SUCCESS -> {
-                ContentUiState.Content(createContents(model.data))
-            }
+        return when (model.status) {
+            ResponseStatus.ERROR -> createErrorState(model, lastState)
+            ResponseStatus.SUCCESS -> ContentUiState.Content(content = createContents(model.data))
             else -> ContentUiState.Error()
         }
     }
@@ -144,7 +220,7 @@ class MainViewModel @Inject constructor(
         return if (checkLastState(lastState)) {
             ContentUiState.ErrorUpdate
         } else {
-            ContentUiState.Error(model.message)
+            ContentUiState.Error(messageError = model.message)
         }
     }
 
@@ -154,15 +230,15 @@ class MainViewModel @Inject constructor(
                 (lastState is ContentUiState.Update && !lastState.isErrorStateBefore)
     }
 
-    private fun createContents(model: ContentModel): List<BaseContentModel> {
-        return model.content.let { models ->
-            if (model.isEnabledMap && models.isNotEmpty()) {
+    private fun createContents(model: ContentModel?): List<BaseContentModel> {
+        return model?.content.let { models ->
+            if (model?.isEnabledMap == true && models?.isNotEmpty() == true) {
                 models.toMutableList<BaseContentModel>().apply {
                     add(0, MapButtonModel)
                 }
             } else {
                 models
-            }
+            } ?: emptyList()
         }
     }
 }

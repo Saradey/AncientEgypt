@@ -6,7 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.evgenii.goncharov.ancient.egypt.ui_kit.R
-import com.evgenii.goncharov.ancient.egypt.ui_kit.databinding.BannerViewBinding
+import com.evgenii.goncharov.ancient.egypt.ui_kit.databinding.ViewBannerBinding
 
 class BannerView @JvmOverloads constructor(
     context: Context,
@@ -17,12 +17,12 @@ class BannerView @JvmOverloads constructor(
     var title: String? = null
     var bannerUri: String? = null
     var description: String? = null
-    private val binding: BannerViewBinding by viewBinding {
-        BannerViewBinding.bind(this)
+    private val binding: ViewBannerBinding by viewBinding {
+        ViewBannerBinding.bind(this)
     }
 
     init {
-        inflate(context, R.layout.banner_view, this)
+        inflate(context, R.layout.view_banner, this)
     }
 
     fun initView() {

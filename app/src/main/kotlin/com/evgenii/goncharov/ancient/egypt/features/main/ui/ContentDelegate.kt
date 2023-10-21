@@ -29,7 +29,12 @@ fun bannerDelegate(bannerClickListener: (model: SelectedBanner) -> Unit) =
             binding.root.bannerUri = item.bannerUri
             binding.root.initView()
             binding.root.setOnClickListener {
-                bannerClickListener(SelectedBanner(item.id, item.contentType))
+                bannerClickListener(
+                    SelectedBanner(
+                        id = item.id,
+                        contentType = item.contentType
+                    )
+                )
             }
         }
     }

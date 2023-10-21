@@ -3,6 +3,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.di
 import com.evgenii.goncharov.ancient.egypt.db.AppDatabase
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.BannerDao
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.MapInfoDao
+import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.StoriesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +24,11 @@ object MainScreenProvideModule {
     @ViewModelScoped
     fun provideMapInfoDao(db: AppDatabase): MapInfoDao {
         return db.getMapInfoDao()
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideStoriesDao(db: AppDatabase): StoriesDao {
+        return db.getStoriesDao()
     }
 }

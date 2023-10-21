@@ -17,26 +17,21 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#999999"
+                android:background="?main_background_color"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="?main_background_color"
                     app:navigationIcon="@drawable/ic_search_24"
                     app:title="Поиск" />
 
-                <View
-                    android:id="@+id/v_stub_stories"
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:elevation="5dp"
-                    android:translationZ="5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <include
+                    android:id="@+id/layout_stories"
+                    layout="@layout/layout_stories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

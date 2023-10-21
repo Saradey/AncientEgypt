@@ -12,10 +12,14 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
+import com.evgenii.goncharov.ancient.egypt.databinding.LayoutStoriesBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
-import com.evgenii.goncharov.ancient.egypt.features.main.ui.MainContentAdapter
+import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
+import com.evgenii.goncharov.ancient.egypt.features.main.ui.ContentAdapter
+import com.evgenii.goncharov.ancient.egypt.features.main.ui.StoriesAdapter
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.MainViewModel
 import com.evgenii.goncharov.ancient.egypt.utils.StatusBarUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,20 +33,24 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private val viewModel: MainViewModel by viewModels()
     private val rootBinding: FragmentMainBinding by viewBinding(FragmentMainBinding::bind)
     private val errorStateBinding: LayoutErrorStateBinding by viewBinding {
         LayoutErrorStateBinding.bind(rootBinding.errorState.root)
     }
-    private val adapter: MainContentAdapter = MainContentAdapter(
-        ::goToAllObjectOnTheMap,
-        ::bannerClick
-    )
+    private val storiesBinding: LayoutStoriesBinding by viewBinding {
+        LayoutStoriesBinding.bind(rootBinding.layoutStories.root)
+    }
+    private val viewModel: MainViewModel by viewModels()
+    private val contentAdapter = ContentAdapter(::goToAllObjectOnTheMap, ::bannerClick)
+    private val storiesAdapter = StoriesAdapter(::clickStories)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StatusBarUtils.showSystemUi(requireActivity().window)
-        savedInstanceState ?: viewModel.loadContent()
+        savedInstanceState ?: run {
+            viewModel.loadContent()
+            viewModel.loadStories()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,7 +59,34 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun initObserveLiveData() {
-        viewModel.mainContentLiveData.observe(viewLifecycleOwner, ::initContentUiState)
+        viewModel.contentLiveData.observe(viewLifecycleOwner, ::initContentUiState)
+        viewModel.storiesLiveData.observe(viewLifecycleOwner, ::initStoriesUiState)
+    }
+
+    private fun initStoriesUiState(storiesUiState: StoriesUiState) {
+        when (storiesUiState) {
+            is StoriesUiState.Stories -> storiesBinding.bindStoriesModelToUi(storiesUiState.models)
+            StoriesUiState.Loading -> storiesBinding.loadingStories()
+            StoriesUiState.HideStories -> storiesBinding.hideStories()
+            StoriesUiState.Error -> Unit
+        }
+    }
+
+    private fun LayoutStoriesBinding.bindStoriesModelToUi(models: List<StoriesModel>) {
+        shimmerStories.root.isGone = true
+        rcvStories.isVisible = true
+        storiesAdapter.items = models
+        storiesAdapter.notifyDataSetChanged()
+    }
+
+    private fun LayoutStoriesBinding.loadingStories() {
+        shimmerStories.root.isVisible = true
+        rcvStories.isGone = true
+    }
+
+    private fun LayoutStoriesBinding.hideStories() {
+        shimmerStories.root.isGone = true
+        rcvStories.isGone = true
     }
 
     private fun initContentUiState(contentUiState: ContentUiState) {
@@ -78,7 +113,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun FragmentMainBinding.showStatusUpdate(content: List<BaseContentModel>) {
         showStatusUpdate()
-        adapter.items = content
+        contentAdapter.items = content
         rflUpdateContent.isRefreshing = false
     }
 
@@ -97,8 +132,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         errorState.root.isGone = true
         loadProgress.root.isGone = true
         rcvContent.isVisible = true
-        adapter.items = content
-        adapter.notifyDataSetChanged()
+        contentAdapter.items = content
+        contentAdapter.notifyDataSetChanged()
     }
 
     private fun FragmentMainBinding.loading() {
@@ -121,11 +156,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun FragmentMainBinding.initUi() {
-        rcvContent.adapter = adapter
+        rcvContent.adapter = contentAdapter
         rflUpdateContent.setOnRefreshListener(viewModel::refreshToUpdate)
         toolbar.setNavigationOnClickListener {
             viewModel.goToTheSearchScreen()
         }
+        storiesBinding.rcvStories.adapter = storiesAdapter
     }
 
     private fun goToAllObjectOnTheMap() {
@@ -134,6 +170,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun bannerClick(model: SelectedBanner) {
         viewModel.bannerClick(model)
+    }
+
+    private fun clickStories(storiesId: String) {
+        viewModel.goToTheStories(storiesId)
     }
 
     companion object {
