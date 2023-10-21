@@ -4,15 +4,17 @@ import androidx.lifecycle.ViewModel
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import javax.inject.Named
 
-@HiltViewModel
-class StoriesViewModel @Inject constructor(
-    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router
+class StoriesViewModel @AssistedInject constructor(
+    @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
+    @Assisted private val model: SelectedStoriesModel
 ) : ViewModel() {
 
     fun goToTheeSelectedArticle() {
@@ -29,5 +31,10 @@ class StoriesViewModel @Inject constructor(
 
     fun goToTheSelectedArtifact() {
         activityRouter.replaceScreen(ContentScreens.startSelectedArtifact())
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(model: SelectedStoriesModel): StoriesViewModel
     }
 }

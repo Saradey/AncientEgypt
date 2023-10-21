@@ -1,15 +1,18 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
+import com.evgenii.goncharov.ancient.egypt.common.MultiViewModelFactory
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentStoriesBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.StoriesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * №2.3
@@ -18,7 +21,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class StoriesFragment : Fragment(R.layout.fragment_stories) {
 
-    private val viewModel: StoriesViewModel by viewModels()
+    @Inject lateinit var factory: StoriesViewModel.Factory
+    private val viewModel: StoriesViewModel by viewModels { MultiViewModelFactory { factory.create(getArgSelectedStories()) } }
     private val binding: FragmentStoriesBinding by viewBinding(FragmentStoriesBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,6 +43,14 @@ class StoriesFragment : Fragment(R.layout.fragment_stories) {
         btnNext4.setOnClickListener {
             viewModel.goToTheSelectedArtifact()
         }
+    }
+
+    private fun getArgSelectedStories() : SelectedStoriesModel {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arguments?.getParcelable(SELECTED_STORIES_KEY, SelectedStoriesModel::class.java)
+        } else {
+            arguments?.getParcelable(SELECTED_STORIES_KEY)
+        } ?: throw IllegalArgumentException()
     }
 
     companion object {
