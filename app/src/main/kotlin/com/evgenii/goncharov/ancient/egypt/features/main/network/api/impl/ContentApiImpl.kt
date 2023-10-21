@@ -24,11 +24,10 @@ class ContentApiImpl @Inject constructor(
     private fun getResponse(response: Int): Int {
         return when (response) {
             0 -> R.raw.main_content_response_1_success
-            1 -> R.raw.main_content_response_2_error
-            2 -> R.raw.main_content_response_3_error_2
-            3 -> R.raw.universal_error_response
-            4 -> R.raw.universal_broken_json_response
-            5 -> R.raw.universal_empty_json
+            1 -> R.raw.universal_error_response_with_message
+            2 -> R.raw.universal_error_response
+            3 -> R.raw.universal_broken_json_response
+            4 -> R.raw.universal_empty_json
             else -> R.raw.main_content_response_1_success
         }
     }

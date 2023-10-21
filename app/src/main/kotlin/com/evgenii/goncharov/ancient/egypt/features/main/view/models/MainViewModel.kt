@@ -74,7 +74,7 @@ class MainViewModel @Inject constructor(
 
     private fun setStoriesUiStateWhenRefresh() {
         if (checkLastStoriesState()) {
-            _storiesLiveData.value  = StoriesUiState.Loading
+            _storiesLiveData.value = StoriesUiState.Loading
         }
     }
 
@@ -206,13 +206,9 @@ class MainViewModel @Inject constructor(
         model: BaseStatusModel<ContentModel>,
         lastState: ContentUiState?
     ): ContentUiState {
-        return when {
-            model.status == ResponseStatus.ERROR || model.data == null -> {
-                createErrorState(model, lastState)
-            }
-            model.status == ResponseStatus.SUCCESS -> {
-                ContentUiState.Content(content = createContents(model.data))
-            }
+        return when (model.status) {
+            ResponseStatus.ERROR -> createErrorState(model, lastState)
+            ResponseStatus.SUCCESS -> ContentUiState.Content(content = createContents(model.data))
             else -> ContentUiState.Error()
         }
     }
@@ -234,15 +230,15 @@ class MainViewModel @Inject constructor(
                 (lastState is ContentUiState.Update && !lastState.isErrorStateBefore)
     }
 
-    private fun createContents(model: ContentModel): List<BaseContentModel> {
-        return model.content.let { models ->
-            if (model.isEnabledMap && models.isNotEmpty()) {
+    private fun createContents(model: ContentModel?): List<BaseContentModel> {
+        return model?.content.let { models ->
+            if (model?.isEnabledMap == true && models?.isNotEmpty() == true) {
                 models.toMutableList<BaseContentModel>().apply {
                     add(0, MapButtonModel)
                 }
             } else {
                 models
-            }
+            } ?: emptyList()
         }
     }
 }
