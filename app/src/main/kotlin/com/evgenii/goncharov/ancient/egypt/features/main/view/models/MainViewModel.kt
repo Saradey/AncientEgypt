@@ -19,7 +19,8 @@ import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromDa
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBannerModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
@@ -84,7 +85,7 @@ class MainViewModel @Inject constructor(
         )
     }
 
-    fun bannerClick(model: SelectedBanner) {
+    fun bannerClick(model: SelectedBannerModel) {
         when (ContentType.valueOf(model.contentType.uppercase())) {
             ContentType.ARTICLE -> goToTheSelectedArticle(model.id)
             ContentType.ARTICLE_MAP -> goToTheMapSelectedArticle(model.id)
@@ -93,7 +94,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun goToTheStories(storiesId: String) {
+    fun goToTheStories(model: SelectedStoriesModel) {
         activityRouter.navigateTo(MainScreens.startStories())
     }
 

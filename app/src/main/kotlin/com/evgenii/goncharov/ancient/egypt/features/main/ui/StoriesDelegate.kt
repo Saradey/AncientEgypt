@@ -2,14 +2,21 @@ package com.evgenii.goncharov.ancient.egypt.features.main.ui
 
 import com.bumptech.glide.Glide
 import com.evgenii.goncharov.ancient.egypt.databinding.ItemStoriesBinding
+import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesModelToSelectedStoriesModelMapper
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.hannesdorfmann.adapterdelegates4.AbsDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
-fun storiesDelegate(storiesClick: (String) -> Unit) =
+fun storiesDelegate(
+    storiesClick: (SelectedStoriesModel) -> Unit,
+) =
     adapterDelegateViewBinding<StoriesModel, StoriesModel, ItemStoriesBinding>(
         { layoutInflater, root -> ItemStoriesBinding.inflate(layoutInflater, root, false) }
     ) {
         bind {
+            val adapter = bindingAdapter as AbsDelegationAdapter<*>
+            val items = adapter.items as List<*>
             Glide.with(context)
                 .load(item.storiesImage)
                 .into(binding.imvImageStories)
@@ -17,7 +24,12 @@ fun storiesDelegate(storiesClick: (String) -> Unit) =
                 binding.txvStoriesTitle.text = item.storiesTitle
             }
             binding.root.setOnClickListener {
-                storiesClick(item.id)
+                storiesClick(
+                    StoriesModelToSelectedStoriesModelMapper.mapStoriesModelToSelectedStoriesModel(
+                        selectedItem = item,
+                        items = items
+                    )
+                )
             }
         }
     }

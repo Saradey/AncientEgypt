@@ -14,7 +14,8 @@ import com.evgenii.goncharov.ancient.egypt.databinding.FragmentMainBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutErrorStateBinding
 import com.evgenii.goncharov.ancient.egypt.databinding.LayoutStoriesBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBanner
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBannerModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
@@ -168,12 +169,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         viewModel.goToTheMapAllObjects()
     }
 
-    private fun bannerClick(model: SelectedBanner) {
+    private fun bannerClick(model: SelectedBannerModel) {
         viewModel.bannerClick(model)
     }
 
-    private fun clickStories(storiesId: String) {
-        viewModel.goToTheStories(storiesId)
+    private fun clickStories(model: SelectedStoriesModel) {
+        viewModel.goToTheStories(model)
     }
 
     companion object {
