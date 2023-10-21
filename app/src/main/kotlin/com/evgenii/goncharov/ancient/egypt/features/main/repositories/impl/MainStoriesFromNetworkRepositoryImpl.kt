@@ -5,7 +5,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.StoriesDao
 import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToStoriesModelMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToStoriesEntityMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainStoriesDto
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainScreenStoriesApi
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.MainStoriesFromNetworkRepository
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ class MainStoriesFromNetworkRepositoryImpl @Inject constructor(
     private val storiesDtoTpStoriesEntityMapper: StoriesDtoToStoriesEntityMapper
 ) : MainStoriesFromNetworkRepository {
 
-    override suspend fun invoke(): BaseStatusModel<List<StoriesModel>> {
+    override suspend fun invoke(): BaseStatusModel<List<MainStoriesModel>> {
         val response = storiesApi.getStories()
         updateStoriesToDatabase(response.data?.stories)
         return storiesDtoToStoriesModelMapper(response)

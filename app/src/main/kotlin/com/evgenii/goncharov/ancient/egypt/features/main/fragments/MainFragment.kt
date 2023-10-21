@@ -16,7 +16,7 @@ import com.evgenii.goncharov.ancient.egypt.databinding.LayoutStoriesBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BaseContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBannerModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.ui.ContentAdapter
@@ -73,7 +73,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
     }
 
-    private fun LayoutStoriesBinding.bindStoriesModelToUi(models: List<StoriesModel>) {
+    private fun LayoutStoriesBinding.bindStoriesModelToUi(models: List<MainStoriesModel>) {
         shimmerStories.root.isGone = true
         rcvStories.isVisible = true
         storiesAdapter.items = models

@@ -1,22 +1,22 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.mappers
 
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 
 object StoriesModelToSelectedStoriesModelMapper {
 
     fun mapStoriesModelToSelectedStoriesModel(
-        selectedItem: StoriesModel,
+        selectedItem: MainStoriesModel,
         items: List<*>
     ): SelectedStoriesModel {
         return SelectedStoriesModel(
             selectedStoriesId = selectedItem.id,
-            allStoriesId = items.filterIsInstance<StoriesModel>()
+            allStoriesId = items.filterIsInstance<MainStoriesModel>()
                 .filter { storiesModel ->
                     storiesModel.id != selectedItem.id
                 }
                 .map { storiesModel ->
-                    (storiesModel as StoriesModel).id
+                    (storiesModel as MainStoriesModel).id
                 }
         )
     }

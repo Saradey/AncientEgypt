@@ -21,7 +21,7 @@ import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBannerModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromDatabaseUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesFromNetworkUseCase
@@ -169,7 +169,7 @@ class MainViewModel @Inject constructor(
                 lastStoriesState == StoriesUiState.HideStories
     }
 
-    private fun setStoriesState(models: List<StoriesModel>?) {
+    private fun setStoriesState(models: List<MainStoriesModel>?) {
         models?.let {
             _storiesLiveData.value = StoriesUiState.Stories(models = models)
         } ?: run {

@@ -4,14 +4,14 @@ import com.bumptech.glide.Glide
 import com.evgenii.goncharov.ancient.egypt.databinding.ItemStoriesBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesModelToSelectedStoriesModelMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import com.hannesdorfmann.adapterdelegates4.AbsDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 fun storiesDelegate(
     storiesClick: (SelectedStoriesModel) -> Unit,
 ) =
-    adapterDelegateViewBinding<StoriesModel, StoriesModel, ItemStoriesBinding>(
+    adapterDelegateViewBinding<MainStoriesModel, MainStoriesModel, ItemStoriesBinding>(
         { layoutInflater, root -> ItemStoriesBinding.inflate(layoutInflater, root, false) }
     ) {
         bind {

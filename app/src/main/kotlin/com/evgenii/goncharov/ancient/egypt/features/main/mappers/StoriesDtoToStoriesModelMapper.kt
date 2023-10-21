@@ -4,12 +4,12 @@ import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseResponseDto
 import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainStoriesDataDto
-import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import javax.inject.Inject
 
 class StoriesDtoToStoriesModelMapper @Inject constructor() {
 
-    operator fun invoke(response: BaseResponseDto<MainStoriesDataDto>): BaseStatusModel<List<StoriesModel>> {
+    operator fun invoke(response: BaseResponseDto<MainStoriesDataDto>): BaseStatusModel<List<MainStoriesModel>> {
         return BaseStatusModel(
             status = ResponseStatus.valueOf(response.status.uppercase()),
             message = response.message.orEmpty(),
@@ -17,9 +17,9 @@ class StoriesDtoToStoriesModelMapper @Inject constructor() {
         )
     }
 
-    private fun mapStoriesDtoToStoriesModel(response: MainStoriesDataDto?): List<StoriesModel>? {
+    private fun mapStoriesDtoToStoriesModel(response: MainStoriesDataDto?): List<MainStoriesModel>? {
         return response?.stories?.map { dto ->
-            StoriesModel(
+            MainStoriesModel(
                 id = dto.id,
                 storiesImage = dto.storiesImage,
                 storiesTitle = dto.storiesTitle.orEmpty()
