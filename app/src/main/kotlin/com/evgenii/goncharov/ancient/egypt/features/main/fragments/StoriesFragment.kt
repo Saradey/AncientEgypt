@@ -30,19 +30,7 @@ class StoriesFragment : Fragment(R.layout.fragment_stories) {
     }
 
     private fun FragmentStoriesBinding.initUi() {
-        title.text = "${binding.title.text} ${toString()}"
-        btnNext1.setOnClickListener {
-            viewModel.goToTheeSelectedArticle()
-        }
-        btnNext2.setOnClickListener {
-            viewModel.goToTheSelectedCategory()
-        }
-        btnNext3.setOnClickListener {
-            viewModel.goToTheMapAndArticle()
-        }
-        btnNext4.setOnClickListener {
-            viewModel.goToTheSelectedArtifact()
-        }
+
     }
 
     private fun getArgSelectedStories() : SelectedStoriesModel {
