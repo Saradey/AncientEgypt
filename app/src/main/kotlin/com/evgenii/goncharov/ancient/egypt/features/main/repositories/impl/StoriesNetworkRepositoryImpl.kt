@@ -2,6 +2,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl
 
 import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.StoriesDao
+import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.request.StoriesModelRequest
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.StoriesApi
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.StoriesNetworkRepository
@@ -12,7 +13,8 @@ class StoriesNetworkRepositoryImpl @Inject constructor(
     private val storiesDao: StoriesDao
 ) : StoriesNetworkRepository {
 
-    override suspend fun invoke(): BaseStatusModel<StoriesModel> {
+    override suspend fun invoke(modelRequest: StoriesModelRequest): BaseStatusModel<StoriesModel> {
+        val response = storiesApi.getStories(modelRequest)
         TODO("Not yet implemented")
     }
 }
