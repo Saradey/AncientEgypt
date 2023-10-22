@@ -49,6 +49,23 @@ class StoriesFragment : Fragment(R.layout.fragment_stories) {
     }
 
     private fun setStoriesState(storiesState: UiState<StoriesModel>) {
+        when (storiesState) {
+            is UiState.Success -> setModelToView(storiesState)
+            UiState.Loading -> showLoader()
+            UiState.Failure -> showButtonRetry()
+            UiState.Init -> Unit
+        }
+    }
+
+    private fun setModelToView(stateSuccess: UiState.Success<StoriesModel>) {
+
+    }
+
+    private fun showLoader() {
+
+    }
+
+    private fun showButtonRetry() {
 
     }
 
