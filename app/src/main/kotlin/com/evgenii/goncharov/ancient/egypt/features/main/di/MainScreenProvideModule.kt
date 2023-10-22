@@ -29,6 +29,6 @@ object MainScreenProvideModule {
     @Provides
     @ViewModelScoped
     fun provideStoriesDao(db: AppDatabase): MainStoriesDao {
-        return db.getStoriesDao()
+        return db.getMainStoriesDao()
     }
 }

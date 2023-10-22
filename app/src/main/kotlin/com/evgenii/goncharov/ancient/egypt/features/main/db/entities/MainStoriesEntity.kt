@@ -11,4 +11,4 @@ data class MainStoriesEntity(
     @ColumnInfo(name = "stories_title") val storiesTitle: String
 )
 
-const val MAIN_STORIES_TABLE_NAME = "stories"
+const val MAIN_STORIES_TABLE_NAME = "main_stories"
