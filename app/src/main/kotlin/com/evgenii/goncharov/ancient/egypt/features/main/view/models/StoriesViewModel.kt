@@ -1,15 +1,19 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.view.models
 
 import androidx.lifecycle.ViewModel
+import com.evgenii.goncharov.ancient.egypt.base.models.state.UiState
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.models.models.StoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesDatabaseUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -20,6 +24,8 @@ class StoriesViewModel @Inject constructor(
     private val storiesDatabaseUseCase: StoriesDatabaseUseCase
 ) : ViewModel() {
 
+    private val _storiesState: MutableStateFlow<UiState<StoriesModel>> = MutableStateFlow(UiState.Init)
+    val storiesState: StateFlow<UiState<StoriesModel>> = _storiesState
     private var currentStories: String = ""
     private var allStories: MutableList<String> = mutableListOf()
 
