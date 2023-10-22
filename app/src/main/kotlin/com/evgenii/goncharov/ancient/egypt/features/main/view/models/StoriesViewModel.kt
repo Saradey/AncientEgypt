@@ -5,20 +5,26 @@ import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVIT
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import javax.inject.Named
 
-class StoriesViewModel @AssistedInject constructor(
+@HiltViewModel
+class StoriesViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
-    @Assisted private val model: SelectedStoriesModel
+    private val storiesNetworkUseCase: StoriesNetworkUseCase
 ) : ViewModel() {
 
-    private var currentStories: String = model.selectedStoriesId
-    private val allStories: MutableList<String> = model.allStoriesId.toMutableList()
+    private var currentStories: String = ""
+    private var allStories: MutableList<String> = mutableListOf()
+
+    fun initModel(model: SelectedStoriesModel) {
+        currentStories = model.selectedStoriesId
+        allStories.addAll(model.allStoriesId)
+    }
 
     fun goToTheSelectedArticle() {
         activityRouter.replaceScreen(ContentScreens.startSelectedArticle())
@@ -34,10 +40,5 @@ class StoriesViewModel @AssistedInject constructor(
 
     fun goToTheSelectedArtifact() {
         activityRouter.replaceScreen(ContentScreens.startSelectedArtifact())
-    }
-
-    @AssistedFactory
-    interface Factory {
-        fun create(model: SelectedStoriesModel): StoriesViewModel
     }
 }

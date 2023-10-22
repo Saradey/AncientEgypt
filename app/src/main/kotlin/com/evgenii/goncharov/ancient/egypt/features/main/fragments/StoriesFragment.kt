@@ -7,12 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.evgenii.goncharov.ancient.egypt.R
-import com.evgenii.goncharov.ancient.egypt.common.MultiViewModelFactory
 import com.evgenii.goncharov.ancient.egypt.databinding.FragmentStoriesBinding
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.view.models.StoriesViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 /**
  * №2.3
@@ -21,28 +19,33 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class StoriesFragment : Fragment(R.layout.fragment_stories) {
 
-    @Inject lateinit var factory: StoriesViewModel.Factory
-    private val viewModel: StoriesViewModel by viewModels { MultiViewModelFactory { factory.create(getArgSelectedStories()) } }
+    private val viewModel: StoriesViewModel by viewModels()
     private val binding: FragmentStoriesBinding by viewBinding(FragmentStoriesBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        savedInstanceState ?: initSelectedStories()
         binding.initUi()
+    }
+
+    private fun initSelectedStories() {
+        viewModel.initModel(getArgSelectedStories())
     }
 
     private fun FragmentStoriesBinding.initUi() {
 
     }
 
-    private fun getArgSelectedStories() : SelectedStoriesModel {
+    private fun getArgSelectedStories(): SelectedStoriesModel {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             arguments?.getParcelable(SELECTED_STORIES_KEY, SelectedStoriesModel::class.java)
         } else {
             arguments?.getParcelable(SELECTED_STORIES_KEY)
-        } ?: throw IllegalArgumentException()
+        } ?: throw IllegalArgumentException(ERROR_MESSAGE_MODEL_MUST_NOT_EMPTY)
     }
 
     companion object {
         private const val SELECTED_STORIES_KEY = "SELECTED_STORIES_KEY"
+        private const val ERROR_MESSAGE_MODEL_MUST_NOT_EMPTY = "Selected stories must not null"
 
         fun newInstance(model: SelectedStoriesModel) = StoriesFragment().apply {
             val bundleArg = Bundle()
