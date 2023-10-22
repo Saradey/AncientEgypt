@@ -3,6 +3,8 @@ package com.evgenii.goncharov.ancient.egypt.features.main.fragments
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -50,23 +52,29 @@ class StoriesFragment : Fragment(R.layout.fragment_stories) {
 
     private fun setStoriesState(storiesState: UiState<StoriesModel>) {
         when (storiesState) {
-            is UiState.Success -> setModelToView(storiesState)
-            UiState.Loading -> showLoader()
-            UiState.Failure -> showButtonRetry()
+            is UiState.Success -> binding.setModelToView(storiesState)
+            UiState.Loading -> binding.showLoader()
+            UiState.Failure -> binding.showButtonRetry()
             UiState.Init -> Unit
         }
     }
 
-    private fun setModelToView(stateSuccess: UiState.Success<StoriesModel>) {
-
+    private fun FragmentStoriesBinding.setModelToView(stateSuccess: UiState.Success<StoriesModel>) {
+        pbLoader.isGone = true
+        imvButtonRetry.isGone = true
+        vp2Stories.isVisible = true
     }
 
-    private fun showLoader() {
-
+    private fun FragmentStoriesBinding.showLoader() {
+        pbLoader.isVisible = true
+        imvButtonRetry.isGone = true
+        vp2Stories.isGone = true
     }
 
-    private fun showButtonRetry() {
-
+    private fun FragmentStoriesBinding.showButtonRetry() {
+        pbLoader.isGone = true
+        imvButtonRetry.isVisible = true
+        vp2Stories.isGone = true
     }
 
     private fun getArgSelectedStories(): SelectedStoriesModel {
