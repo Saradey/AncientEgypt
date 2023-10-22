@@ -3,12 +3,34 @@
   "message": "ok",
   "data": {
     "id": "magic_of_hieroglyphs",
-    "type": "static",
-    "title": "Магия иероглифов",
-    "description": "Одна из систем (наряду с иератикой и демотикой) египетской письменности, использовавшаяся в Египте на протяжении почти 3500 лет, начиная с рубежа 4-го и 3-го тыс. до н. э. ",
-    "title_color": 4294901760,
-    "description_color": 4294901760,
-    "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album",
+    "stories_part": [
+      {
+        "type": "static",
+        "title": "Магия иероглифов",
+        "description": "Одна из систем (наряду с иератикой и демотикой) египетской письменности, использовавшаяся в Египте на протяжении почти 3500 лет, начиная с рубежа 4-го и 3-го тыс. до н. э. ",
+        "title_color": 4294901760,
+        "description_color": 4294901760,
+        "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album"
+      },
+      {
+        "type": "static",
+        "title": "Иероглефы зародились 4 тыс лет назад",
+        "description": "Иероглефы зародились 4 тыс лет назад, они появились при фараоне Джосере, именно при нем стала вводится иероглефическая система",
+        "title_color": 4294901760,
+        "description_color": 4294901760,
+        "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album"
+      },
+      {
+        "type": "static",
+        "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album"
+      },
+      {
+        "type": "static",
+        "title": "Раскрой тайну иероглифов!",
+        "title_color": 4294901760,
+        "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album"
+      }
+    ],
     "link": {
       "link_id": "magic_of_hieroglyphs_category",
       "link_type": "category"
