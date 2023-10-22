@@ -8,10 +8,10 @@ import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.Conte
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.ContentFromNetworkRepositoryImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.MainStoriesFromDatabaseRepositoryImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl.MainStoriesFromNetworkRepositoryImpl
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromDatabaseUseCase
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNetworkUseCase
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesFromDatabaseUseCase
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesFromNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.ContentFromDatabaseUseCaseImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.ContentFromNetworkUseCaseImpl
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.impl.StoriesFromDatabaseUseCaseImpl
@@ -29,23 +29,23 @@ interface MainScreenBindsModule {
     fun ContentFromNetworkRepositoryImpl.bindContentFromNetworkRepository(): ContentFromNetworkRepository
 
     @Binds
-    fun ContentFromNetworkUseCaseImpl.bindContentFromNetworkUseCase(): ContentFromNetworkUseCase
+    fun ContentFromNetworkUseCaseImpl.bindContentFromNetworkUseCase(): ContentNetworkUseCase
 
     @Binds
     fun ContentFromDatabaseRepositoryImpl.bindContentFromDatabaseRepository(): ContentFromDatabaseRepository
 
     @Binds
-    fun ContentFromDatabaseUseCaseImpl.bindContentFromDatabaseUseCase(): ContentFromDatabaseUseCase
+    fun ContentFromDatabaseUseCaseImpl.bindContentFromDatabaseUseCase(): ContentDatabaseUseCase
 
     @Binds
     fun MainStoriesFromDatabaseRepositoryImpl.bindStoriesFromDatabaseRepository(): MainStoriesFromDatabaseRepository
 
     @Binds
-    fun StoriesFromDatabaseUseCaseImpl.bindStoriesFromDatabaseUseCase(): MainStoriesFromDatabaseUseCase
+    fun StoriesFromDatabaseUseCaseImpl.bindStoriesFromDatabaseUseCase(): MainStoriesDatabaseUseCase
 
     @Binds
     fun MainStoriesFromNetworkRepositoryImpl.bindStoriesFromNetworkRepository(): MainStoriesFromNetworkRepository
 
     @Binds
-    fun StoriesFromNetworkUseCaseImpl.bindStoriesFromNetworkUseCase(): MainStoriesFromNetworkUseCase
+    fun StoriesFromNetworkUseCaseImpl.bindStoriesFromNetworkUseCase(): MainStoriesNetworkUseCase
 }

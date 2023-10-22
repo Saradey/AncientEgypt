@@ -15,16 +15,16 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.models.ContentMo
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MapButtonModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.ContentUiState
 import com.evgenii.goncharov.ancient.egypt.features.main.navigation.MainScreens
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromDatabaseUseCase
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentFromNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.ContentNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedBannerModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.state.StoriesUiState
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesFromDatabaseUseCase
-import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesFromNetworkUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesDatabaseUseCase
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.MainStoriesNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.search.navigation.SearchScreens
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,10 +38,10 @@ import javax.inject.Named
 class MainViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
     @Named(QUALIFIER_BOTTOM_MENU_NAVIGATION) private val bottomMenuRouter: Router,
-    private val mainContentFromNetworkUseCase: ContentFromNetworkUseCase,
-    private val mainContentFromDbUseCase: ContentFromDatabaseUseCase,
-    private val storiesFromDatabaseUseCase: MainStoriesFromDatabaseUseCase,
-    private val storiesFromNetworkUseCase: MainStoriesFromNetworkUseCase
+    private val mainContentFromNetworkUseCase: ContentNetworkUseCase,
+    private val mainContentFromDbUseCase: ContentDatabaseUseCase,
+    private val storiesFromDatabaseUseCase: MainStoriesDatabaseUseCase,
+    private val storiesFromNetworkUseCase: MainStoriesNetworkUseCase
 ) : ViewModel() {
 
     private val _contentLiveData = MutableLiveData<ContentUiState>()
