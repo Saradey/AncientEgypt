@@ -141,7 +141,7 @@ class MainViewModel @Inject constructor(
 
     private suspend fun loadStoriesFromDatabase() {
         val storiesFromDatabase = storiesFromDatabaseUseCase()
-        if (storiesFromDatabase.data.isNotEmpty()) {
+        if (storiesFromDatabase.data.isNullOrEmpty().not()) {
             setStoriesState(storiesFromDatabase.data)
         } else {
             _storiesLiveData.value = StoriesUiState.Loading
@@ -188,7 +188,7 @@ class MainViewModel @Inject constructor(
 
     private suspend fun loadContentFromDb() {
         val contentFromDatabase = mainContentFromDbUseCase()
-        if (contentFromDatabase.data.content.isNotEmpty()) {
+        if (contentFromDatabase.data?.content?.isNotEmpty() == true) {
             _contentLiveData.value = ContentUiState.UpdateAndOldContent(
                 content = createContents(contentFromDatabase.data)
             )
