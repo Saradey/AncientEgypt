@@ -12,5 +12,5 @@ data class StoriesDto(
     @SerialName("description") val description: String? = null,
     @SerialName("title_color") val titleColor: Long? = null,
     @SerialName("description_color") val descriptionColor: Long? = null,
-    @SerialName("link") val ling: StoriesLinkDto
+    @SerialName("link") val link: StoriesLinkDto?
 )
