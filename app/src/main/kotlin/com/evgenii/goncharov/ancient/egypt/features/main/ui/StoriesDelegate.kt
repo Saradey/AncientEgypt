@@ -2,7 +2,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.ui
 
 import com.bumptech.glide.Glide
 import com.evgenii.goncharov.ancient.egypt.databinding.ItemStoriesBinding
-import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesModelToSelectedStoriesModelMapper
+import com.evgenii.goncharov.ancient.egypt.features.main.mappers.MainStoriesModelToSelectedStoriesModelMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import com.hannesdorfmann.adapterdelegates4.AbsDelegationAdapter
@@ -25,7 +25,7 @@ fun storiesDelegate(
             }
             binding.root.setOnClickListener {
                 storiesClick(
-                    StoriesModelToSelectedStoriesModelMapper.mapStoriesModelToSelectedStoriesModel(
+                    MainStoriesModelToSelectedStoriesModelMapper.mapStoriesModelToSelectedStoriesModel(
                         selectedItem = item,
                         items = items
                     )

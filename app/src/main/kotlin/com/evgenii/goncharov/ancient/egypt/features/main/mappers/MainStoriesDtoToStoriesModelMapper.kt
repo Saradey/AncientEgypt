@@ -7,7 +7,7 @@ import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainStoriesD
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import javax.inject.Inject
 
-class StoriesDtoToStoriesModelMapper @Inject constructor() {
+class MainStoriesDtoToStoriesModelMapper @Inject constructor() {
 
     operator fun invoke(response: BaseResponseDto<MainStoriesDataDto>): BaseStatusModel<List<MainStoriesModel>> {
         return BaseStatusModel(

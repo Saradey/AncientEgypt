@@ -3,7 +3,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.mappers
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 
-object StoriesModelToSelectedStoriesModelMapper {
+object MainStoriesModelToSelectedStoriesModelMapper {
 
     fun mapStoriesModelToSelectedStoriesModel(
         selectedItem: MainStoriesModel,
