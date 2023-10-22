@@ -23,6 +23,10 @@ class StoriesViewModel @Inject constructor(
     private var currentStories: String = ""
     private var allStories: MutableList<String> = mutableListOf()
 
+    fun initStoriesState() {
+
+    }
+
     fun initModel(model: SelectedStoriesModel) {
         currentStories = model.selectedStoriesId
         allStories.addAll(model.allStoriesId)

@@ -23,12 +23,13 @@ class StoriesFragment : Fragment(R.layout.fragment_stories) {
     private val binding: FragmentStoriesBinding by viewBinding(FragmentStoriesBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        savedInstanceState ?: initSelectedStories()
+        savedInstanceState ?: initStories()
         binding.initUi()
     }
 
-    private fun initSelectedStories() {
+    private fun initStories() {
         viewModel.initModel(getArgSelectedStories())
+        viewModel.initStoriesState()
     }
 
     private fun FragmentStoriesBinding.initUi() {
