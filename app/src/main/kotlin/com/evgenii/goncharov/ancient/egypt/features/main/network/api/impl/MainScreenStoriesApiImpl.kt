@@ -23,12 +23,12 @@ class MainScreenStoriesApiImpl @Inject constructor(
 
     private fun getResponse(response: Int): Int {
         return when (response) {
-            0 -> R.raw.stories_response_success
+            0 -> R.raw.main_stories_response_success
             1 -> R.raw.universal_error_response
             2 -> R.raw.universal_broken_json_response
             3 -> R.raw.universal_empty_json
             4 -> R.raw.universal_error_response_with_message
-            else -> R.raw.stories_response_success
+            else -> R.raw.main_stories_response_success
         }
     }
 }
