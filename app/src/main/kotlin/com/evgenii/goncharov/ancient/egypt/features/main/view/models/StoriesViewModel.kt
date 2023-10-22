@@ -60,7 +60,7 @@ class StoriesViewModel @Inject constructor(
         }
     }
 
-    private suspend fun setResponseToStoriesState(networkResponse : BaseStatusModel<StoriesModel>) {
+    private suspend fun setResponseToStoriesState(networkResponse: BaseStatusModel<StoriesModel>) {
         networkResponse.data?.let { model ->
             _storiesState.emit(UiState.Success(model))
         } ?: throw IllegalArgumentException(ERROR_MESSAGE_MODEL_NOT_NULL)
