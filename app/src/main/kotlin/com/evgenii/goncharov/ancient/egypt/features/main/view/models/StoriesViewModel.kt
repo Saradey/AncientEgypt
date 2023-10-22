@@ -5,6 +5,7 @@ import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVIT
 import com.evgenii.goncharov.ancient.egypt.features.articles.navigation.ArticlesScreens
 import com.evgenii.goncharov.ancient.egypt.features.content.navigation.ContentScreens
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.SelectedStoriesModel
+import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesDatabaseUseCase
 import com.evgenii.goncharov.ancient.egypt.features.main.use.cases.StoriesNetworkUseCase
 import com.evgenii.goncharov.ancient.egypt.features.map.navigation.MapScreens
 import com.github.terrakok.cicerone.Router
@@ -15,7 +16,8 @@ import javax.inject.Named
 @HiltViewModel
 class StoriesViewModel @Inject constructor(
     @Named(QUALIFIER_ACTIVITY_NAVIGATION) private val activityRouter: Router,
-    private val storiesNetworkUseCase: StoriesNetworkUseCase
+    private val storiesNetworkUseCase: StoriesNetworkUseCase,
+    private val storiesDatabaseUseCase: StoriesDatabaseUseCase
 ) : ViewModel() {
 
     private var currentStories: String = ""
