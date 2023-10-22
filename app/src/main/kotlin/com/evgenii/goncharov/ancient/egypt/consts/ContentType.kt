@@ -6,3 +6,9 @@ enum class ContentType {
     ARTICLE_MAP,
     ARTIFACT
 }
+
+fun mapContentType(type: String?) : ContentType? {
+    return type?.let {
+        ContentType.valueOf(type.uppercase())
+    }
+}
