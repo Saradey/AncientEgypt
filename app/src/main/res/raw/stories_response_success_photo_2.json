@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "message": "ok",
+  "data": {
+    "id": "magic_of_hieroglyphs",
+    "type": "static",
+    "title": "Магия иероглифов",
+    "description": "Одна из систем (наряду с иератикой и демотикой) египетской письменности, использовавшаяся в Египте на протяжении почти 3500 лет, начиная с рубежа 4-го и 3-го тыс. до н. э. ",
+    "title_color": 4294901760,
+    "description_color": 4294901760,
+    "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album",
+    "link": {
+      "link_id": "magic_of_hieroglyphs_category",
+      "link_type": "category"
+    }
+  }
+}

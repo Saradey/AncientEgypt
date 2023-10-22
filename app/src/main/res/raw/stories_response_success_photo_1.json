@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "message": "ok",
+  "data": {
+    "id": "mysteries_of_the_sphinx",
+    "type": "static",
+    "title": "Тайны Сфинкса",
+    "description": "Что таит в себе Сфинкс, какие тайны он скрыват в себе? Какие сокровища были найдены?",
+    "title_color": 4294901760,
+    "description_color": 4294901760,
+    "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album",
+    "link": {
+      "link_id": "mysteries_of_the_sphinx_article",
+      "link_type": "article"
+    }
+  }
+}
