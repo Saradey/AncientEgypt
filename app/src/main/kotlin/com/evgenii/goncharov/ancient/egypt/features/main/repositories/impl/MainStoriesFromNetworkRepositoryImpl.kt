@@ -21,11 +21,11 @@ class MainStoriesFromNetworkRepositoryImpl @Inject constructor(
 
     override suspend fun invoke(): BaseStatusModel<List<MainStoriesModel>> {
         val response = storiesApi.getStories()
-        updateStoriesToDatabase(response.data?.stories)
+        updateMainStoriesToDatabase(response.data?.stories)
         return storiesDtoToStoriesModelMapper(response)
     }
 
-    private suspend fun updateStoriesToDatabase(dto: List<MainStoriesDto>?) =
+    private suspend fun updateMainStoriesToDatabase(dto: List<MainStoriesDto>?) =
         withContext(Dispatchers.IO) {
             mainStoriesDao.insertStories(storiesDtoTpStoriesEntityMapper(dto ?: emptyList()))
         }
