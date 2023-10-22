@@ -2,6 +2,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.view.models
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
 import com.evgenii.goncharov.ancient.egypt.base.models.state.UiState
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
 import com.evgenii.goncharov.ancient.egypt.di.NavigationModule.QUALIFIER_ACTIVITY_NAVIGATION
@@ -46,23 +47,23 @@ class StoriesViewModel @Inject constructor(
             val modelDatabase = storiesDatabaseUseCase(currentStories)
             modelDatabase.data?.let { model ->
                 _storiesState.emit(UiState.Success(model))
-            } ?: run {
-                _storiesState.emit(UiState.Loading)
-                loadStoriesFromNetwork()
-            }
+            } ?: loadStoriesFromNetwork()
         }
     }
 
     private suspend fun loadStoriesFromNetwork() {
+        _storiesState.emit(UiState.Loading)
         val networkResponse = storiesNetworkUseCase(StoriesModelRequest(storiesId = currentStories))
-        when(networkResponse.status) {
-            ResponseStatus.SUCCESS -> {
-                networkResponse.data?.let { model ->
-                    _storiesState.emit(UiState.Success(model))
-                } ?: throw IllegalArgumentException(ERROR_MESSAGE_MODEL_NOT_NULL)
-            }
+        when (networkResponse.status) {
+            ResponseStatus.SUCCESS -> setResponseToStoriesState(networkResponse)
             ResponseStatus.ERROR -> _storiesState.emit(UiState.Failure)
         }
+    }
+
+    private suspend fun setResponseToStoriesState(networkResponse : BaseStatusModel<StoriesModel>) {
+        networkResponse.data?.let { model ->
+            _storiesState.emit(UiState.Success(model))
+        } ?: throw IllegalArgumentException(ERROR_MESSAGE_MODEL_NOT_NULL)
     }
 
     fun goToTheSelectedArticle() {
