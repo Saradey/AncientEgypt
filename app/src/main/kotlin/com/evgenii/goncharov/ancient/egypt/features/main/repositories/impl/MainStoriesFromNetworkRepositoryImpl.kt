@@ -1,9 +1,9 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.repositories.impl
 
 import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
-import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.StoriesDao
+import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.MainStoriesDao
 import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToStoriesModelMapper
-import com.evgenii.goncharov.ancient.egypt.features.main.mappers.StoriesDtoToStoriesEntityMapper
+import com.evgenii.goncharov.ancient.egypt.features.main.mappers.MainStoriesDtoToStoriesEntityMapper
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.MainStoriesDto
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.MainStoriesModel
 import com.evgenii.goncharov.ancient.egypt.features.main.network.api.MainScreenStoriesApi
@@ -15,8 +15,8 @@ import javax.inject.Inject
 class MainStoriesFromNetworkRepositoryImpl @Inject constructor(
     private val storiesApi: MainScreenStoriesApi,
     private val storiesDtoToStoriesModelMapper: StoriesDtoToStoriesModelMapper,
-    private val storiesDao: StoriesDao,
-    private val storiesDtoTpStoriesEntityMapper: StoriesDtoToStoriesEntityMapper
+    private val mainStoriesDao: MainStoriesDao,
+    private val storiesDtoTpStoriesEntityMapper: MainStoriesDtoToStoriesEntityMapper
 ) : MainStoriesFromNetworkRepository {
 
     override suspend fun invoke(): BaseStatusModel<List<MainStoriesModel>> {
@@ -27,6 +27,6 @@ class MainStoriesFromNetworkRepositoryImpl @Inject constructor(
 
     private suspend fun updateStoriesToDatabase(dto: List<MainStoriesDto>?) =
         withContext(Dispatchers.IO) {
-            storiesDao.insertStories(storiesDtoTpStoriesEntityMapper(dto ?: emptyList()))
+            mainStoriesDao.insertStories(storiesDtoTpStoriesEntityMapper(dto ?: emptyList()))
         }
 }

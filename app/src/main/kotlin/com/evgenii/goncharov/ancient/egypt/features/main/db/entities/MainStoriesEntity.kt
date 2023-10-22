@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = STORIES_TABLE_NAME)
-data class StoriesEntity(
+data class MainStoriesEntity(
     @PrimaryKey @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "stories_image") val storiesImage: String,
     @ColumnInfo(name = "stories_title") val storiesTitle: String
