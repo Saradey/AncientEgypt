@@ -17,7 +17,7 @@ import androidx.room.PrimaryKey
             onUpdate = ForeignKey.CASCADE
         )
     ],
-    indices = [Index("stories_owner_id")]
+    indices = [Index(STORIES_OWNER_ID_NAME)]
 )
 data class PartStoriesEntity(
     @PrimaryKey @ColumnInfo(name = "parts_stories_id") val partsStoriesId: String,
