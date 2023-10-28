@@ -6,11 +6,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = BANNER_TABLE_NAME)
 data class BannerEntity(
-    @PrimaryKey @ColumnInfo(name = "id") val id: String,
+    @PrimaryKey @ColumnInfo(name = "banner_id") val bannerId: String,
     @ColumnInfo(name = "content_type") val contentType: String,
-    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "banner_title") val bannerTitle: String,
     @ColumnInfo(name = "banner_uri") val bannerUri: String,
-    @ColumnInfo(name = "description") val description: String? = null
+    @ColumnInfo(name = "banner_description") val bannerDescription: String? = null
 )
 
-const val BANNER_TABLE_NAME = "banner"
+const val BANNER_TABLE_NAME = "banner_table"

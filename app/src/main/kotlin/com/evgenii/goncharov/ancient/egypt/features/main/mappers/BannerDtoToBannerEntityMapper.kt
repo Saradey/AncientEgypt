@@ -9,11 +9,11 @@ class BannerDtoToBannerEntityMapper @Inject constructor() {
     operator fun invoke(content: List<BannerDto>): List<BannerEntity> {
         return content.map { dto ->
             BannerEntity(
-                id = dto.id,
+                bannerId = dto.id,
                 contentType = dto.contentType,
-                title = dto.title,
+                bannerTitle = dto.title,
                 bannerUri = dto.bannerUri,
-                description = dto.description
+                bannerDescription = dto.description
             )
         }
     }

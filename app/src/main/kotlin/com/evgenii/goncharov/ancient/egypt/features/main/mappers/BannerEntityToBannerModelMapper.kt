@@ -9,11 +9,11 @@ class BannerEntityToBannerModelMapper @Inject constructor() {
     operator fun invoke(entities: List<BannerEntity>) : List<BannerModel> {
         return entities.map { entity ->
             BannerModel(
-                id = entity.id,
+                id = entity.bannerId,
                 contentType = entity.contentType,
-                title = entity.title,
+                title = entity.bannerTitle,
                 bannerUri = entity.bannerUri,
-                description = entity.description.orEmpty()
+                description = entity.bannerDescription.orEmpty()
             )
         }
     }

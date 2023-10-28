@@ -22,12 +22,12 @@ import androidx.room.PrimaryKey
 data class PartStoriesEntity(
     @PrimaryKey @ColumnInfo(name = "parts_stories_id") val partsStoriesId: String,
     @ColumnInfo(name = "stories_owner_id") val storiesOwnerId: String,
-    @ColumnInfo(name = "type") val type: String,
-    @ColumnInfo(name = "title") val title: String?,
-    @ColumnInfo(name = "description") val description: String?,
-    @ColumnInfo(name = "title_color") val titleColor: Long?,
-    @ColumnInfo(name = "description_color") val descriptionColor: Long?,
-    @ColumnInfo(name = "uri_content") val uriContent: String,
+    @ColumnInfo(name = "part_stories_type") val type: String,
+    @ColumnInfo(name = "part_stories_title") val title: String?,
+    @ColumnInfo(name = "part_stories_description") val description: String?,
+    @ColumnInfo(name = "part_stories_title_color") val titleColor: Long?,
+    @ColumnInfo(name = "part_stories_description_color") val descriptionColor: Long?,
+    @ColumnInfo(name = "part_stories_uri_content") val uriContent: String,
 )
 
 const val PARTS_STORIES_TABLE_NAME = "part_stories_table"

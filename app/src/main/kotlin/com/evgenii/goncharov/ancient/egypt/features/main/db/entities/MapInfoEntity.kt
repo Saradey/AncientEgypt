@@ -9,4 +9,4 @@ data class MapInfoEntity(
     @PrimaryKey @ColumnInfo(name = "enabled_map") val isEnabledMap: Boolean
 )
 
-const val MAP_INFO_TABLE_NAME = "map_info"
+const val MAP_INFO_TABLE_NAME = "map_info_table"
