@@ -11,7 +11,7 @@ class LinkStoriesDtoToLinkStoriesEntityMapper @Inject constructor() {
             LinkStoriesEntity(
                 linkId = linkDto.id,
                 linkType = linkDto.type,
-                storiesOwnerId = dto.id
+                linkStoriesOwnerId = dto.id
             )
         }
     }
