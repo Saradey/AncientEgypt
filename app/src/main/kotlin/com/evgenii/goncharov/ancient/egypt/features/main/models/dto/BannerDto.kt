@@ -8,6 +8,6 @@ data class BannerDto(
     @SerialName("id") val id: String,
     @SerialName("content_type") val contentType: String,
     @SerialName("banner_uri") val bannerUri: String,
-    @SerialName("description") val description: String? = null,
-    @SerialName("title") val title: String? = null
+    @SerialName("description") val description: String?,
+    @SerialName("title") val title: String?
 )

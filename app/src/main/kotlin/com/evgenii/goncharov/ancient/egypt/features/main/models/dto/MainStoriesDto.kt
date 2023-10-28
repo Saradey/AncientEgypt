@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class MainStoriesDto(
     @SerialName("id") val id: String,
     @SerialName("stories_image") val storiesImage: String,
-    @SerialName("stories_title") val storiesTitle: String? = null
+    @SerialName("stories_title") val storiesTitle: String?
 )
