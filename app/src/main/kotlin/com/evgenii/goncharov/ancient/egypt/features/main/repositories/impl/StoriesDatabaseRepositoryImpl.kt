@@ -21,12 +21,15 @@ class StoriesDatabaseRepositoryImpl @Inject constructor(
     override suspend fun invoke(storiesId: String): BaseModel<StoriesModel> = withContext(
         Dispatchers.IO
     ) {
+        val stories = storiesDao.getStoriesWithPartStories(storiesId)
         BaseModel(
-            data = StoriesModel(
-                id = storiesId,
-                parts = partStoriesEntityToPartStoriesModel(storiesDao.getStoriesWithPartStories(storiesId)),
-                link = linkStoriesEntityToLinkStoriesModelMapper(linkStoriesDao.getLinkStoriesByStoriesId(storiesId))
-            )
+            data = stories?.let {
+                StoriesModel(
+                    id = storiesId,
+                    parts = partStoriesEntityToPartStoriesModel(stories),
+                    link = linkStoriesEntityToLinkStoriesModelMapper(linkStoriesDao.getLinkStoriesByStoriesId(storiesId))
+                )
+            }
         )
     }
 }

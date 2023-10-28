@@ -14,6 +14,6 @@ interface LinkStoriesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertLinkStories(entity: LinkStoriesEntity)
 
-    @Query("SELECT * FROM $LINK_STORIES_TABLE_NAME WHERE $LINK_STORIES_OWNER_ID = :storiesId")
-    fun getLinkStoriesByStoriesId(storiesId: String) : LinkStoriesEntity?
+    @Query("SELECT * FROM $LINK_STORIES_TABLE_NAME WHERE $LINK_STORIES_OWNER_ID = :linkStoriesId")
+    fun getLinkStoriesByStoriesId(linkStoriesId: String) : LinkStoriesEntity?
 }

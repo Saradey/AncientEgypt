@@ -22,8 +22,8 @@ import androidx.room.PrimaryKey
 data class LinkStoriesEntity(
     @PrimaryKey @ColumnInfo(name = "link_id") val linkId: String,
     @ColumnInfo(name = "link_type") val linkType: String,
-    @ColumnInfo(name = LINK_STORIES_OWNER_ID) val storiesOwnerId: String,
+    @ColumnInfo(name = LINK_STORIES_OWNER_ID) val linkStoriesOwnerId: String,
 )
 
 const val LINK_STORIES_TABLE_NAME = "link_stories_table"
-const val LINK_STORIES_OWNER_ID = "stories_owner_id"
+const val LINK_STORIES_OWNER_ID = "link_stories_owner_id"

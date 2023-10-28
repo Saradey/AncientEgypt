@@ -18,5 +18,5 @@ interface StoriesDao {
 
     @Transaction
     @Query("SELECT * FROM $STORIES_TABLE_NAME WHERE $STORIES_ID_NAME = :storiesId")
-    fun getStoriesWithPartStories(storiesId: String): StoriesWithPartStories
+    fun getStoriesWithPartStories(storiesId: String): StoriesWithPartStories?
 }
