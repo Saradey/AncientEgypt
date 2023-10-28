@@ -1,6 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.di
 
 import com.evgenii.goncharov.ancient.egypt.db.AppDatabase
+import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.LinkStoriesDao
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.PartStoriesDao
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dao.StoriesDao
 import dagger.Module
@@ -23,5 +24,11 @@ object StoriesScreenProvideModule {
     @ViewModelScoped
     fun providePartStoriesDao(db: AppDatabase) : PartStoriesDao {
         return db.getPartStoriesDao()
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideLinkStoriesDao(db: AppDatabase) : LinkStoriesDao {
+        return db.getLinkStoriesDao()
     }
 }

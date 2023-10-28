@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = STORIES_TABLE_NAME)
 data class StoriesEntity(
-    @PrimaryKey @ColumnInfo(name = "stories_id") val storiesId: String,
+    @PrimaryKey @ColumnInfo(name = STORIES_ID_NAME) val storiesId: String,
 )
 
 const val STORIES_TABLE_NAME = "stories_table"
+const val STORIES_ID_NAME = "stories_id"
