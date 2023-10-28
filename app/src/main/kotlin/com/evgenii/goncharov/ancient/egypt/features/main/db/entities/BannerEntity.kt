@@ -10,8 +10,8 @@ data class BannerEntity(
     @PrimaryKey @ColumnInfo(name = "banner_id") val bannerId: String,
     @ColumnInfo(name = "content_type") val contentType: ContentType,
     @ColumnInfo(name = "banner_uri") val bannerUri: String,
-    @ColumnInfo(name = "banner_description") val bannerDescription: String? = null,
-    @ColumnInfo(name = "banner_title") val bannerTitle: String? = null
+    @ColumnInfo(name = "banner_description") val bannerDescription: String?,
+    @ColumnInfo(name = "banner_title") val bannerTitle: String?
 )
 
 const val BANNER_TABLE_NAME = "banner_table"
