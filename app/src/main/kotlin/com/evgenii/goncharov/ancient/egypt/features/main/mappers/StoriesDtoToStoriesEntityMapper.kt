@@ -8,15 +8,7 @@ class StoriesDtoToStoriesEntityMapper @Inject constructor() {
 
     operator fun invoke(dto: StoriesDto) : StoriesEntity {
         return StoriesEntity(
-            id = dto.id,
-            type = dto.type,
-            title = dto.title,
-            description = dto.description,
-            titleColor = dto.titleColor,
-            descriptionColor = dto.descriptionColor,
-            uriContent = dto.uri,
-            linkId = dto.link?.id,
-            linkType = dto.link?.type
+            storiesId = dto.id,
         )
     }
 }

@@ -18,9 +18,10 @@ class StoriesDatabaseRepositoryImpl @Inject constructor(
         Dispatchers.IO
     ) {
         BaseModel(
-            data = storiesEntityToStoriesModelMapper(
-                storiesDao.getStoriesEntityById(storiesId)
-            )
+//            data = storiesEntityToStoriesModelMapper(
+//                storiesDao.getStoriesEntityById(storiesId)
+//            )
+            data = null
         )
     }
 }

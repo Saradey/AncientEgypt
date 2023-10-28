@@ -36,6 +36,7 @@ class StoriesDtoToStoriesModelMapper @Inject constructor() {
     private fun partStoriesDtoToPartStoriesModel(storiesPart: List<PartStoriesDto>) : List<PartStoriesModel> {
         return storiesPart.map { dto ->
             PartStoriesModel(
+                partsStoriesId = dto.partsStoriesId,
                 title = dto.title,
                 description = dto.description,
                 titleColor = dto.titleColor,

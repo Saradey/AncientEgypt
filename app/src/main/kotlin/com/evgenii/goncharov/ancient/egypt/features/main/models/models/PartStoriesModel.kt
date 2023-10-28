@@ -3,6 +3,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.models.models
 import com.evgenii.goncharov.ancient.egypt.features.main.models.consts.StoriesContentType
 
 data class PartStoriesModel(
+    val partsStoriesId: String,
     val title: String?,
     val description: String?,
     val titleColor: Long?,

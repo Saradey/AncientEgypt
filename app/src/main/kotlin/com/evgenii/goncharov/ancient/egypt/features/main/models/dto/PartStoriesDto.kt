@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PartStoriesDto(
+    @SerialName("parts_stories_id") val partsStoriesId: String,
     @SerialName("title") val title: String? = null,
     @SerialName("uri_content") val uri: String,
     @SerialName("description") val description: String? = null,
