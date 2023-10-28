@@ -22,7 +22,7 @@ class MainStoriesDtoToStoriesModelMapper @Inject constructor() {
             MainStoriesModel(
                 id = dto.id,
                 storiesImage = dto.storiesImage,
-                storiesTitle = dto.storiesTitle.orEmpty()
+                storiesTitle = dto.storiesTitle
             )
         }
     }

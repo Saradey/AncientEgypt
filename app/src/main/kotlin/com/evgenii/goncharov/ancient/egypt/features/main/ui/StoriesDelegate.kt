@@ -20,9 +20,7 @@ fun storiesDelegate(
             Glide.with(context)
                 .load(item.storiesImage)
                 .into(binding.imvImageStories)
-            if (item.storiesTitle.isNotEmpty()) {
-                binding.txvStoriesTitle.text = item.storiesTitle
-            }
+            item.storiesTitle?.let(binding.txvStoriesTitle::setText)
             binding.root.setOnClickListener {
                 storiesClick(
                     MainStoriesModelToSelectedStoriesModelMapper.mapStoriesModelToSelectedStoriesModel(

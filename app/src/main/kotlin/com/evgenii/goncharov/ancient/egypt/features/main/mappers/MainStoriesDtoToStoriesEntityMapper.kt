@@ -11,7 +11,7 @@ class MainStoriesDtoToStoriesEntityMapper @Inject constructor() {
             MainStoriesEntity(
                 storiesDto.id,
                 storiesDto.storiesImage,
-                storiesDto.storiesTitle.orEmpty()
+                storiesDto.storiesTitle
             )
         }
     }

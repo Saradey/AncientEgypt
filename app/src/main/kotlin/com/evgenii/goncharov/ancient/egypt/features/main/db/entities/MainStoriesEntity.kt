@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class MainStoriesEntity(
     @PrimaryKey @ColumnInfo(name = "main_stories_id") val mainStoriesId: String,
     @ColumnInfo(name = "main_stories_image") val mainStoriesImage: String,
-    @ColumnInfo(name = "main_stories_title") val mainStoriesTitle: String
+    @ColumnInfo(name = "main_stories_title") val mainStoriesTitle: String?
 )
 
 const val MAIN_STORIES_TABLE_NAME = "main_stories_table"
