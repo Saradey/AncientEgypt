@@ -8,5 +8,5 @@ enum class ContentType {
 }
 
 fun mapContentType(type: String) : ContentType {
-    return ContentType.valueOf(type.uppercase())
+    return ContentType.valueOf(type)
 }

@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.evgenii.goncharov.ancient.egypt.consts.ContentType
 
 @Entity(
     tableName = LINK_STORIES_TABLE_NAME,
@@ -21,7 +22,7 @@ import androidx.room.PrimaryKey
 )
 data class LinkStoriesEntity(
     @PrimaryKey @ColumnInfo(name = "link_id") val linkId: String,
-    @ColumnInfo(name = "link_type") val linkType: String,
+    @ColumnInfo(name = "link_type") val linkType: ContentType,
     @ColumnInfo(name = LINK_STORIES_OWNER_ID) val linkStoriesOwnerId: String,
 )
 

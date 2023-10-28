@@ -6,33 +6,33 @@
     "content": [
       {
         "id": "egyptology",
-        "content_type": "category",
+        "content_type": "CATEGORY",
         "title": "Египтология (категория)",
         "banner_uri": "https://sun9-16.userapi.com/impg/YipwhIKz2c01pWWBmnk-Qv1kW0I5kDbsbPpv5w/g2MJi-FXvRs.jpg?size=600x200&quality=95&sign=b4fbebf18edb90d26228f15d5353a7d9&type=album",
         "description": "Исследование науки о Древнем Египте, включая историю, археологию и изучение древних текстов."
       },
       {
         "id": "mythology",
-        "content_type": "category",
+        "content_type": "CATEGORY",
         "title": "Мифология и Религия (категория)",
         "banner_uri": "https://sun9-16.userapi.com/impg/YipwhIKz2c01pWWBmnk-Qv1kW0I5kDbsbPpv5w/g2MJi-FXvRs.jpg?size=600x200&quality=95&sign=b4fbebf18edb90d26228f15d5353a7d9&type=album"
       },
       {
         "id": "ramesses_ii",
-        "content_type": "article",
+        "content_type": "ARTICLE",
         "title": "Рамсес II - Великий Фараон (статья)",
         "banner_uri": "https://sun9-16.userapi.com/impg/YipwhIKz2c01pWWBmnk-Qv1kW0I5kDbsbPpv5w/g2MJi-FXvRs.jpg?size=600x200&quality=95&sign=b4fbebf18edb90d26228f15d5353a7d9&type=album",
         "description": "Рамсес II был одним из наиболее великих фараонов Древнего Египта, правившим в течение 66 лет."
       },
       {
         "id": "khufu_pyramid",
-        "content_type": "article_map",
+        "content_type": "ARTICLE_MAP",
         "title": "Пирамида Хеопса (статья на карте)",
         "banner_uri": "https://sun9-16.userapi.com/impg/YipwhIKz2c01pWWBmnk-Qv1kW0I5kDbsbPpv5w/g2MJi-FXvRs.jpg?size=600x200&quality=95&sign=b4fbebf18edb90d26228f15d5353a7d9&type=album"
       },
       {
         "id": "sphinx",
-        "content_type": "article_map",
+        "content_type": "ARTICLE_MAP",
         "title": "Большой сфинкс (статья на карте)",
         "banner_uri": "https://sun9-16.userapi.com/impg/YipwhIKz2c01pWWBmnk-Qv1kW0I5kDbsbPpv5w/g2MJi-FXvRs.jpg?size=600x200&quality=95&sign=b4fbebf18edb90d26228f15d5353a7d9&type=album"
       }
