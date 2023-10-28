@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.evgenii.goncharov.ancient.egypt.features.main.db.dto.StoriesWithPartStories
+import com.evgenii.goncharov.ancient.egypt.features.main.db.entities.STORIES_ID_NAME
 import com.evgenii.goncharov.ancient.egypt.features.main.db.entities.STORIES_TABLE_NAME
 import com.evgenii.goncharov.ancient.egypt.features.main.db.entities.StoriesEntity
 
@@ -16,6 +17,6 @@ interface StoriesDao {
     fun insertStories(entity: StoriesEntity)
 
     @Transaction
-    @Query("SELECT * FROM $STORIES_TABLE_NAME WHERE stories_id = :storiesId")
+    @Query("SELECT * FROM $STORIES_TABLE_NAME WHERE $STORIES_ID_NAME = :storiesId")
     fun getStoriesWithPartStories(storiesId: String): StoriesWithPartStories
 }

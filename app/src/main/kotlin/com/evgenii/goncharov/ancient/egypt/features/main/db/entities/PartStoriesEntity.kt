@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
         ForeignKey(
             entity = StoriesEntity::class,
             parentColumns = [STORIES_ID_NAME],
-            childColumns = ["stories_owner_id"],
+            childColumns = [STORIES_OWNER_ID_NAME],
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
         )
@@ -21,7 +21,7 @@ import androidx.room.PrimaryKey
 )
 data class PartStoriesEntity(
     @PrimaryKey @ColumnInfo(name = "parts_stories_id") val partsStoriesId: String,
-    @ColumnInfo(name = "stories_owner_id") val storiesOwnerId: String,
+    @ColumnInfo(name = STORIES_OWNER_ID_NAME) val storiesOwnerId: String,
     @ColumnInfo(name = "part_stories_type") val type: String,
     @ColumnInfo(name = "part_stories_title") val title: String?,
     @ColumnInfo(name = "part_stories_description") val description: String?,
@@ -31,3 +31,4 @@ data class PartStoriesEntity(
 )
 
 const val PARTS_STORIES_TABLE_NAME = "part_stories_table"
+const val STORIES_OWNER_ID_NAME = "stories_owner_id"
