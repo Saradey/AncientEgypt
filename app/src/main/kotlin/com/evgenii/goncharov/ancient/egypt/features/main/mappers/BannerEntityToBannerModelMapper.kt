@@ -13,7 +13,7 @@ class BannerEntityToBannerModelMapper @Inject constructor() {
                 contentType = entity.contentType,
                 title = entity.bannerTitle,
                 bannerUri = entity.bannerUri,
-                description = entity.bannerDescription.orEmpty()
+                description = entity.bannerDescription
             )
         }
     }

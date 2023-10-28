@@ -12,7 +12,7 @@ class MainStoriesDtoToStoriesModelMapper @Inject constructor() {
     operator fun invoke(response: BaseResponseDto<MainStoriesDataDto>): BaseStatusModel<List<MainStoriesModel>> {
         return BaseStatusModel(
             status = ResponseStatus.valueOf(response.status.uppercase()),
-            message = response.message.orEmpty(),
+            message = response.message,
             data = mapStoriesDtoToStoriesModel(response.data)
         )
     }

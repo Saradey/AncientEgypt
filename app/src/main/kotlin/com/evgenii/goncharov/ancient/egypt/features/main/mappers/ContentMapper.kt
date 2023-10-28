@@ -15,7 +15,7 @@ class ContentMapper @Inject constructor() {
     operator fun invoke(response: BaseResponseDto<ContentDto>): BaseStatusModel<ContentModel> {
         return BaseStatusModel(
             status = ResponseStatus.valueOf(response.status.uppercase()),
-            message = response.message.orEmpty(),
+            message = response.message,
             data = mapContentDtoToContentModel(response.data)
         )
     }
@@ -36,7 +36,7 @@ class ContentMapper @Inject constructor() {
                 contentType = mapContentType(model.contentType),
                 title = model.title,
                 bannerUri = model.bannerUri,
-                description = model.description.orEmpty()
+                description = model.description
             )
         }
     }
