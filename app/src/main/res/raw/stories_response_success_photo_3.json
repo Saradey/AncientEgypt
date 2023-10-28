@@ -3,12 +3,17 @@
   "message": "ok",
   "data": {
     "id": "grandeur_of_pyramids",
-    "type": "STATIC",
-    "title": "Величие пирамид",
-    "description": "Древние каменные сооружения пирамидальной формы, расположенные в Египте. Количество объектов, идентифицируемых как египетские пирамиды, варьируется от 118 до 138",
-    "title_color": 4294901760,
-    "description_color": 4294901760,
-    "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album",
+    "stories_part": [
+      {
+        "parts_stories_id": "grandeur_of_pyramids_1",
+        "type": "STATIC",
+        "title": "Величие пирамид",
+        "description": "Древние каменные сооружения пирамидальной формы, расположенные в Египте. Количество объектов, идентифицируемых как египетские пирамиды, варьируется от 118 до 138",
+        "title_color": 4294901760,
+        "description_color": 4294901760,
+        "uri_content": "https://sun9-1.userapi.com/impg/vqKSxTBrqjyTp7o7FshICG2pj7LXQuK1T7g8Hw/tlXm_kCSWno.jpg?size=1080x1920&quality=95&sign=16588fda2a1baf5525a15417c79753f5&type=album"
+      }
+    ],
     "link": {
       "link_id": "grandeur_of_pyramids_article_map",
       "link_type": "article_map"

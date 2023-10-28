@@ -3,7 +3,12 @@
   "message": "ok",
   "data": {
     "id": "egyptian_astronomy",
-    "type": "DYNAMIC",
-    "uri_content": "-"
+    "stories_part": [
+      {
+        "parts_stories_id": "egyptian_astronomy_1",
+        "type": "DYNAMIC",
+        "uri_content": "-"
+      }
+    ]
   }
 }
