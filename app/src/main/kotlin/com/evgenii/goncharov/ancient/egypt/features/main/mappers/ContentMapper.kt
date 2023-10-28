@@ -3,6 +3,7 @@ package com.evgenii.goncharov.ancient.egypt.features.main.mappers
 import com.evgenii.goncharov.ancient.egypt.base.models.model.BaseStatusModel
 import com.evgenii.goncharov.ancient.egypt.base.models.dto.BaseResponseDto
 import com.evgenii.goncharov.ancient.egypt.base.utils.ResponseStatus
+import com.evgenii.goncharov.ancient.egypt.consts.mapContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.BannerModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.models.ContentModel
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.BannerDto
@@ -32,7 +33,7 @@ class ContentMapper @Inject constructor() {
         return content.map { model ->
             BannerModel(
                 id = model.id,
-                contentType = model.contentType,
+                contentType = mapContentType(model.contentType),
                 title = model.title,
                 bannerUri = model.bannerUri,
                 description = model.description.orEmpty()

@@ -1,5 +1,6 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.mappers
 
+import com.evgenii.goncharov.ancient.egypt.consts.mapContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.db.entities.BannerEntity
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.BannerDto
 import javax.inject.Inject
@@ -10,7 +11,7 @@ class BannerDtoToBannerEntityMapper @Inject constructor() {
         return content.map { dto ->
             BannerEntity(
                 bannerId = dto.id,
-                contentType = dto.contentType,
+                contentType = mapContentType(dto.contentType),
                 bannerTitle = dto.title,
                 bannerUri = dto.bannerUri,
                 bannerDescription = dto.description

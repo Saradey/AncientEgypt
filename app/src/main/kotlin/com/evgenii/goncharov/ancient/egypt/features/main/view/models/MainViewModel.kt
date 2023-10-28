@@ -86,7 +86,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun bannerClick(model: SelectedBannerModel) {
-        when (ContentType.valueOf(model.contentType.uppercase())) {
+        when (model.contentType) {
             ContentType.ARTICLE -> goToTheSelectedArticle(model.id)
             ContentType.ARTICLE_MAP -> goToTheMapSelectedArticle(model.id)
             ContentType.CATEGORY -> goToTheSelectedCategory(model.id)
