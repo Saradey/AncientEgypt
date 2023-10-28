@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.evgenii.goncharov.ancient.egypt.features.main.models.consts.StoriesContentType
 
 @Entity(
     tableName = PARTS_STORIES_TABLE_NAME,
@@ -22,7 +23,7 @@ import androidx.room.PrimaryKey
 data class PartStoriesEntity(
     @PrimaryKey @ColumnInfo(name = "parts_stories_id") val partsStoriesId: String,
     @ColumnInfo(name = STORIES_OWNER_ID_NAME) val storiesOwnerId: String,
-    @ColumnInfo(name = "part_stories_type") val type: String,
+    @ColumnInfo(name = "part_stories_type") val type: StoriesContentType,
     @ColumnInfo(name = "part_stories_title") val title: String?,
     @ColumnInfo(name = "part_stories_description") val description: String?,
     @ColumnInfo(name = "part_stories_title_color") val titleColor: Long?,

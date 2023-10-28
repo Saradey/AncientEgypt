@@ -1,6 +1,7 @@
 package com.evgenii.goncharov.ancient.egypt.features.main.mappers
 
 import com.evgenii.goncharov.ancient.egypt.features.main.db.entities.PartStoriesEntity
+import com.evgenii.goncharov.ancient.egypt.features.main.models.consts.mapStoriesContentType
 import com.evgenii.goncharov.ancient.egypt.features.main.models.dto.StoriesDto
 import javax.inject.Inject
 
@@ -11,7 +12,7 @@ class StoriesDtoToStoriesPartsEntityMapper @Inject constructor() {
             PartStoriesEntity(
                 storiesOwnerId = dto.id,
                 partsStoriesId = partDto.partsStoriesId,
-                type = partDto.type,
+                type = mapStoriesContentType(partDto.type),
                 title = partDto.title,
                 description = partDto.description,
                 titleColor = partDto.titleColor,

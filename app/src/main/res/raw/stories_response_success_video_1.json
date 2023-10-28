@@ -3,7 +3,7 @@
   "message": "ok",
   "data": {
     "id": "egyptian_astronomy",
-    "type": "dynamic",
+    "type": "DYNAMIC",
     "uri_content": "-"
   }
 }

@@ -6,7 +6,7 @@
     "stories_part": [
       {
         "parts_stories_id" : "mysteries_of_the_sphinx_part_1",
-        "type": "static",
+        "type": "STATIC",
         "title": "Тайны Сфинкса",
         "description": "Что таит в себе Сфинкс, какие тайны он скрыват в себе? Какие сокровища были найдены?",
         "title_color": 4294901760,

@@ -16,7 +16,7 @@ class PartStoriesEntityToPartStoriesModel @Inject constructor() {
                 titleColor = partEntity.titleColor,
                 descriptionColor = partEntity.descriptionColor,
                 uriContent = partEntity.uriContent,
-                type = mapStoriesContentType(partEntity.type)
+                type = partEntity.type
             )
         }
     }
